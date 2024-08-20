@@ -1,0 +1,23 @@
+{
+  "name": "newcar-x",
+  "version": "0.0.1",
+  "description": "The modern font-end SVG animation engine.",
+  "scripts": {
+    "build": "pnpm run --filter=* build",
+    "dev": "pnpm run --parallel --filter=* dev",
+    "test": "pnpm run --filter=* test"
+  },
+  "keywords": [
+    "Animation",
+    "SVG"
+  ],
+  "author": "BugDuck Team",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@antfu/eslint-config": "^2.26.0",
+    "tsup": "^8.2.4",
+    "typedoc": "^0.26.6",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2"
+  }
+}

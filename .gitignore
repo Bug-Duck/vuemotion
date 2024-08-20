@@ -1,0 +1,7 @@
+/tsconfig.tsbuildinfo
+node_modules
+dist
+.rollup.cache/
+/.VSCodeCounter/**
+.idea
+**/.vitepress/cache
