@@ -1,3 +1,7 @@
 export { default as Car } from './car.vue'
 export { default as BaseWidget } from './widgets/base-widget.vue'
 export { default as Rect } from './widgets/rect.vue'
+export { default as Polygon } from './widgets/polygon.vue'
+export { default as Arc } from './widgets/arc.vue'
+export { default as Line } from './widgets/line.vue'
+export { default as Group } from './widgets/group.vue'

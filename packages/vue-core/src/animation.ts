@@ -1,7 +1,6 @@
 import { Ref, VNodeRef } from "vue"
 
 export interface AnimationContext<T> {
-  duration: number
   props: T
 }
 

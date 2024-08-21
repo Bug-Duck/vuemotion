@@ -10,7 +10,9 @@ export class AnimationManager {
     this.player = usePlayer()
     const elapsed = this.player.getElapsed()
     watch(elapsed, (value) => {
-      
+      this.animations[0].update({
+        props,
+      })
     })
   }
 
