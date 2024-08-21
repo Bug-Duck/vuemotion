@@ -1,12 +1,21 @@
 <template>
-  <BaseWidget :x="props.x" :y="props.y" :scaleX="props.scaleX" :scaleY="props.scaleY" :rotation="props.rotation">
-    <rect :width="props.width" :height="props.height"></rect>
+  <BaseWidget :scaleX="props.scaleX" :scaleY="props.scaleY" :rotation="props.rotation" :x="props.x" :y="props.y">
+    <rect
+      :width="props.width"
+      :height="props.height"
+      :x="(-props.width / 2).toString()"
+      :y="(-props.height / 2).toString()"
+      :fill="props.fill ?? 'rgba(135,206,250,0.5)'"
+      :stroke="props.border ?? 'rgba(135,206,250,1)'"
+      :stroke-width="props.borderWidth ?? '5'"
+    ></rect>
   </BaseWidget>
 </template>
 
 <script setup lang="ts">
 import { default as BaseWidget } from './base-widget.vue'
 import { FigureOptions } from './figure'
+import { defineProps, onMounted, ref } from 'vue'
 
 interface RectOptions extends FigureOptions {
   width: number
@@ -27,4 +36,5 @@ interface RectOptions extends FigureOptions {
 }
 
 const props = defineProps<RectOptions>()
+const rect = ref()
 </script>

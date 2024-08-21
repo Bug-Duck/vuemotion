@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import Child from './Child.vue'
 import { useWidget, usePlayer } from '@newcar-x/vue-core'
 import { Car, Rect } from '@newcar-x/vue-lib'
 
-const { widget } = useWidget()
+// const { widget } = useWidget()
 const player = usePlayer()
 player.play()
 
@@ -11,7 +10,7 @@ player.play()
 
 <template>
   <Car :width="1600" :height="800">
-    <Rect :width="300" :height="300"></Rect>
+    <Rect :width="300" :height="300" :x="200" :y="200"></Rect>
   </Car>
 </template>
 

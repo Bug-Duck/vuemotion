@@ -12,7 +12,7 @@ export function usePlayer() {
   }
 
   function getElapsed() {
-    return (inject('elapsed') as Ref<number>).value
+    return inject('elapsed') as Ref<number>
   }
 
   return {
