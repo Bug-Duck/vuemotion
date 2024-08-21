@@ -1,5 +1,5 @@
 import { Figure, FigureOptions } from "./figure.ts";
-import {defineWidget} from "../utils/define-widget.ts";
+import { defineWidget } from "../utils/define-widget.ts";
 
 export interface ArcOptions extends FigureOptions {
   radius: number;
@@ -8,9 +8,11 @@ export interface ArcOptions extends FigureOptions {
 }
 
 export class Arc extends Figure {
-  radius: number;
-  from: number;
-  to: number;
+  radius: number
+  from: number
+  to: number
+  path: SVGPathElement
+  pathData: string
 
   constructor(options: ArcOptions) {
     super(options);
@@ -41,20 +43,29 @@ export class Arc extends Figure {
 
   render(): SVGElement {
     const root = super.render()
-    const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-    path.setAttribute("d", this.describeArc(0, 0, this.radius, this.from, this.to));
+    this.path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    this.pathData = this.describeArc(-this.radius, -this.radius, this.radius, this.from, this.to * this.progress)
+    this.path.setAttribute("d", this.pathData);
+    this.path.id = 'graph'
     if (this.fill) {
-      path.setAttribute('fill', this.fillColor);
+      this.path.setAttribute('fill', this.fillColor);
     }
     if (this.border) {
-      path.setAttribute('stroke', this.borderColor);
-      path.setAttribute('stroke-width', this.borderWidth.toString())
+      this.path.setAttribute('stroke', this.borderColor);
+      this.path.setAttribute('stroke-width', this.borderWidth.toString())
     }
 
-    root.appendChild(path);
+    root.appendChild(this.path);
 
     return root
   }
+
+  watch(key: string, newValue: unknown): void {
+    if (key === 'progress') {
+      console.log(this.progress)
+      this.path.setAttribute("d", this.describeArc(-this.radius, -this.radius, this.radius, this.from, this.to * this.progress));
+    }
+  }
 }
 
-export const createArc = defineWidget<ArcOptions>(Arc)
+export const createArc = defineWidget<ArcOptions, Arc>(Arc)

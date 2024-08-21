@@ -1,3 +1,4 @@
+import { defineAnimation } from "../animation.ts";
 import {defineWidget} from "../utils/define-widget.ts";
 
 export interface BaseWidgetOptions {
@@ -23,6 +24,7 @@ export class BaseWidget {
   rotation: number
   
   private root: SVGElement
+  animations: any[] = []
   
   constructor(options: BaseWidgetOptions) {
     this.x = options.x ?? 0
@@ -49,7 +51,12 @@ export class BaseWidget {
         this.root.setAttribute('transform', `translate(${this.x}, ${this.y}) scale(${this.scaleX}, ${this.scaleY}) rotate(${this.rotation})`)
     }
   }
+
+  animate<T extends BaseWidget>(animation: ReturnType<typeof defineAnimation<T>>): this {
+    this.animations.push(animation)
+    return this
+  }
   
 }
 
-export const createBaseWidget = defineWidget<BaseWidgetOptions>(BaseWidget)
+export const createBaseWidget = defineWidget<BaseWidgetOptions, BaseWidget>(BaseWidget)

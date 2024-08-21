@@ -4,7 +4,7 @@ export function createScene() {
   const widgets: BaseWidget[] = []  
   
   return {
-    add(widget: BaseWidget) {
+    add<T extends BaseWidget>(widget: T) {
       this.widgets.push(widget)
     },
     widgets,
