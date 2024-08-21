@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@newcar-x/vue-core": "workspace:*"
+    "@suaterjs/vue-core": "workspace:*"
   }
 }

@@ -1,8 +1,8 @@
 {
-  "name": "@newcar-x/vue-core",
+  "name": "@suaterjs/vue-core",
   "type": "module",
   "version": "0.0.1",
-  "description": "The components and hooks of newcar-x of Vuejs",
+  "description": "The components and hooks of suaterjs of Vuejs",
   "author": "BugDuck Team",
   "license": "Apache-2.0",
   "exports": {

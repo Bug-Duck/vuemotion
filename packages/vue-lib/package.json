@@ -1,8 +1,8 @@
 {
-  "name": "@newcar-x/vue-lib",
+  "name": "@suaterjs/vue-lib",
   "type": "module",
   "version": "0.0.1",
-  "description": "The basic components of newcar-x of Vuejs",
+  "description": "The basic components of suaterjs of Vuejs",
   "author": "BugDuck Team",
   "license": "Apache-2.0",
   "exports": {

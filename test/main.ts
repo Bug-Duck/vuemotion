@@ -1,4 +1,4 @@
-import {createApp, createScene, createArc, stroke, delay, create, createRect, strokeFill, transform } from '@newcar-x/core'
+import {createApp, createScene, createArc, stroke, delay, create, createRect, strokeFill, transform } from '@suaterjs/core'
 
 const app = createApp({
   element: document.querySelector('#container')!

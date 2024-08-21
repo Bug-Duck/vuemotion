@@ -1,4 +1,4 @@
-import { BaseWidget } from "@newcar-x/core";
+import { BaseWidget } from "@suaterjs/core";
 import { defineAnimation } from "../../../core/src/animation";
 
 export function delay(delay: number) {

@@ -1,4 +1,4 @@
-import { BaseAnimation, defineAnimation } from "@newcar-x/core";
+import { BaseAnimation, defineAnimation } from "@suaterjs/core";
 import { Figure } from "../widgets/figure";
 
 export function strokeFill(options: BaseAnimation & {

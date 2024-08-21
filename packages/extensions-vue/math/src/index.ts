@@ -1,0 +1,1 @@
+export { default as MathFunction } from './math-function.vue';

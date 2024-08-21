@@ -1,8 +1,8 @@
 {
-  "name": "@newcar-x/vue-math",
+  "name": "@suaterjs/vue-math",
   "type": "module",
   "version": "0.0.1",
-  "description": "The components and hooks of newcar-x of Vuejs",
+  "description": "The components and hooks of suaterjs of Vuejs",
   "author": "BugDuck Team",
   "license": "Apache-2.0",
   "exports": {
@@ -27,7 +27,9 @@
     "access": "public"
   },
   "dependencies": {
-    "vue": "^3.4.26"
+    "vue": "^3.4.26",
+    "@suaterjs/vue-core": "workspace:*",
+    "@suaterjs/vue-lib": "workspace:*"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
