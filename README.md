@@ -1,5 +1,5 @@
 <div style="text-align: center">
-  <img src="./assets/logo.svg">
+  <img src="./assets/logo.svg" style="scale: 0.3">
   <h1>VueMotion</h1>
   <span>The next generation animation engine for Vue ecosystem.</span>
 </div>
