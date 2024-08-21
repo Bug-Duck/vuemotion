@@ -23,6 +23,7 @@
   },
   "include": [
     "packages/**/*.ts",
-    "**/shims.d.ts"
+    "**/shims.d.ts",
+    "**/*.vue"
   ]
 }
