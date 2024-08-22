@@ -1,16 +1,30 @@
-import { Animation } from '../animation'
-import { reactive, Reactive, Ref, ref, watch } from 'vue'
-import { usePlayer } from './use-player'
+import {Animation} from '../animation'
+import {Ref, watch} from 'vue'
+import {Player} from './use-player'
 
 export class AnimationManager {
   animations: Array<Animation<any>> = []
-  player: ReturnType<typeof usePlayer>
 
-  constructor(public props: Record<string, Ref>) {
-    this.player = usePlayer()
-    const elapsed = this.player.getElapsed()
+  constructor(public props: Record<string, Ref>, public player: Player) {
+    const elapsed = player.getElapsed()
     watch(elapsed, (value) => {
-      
+      if (this.animations.length === 0) {
+        return
+      }
+      if (this.animations[0].progress === 1) {
+        this.animations.shift()
+      }
+      if (this.animations.length === 0) {
+        return
+      }
+      if (this.animations[0].begin === undefined) {
+        this.animations[0].begin = value
+        this.animations[0].progress = 0
+        this.animations[0].init({props: this.props})
+      } else {
+        this.animations[0].progress = Math.min((value - this.animations[0].begin) / this.animations[0].duration, 1)
+        this.animations[0].update({props: this.props})
+      }
     })
   }
 
@@ -21,7 +35,6 @@ export class AnimationManager {
   }
 }
 
-export function useAnimation(props: Record<string, Ref>) {
-  const manager = new AnimationManager(props)
-  return manager
+export function useAnimation(props: Record<string, Ref>, player: Player) {
+  return new AnimationManager(props, player)
 }

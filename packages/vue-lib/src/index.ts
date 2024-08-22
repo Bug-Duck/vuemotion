@@ -11,3 +11,5 @@ export { default as Line } from './widgets/line.vue'
 export * from './widgets/line'
 export { default as Group } from './widgets/group.vue'
 export * from './widgets/group'
+
+export * from './animations/move'

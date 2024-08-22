@@ -15,7 +15,7 @@ export function usePlayer() {
   }
 
   function getElapsed() {
-    return inject(elapsed) as Ref<number>
+    return (inject(elapsed) ?? now) as Ref<number>
   }
 
   return {
@@ -23,3 +23,5 @@ export function usePlayer() {
     getElapsed,
   }
 }
+
+export type Player = ReturnType<typeof usePlayer>
