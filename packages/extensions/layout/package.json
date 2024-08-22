@@ -1,5 +1,5 @@
 {
-  "name": "@vuemotion/vue-markdown",
+  "name": "@vuemotion/extension-layout",
   "type": "module",
   "version": "0.0.1",
   "description": "The components and hooks of vuemotion of Vuejs",

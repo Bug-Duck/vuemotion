@@ -1,12 +1,12 @@
 <template>
-  <BaseWidget :scaleX="props.scaleX" :scaleY="props.scaleY" :rotation="props.rotation" :x="props.x" :y="props.y">
-    <path :d="path" :fill="props.fill ?? 'rgba(135,206,250,0.5)'" :stroke="props.border ?? 'rgba(135,206,250,1)'"
-    :stroke-width="props.borderWidth ?? '5'" />
+  <BaseWidget :scaleX="options.scaleX" :scaleY="options.scaleY" :rotation="options.rotation" :x="options.x" :y="options.y">
+    <path :d="path" :fill="options.fill ?? 'rgba(135,206,250,0.5)'" :stroke="options.border ?? 'rgba(135,206,250,1)'"
+    :stroke-width="options.borderWidth ?? '5'" />
   </BaseWidget>
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue';
+import { onMounted, ref, watch, defineProps } from 'vue';
 import { ArcOptions } from './arc'
 import BaseWidget from './base-widget.vue';
 import { useOptions } from '@vuemotion/vue-core';
@@ -31,7 +31,11 @@ function describeArc(centerX: number, centerY: number, radius: number, startAngl
   ].join(" ");
 }
 
-const props = useOptions<ArcOptions>()
+const props = defineProps<ArcOptions>()
+const options = useOptions<ArcOptions>(props)
+onMounted(() => {
+  console.log(props)
+})
 
 let path = ref(describeArc(props.x ?? 0, props.y ?? 0, props.radius, props.from || 0, props.to || 359))
 

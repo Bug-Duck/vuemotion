@@ -7,6 +7,8 @@
 </template>
 
 <script setup lang="ts">
+import { defineProps } from 'vue';
+
 const { width, height } = defineProps<{
   width: number
   height: number

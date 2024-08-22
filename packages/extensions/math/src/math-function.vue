@@ -1,7 +1,7 @@
 <template>
-  <BaseWidget :scaleX="props.scaleX" :scaleY="props.scaleY" :rotation="props.rotation" :x="props.x" :y="props.y">
-    <path :d="path" :stroke="props.color ?? 'rgba(135,206,250,1)'"
-    :stroke-width="props.width ?? '5'">
+  <BaseWidget :scaleX="options.scaleX" :scaleY="options.scaleY" :rotation="options.rotation" :x="options.x" :y="options.y">
+    <path :d="path" :stroke="options.color ?? 'rgba(135,206,250,1)'"
+    :stroke-width="options.width ?? '5'">
   </path>
   </BaseWidget>
 </template>
@@ -10,6 +10,7 @@
 import { watch } from 'vue';
 import { MathFunctionOptions } from './math-function'
 import { BaseWidget } from '@vuemotion/vue-lib';
+import { useOptions } from '@vuemotion/vue-core';
 
 function mathFunctionToSVGPath(mathFunc: (x: number) => number, xRange: [number, number], step = 0.1, divisionX = 100, divisionY = 100) {
   let path = '';
@@ -33,6 +34,7 @@ function mathFunctionToSVGPath(mathFunc: (x: number) => number, xRange: [number,
 }
 
 const props = defineProps<MathFunctionOptions>()
+const options = useOptions<MathFunctionOptions>(props)
 
 let path = mathFunctionToSVGPath(props.fn, props.domain, 0.1, props.divisionX, props.divisionY)
 watch(props, () => {

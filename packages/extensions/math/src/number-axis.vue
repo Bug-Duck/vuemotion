@@ -1,14 +1,14 @@
 <template>
-  <BaseWidget :scaleX="props.scaleX" :scaleY="props.scaleY" :rotation="props.rotation" :x="props.x" :y="props.y">
-    <!-- <line :x1="props.range[0] * interval" :x2="props.range[1] * interval" :y1="0" :y2="0" :stroke="props.trim ?? 'white'" :stroke-width="5"></line>
-    <polygon points="15,0 0,20 0,-20" :fill="props.trim ?? 'white'" :transform="`translate(${props.range[1] * interval}, 0)`"></polygon>
+  <BaseWidget :scaleX="options.scaleX" :scaleY="options.scaleY" :rotation="options.rotation" :x="options.x" :y="options.y">
+    <!-- <line :x1="options.range[0] * interval" :x2="options.range[1] * interval" :y1="0" :y2="0" :stroke="options.trim ?? 'white'" :stroke-width="5"></line>
+    <polygon points="15,0 0,20 0,-20" :fill="options.trim ?? 'white'" :transform="`translate(${options.range[1] * interval}, 0)`"></polygon>
     <line y1="5" y2="-5" v-for=""></line> -->
-    <Line :from="[props.range[0] * interval, 0]" :to="[props.range[1] * interval, 0]" :border="props.trim ?? 'white'"/>
+    <Line :from="[props.range[0] * interval, 0]" :to="[props.range[1] * interval, 0]" :border="options.trim ?? 'white'"/>
     <Polygon :points="[
       [15 + props.range[1] * interval, 0],
       [props.range[1] * interval, 20],
       [props.range[1] * interval, -20]
-    ]" :fill="props.tip ?? 'white'" :border="props.tip ?? 'white'"/>
+    ]" :fill="options.tip ?? 'white'" :border="options.tip ?? 'white'"/>
     <Line v-for="i in range(...props.range)" :from="[i * interval, 10]" :to="[i * interval, -10]"/>
   </BaseWidget>
 </template>
@@ -16,7 +16,10 @@
 <script setup lang="ts">
 import { BaseWidget, Line, Polygon } from '@vuemotion/vue-lib';
 import { NumberAxisOptions } from './number-axis'
+import { useOptions } from '@vuemotion/vue-core'
+
 const props = defineProps<NumberAxisOptions>()
+const options = useOptions<NumberAxisOptions>(props)
 
 const interval = props.interval ?? 50
 

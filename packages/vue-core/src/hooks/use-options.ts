@@ -1,17 +1,14 @@
-import { getCurrentInstance, inject, Reactive, reactive, Ref, ref, watch } from "vue";
+import { inject, defineProps, Reactive } from "vue";
 
-export function useOptions<T extends Record<string, any>>() {
-  const props = defineProps<T>()
-  const options: Partial<T> = reactive({})
+export function useOptions<T>(props: ReturnType<typeof defineProps>) {
+  const controller = inject('controller') as Reactive<T>
+  console.log(props)
+
   for (const key in props) {
-    if (props[key] !== undefined) {
-      ;(options[key] as Partial<any>) = props[key]
+    if ((props as Record<string, any>)[key] !== undefined) {
+      (controller as Record<string, any>)[key] = (props as Record<string, any>)[key]
     }
   }
-  const parentContorller = inject('controller') as Ref<Record<string, Ref>>
-  parentContorller.value = options
 
-  return options as Reactive<{
-    [key in keyof T]: T[key]
-  }>
+  return controller as T
 }

@@ -1,13 +1,13 @@
 <template>
-  <BaseWidget :scaleX="props.scaleX" :scaleY="props.scaleY" :rotation="props.rotation" :x="props.x" :y="props.y">
+  <BaseWidget :scaleX="options.scaleX" :scaleY="options.scaleY" :rotation="options.rotation" :x="options.x" :y="options.y">
     <rect
-      :width="props.width"
-      :height="props.height"
-      :x="(-props.width / 2).toString()"
-      :y="(-props.height / 2).toString()"
-      :fill="props.fill ?? 'rgba(135,206,250,0.5)'"
-      :stroke="props.border ?? 'rgba(135,206,250,1)'"
-      :stroke-width="props.borderWidth ?? '5'"
+      :width="options.width"
+      :height="options.height"
+      :x="(-options.width / 2).toString()"
+      :y="(-options.height / 2).toString()"
+      :fill="options.fill ?? 'rgba(135,206,250,0.5)'"
+      :stroke="options.border ?? 'rgba(135,206,250,1)'"
+      :stroke-width="options.borderWidth ?? '5'"
     ></rect>
   </BaseWidget>
 </template>
@@ -36,6 +36,6 @@ interface RectOptions extends FigureOptions {
   | [number, number, number, number, number, number, number, number]
 }
 
-const props = useOptions<RectOptions>()
-const rect = ref()
+const props = defineProps<RectOptions>()
+const options = useOptions<RectOptions>(props)
 </script>

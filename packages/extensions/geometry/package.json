@@ -1,5 +1,5 @@
 {
-  "name": "@vuemotion/vue-math",
+  "name": "@vuemotion/extension-geometry",
   "type": "module",
   "version": "0.0.1",
   "description": "The components and hooks of vuemotion of Vuejs",
@@ -27,9 +27,7 @@
     "access": "public"
   },
   "dependencies": {
-    "vue": "^3.4.26",
-    "@vuemotion/vue-core": "workspace:*",
-    "@vuemotion/vue-lib": "workspace:*"
+    "vue": "^3.4.26"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",

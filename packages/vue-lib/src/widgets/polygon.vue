@@ -1,10 +1,10 @@
 <template>
-  <BaseWidget :scaleX="props.scaleX" :scaleY="props.scaleY" :rotation="props.rotation" :x="props.x" :y="props.y">
+  <BaseWidget :scaleX="options.scaleX" :scaleY="options.scaleY" :rotation="options.rotation" :x="options.x" :y="options.y">
     <polygon
-      :points="props.points.map(p => `${p[0]},${p[1]}`).join(' ')"
-      :fill="props.fill ?? 'rgba(135,206,250,0.5)'"
-      :stroke="props.border ?? 'rgba(135,206,250,1)'"
-      :stroke-width="props.borderWidth ?? '5'"
+      :points="options.points.map(p => `${p[0]},${p[1]}`).join(' ')"
+      :fill="options.fill ?? 'rgba(135,206,250,0.5)'"
+      :stroke="options.border ?? 'rgba(135,206,250,1)'"
+      :stroke-width="options.borderWidth ?? '5'"
     >
       <slot></slot>
     </polygon>
@@ -15,6 +15,8 @@
 import { PolygonOptions } from './polygon'
 import BaseWidget from './base-widget.vue';
 import { useOptions } from '@vuemotion/vue-core';
+import { defineProps } from 'vue'
 
-const props = useOptions<PolygonOptions>()
+const props = defineProps<PolygonOptions>()
+const options = useOptions<PolygonOptions>(props)
 </script>

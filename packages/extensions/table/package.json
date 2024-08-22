@@ -1,5 +1,5 @@
 {
-  "name": "@vuemotion/vue-layout",
+  "name": "@vuemotion/extension-core",
   "type": "module",
   "version": "0.0.1",
   "description": "The components and hooks of vuemotion of Vuejs",
