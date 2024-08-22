@@ -5,7 +5,8 @@
 </template>
 
 <script setup lang="ts">
+import { useOptions } from '@vuemotion/vue-core'
 import { BaseWidgetOptions } from './base-widget'
 
-const props = defineProps<BaseWidgetOptions>()
+const props = useOptions<BaseWidgetOptions>()
 </script>

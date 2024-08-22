@@ -14,6 +14,7 @@
 <script setup lang="ts">
 import { PolygonOptions } from './polygon'
 import BaseWidget from './base-widget.vue';
+import { useOptions } from '@vuemotion/vue-core';
 
-const props = defineProps<PolygonOptions>()
+const props = useOptions<PolygonOptions>()
 </script>

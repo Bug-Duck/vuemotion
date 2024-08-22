@@ -11,7 +11,7 @@ import { watch } from 'vue';
 import { MathFunctionOptions } from './math-function'
 import { BaseWidget } from '@vuemotion/vue-lib';
 
-function mathFunctionToSVGPath(mathFunc: (x: number) => number, xRange: [number, number], step = 0.1, divisionX = 50, divisionY = 50) {
+function mathFunctionToSVGPath(mathFunc: (x: number) => number, xRange: [number, number], step = 0.1, divisionX = 100, divisionY = 100) {
   let path = '';
   let firstPoint = true;
 

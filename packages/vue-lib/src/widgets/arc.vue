@@ -9,6 +9,7 @@
 import { ref, watch } from 'vue';
 import { ArcOptions } from './arc'
 import BaseWidget from './base-widget.vue';
+import { useOptions } from '@vuemotion/vue-core';
 
 function polarToCartesian(centerX: number, centerY: number, radius: number, angleInDegrees: number): { x: number; y: number } {
   const angleInRadians = (angleInDegrees - 90) * Math.PI / 180.0;
@@ -30,7 +31,7 @@ function describeArc(centerX: number, centerY: number, radius: number, startAngl
   ].join(" ");
 }
 
-const props = defineProps<ArcOptions>()
+const props = useOptions<ArcOptions>()
 
 let path = ref(describeArc(props.x ?? 0, props.y ?? 0, props.radius, props.from || 0, props.to || 359))
 

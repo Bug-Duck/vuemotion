@@ -3,7 +3,7 @@
     <!-- <line :x1="props.range[0] * interval" :x2="props.range[1] * interval" :y1="0" :y2="0" :stroke="props.trim ?? 'white'" :stroke-width="5"></line>
     <polygon points="15,0 0,20 0,-20" :fill="props.trim ?? 'white'" :transform="`translate(${props.range[1] * interval}, 0)`"></polygon>
     <line y1="5" y2="-5" v-for=""></line> -->
-    <Line :from="[props.range[0] * interval, 0]" :to="[props.range[1] * interval, 0]" :stroke="props.trim ?? 'white'"/>
+    <Line :from="[props.range[0] * interval, 0]" :to="[props.range[1] * interval, 0]" :border="props.trim ?? 'white'"/>
     <Polygon :points="[
       [15 + props.range[1] * interval, 0],
       [props.range[1] * interval, 20],

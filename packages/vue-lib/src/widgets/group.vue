@@ -6,9 +6,10 @@
 </template>
 
 <script setup lang="ts">
+import { useOptions } from '@vuemotion/vue-core';
 import { GroupOptions } from './group'
 
-const props = defineProps<GroupOptions>()
+const props = useOptions<GroupOptions>()
 console.log(props)
 
 </script>

@@ -1,8 +1,9 @@
 <script setup lang="ts">
+import { useOptions } from '@vuemotion/vue-core';
 import BaseWidget from './base-widget.vue';
 import { LineOptions } from './line';
 
-const props = defineProps<LineOptions>()
+const props = useOptions<LineOptions>()
 </script>
 
 <template>

@@ -13,6 +13,7 @@
 </template>
 
 <script setup lang="ts">
+import { useOptions } from '@vuemotion/vue-core';
 import { default as BaseWidget } from './base-widget.vue'
 import { FigureOptions } from './figure'
 import { defineProps, onMounted, ref } from 'vue'
@@ -35,6 +36,6 @@ interface RectOptions extends FigureOptions {
   | [number, number, number, number, number, number, number, number]
 }
 
-const props = defineProps<RectOptions>()
+const props = useOptions<RectOptions>()
 const rect = ref()
 </script>
