@@ -43,7 +43,7 @@ importers:
         specifier: ^2.0.29
         version: 2.0.29(typescript@5.5.4)
 
-  packages/extensions-vue/math:
+  packages/extensions/mindmap:
     dependencies:
       '@vuemotion/vue-core':
         specifier: workspace:*
@@ -99,15 +99,15 @@ importers:
 
   packages/vue-test:
     dependencies:
+      '@vuemotion/extension-mindmap':
+        specifier: workspace:*
+        version: link:../extensions/mindmap
       '@vuemotion/vue-core':
         specifier: workspace:*
         version: link:../vue-core
       '@vuemotion/vue-lib':
         specifier: workspace:*
         version: link:../vue-lib
-      '@vuemotion/vue-math':
-        specifier: workspace:*
-        version: link:../extensions-vue/math
       vue:
         specifier: ^3.4.37
         version: 3.4.38(typescript@5.5.4)

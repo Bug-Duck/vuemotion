@@ -27,7 +27,9 @@
     "access": "public"
   },
   "dependencies": {
-    "vue": "^3.4.26"
+    "vue": "^3.4.26",
+    "@vuemotion/vue-lib": "workspace:*",
+    "@vuemotion/vue-core": "workspace:*"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
