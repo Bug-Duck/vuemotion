@@ -1,12 +1,15 @@
 <template>
-  <path :d="path" :stroke="props.color ?? 'rgba(135,206,250,1)'"
+  <BaseWidget :scaleX="props.scaleX" :scaleY="props.scaleY" :rotation="props.rotation" :x="props.x" :y="props.y">
+    <path :d="path" :stroke="props.color ?? 'rgba(135,206,250,1)'"
     :stroke-width="props.width ?? '5'">
   </path>
+  </BaseWidget>
 </template>
 
 <script setup lang="ts">
 import { watch } from 'vue';
 import { MathFunctionOptions } from './math-function'
+import { BaseWidget } from '@suaterjs/vue-lib';
 
 function mathFunctionToSVGPath(mathFunc: (x: number) => number, xRange: [number, number], step = 0.1, divisionX = 50, divisionY = 50) {
   let path = '';
