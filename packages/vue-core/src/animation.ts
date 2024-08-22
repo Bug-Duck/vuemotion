@@ -1,7 +1,7 @@
-import { Ref, VNodeRef } from "vue"
+import { Reactive, Ref, VNodeRef } from "vue"
 
 export interface AnimationContext<T> {
-  props: Record<string, Ref>
+  props: Reactive<T>
 }
 
 export interface Animation<T> {

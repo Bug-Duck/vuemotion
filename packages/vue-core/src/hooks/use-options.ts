@@ -1,4 +1,4 @@
-import { inject, defineProps, Reactive } from "vue";
+import { inject, defineProps, Reactive, watch } from "vue";
 
 export function useOptions<T>(props: ReturnType<typeof defineProps>) {
   const controller = inject('controller') as Reactive<T>

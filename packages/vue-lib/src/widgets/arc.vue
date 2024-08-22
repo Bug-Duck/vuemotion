@@ -34,6 +34,8 @@ function describeArc(centerX: number, centerY: number, radius: number, startAngl
 const props = defineProps<ArcOptions>()
 const options = useOptions<ArcOptions>(props)
 
+options.x = 1
+
 let path = ref(describeArc(props.x ?? 0, props.y ?? 0, props.radius, props.from || 0, props.to || 359))
 
 watch(props, () => {

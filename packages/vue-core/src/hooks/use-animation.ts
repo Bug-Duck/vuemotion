@@ -1,13 +1,14 @@
 import {Animation} from '../animation'
-import {Ref, watch} from 'vue'
+import {Reactive, Ref, watch} from 'vue'
 import {Player} from './use-player'
 
 export class AnimationManager {
   animations: Array<Animation<any>> = []
 
-  constructor(public props: Record<string, Ref>, public player: Player) {
-    const elapsed = player.getElapsed()
+  constructor(public props: Reactive<any>, public player: Player) {
+    const elapsed = player.elapsed
     watch(elapsed, (value) => {
+      
       if (this.animations.length === 0) {
         return
       }
