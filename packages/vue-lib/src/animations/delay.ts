@@ -1,4 +1,4 @@
-import { BaseWidget } from "@suaterjs/core";
+import { BaseWidget } from "@vuemotion/core";
 import { defineAnimation } from "../../../core/src/animation";
 
 export function delay(delay: number) {

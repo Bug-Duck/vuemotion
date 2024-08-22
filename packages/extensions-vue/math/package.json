@@ -1,8 +1,8 @@
 {
-  "name": "@suaterjs/vue-math",
+  "name": "@vuemotion/vue-math",
   "type": "module",
   "version": "0.0.1",
-  "description": "The components and hooks of suaterjs of Vuejs",
+  "description": "The components and hooks of vuemotion of Vuejs",
   "author": "BugDuck Team",
   "license": "Apache-2.0",
   "exports": {
@@ -28,8 +28,8 @@
   },
   "dependencies": {
     "vue": "^3.4.26",
-    "@suaterjs/vue-core": "workspace:*",
-    "@suaterjs/vue-lib": "workspace:*"
+    "@vuemotion/vue-core": "workspace:*",
+    "@vuemotion/vue-lib": "workspace:*"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",

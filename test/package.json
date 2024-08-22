@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@suaterjs/vue-core": "workspace:*"
+    "@vuemotion/vue-core": "workspace:*"
   }
 }

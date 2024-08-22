@@ -14,7 +14,7 @@
 </template>
 
 <script setup lang="ts">
-import { BaseWidget, Line, Polygon } from '@suaterjs/vue-lib';
+import { BaseWidget, Line, Polygon } from '@vuemotion/vue-lib';
 import { NumberAxisOptions } from './number-axis'
 const props = defineProps<NumberAxisOptions>()
 

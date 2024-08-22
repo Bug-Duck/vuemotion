@@ -45,10 +45,10 @@ importers:
 
   packages/extensions-vue/math:
     dependencies:
-      '@suaterjs/vue-core':
+      '@vuemotion/vue-core':
         specifier: workspace:*
         version: link:../../vue-core
-      '@suaterjs/vue-lib':
+      '@vuemotion/vue-lib':
         specifier: workspace:*
         version: link:../../vue-lib
       vue:
@@ -96,13 +96,13 @@ importers:
 
   packages/vue-test:
     dependencies:
-      '@suaterjs/vue-core':
+      '@vuemotion/vue-core':
         specifier: workspace:*
         version: link:../vue-core
-      '@suaterjs/vue-lib':
+      '@vuemotion/vue-lib':
         specifier: workspace:*
         version: link:../vue-lib
-      '@suaterjs/vue-math':
+      '@vuemotion/vue-math':
         specifier: workspace:*
         version: link:../extensions-vue/math
       vue:
@@ -124,7 +124,7 @@ importers:
 
   test:
     dependencies:
-      '@suaterjs/vue-core':
+      '@vuemotion/vue-core':
         specifier: workspace:*
         version: link:../packages/vue-core
 

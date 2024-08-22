@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { usePlayer } from '@suaterjs/vue-core'
-import { Car, Rect, Arc, Polygon, Group } from '@suaterjs/vue-lib'
-import { MathFunction, NumberAxis } from '@suaterjs/vue-math'
+import { usePlayer } from '@vuemotion/vue-core'
+import { Car, Rect, Arc, Polygon, Group } from '@vuemotion/vue-lib'
+import { MathFunction, NumberAxis } from '@vuemotion/vue-math'
 
 // const { widget } = useWidget()
 const player = usePlayer()

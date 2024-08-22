@@ -1,4 +1,4 @@
-import { BaseAnimation, defineAnimation } from "@suaterjs/core";
+import { BaseAnimation, defineAnimation } from "@vuemotion/core";
 import { Figure } from "../widgets/figure";
 
 export function strokeFill(options: BaseAnimation & {

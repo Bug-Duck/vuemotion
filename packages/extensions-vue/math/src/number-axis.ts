@@ -1,4 +1,4 @@
-import { BaseWidgetOptions } from "@suaterjs/vue-lib"
+import { BaseWidgetOptions } from "@vuemotion/vue-lib"
 
 export interface NumberAxisOptions extends BaseWidgetOptions{
   interval?: number

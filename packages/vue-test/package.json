@@ -10,9 +10,9 @@
   },
   "dependencies": {
     "vue": "^3.4.37",
-    "@suaterjs/vue-core": "workspace:*",
-    "@suaterjs/vue-lib": "workspace:*",
-    "@suaterjs/vue-math": "workspace:*"
+    "@vuemotion/vue-core": "workspace:*",
+    "@vuemotion/vue-lib": "workspace:*",
+    "@vuemotion/vue-math": "workspace:*"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.2",

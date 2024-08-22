@@ -1,4 +1,4 @@
-import {createApp, createScene, createArc, stroke, delay, create, createRect, strokeFill, transform } from '@suaterjs/core'
+import {createApp, createScene, createArc, stroke, delay, create, createRect, strokeFill, transform } from '@vuemotion/core'
 
 const app = createApp({
   element: document.querySelector('#container')!
