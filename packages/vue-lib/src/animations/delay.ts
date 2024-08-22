@@ -1,13 +1,11 @@
-import { BaseWidget } from "@vuemotion/core";
-import { defineAnimation } from "../../../core/src/animation";
+import { BaseWidgetOptions } from "../widgets/base-widget";
+import { defineAnimation } from "@vuemotion/vue-core"
 
 export function delay(delay: number) {
-  return defineAnimation<BaseWidget>(context => {
-    const animateTag = document.createElementNS('http://www.w3.org/2000/svg', 'animate')
-    animateTag.setAttribute('dur', `${delay}s`)
-    return {
-      tags: animateTag,
-      target: context.root
-    }
+  return defineAnimation<BaseWidgetOptions>({
+    init() {},
+    update() {},
+    finish() {},
+    duration: delay,
   })
 }

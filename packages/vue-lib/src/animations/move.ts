@@ -3,6 +3,7 @@ import { BaseWidgetOptions } from "../widgets/base-widget";
 
 export function move(options: BaseAnimation & {
   offsetX: number
+  offsetY: number
 }) {
   return defineAnimation<BaseWidgetOptions>({
     init(context) {
@@ -10,7 +11,7 @@ export function move(options: BaseAnimation & {
     },
     update(context) {
       context.props.x = options.offsetX * this.progress
-      console.log(context.props.x)
+      context.props.y = options.offsetY * this.progress
     },
     finish(context) {
       // console.log(context)

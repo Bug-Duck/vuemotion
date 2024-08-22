@@ -36,9 +36,11 @@ const options = useOptions<ArcOptions>(props)
 
 options.x = 1
 
-let path = ref(describeArc(props.x ?? 0, props.y ?? 0, props.radius, props.from || 0, props.to || 359))
+let path = ref(describeArc(options.x ?? 0, options.y ?? 0, options.radius, options.from || 0, (options.to || 359) * options.progress))
 
-watch(props, () => {
-  path = ref(describeArc(props.x ?? 0, props.y ?? 0, props.radius, props.from || 0, props.to || 359))
+watch(options, () => {
+  console.log(options.progress);
+  
+  path.value = describeArc(options.x ?? 0, options.y ?? 0, options.radius, options.from || 0, (options.to || 359) * options.progress)
 })
 </script>

@@ -13,3 +13,4 @@ export { default as Group } from './widgets/group.vue'
 export * from './widgets/group'
 
 export * from './animations/move'
+export * from './animations/create'

@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import {useAnimation, usePlayer, useWidget} from '@vuemotion/vue-core'
-import {Car, Arc, move} from '@vuemotion/vue-lib'
-import {inject, nextTick, onMounted, provide, ref} from 'vue';
+import {Car, Arc, move, create} from '@vuemotion/vue-lib'
+import { onMounted } from 'vue';
 
 const { widget, props } = useWidget()
 
 onMounted(() => {
   const player = usePlayer()
-  useAnimation(props, player).animate(move({duration: 1, offsetX: 100}))
+  useAnimation(props, player).animate(create({ duration: 1 }))
   player.play()
 })
 
