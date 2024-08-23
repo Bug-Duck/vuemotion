@@ -1,31 +1,16 @@
-import { BaseAnimation, defineAnimation } from "@vuemotion/vue-core";
+import { BaseAnimation, defineAnimation } from "@vuemotion/vue-core"
+import { FigureOptions } from "../widgets/figure"
 
 export function stroke(options: BaseAnimation & {
   origin?: number
 }) {
-  // return defineAnimation<Figure>(context => {
-  //   const graph = context.root.querySelector('#graph')
-  //   const strokeTag = document.createElementNS('http://www.w3.org/2000/svg', 'animate')
-  //   strokeTag.setAttribute('attributeName', 'stroke-dasharray')
-  //   strokeTag.setAttribute('from', `0 ${options.origin ?? 500}`)
-  //   strokeTag.setAttribute('to', `${options.origin ?? 500} 0`)
-  //
-  //   return {
-  //     tags: strokeTag,
-  //     target: graph as SVGElement,
-  //   }
-  // })
-
-  return defineAnimation({
-    init(context) {
-      // console.log(context)
-    },
+  return defineAnimation<FigureOptions>({
+    init() {},
     update(context) {
-      // console.log(context)
+      context.props.interval = [(options.origin ?? 500) * (options.by ?? ((x: number) => x))(this.progress), (options.origin ?? 500) * (1 - (options.by ?? ((x: number) => x))(this.progress))]
     },
-    finish(context) {
-      // console.log(context)
-    },
-    duration: 1000,
+    finish(){},
+    duration: options.duration,
+    by: options.by
   })
 }

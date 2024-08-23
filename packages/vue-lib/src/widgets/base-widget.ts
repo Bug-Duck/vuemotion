@@ -9,4 +9,5 @@ export interface BaseWidgetOptions {
   rotation?: number
   // transparency?: number
   // blendMode?: BlendMode
+  opacity?: number
 }

@@ -1,4 +1,4 @@
-export { default as Car } from './car.vue'
+export { default as Motion } from './motion.vue'
 export { default as BaseWidget } from './widgets/base-widget.vue'
 export * from './widgets/base-widget'
 export { default as Rect } from './widgets/rect.vue'
@@ -14,3 +14,6 @@ export * from './widgets/group'
 
 export * from './animations/move'
 export * from './animations/create'
+export * from './animations/delay'
+export * from './animations/stroke'
+export * from './animations/stroke-fill'

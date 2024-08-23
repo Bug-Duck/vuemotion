@@ -1,12 +1,12 @@
 <template>
   <BaseWidget :scaleX="options.scaleX" :scaleY="options.scaleY" :rotation="options.rotation" :x="options.x" :y="options.y">
     <path :d="path" :fill="options.fill ?? 'rgba(135,206,250,0.5)'" :stroke="options.border ?? 'rgba(135,206,250,1)'"
-    :stroke-width="options.borderWidth ?? '5'" />
+    :stroke-width="options.borderWidth ?? '5'" :stroke-dashoffset="options.offset ?? 0" :stroke-dasharray="(options.interval ?? [1, 0]).join(' ')" />
   </BaseWidget>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref, watch, defineProps } from 'vue';
+import { onMounted, ref, watch, defineProps, computed } from 'vue';
 import { ArcOptions } from './arc'
 import BaseWidget from './base-widget.vue';
 import { useOptions } from '@vuemotion/vue-core';
@@ -36,11 +36,5 @@ const options = useOptions<ArcOptions>(props)
 
 options.x = 1
 
-let path = ref(describeArc(options.x ?? 0, options.y ?? 0, options.radius, options.from || 0, (options.to || 359) * options.progress))
-
-watch(options, () => {
-  console.log(options.progress);
-  
-  path.value = describeArc(options.x ?? 0, options.y ?? 0, options.radius, options.from || 0, (options.to || 359) * options.progress)
-})
+const path = computed(() => describeArc(options.x ?? 0, options.y ?? 0, options.radius, options.from ?? 0, (options.to ?? 359) * (options.progress ?? 1)))
 </script>
