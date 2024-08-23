@@ -1,11 +1,12 @@
 import {Animation} from '../animation'
-import {Reactive, Ref, watch} from 'vue'
+import { Ref, watch} from 'vue'
 import {Player} from './use-player'
+import { useWidget } from './use-widget'
 
 export class AnimationManager {
   animations: Array<Animation<any>> = []
 
-  constructor(public props: Reactive<any>, public player: Player) {
+  constructor(public widget: ReturnType<typeof useWidget>, public player: Player) {
     const elapsed = player.elapsed
     watch(elapsed, (value) => {
       
@@ -21,10 +22,10 @@ export class AnimationManager {
       if (this.animations[0].begin === undefined) {
         this.animations[0].begin = value
         this.animations[0].progress = 0
-        this.animations[0].init({props: this.props})
+        this.animations[0].init({props: this.widget.props, element: this.widget.element})
       } else {
         this.animations[0].progress = Math.min((value - this.animations[0].begin) / this.animations[0].duration, 1)
-        this.animations[0].update({props: this.props})
+        this.animations[0].update({props: this.widget.props, element: this.widget.element})
       }
     })
   }
@@ -36,6 +37,6 @@ export class AnimationManager {
   }
 }
 
-export function useAnimation(props: Record<string, Ref>, player: Player) {
-  return new AnimationManager(props, player)
+export function useAnimation(widget: ReturnType<typeof useWidget>, player: Player) {
+  return new AnimationManager(widget, player)
 }

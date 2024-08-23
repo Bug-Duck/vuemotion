@@ -1,5 +1,5 @@
 import { BaseAnimation, defineAnimation } from "@vuemotion/vue-core";
-import { BaseWidgetOptions } from "../../dist";
+import { BaseWidgetOptions } from "../widgets/base-widget";
 
 export function create(options: BaseAnimation) {
   return defineAnimation<BaseWidgetOptions>({
@@ -10,5 +10,6 @@ export function create(options: BaseAnimation) {
     },
     finish() {},
     duration: options.duration,
+    by: options.by,
   })
 }

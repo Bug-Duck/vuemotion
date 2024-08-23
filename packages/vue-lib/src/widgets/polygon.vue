@@ -7,6 +7,7 @@
       :stroke-width="options.borderWidth ?? '5'"
       :stroke-dashoffset="options.offset ?? 0"
       :stroke-dasharray="(options.interval ?? [1, 0]).join(' ')"
+      :style="{ opacity: options.opacity ?? 1 }"
     >
       <slot></slot>
     </polygon>

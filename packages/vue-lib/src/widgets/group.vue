@@ -1,6 +1,6 @@
 <template>
   <g
-    :transform="`translate(${options.x || 0}, ${options.y || 0}) scale(${options.scaleX ?? 1}, ${options.scaleY ?? 1}) rotate(${options.rotation ?? 0})`">
+    :transform="`translate(${options.x || 0}, ${options.y || 0}) scale(${options.scaleX ?? 1}, ${options.scaleY ?? 1}) rotate(${options.rotation ?? 0})`" :style="{opacity: options.opacity ?? 1}">
     <slot></slot>
   </g>
 </template>

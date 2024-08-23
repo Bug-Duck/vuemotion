@@ -1,5 +1,5 @@
 <template>
-  <g :tranform="`translate(${options.x ?? 0},${options.y ?? 0}) scale(${options.scaleX ?? 1},${options.scaleY ?? 1} rotate(${options.rotation ?? 0})`" ref="g" :style="{opacity: options.opacity}">
+  <g :tranform="`translate(${options.x ?? 0},${options.y ?? 0}) scale(${options.scaleX ?? 1},${options.scaleY ?? 1} rotate(${options.rotation ?? 0})`" ref="g" :style="{opacity: options.opacity ?? 1}">
     <slot></slot>
   </g>
 </template>

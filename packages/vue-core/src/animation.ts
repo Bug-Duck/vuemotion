@@ -2,6 +2,7 @@ import { Reactive, Ref, VNodeRef } from "vue"
 
 export interface AnimationContext<T> {
   props: Reactive<T>
+  element: Ref<SVGElement>
 }
 
 export interface Animation<T> {
