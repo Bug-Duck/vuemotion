@@ -1,9 +1,11 @@
-import { onMounted, provide, reactive, Reactive, Ref, ref, VNodeRef, watch } from "vue"
+import { getCurrentInstance, onMounted, provide, reactive, Reactive, Ref, ref, VNode, VNodeRef, watch } from "vue"
 
 export function useWidget<T extends VNodeRef>() {
   const widget = ref<T>(null)
   const props: Reactive<{}> = reactive({})
-  provide('controller', props)
+  onMounted(() => {
+    provide(widget.value.$.uid.toString(), props)
+  })
 
   return { widget, props }
 }

@@ -10,8 +10,4 @@ const e = inject('elapsed') as Ref<number>
 watch(e, () => {
   console.log(e.value);
 })
-
-defineProps<{
-  x: number
-}>()
 </script>
