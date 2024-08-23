@@ -2,14 +2,9 @@ import { getCurrentInstance, InjectionKey, onMounted, provide, reactive, Reactiv
 
 export  const mapInjectionKey: InjectionKey<Map<string, Reactive<{}>>> = Symbol()
 
-export function useWidget<T extends VNodeRef>() {
-  const widget = ref<T>(null)
+export function useWidget<T extends VNodeRef>(wid: string) {
   const props: Reactive<{}> = reactive({})
-  const map = shallowReactive(new Map())
-  provide(mapInjectionKey, map)
-  onMounted(() => {
-    map.set(widget.value.$.uid, props)
-  })
+  provide(wid, props)
 
-return { widget, props }
+  return props
 }

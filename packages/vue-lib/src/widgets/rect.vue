@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import { useOptions } from '@vuemotion/vue-core';
+import { defineWidget } from '@vuemotion/vue-core';
 import { default as BaseWidget } from './base-widget.vue'
 import { FigureOptions } from './figure'
 import { defineProps, onMounted, ref } from 'vue'
@@ -39,5 +39,5 @@ interface RectOptions extends FigureOptions {
 }
 
 const props = defineProps<RectOptions>()
-const options = useOptions<RectOptions>(props)
+const options = defineWidget<RectOptions>(props)
 </script>

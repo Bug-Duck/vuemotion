@@ -2,11 +2,11 @@
 import { BaseWidget, Rect } from '@vuemotion/vue-lib'
 import { getCurrentInstance, onMounted, ref, Slot } from 'vue'
 import { UnitOptions } from './unit'
-import { useOptions } from '@vuemotion/vue-core'
+import { defineWidget } from '@vuemotion/vue-core'
 import { isUnionTypeNode } from 'typescript';
 
 const props = defineProps<UnitOptions>()
-const options = useOptions<UnitOptions>(props)
+const options = defineWidget<UnitOptions>(props)
 
 const width = ref(null)
 const height = ref(null)

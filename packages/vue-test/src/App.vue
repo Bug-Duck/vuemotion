@@ -3,7 +3,7 @@ import {useAnimation, usePlayer, useWidget} from '@vuemotion/vue-core'
 import {Motion, Arc, stroke, create, Rect, strokeFill} from '@vuemotion/vue-lib'
 import { onMounted } from 'vue';
 
-const { widget, props } = useWidget()
+const props = useWidget('test')
 
 onMounted(() => {
   const player = usePlayer()
@@ -18,7 +18,7 @@ onMounted(() => {
 
 <template>
   <Motion :width="800" :height="450">
-    <Arc :radius="100" ref="widget"/>
+    <Arc :radius="100" wid="test"/>
   </Motion>
 </template>
 

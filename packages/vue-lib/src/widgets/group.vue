@@ -6,12 +6,12 @@
 </template>
 
 <script setup lang="ts">
-import { useOptions } from '@vuemotion/vue-core';
+import { defineWidget } from '@vuemotion/vue-core';
 import { GroupOptions } from './group'
 import { defineProps } from 'vue'
 
 const props = defineProps<GroupOptions>()
-const options = useOptions<GroupOptions>(props)
+const options = defineWidget<GroupOptions>(props)
 console.log(props)
 
 </script>

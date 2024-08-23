@@ -16,10 +16,10 @@
 <script setup lang="ts">
 import { BaseWidget, Line, Polygon } from '@vuemotion/vue-lib';
 import { NumberAxisOptions } from './number-axis'
-import { useOptions } from '@vuemotion/vue-core'
+import { defineWidget } from '@vuemotion/vue-core'
 
 const props = defineProps<NumberAxisOptions>()
-const options = useOptions<NumberAxisOptions>(props)
+const options = defineWidget<NumberAxisOptions>(props)
 
 const interval = props.interval ?? 50
 

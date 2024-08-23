@@ -10,7 +10,7 @@
 import { watch } from 'vue';
 import { MathFunctionOptions } from './math-function'
 import { BaseWidget } from '@vuemotion/vue-lib';
-import { useOptions } from '@vuemotion/vue-core';
+import { defineWidget } from '@vuemotion/vue-core';
 
 function mathFunctionToSVGPath(mathFunc: (x: number) => number, xRange: [number, number], step = 0.1, divisionX = 100, divisionY = 100) {
   let path = '';
@@ -34,7 +34,7 @@ function mathFunctionToSVGPath(mathFunc: (x: number) => number, xRange: [number,
 }
 
 const props = defineProps<MathFunctionOptions>()
-const options = useOptions<MathFunctionOptions>(props)
+const options = defineWidget<MathFunctionOptions>(props)
 
 let path = mathFunctionToSVGPath(props.fn, props.domain, 0.1, props.divisionX, props.divisionY)
 watch(props, () => {

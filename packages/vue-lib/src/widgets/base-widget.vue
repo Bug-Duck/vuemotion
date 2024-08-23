@@ -5,12 +5,12 @@
 </template>
 
 <script setup lang="ts">
-import { useOptions } from '@vuemotion/vue-core'
+import { defineWidget } from '@vuemotion/vue-core'
 import { BaseWidgetOptions } from './base-widget'
 import { defineProps, onMounted, ref, watch, watchEffect } from 'vue'
 
 const props = defineProps<BaseWidgetOptions>()
-const options = useOptions<BaseWidgetOptions>(props)
+const options = defineWidget<BaseWidgetOptions>(props)
 
 const g = ref<SVGGElement>(null)
 

@@ -10,4 +10,5 @@ export interface BaseWidgetOptions {
   // transparency?: number
   // blendMode?: BlendMode
   opacity?: number
+  wid?: string
 }
