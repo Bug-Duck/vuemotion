@@ -1,11 +1,15 @@
-import { getCurrentInstance, onMounted, provide, reactive, Reactive, Ref, ref, VNode, VNodeRef, watch } from "vue"
+import { getCurrentInstance, InjectionKey, onMounted, provide, reactive, Reactive, Ref, ref, shallowReactive, VNode, VNodeRef, watch } from "vue"
+
+export  const mapInjectionKey: InjectionKey<Map<string, Reactive<{}>>> = Symbol()
 
 export function useWidget<T extends VNodeRef>() {
   const widget = ref<T>(null)
   const props: Reactive<{}> = reactive({})
+  const map = shallowReactive(new Map())
+  provide(mapInjectionKey, map)
   onMounted(() => {
-    provide(widget.value.$.uid.toString(), props)
+    map.set(widget.value.$.uid, props)
   })
 
-  return { widget, props }
+return { widget, props }
 }

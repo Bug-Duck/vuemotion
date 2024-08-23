@@ -34,7 +34,5 @@ function describeArc(centerX: number, centerY: number, radius: number, startAngl
 const props = defineProps<ArcOptions>()
 const options = useOptions<ArcOptions>(props)
 
-options.x = 1
-
 const path = computed(() => describeArc(options.x ?? 0, options.y ?? 0, options.radius, options.from ?? 0, (options.to ?? 359) * (options.progress ?? 1)))
 </script>
