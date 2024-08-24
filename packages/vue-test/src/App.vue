@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import {useAnimation, usePlayer, useWidget} from '@vuemotion/vue-core'
-import {Motion, Arc, stroke, create, Rect, strokeFill, focusOn, Text} from '@vuemotion/vue-lib'
+import {Motion, Arc, stroke, create, Rect, strokeFill, focusOn, Text, rotate, TextItem} from '@vuemotion/vue-lib'
 import { onMounted } from 'vue';
 
 const props = useWidget('test')
@@ -15,6 +15,7 @@ onMounted(() => {
     .animate(focusOn({ duration: 0.8 }))
   useAnimation(text, player)
     .animate(stroke({ duration: 1 }))
+    .animate(rotate({ duration:1, offset: 360 }))
   player.play()
 })
 
@@ -23,7 +24,10 @@ onMounted(() => {
 <template>
   <Motion :width="800" :height="450">
     <!-- <Arc :radius="100" wid="test" :x="50" :y="100"/> -->
-    <Text text="Hello world" wid="text" align="middle"/>
+    <Text wid="text" align="middle">
+      wwwwwww
+      <TextItem color="red">hhhhhh</TextItem>
+    </Text>
   </Motion>
 </template>
 
