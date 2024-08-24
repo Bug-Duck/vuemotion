@@ -11,6 +11,8 @@ export { default as Line } from './widgets/line.vue'
 export * from './widgets/line'
 export { default as Group } from './widgets/group.vue'
 export * from './widgets/group'
+export { default as Text } from './widgets/text.vue'
+export * from './widgets/text'
 
 export * from './animations/move'
 export * from './animations/create'
