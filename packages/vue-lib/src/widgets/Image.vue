@@ -16,7 +16,3 @@ const props = withDefaults(defineProps<ImageOptions>(), {
 });
 const options = defineWidget<ImageOptions>(props);
 </script>
-
-<style scoped>
-
-</style>
