@@ -1,7 +1,7 @@
 import { BaseAnimation, defineAnimation } from "@vuemotion/vue-core";
 import { BaseWidgetOptions } from "../widgets/base-widget";
 
-export function focusOn(options: BaseAnimation) {
+export function focusOn(options: BaseAnimation = { duration: 1 }) {
   const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
   circle.setAttribute('r', '1000')
   circle.setAttribute('fill', 'skyblue')

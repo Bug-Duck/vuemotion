@@ -3,7 +3,7 @@ import { FigureOptions } from "../widgets/figure"
 
 export function strokeFill(options: BaseAnimation & {
   origin?: number
-}) {
+} = { duration: 1 }) {
   return defineAnimation<FigureOptions>({
     init() {},
     update(context) {

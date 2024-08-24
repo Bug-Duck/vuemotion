@@ -1,7 +1,7 @@
 import { BaseAnimation, defineAnimation } from "@vuemotion/vue-core"
 import { BaseWidgetOptions } from "../widgets/base-widget"
 
-export function fadeIn(options: BaseAnimation) {
+export function fadeIn(options: BaseAnimation = { duration: 1 }) {
   return defineAnimation<BaseWidgetOptions>({
     init(context) {
         
