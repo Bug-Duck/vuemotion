@@ -22,6 +22,7 @@ VueMotion's predecessor was the Newcar animation engine, but later the developme
   - [ ] Image
   - [ ] Mask
   - [x] Webview
+  - [ ] Polyline
 - Animations
   - [x] move
   - [x] rotate

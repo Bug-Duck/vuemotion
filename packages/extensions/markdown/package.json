@@ -21,13 +21,18 @@
   "scripts": {
     "publish": "npm publish",
     "build": "vite build",
-    "dev": ""
+    "dev": "vite build --watch"
   },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "vue": "^3.4.26"
+    "@types/vue-markdown": "^2.2.4",
+    "@vuemotion/vue-core": "workspace:*",
+    "@vuemotion/vue-lib": "workspace:*",
+    "marked": "^14.0.0",
+    "vue": "^3.4.26",
+    "vue-markdown": "^2.2.4"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",

@@ -2,7 +2,8 @@
 import {useAnimation, usePlayer, useWidget} from '@vuemotion/vue-core'
 import {Motion, Arc, stroke, create, Rect, strokeFill, focusOn, Text, rotate, TextItem, indicate, circleIndicate} from '@vuemotion/vue-lib'
 import { onMounted, toValue } from 'vue'
-import { Angle, changeAngle } from '@vuemotion/extension-geometry'
+// import { Angle, changeAngle } from '@vuemotion/extension-geometry'
+import { MDocument } from '@vuemotion/extension-markdown'
 
 const props = useWidget('test')
 const text = useWidget('text')
@@ -21,7 +22,7 @@ onMounted(() => {
     .animate(indicate({ duration: 1 }))
     .animate(circleIndicate({ offset: 0.3, duration: 1 }))
   useAnimation(angle, player)
-    .animate(changeAngle({ duration: 1, offset: 300 }))
+    // .animate(changeAngle({ duration: 1, offset: 300 }))
   player.play()
 })
 
@@ -35,6 +36,9 @@ onMounted(() => {
       <TextItem color="red">hhhhhh</TextItem>
     </Text>
     <Angle :value="120" wid="angle"></Angle>
+    <MDocument>
+      # 11111
+    </MDocument>
   </Motion>
 </template>
 

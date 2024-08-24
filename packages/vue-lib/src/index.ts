@@ -15,6 +15,8 @@ export { default as Text } from './widgets/text.vue'
 export * from './widgets/text'
 export { default as TextItem } from './widgets/text-item.vue'
 export * from './widgets/text-item'
+export { default as Webview } from './widgets/webview.vue'
+export * from './widgets/webview'
 
 export * from './widgets/figure'
 

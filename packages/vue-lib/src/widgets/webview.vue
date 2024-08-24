@@ -8,7 +8,7 @@ const options = defineWidget<WebviewOptions>(props)
 
 <template>
   <BaseWidget :scaleX="options.scaleX" :scaleY="options.scaleY" :rotation="options.rotation" :x="options.x" :y="options.y">
-    <foreignObject :width="options.width" :height="options.height">
+    <foreignObject :width="options.width ?? Infinity" :height="options.height ?? Infinity">
       <slot></slot>
     </foreignObject>
   </BaseWidget>
