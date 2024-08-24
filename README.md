@@ -83,3 +83,9 @@ VueMotion's predecessor was the Newcar animation engine, but later the developme
     - [ ] Infomation (e.g. Follower, Following, Stars)
   - [ ] Table
   - [ ] Typst
+- Functions
+  - [x] Animation
+  - [ ] Event
+  - [ ] Resources Preload
+  - [ ] Visual App
+  - [ ] Export
