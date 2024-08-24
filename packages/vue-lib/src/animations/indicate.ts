@@ -1,5 +1,5 @@
 import { BaseAnimation, defineAnimation } from "@vuemotion/vue-core";
-import { BaseWidgetOptions } from "../../dist";
+import { BaseWidgetOptions } from "../widgets/base-widget";
 import { easeBounce, easeInExpo } from "../timing-functions";
 
 export function indicate(options: BaseAnimation = { duration: 1 }) {

@@ -12,7 +12,9 @@
     "vue": "^3.4.37",
     "@vuemotion/vue-core": "workspace:*",
     "@vuemotion/vue-lib": "workspace:*",
-    "@vuemotion/extension-mindmap": "workspace:*"
+    "@vuemotion/extension-mindmap": "workspace:*",
+    "@vuemotion/extension-math": "workspace:*",
+    "@vuemotion/extension-geometry": "workspace:*"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.2",

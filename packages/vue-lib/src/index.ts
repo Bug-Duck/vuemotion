@@ -16,6 +16,8 @@ export * from './widgets/text'
 export { default as TextItem } from './widgets/text-item.vue'
 export * from './widgets/text-item'
 
+export * from './widgets/figure'
+
 export * from './animations/move'
 export * from './animations/create'
 export * from './animations/delay'

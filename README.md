@@ -26,13 +26,13 @@ VueMotion's predecessor was the Newcar animation engine, but later the developme
   - [x] rotate
   - [x] scale
   - [x] create
-  - [ ] destroy
+  - [x] destroy
   - [x] stroke
   - [x] stroke-fill
   - [x] zoom-in
   - [x] zoom-out
   - [x] focusOn
-  - [ ] circle-indicate
+  - [x] circle-indicate
   - [ ] flash
   - [ ] rippleOut
   - [ ] show-creation-then-destruction-around
@@ -48,17 +48,17 @@ VueMotion's predecessor was the Newcar animation engine, but later the developme
     - [ ] ...
   - [ ] Codeblock (Shikijs)
   - [ ] Geometry
-    - [ ] Angle
+    - [x] Angle
     - [ ] Dot
     - [ ] Symmetrical
-    - [ ] Center Symmetry
+    - [ ] CenterSymmetry
     - [ ] Difference
     - [ ] Intersection
     - [ ] Union
     - [ ] CenterDot
     - [ ] Bisector
     - [ ] Perpendicular
-    - [ ] Parallel Lines
+    - [ ] ParallelLines
     - [ ] Brace
   - [ ] Layout
     - [ ] Row
