@@ -5,8 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps } from "vue/dist/vue";
-import { defineWidget } from "@vuemotion/vue-core/src";
+import { defineWidget } from "@vuemotion/vue-core";
 import { PolylineOptions } from "./polyline.ts";
 import BaseWidget from "./base-widget.vue";
 
