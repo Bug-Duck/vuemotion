@@ -51,7 +51,7 @@ VueMotion's predecessor was the Newcar animation engine, but later the developme
   - [ ] Codeblock (Shikijs)
   - [ ] Geometry
     - [x] Angle
-    - [ ] Dot
+    - [x] Dot
     - [ ] Symmetrical
     - [ ] CenterSymmetry
     - [ ] Difference
