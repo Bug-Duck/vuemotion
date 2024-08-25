@@ -19,10 +19,10 @@ VueMotion's predecessor was the Newcar animation engine, but later the developme
   - [x] Polygon
   - [x] Rect
   - [x] Text
-  - [ ] Image
-  - [ ] Mask
+  - [x] Image
+  - [x] Mask
   - [x] Webview
-  - [ ] Polyline
+  - [x] Polyline
 - Animations
   - [x] move
   - [x] rotate
