@@ -3,6 +3,14 @@ import { Reactive, Ref, VNodeRef } from "vue"
 export interface AnimationContext<T> {
   props: Reactive<T>
   element: Ref<SVGElement>
+  range: Reactive<{
+    x1: number,
+    y1: number,
+    x2: number,
+    y2: number,
+    width: number
+    height: number
+  }>
 }
 
 export interface Animation<T> {
