@@ -21,7 +21,7 @@
   "scripts": {
     "publish": "npm publish",
     "build": "vite build",
-    "dev": ""
+    "dev": "vite build --watch"
   },
   "publishConfig": {
     "access": "public"

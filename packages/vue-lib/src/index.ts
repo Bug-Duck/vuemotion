@@ -17,6 +17,11 @@ export { default as TextItem } from './widgets/text-item.vue'
 export * from './widgets/text-item'
 export { default as Webview } from './widgets/webview.vue'
 export * from './widgets/webview'
+export { default as Image } from './widgets/image.vue'
+export * from './widgets/image'
+export { default as Mask } from './widgets/mask.vue'
+export * from './widgets/mask'
+export { default as Polyline } from './widgets/polyline.vue'
 
 export * from './widgets/figure'
 

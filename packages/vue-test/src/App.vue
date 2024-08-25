@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import {useAnimation, usePlayer, useWidget} from '@vuemotion/vue-core'
-import {Motion, Arc, stroke, create, Rect, strokeFill, focusOn, Text, rotate, TextItem, indicate, circleIndicate} from '@vuemotion/vue-lib'
-import { onMounted, toValue } from 'vue'
+import {Motion, Arc, stroke, create, strokeFill, focusOn, Text, rotate, TextItem, indicate, circleIndicate, Mask} from '@vuemotion/vue-lib'
+import { onMounted } from 'vue'
 // import { Angle, changeAngle } from '@vuemotion/extension-geometry'
-import { MDocument } from '@vuemotion/extension-markdown'
+// import { MDocument } from '@vuemotion/extension-markdown'
 
 const props = useWidget('test')
 const text = useWidget('text')
@@ -36,9 +36,7 @@ onMounted(() => {
       <TextItem color="red">hhhhhh</TextItem>
     </Text>
     <Angle :value="120" wid="angle"></Angle>
-    <MDocument>
-      # 11111
-    </MDocument>
+    <Mask></Mask>
   </Motion>
 </template>
 

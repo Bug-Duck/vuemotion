@@ -5,7 +5,8 @@
   "scripts": {
     "build": "pnpm run --filter=* build",
     "dev": "pnpm run --parallel --filter=* dev",
-    "test": "pnpm run --filter=* test"
+    "test": "pnpm run --filter=* test",
+    "serve": "pnpm run --filter=* serve"
   },
   "keywords": [
     "Animation",
