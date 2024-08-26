@@ -9,15 +9,14 @@ const options = defineWidget(props)
 </script>
 
 <template>
-  <Super v-bind="options">
-    <g
+  <Super v-slot="slotProps" v-bind="options">
+    <slot
+      v-bind="slotProps"
       :fill="options.fillColor"
       :stroke="options.borderColor"
       :stroke-width="options.borderWidth"
       :stroke-dashoffset="options.borderOffset"
       :stroke-dasharray="options.borderInterval.join(' ')"
-    >
-      <slot />
-    </g>
+    />
   </Super>
 </template>

@@ -14,8 +14,9 @@ const options = defineWidget(props)
 </script>
 
 <template>
-  <Super>
+  <Super v-slot="slotProps" v-bind="options">
     <line
+      v-bind="slotProps"
       :x1="options.from[0]"
       :y1="options.from[1]"
       :x2="options.to[0]"

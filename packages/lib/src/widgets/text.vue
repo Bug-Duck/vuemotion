@@ -10,8 +10,9 @@ const options = defineWidget(props)
 </script>
 
 <template>
-  <Super v-bind="options">
+  <Super v-slot="slotProps" v-bind="options">
     <text
+      v-bind="slotProps"
       :font-weight="options.fontWeight"
       :font-style="options.fontStyle"
       :font-size="options.fontSize"

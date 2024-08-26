@@ -10,14 +10,12 @@ const options = defineWidget(props)
 </script>
 
 <template>
-  <g
+  <slot
     :transform="[
       `translate(${options.x ?? 0},${options.y ?? 0})`,
       `scale(${options.scaleX ?? 1}, ${options.scaleY ?? 1})`,
       `rotate(${options.rotation ?? 0})`,
     ].join(' ')"
     :style="{ opacity: options.opacity ?? 1 }"
-  >
-    <slot />
-  </g>
+  />
 </template>

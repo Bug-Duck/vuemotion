@@ -9,8 +9,8 @@ const options = defineWidget(props)
 </script>
 
 <template>
-  <Super v-bind="options">
-    <g>
+  <Super v-slot="slotProps" v-bind="options">
+    <g v-bind="slotProps">
       <slot />
     </g>
   </Super>

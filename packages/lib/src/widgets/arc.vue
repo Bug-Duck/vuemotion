@@ -78,7 +78,7 @@ const path = computed(() => describeArc(
 </script>
 
 <template>
-  <Super v-bind="options">
-    <path :d="path" />
+  <Super v-slot="slotProps" v-bind="options">
+    <path v-bind="slotProps" :d="path" />
   </Super>
 </template>
