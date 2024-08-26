@@ -8,7 +8,7 @@ const options = defineWidget<WindowOptions>(props)
 </script>
 
 <template>
-  <BaseWidget :scaleX="options.scaleX" :scaleY="options.scaleY" :rotation="options.rotation">
+  <BaseWidget :scaleX="options.scaleX" :scaleY="options.scaleY" :rotation="options.rotation" :x="options.x" :y="options.y">
     <rect :x="-options.width / 2" :y="-options.height / 2" :width="options.width" :height="options.height"
       :fill="(options.theme ?? 'dark') === 'light' ? 'white' : 'gray'" rx="10" ry="10" />
     <rect :x="-(options.width - 20) / 2" :y="-(options.height - 100) / 2 - 40" :width="options.width - 20" :height="options.height - 40"

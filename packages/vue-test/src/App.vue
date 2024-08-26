@@ -2,7 +2,7 @@
 import { useAnimation, usePlayer, useWidget } from '@vuemotion/vue-core'
 import { Motion, Arc, stroke, create, strokeFill, focusOn, Text, rotate, TextItem, indicate, circleIndicate, Mask, wiggle, flash } from '@vuemotion/vue-lib'
 import { onMounted } from 'vue'
-import { Window } from '@vuemotion/extension-ui'
+import { Window, ProgressBar } from '@vuemotion/extension-ui'
 
 const props = useWidget('test')
 const text = useWidget('text')
@@ -30,7 +30,7 @@ onMounted(() => {
   <Motion :width="800" :height="450">
     <Angle :value="120" wid="angle"></Angle>
     <Window :width="500" :height="300">
-      <Text wid="text" align="middle">Hello world!</Text>
+      <ProgressBar :width="400" :value="0.5"/>
     </Window>
   </Motion>
 </template>
