@@ -221,6 +221,25 @@ importers:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.5.0)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.0))
 
+  packages/extensions/ui:
+    dependencies:
+      '@vuemotion/vue-core':
+        specifier: workspace:*
+        version: link:../../vue-core
+      '@vuemotion/vue-lib':
+        specifier: workspace:*
+        version: link:../../vue-lib
+      vue:
+        specifier: ^3.4.26
+        version: 3.4.38(typescript@5.5.4)
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^5.0.4
+        version: 5.1.2(vite@5.4.2(@types/node@22.5.0))(vue@3.4.38(typescript@5.5.4))
+      vite-plugin-dts:
+        specifier: ^3.9.1
+        version: 3.9.1(@types/node@22.5.0)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.0))
+
   packages/utils:
     devDependencies:
       acorn:
@@ -270,6 +289,9 @@ importers:
       '@vuemotion/extension-mindmap':
         specifier: workspace:*
         version: link:../extensions/mindmap
+      '@vuemotion/extension-ui':
+        specifier: workspace:*
+        version: link:../extensions/ui
       '@vuemotion/vue-core':
         specifier: workspace:*
         version: link:../vue-core

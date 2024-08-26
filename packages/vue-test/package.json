@@ -15,7 +15,8 @@
     "@vuemotion/extension-mindmap": "workspace:*",
     "@vuemotion/extension-math": "workspace:*",
     "@vuemotion/extension-geometry": "workspace:*",
-    "@vuemotion/extension-markdown": "workspace:*"
+    "@vuemotion/extension-markdown": "workspace:*",
+    "@vuemotion/extension-ui": "workspace:*"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.2",
