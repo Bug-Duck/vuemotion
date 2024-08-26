@@ -1,0 +1,38 @@
+{
+  "name": "@vuemotion/extension-ui",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "The components and hooks of vuemotion of Vuejs",
+  "author": "BugDuck Team",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "dev": "./src/index.ts"
+    }
+  },
+  "module": "./dist/newcar.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "publish": "npm publish",
+    "build": "vite build",
+    "dev": "vite build --watch"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "vue": "^3.4.26",
+    "@vuemotion/vue-core": "workspace:*",
+    "@vuemotion/vue-lib": "workspace:*"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite-plugin-dts": "^3.9.1"
+  }
+}

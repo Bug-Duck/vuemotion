@@ -11,8 +11,10 @@
   ],
   "scripts": {
     "build": "pnpm run --filter=* build",
-    "dev": "pnpm run --parallel --filter=* dev",
+    "dev": "pnpm run --parallel --filter=./packages/extensions/* --filter=./packages/vue-* dev",
     "test": "pnpm run --filter=* test",
+    "serve:test": "pnpm run --filter=* serve:test",
+    "serve:app": "pnpm run --filter=* serve:app",
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
   },
