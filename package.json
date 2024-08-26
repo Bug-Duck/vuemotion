@@ -11,7 +11,11 @@
   ],
   "scripts": {
     "build": "pnpm run --filter=* build",
+<<<<<<< HEAD
     "dev": "pnpm run --parallel --filter=* dev",
+=======
+    "dev": "pnpm run --parallel --filter=./packages/extensions/* --filter=./packages/vue-* dev",
+>>>>>>> 30ca1b9544017f0f2c00f2c57d7a7f8ecb41125d
     "test": "pnpm run --filter=* test",
     "serve:test": "pnpm run --filter=* serve:test",
     "serve:app": "pnpm run --filter=* serve:app",
