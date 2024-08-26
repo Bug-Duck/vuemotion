@@ -19,22 +19,20 @@ VueMotion's predecessor was the Newcar animation engine, but later the developme
   - [x] Polygon
   - [x] Rect
   - [x] Text
-  - [x] Image
-  - [x] Mask
-  - [x] Webview
-  - [x] Polyline
+  - [ ] Image
+  - [ ] Mask
 - Animations
   - [x] move
   - [x] rotate
   - [x] scale
   - [x] create
-  - [x] destroy
+  - [ ] destroy
   - [x] stroke
   - [x] stroke-fill
   - [x] zoom-in
   - [x] zoom-out
   - [x] focusOn
-  - [x] circle-indicate
+  - [ ] circle-indicate
   - [ ] flash
   - [ ] rippleOut
   - [ ] show-creation-then-destruction-around
@@ -50,17 +48,17 @@ VueMotion's predecessor was the Newcar animation engine, but later the developme
     - [ ] ...
   - [ ] Codeblock (Shikijs)
   - [ ] Geometry
-    - [x] Angle
-    - [x] Dot
+    - [ ] Angle
+    - [ ] Dot
     - [ ] Symmetrical
-    - [ ] CenterSymmetry
+    - [ ] Center Symmetry
     - [ ] Difference
     - [ ] Intersection
     - [ ] Union
     - [ ] CenterDot
     - [ ] Bisector
     - [ ] Perpendicular
-    - [ ] ParallelLines
+    - [ ] Parallel Lines
     - [ ] Brace
   - [ ] Layout
     - [ ] Row
@@ -85,10 +83,3 @@ VueMotion's predecessor was the Newcar animation engine, but later the developme
     - [ ] Infomation (e.g. Follower, Following, Stars)
   - [ ] Table
   - [ ] Typst
-  - [ ] ThreeJs
-- Functions
-  - [x] Animation
-  - [ ] Event
-  - [ ] Resources Preload
-  - [ ] Visual App
-  - [ ] Export

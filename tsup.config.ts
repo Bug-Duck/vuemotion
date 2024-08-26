@@ -4,7 +4,7 @@ export default defineConfig({
   entry: ['src/index.ts'],
   format: ['cjs', 'esm', 'iife'],
   tsconfig: '../../tsconfig.json',
-  globalName: 'newcar',
+  globalName: 'vuemotion',
   splitting: true,
   clean: true,
   dts: true,

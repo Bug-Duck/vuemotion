@@ -1,27 +1,28 @@
 {
   "name": "vuemotion",
+  "type": "module",
   "version": "0.0.1",
   "description": "The modern font-end SVG animation engine.",
-  "scripts": {
-    "build": "pnpm run --filter=* build",
-    "dev": "pnpm run --parallel --filter=* dev",
-    "test": "pnpm run --filter=* test",
-    "serve:test": "pnpm run --filter=* serve:test",
-    "serve:app": "pnpm run --filter=* serve:app"
-  },
+  "author": "BugDuck Team",
+  "license": "Apache-2.0",
   "keywords": [
     "Animation",
     "SVG"
   ],
-  "author": "BugDuck Team",
-  "license": "Apache-2.0",
+  "scripts": {
+    "build": "pnpm run --filter=* build",
+    "dev": "pnpm run --parallel --filter=* dev",
+    "test": "pnpm run --filter=* test",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
+  },
   "devDependencies": {
     "@antfu/eslint-config": "^2.26.0",
+    "@types/node": "22.5.0",
     "eslint": "9.9.0",
     "tsup": "^8.2.4",
     "typedoc": "^0.26.6",
     "typescript": "^5.5.4",
-    "vite": "^5.4.2",
-    "@types/node": "22.5.0"
+    "vite": "^5.4.2"
   }
 }
