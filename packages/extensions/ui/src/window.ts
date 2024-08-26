@@ -1,6 +1,7 @@
-import { BaseWidgetOptions } from "@vuemotion/vue-lib"
+import type { Grownable, Widget } from '@vuemotion/lib'
+import type { ExtractPropTypes } from 'vue'
 
-export interface WindowOptions extends BaseWidgetOptions {
+export interface WindowOptions extends ExtractPropTypes<typeof Widget>, Grownable {
   width: number
   height: number
   title: string

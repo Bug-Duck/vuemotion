@@ -4,12 +4,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "vite",
-    "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "dev:test": "vite",
+    "build:test": "vue-tsc -b && vite build",
+    "preview:test": "vite preview"
   },
   "dependencies": {
     "@vuemotion/core": "workspace:*",
+    "@vuemotion/extension-ui": "workspace:*",
     "@vuemotion/lib": "workspace:*",
     "vue": "^3.4.37"
   },

@@ -7,3 +7,6 @@ export { default as Line } from './line.vue'
 export { default as Polygon } from './polygon.vue'
 export { default as Rect } from './rect.vue'
 export { default as Text } from './text.vue'
+
+export type { Grownable } from './defines'
+
