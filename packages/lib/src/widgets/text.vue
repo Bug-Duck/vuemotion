@@ -20,6 +20,8 @@ export interface TextOptions extends FigureOptions {
 const props = withDefaults(defineProps<TextOptions>(), {
   borderColor: 'none',
   fillColor: 'white',
+  align: 'middle',
+  baseline: 'middle',
 })
 const options = defineWidget(props)
 </script>
