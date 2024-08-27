@@ -10,7 +10,7 @@ VueMotion is a modern animation engine like Python's Manim for Vuejs ecosystem, 
 
 VueMotion's predecessor was the Newcar animation engine, but later the development was stopped for some special reasons. If you are an old user of Newcar, you are welcome to migrate to VueMotion.
 
-# 🗾 Roadmap
+# 🗺 Roadmap
 
 - Basic Widget
   - [x] Arc
@@ -89,6 +89,7 @@ VueMotion's predecessor was the Newcar animation engine, but later the developme
     - [ ] Button
     - [ ] ProgressBar
     - [ ] ... 
+  - [ ] Lights
 - Functions
   - [x] Animation
   - [ ] Event
