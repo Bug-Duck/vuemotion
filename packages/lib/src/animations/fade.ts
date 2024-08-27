@@ -1,15 +1,19 @@
 import { defineAnimation, withDefaults } from '@vuemotion/core'
 import { interpolator } from '../interpolator'
 
+export interface HasOpacity {
+  opacity?: number
+}
+
 export const fadeTo = defineAnimation<{
   from?: number
   to?: number
-}>((context, progress) => {
+}, HasOpacity>((context, progress) => {
   if (progress === 0) {
-    context.from ??= context.widget.opacity ?? 1
-    context.to ??= context.widget.opacity ?? 1
+    context.from ??= context.target.opacity ?? 1
+    context.to ??= context.target.opacity ?? 1
   }
-  context.widget.opacity = interpolator(context.from!, context.to!, progress)
+  context.target.opacity = interpolator(context.from!, context.to!, progress)
 })
 
 export const fadeOut = withDefaults(fadeTo, { to: 0 })

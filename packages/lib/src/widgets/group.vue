@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { defineWidget } from '@vuemotion/core'
-import type { Widget } from './widget'
+import type { WidgetOptions } from './widget'
 import { widget } from './widget'
 
-const props = defineProps<Widget>()
+const props = defineProps<WidgetOptions>()
 const options = defineWidget(props)
 </script>
 

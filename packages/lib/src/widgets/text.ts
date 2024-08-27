@@ -1,7 +1,7 @@
-import type { Figure } from './figure'
+import type { FigureOptions } from './figure'
 import { figure } from './figure'
 
-export interface Text extends Figure {
+export interface TextOptions extends FigureOptions {
   fontFamily?: string
   fontSize?: | 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | 'xxx-large' | 'larger' | 'smaller' | string & {}
   fontWeight?: number | 'normal' | 'bold' | 'bolder' | 'lighter'
@@ -13,17 +13,17 @@ export interface Text extends Figure {
   letterSpacing?: number
 }
 
-export function text(options: Text) {
+export function text(options: TextOptions) {
   const props = {
     ...figure(options),
   } as ReturnType<typeof figure> & {
     'font-family'?: string
-    'font-size'?: Text['fontSize']
-    'font-weight'?: Text['fontWeight']
-    'font-style'?: Text['fontStyle']
-    'text-anchor'?: Text['align']
-    'dominant-baseline'?: Text['baseline']
-    'text-decoration'?: Text['decoration']
+    'font-size'?: TextOptions['fontSize']
+    'font-weight'?: TextOptions['fontWeight']
+    'font-style'?: TextOptions['fontStyle']
+    'text-anchor'?: TextOptions['align']
+    'dominant-baseline'?: TextOptions['baseline']
+    'text-decoration'?: TextOptions['decoration']
     'word-spacing'?: number
     'letter-spacing'?: number
   }

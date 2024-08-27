@@ -1,23 +1,24 @@
 <script setup lang="ts">
 import { computed, defineProps, withDefaults } from 'vue'
 import { defineWidget } from '@vuemotion/core'
-import type { Grownable, Point } from './typings'
-import { type Figure, figure } from './figure'
+import type { Grownable } from '../animations'
+import type { Vector } from '../animations/typings'
+import { type FigureOptions, figure } from './figure'
 
-export interface Arc extends Figure, Grownable {
+export interface ArcOptions extends FigureOptions, Grownable {
   radius: number
   from?: number
   to?: number
 }
 
-const props = withDefaults(defineProps<Arc>(), {
+const props = withDefaults(defineProps<ArcOptions>(), {
   progress: 1,
   from: 0,
   to: 360,
 })
 const options = defineWidget(props)
 
-function polarToCartesian(center: Point, radius: number, angleInDegrees: number): Point {
+function polarToCartesian(center: Vector, radius: number, angleInDegrees: number): Vector {
   const angleInRadians = (angleInDegrees - 90) * Math.PI / 180
   return [
     center[0] + (radius * Math.cos(angleInRadians)),
@@ -25,7 +26,7 @@ function polarToCartesian(center: Point, radius: number, angleInDegrees: number)
   ]
 }
 
-function describeArc(center: Point, radius: number, startAngle: number, endAngle: number): string {
+function describeArc(center: Vector, radius: number, startAngle: number, endAngle: number): string {
   if (Math.abs(startAngle - endAngle) % 360 <= 1e-6) {
     return [
       'M',

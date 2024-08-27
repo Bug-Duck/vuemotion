@@ -1,15 +1,15 @@
 <script setup lang="ts">
 import { defineWidget } from '@vuemotion/core'
-import type { Point } from './typings'
-import type { Figure } from './figure'
+import type { Vector } from '../animations/typings'
+import type { FigureOptions } from './figure'
 import { figure } from './figure'
 
-export interface Line extends Figure {
-  from: Point
-  to: Point
+export interface LineOptions extends FigureOptions {
+  from: Vector
+  to: Vector
 }
 
-const props = defineProps<Line>()
+const props = defineProps<LineOptions>()
 const options = defineWidget(props)
 </script>
 

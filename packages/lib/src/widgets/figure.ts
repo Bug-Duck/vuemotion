@@ -1,7 +1,7 @@
-import type { Widget } from './widget'
+import type { WidgetOptions } from './widget'
 import { widget } from './widget'
 
-export interface Figure extends Widget {
+export interface FigureOptions extends WidgetOptions {
   fillColor?: string
   borderColor?: string
   borderWidth?: number
@@ -9,10 +9,8 @@ export interface Figure extends Widget {
   borderInterval?: number[]
 }
 
-export function figure(options: Figure) {
-  const props = {
-    ...widget(options),
-  } as ReturnType<typeof widget> & {
+export function figure(options: FigureOptions) {
+  const props = widget(options) as ReturnType<typeof widget> & {
     'fill'?: string
     'stroke'?: string
     'stroke-width'?: number

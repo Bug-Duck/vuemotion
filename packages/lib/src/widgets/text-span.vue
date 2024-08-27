@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import { defineWidget } from '@vuemotion/core'
-import type { Text } from './text'
+import type { TextOptions } from './text'
 import { text } from './text'
 
-const props = defineProps<Text>()
+const props = defineProps<TextOptions>()
 const options = defineWidget(props)
 </script>
 

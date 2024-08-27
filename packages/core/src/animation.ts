@@ -1,13 +1,12 @@
 import type { Ref } from 'vue'
 import { inject, watch } from 'vue'
-import type { WidgetRef } from './widget'
 import type { Player } from './player'
 
 export type TimingFunction = (x: number) => number
 export const linear: TimingFunction = x => x
 
 export interface Context<T extends object> {
-  widget: T
+  target: T
 }
 
 export type Animation<A extends object, T extends object = object> =
@@ -15,7 +14,7 @@ export type Animation<A extends object, T extends object = object> =
 
 export function defineAnimation<
   A extends object,
-  T extends object = object,
+  T extends object,
 >(animation: Animation<A, T>): Animation<A, T> {
   return animation
 }
@@ -65,13 +64,13 @@ export class AnimationManager<T extends object> {
   }
 }
 
-export function useAnimation<T extends object>(widget: WidgetRef<T>, player?: Player) {
-  return new AnimationManager(widget.props, player?.elapsed ?? inject('elapsed')!)
+export function useAnimation<T extends object>(widget: T, player?: Player) {
+  return new AnimationManager(widget, player?.elapsed ?? inject('elapsed')!)
 }
 
 export function withDefaults<
   A extends object,
-  T extends object = object,
+  T extends object,
 >(animation: Animation<A, T>, defaults: A): Animation<A, T> {
   return function (context: Context<T> & A, progress: number) {
     if (progress === 0) {
@@ -83,7 +82,7 @@ export function withDefaults<
 
 export function parallel<
   A extends object,
-  T extends object = object,
+  T extends object,
 >(...animations: Animation<A, T>[]): Animation<A, T> {
   return function (context: Context<T> & A, progress: number) {
     for (const animation of animations) {

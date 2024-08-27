@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
 import { defineWidget } from '@vuemotion/core'
-import type { Figure } from './figure'
+import type { FigureOptions } from './figure'
 import { figure } from './figure'
 
-export interface Rect extends Figure {
+export interface RectOptions extends FigureOptions {
   width: number
   height: number
   radius?: number
@@ -13,7 +13,7 @@ export interface Rect extends Figure {
   // | [number, number, number, number, number, number, number, number]
 }
 
-const props = defineProps<Rect>()
+const props = defineProps<RectOptions>()
 const options = defineWidget(props)
 </script>
 

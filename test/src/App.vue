@@ -4,8 +4,8 @@ import { Arc, Motion, Text, create, rotate } from '@vuemotion/lib'
 import { Window } from '@vuemotion/extension-ui'
 import { onMounted } from 'vue'
 
-const arc = useWidget<InstanceType<typeof Arc>>('arc')
-const text = useWidget<InstanceType<typeof Text>>('text')
+const arc = useWidget<InstanceType<typeof Arc>>('arc').props
+const text = useWidget<InstanceType<typeof Text>>('text').props
 
 onMounted(() => {
   const player = usePlayer()

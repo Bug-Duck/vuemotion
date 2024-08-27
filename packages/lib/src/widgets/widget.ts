@@ -1,15 +1,9 @@
-import type { BaseWidget } from '@vuemotion/core'
+import type { Widget } from '@vuemotion/core'
+import type { HasOpacity, Positional, Rotatable, Scalable } from '../animations'
 
-export interface Widget extends BaseWidget {
-  x?: number
-  y?: number
-  scaleX?: number
-  scaleY?: number
-  rotation?: number
-  opacity?: number
-}
+export type WidgetOptions = Widget & Positional & Scalable & Rotatable & HasOpacity
 
-export function widget(options: Widget) {
+export function widget(options: WidgetOptions) {
   const props = {} as {
     transform?: string
     style?: string
