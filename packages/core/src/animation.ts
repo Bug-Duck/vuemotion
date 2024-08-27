@@ -1,6 +1,5 @@
 import type { Ref } from 'vue'
-import { inject, watch } from 'vue'
-import type { Player } from './player'
+import { watch } from 'vue'
 
 export type TimingFunction = (x: number) => number
 export const linear: TimingFunction = x => x
@@ -30,7 +29,7 @@ interface AnimationInstance<A extends object, T extends object> {
 export class AnimationManager<T extends object> {
   animations: AnimationInstance<any, T>[] = []
 
-  constructor(public widget: T, elapsed: Ref<number>) {
+  constructor(public target: T, elapsed: Ref<number>) {
     watch(elapsed, <A extends object>(elapsed: number) => {
       if (this.animations.length === 0) {
         return
@@ -57,15 +56,11 @@ export class AnimationManager<T extends object> {
     context ??= {} as A
     const by = context.by ?? linear
     const duration = context.duration ?? 1
-    Object.assign(context, { widget: this.widget })
+    Object.assign(context, { target: this.target })
     this.animations.push({ context, animation, duration, by })
 
     return this
   }
-}
-
-export function useAnimation<T extends object>(widget: T, player?: Player) {
-  return new AnimationManager(widget, player?.elapsed ?? inject('elapsed')!)
 }
 
 export function withDefaults<

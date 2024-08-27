@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useAnimation, usePlayer, useWidget } from '@vuemotion/core'
+import { usePlayer, useWidget } from '@vuemotion/core'
 import { Arc, Motion, Text, create, rotate } from '@vuemotion/lib'
-import { Window } from '@vuemotion/extension-ui'
+// import { Window } from '@vuemotion/extension-ui'
 import { onMounted } from 'vue'
 
 const arc = useWidget<InstanceType<typeof Arc>>('arc').props
@@ -9,9 +9,9 @@ const text = useWidget<InstanceType<typeof Text>>('text').props
 
 onMounted(() => {
   const player = usePlayer()
-  useAnimation(arc, player)
+  player.useAnimation(arc)
     .animate(create)
-  useAnimation(text, player)
+  player.useAnimation(text)
     .animate(rotate, { offset: 360 })
   player.play()
 })
@@ -19,15 +19,13 @@ onMounted(() => {
 
 <template>
   <Motion :width="640" :height="480">
-    <Window :width="600" :height="400">
-      <Arc :radius="100" wid="arc" />
-      <Text wid="text" font-size="50">
-        vue
-        <tspan fill="red">
-          motion
-        </tspan>
-      </Text>
-    </Window>
+    <Arc :radius="100" wid="arc" />
+    <Text wid="text" font-size="50">
+      vue
+      <tspan fill="red">
+        motion
+      </tspan>
+    </Text>
   </Motion>
 </template>
 

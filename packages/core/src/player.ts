@@ -1,4 +1,5 @@
 import { provide, ref } from 'vue'
+import { AnimationManager } from './animation'
 
 export function usePlayer() {
   const startAt = performance.now() / 1000
@@ -11,7 +12,11 @@ export function usePlayer() {
     requestAnimationFrame(play)
   }
 
-  return { play, elapsed }
+  function useAnimation<T extends object>(widget: T) {
+    return new AnimationManager(widget, elapsed)
+  }
+
+  return { play, elapsed, useAnimation }
 }
 
 export type Player = ReturnType<typeof usePlayer>

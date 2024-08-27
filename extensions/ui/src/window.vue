@@ -1,12 +1,12 @@
 <script setup lang="ts">
 import { defineWidget } from '@vuemotion/core'
 import type { Grownable, WidgetOptions } from '@vuemotion/lib'
-import { widget } from '@vuemotion/lib' 
+import { widget } from '@vuemotion/lib'
 
 export interface WindowOptions extends WidgetOptions, Grownable {
   width: number
   height: number
-  title: string
+  title?: string
   theme?: 'light' | 'dark'
 }
 

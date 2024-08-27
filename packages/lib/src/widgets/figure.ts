@@ -17,12 +17,9 @@ export function figure(options: FigureOptions) {
     'stroke-dashoffset'?: number
     'stroke-dasharray'?: string
   }
-  if (options.fillColor)
-    props.fill = options.fillColor
-  if (options.borderColor)
-    props.stroke = options.borderColor
-  if (options.borderWidth)
-    props['stroke-width'] = options.borderWidth
+  props.fill = options.fillColor ?? 'rgba(135,206,250,0.5)'
+  props.stroke = options.borderColor ?? 'rgba(135,206,250,1)'
+  props['stroke-width'] = options.borderWidth ?? 2
   if (options.borderOffset)
     props['stroke-dashoffset'] = options.borderOffset
   if (options.borderInterval)
