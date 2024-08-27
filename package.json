@@ -10,7 +10,7 @@
     "SVG"
   ],
   "scripts": {
-    "dev": "pnpm run --parallel --filter=* dev",
+    "dev": "pnpm run --filter=* --sort build && pnpm run --parallel --filter=* dev",
     "build": "pnpm run --filter=* build",
     "test": "pnpm run --filter=* test",
     "lint": "eslint .",
