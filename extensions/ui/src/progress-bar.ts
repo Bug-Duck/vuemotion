@@ -1,7 +1,6 @@
-import type { Figure, Grownable } from '@vuemotion/lib'
-import type { ExtractPropTypes } from 'vue'
+import type { FigureOptions, Grownable } from '@vuemotion/lib'
 
-export interface ProgressBarOptions extends ExtractPropTypes<typeof Figure>, Grownable {
+export interface ProgressBarOptions extends FigureOptions, Grownable {
   width: number
   value: number
   progressColor: string

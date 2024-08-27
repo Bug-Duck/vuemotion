@@ -4,7 +4,11 @@ import { defineWidget } from '@vuemotion/core'
 import type { TextOptions } from './text'
 import { text } from './text'
 
-const props = defineProps<TextOptions>()
+const props = withDefaults(defineProps<TextOptions>(), {
+  scaleY: -1,
+  align: 'middle',
+  baseline: 'middle',
+})
 const options = defineWidget(props)
 </script>
 
