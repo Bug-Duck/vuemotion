@@ -1,4 +1,4 @@
 packages:
   - packages/*
-  - packages/extensions/*
+  - extensions/*
   - test

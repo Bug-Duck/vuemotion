@@ -1,26 +1,26 @@
 import type { Ref } from 'vue'
 import { inject, watch } from 'vue'
-import type { Widget, WidgetRef } from './widget'
+import type { WidgetRef } from './widget'
 import type { Player } from './player'
 
 export type TimingFunction = (x: number) => number
 export const linear: TimingFunction = x => x
 
-export interface Context<T extends Widget> {
+export interface Context<T extends object> {
   widget: T
 }
 
-export type Animation<A extends object, T extends Widget = Widget> =
+export type Animation<A extends object, T extends object = object> =
   (context: Context<T> & A, progress: number) => void
 
 export function defineAnimation<
   A extends object,
-  T extends Widget = Widget,
->(animate: Animation<A, T>): Animation<A, T> {
-  return animate
+  T extends object = object,
+>(animation: Animation<A, T>): Animation<A, T> {
+  return animation
 }
 
-interface AnimationInstance<A extends object, T extends Widget> {
+interface AnimationInstance<A extends object, T extends object> {
   context: Context<T> & A
   animation: Animation<A, T>
   startAt?: number
@@ -28,7 +28,7 @@ interface AnimationInstance<A extends object, T extends Widget> {
   by: TimingFunction
 }
 
-export class AnimationManager<T extends Widget> {
+export class AnimationManager<T extends object> {
   animations: AnimationInstance<any, T>[] = []
 
   constructor(public widget: T, elapsed: Ref<number>) {
@@ -65,13 +65,13 @@ export class AnimationManager<T extends Widget> {
   }
 }
 
-export function useAnimation<T extends Widget>(widget: WidgetRef<T>, player?: Player) {
+export function useAnimation<T extends object>(widget: WidgetRef<T>, player?: Player) {
   return new AnimationManager(widget.props, player?.elapsed ?? inject('elapsed')!)
 }
 
 export function withDefaults<
   A extends object,
-  T extends Widget = Widget,
+  T extends object = object,
 >(animation: Animation<A, T>, defaults: A): Animation<A, T> {
   return function (context: Context<T> & A, progress: number) {
     if (progress === 0) {
@@ -83,7 +83,7 @@ export function withDefaults<
 
 export function parallel<
   A extends object,
-  T extends Widget = Widget,
+  T extends object = object,
 >(...animations: Animation<A, T>[]): Animation<A, T> {
   return function (context: Context<T> & A, progress: number) {
     for (const animation of animations) {

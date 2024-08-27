@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { computed, defineProps } from 'vue'
+import { computed, defineProps, withDefaults } from 'vue'
 import { defineWidget } from '@vuemotion/core'
-import { FigureDefaults } from './defines'
-import type { Figure, Grownable, Point } from './defines'
-import Super from './figure.vue'
+import type { Grownable, Point } from './typings'
+import { type Figure, figure } from './figure'
 
 export interface Arc extends Figure, Grownable {
   radius: number
@@ -12,7 +11,6 @@ export interface Arc extends Figure, Grownable {
 }
 
 const props = withDefaults(defineProps<Arc>(), {
-  ...FigureDefaults,
   progress: 1,
   from: 0,
   to: 360,
@@ -78,7 +76,5 @@ const path = computed(() => describeArc(
 </script>
 
 <template>
-  <Super v-slot="slotProps" v-bind="options">
-    <path v-bind="slotProps" :d="path" />
-  </Super>
+  <path v-bind="figure(options)" :d="path" />
 </template>

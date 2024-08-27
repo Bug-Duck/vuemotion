@@ -8,17 +8,11 @@ export interface Range {
   height: number
 }
 
-export interface Widget {
+export interface BaseWidget {
   wid?: string
-  x?: number
-  y?: number
-  scaleX?: number
-  scaleY?: number
-  rotation?: number
-  opacity?: number
 }
 
-export function defineWidget<T extends Widget>(props: T, root?: SVGElement) {
+export function defineWidget<T extends BaseWidget>(props: T, root?: SVGElement) {
   if (props.wid === undefined) {
     return props
   }
@@ -31,9 +25,9 @@ export function defineWidget<T extends Widget>(props: T, root?: SVGElement) {
   return widget.props
 }
 
-export type WidgetRef<T extends Widget> = ReturnType<typeof useWidget<T>>
+export type WidgetRef<T extends BaseWidget> = ReturnType<typeof useWidget<T>>
 
-export function useWidget<T extends Widget>(wid: string) {
+export function useWidget<T extends BaseWidget>(wid: string) {
   const props: Reactive<T> = reactive({} as T)
   const element = ref<SVGElement>()
   const range: Reactive<Range> = reactive({ x: 0, y: 0, width: 0, height: 0 })

@@ -1,17 +1,14 @@
 <script setup lang="ts">
-import type { Widget } from '@vuemotion/core'
 import { defineWidget } from '@vuemotion/core'
-import Super from './widget.vue'
-import { WidgetDefaults } from './defines'
+import type { Widget } from './widget'
+import { widget } from './widget'
 
-const props = withDefaults(defineProps<Widget>(), WidgetDefaults)
+const props = defineProps<Widget>()
 const options = defineWidget(props)
 </script>
 
 <template>
-  <Super v-slot="slotProps" v-bind="options">
-    <g v-bind="slotProps">
-      <slot />
-    </g>
-  </Super>
+  <g v-bind="widget(options)">
+    <slot />
+  </g>
 </template>

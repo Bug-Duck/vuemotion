@@ -1,5 +1,5 @@
 import { defineAnimation } from '@vuemotion/core'
-import type { Grownable } from '../widgets/defines'
+import type { Grownable } from '../widgets/typings'
 
 export const create = defineAnimation<object, Grownable>(
   (context, progress) => {

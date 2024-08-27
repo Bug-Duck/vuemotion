@@ -21,7 +21,7 @@ onMounted(() => {
   <Motion :width="640" :height="480">
     <Window :width="600" :height="400">
       <Arc :radius="100" wid="arc" :x="50" :y="100" />
-      <Text wid="text" :font-size="50">
+      <Text wid="text" font-size="50">
         vue
         <tspan fill="red">
           motion
