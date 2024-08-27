@@ -10,11 +10,9 @@
     "SVG"
   ],
   "scripts": {
-    "build": "pnpm run --filter=* build",
     "dev": "pnpm run --parallel --filter=* dev",
+    "build": "pnpm run --filter=* build",
     "test": "pnpm run --filter=* test",
-    "serve:test": "pnpm run --filter=* dev:test",
-    "serve:app": "pnpm run --filter=* serve:app",
     "lint": "eslint .",
     "lint:fix": "eslint --fix ."
   },

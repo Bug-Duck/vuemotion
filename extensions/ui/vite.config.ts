@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/index.ts',
-      name: 'NewcarVue',
+      name: 'VueMotion',
       formats: ['es', 'cjs'],
       fileName: 'index',
     },
