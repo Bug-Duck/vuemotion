@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { usePlayer, useWidget } from '@vuemotion/core'
-import { Arc, Motion, Text, create, rotate } from '@vuemotion/lib'
+import { Arc, Motion, Text, create, fadeOut, rotate } from '@vuemotion/lib'
 import { Window } from '@vuemotion/extension-ui'
-import { onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import { useExporter } from '@vuemotion/core'
 import { nextTick } from 'vue'
 
@@ -15,20 +15,26 @@ onMounted(() => {
     .animate(create)
   player.useAnimation(text)
     .animate(rotate, { offset: 360 })
+    .exec(() => {
+      display.value = true
+    })
+    .animate(fadeOut, { duration: 1 })
   player.play()
-  const { exportToVideo } = useExporter('#motion', player)
-  nextTick(async () => {
-    const url = await exportToVideo(20, 60)
-    console.log(url)
-  })
+  // const { exportToVideo } = useExporter('#motion', player)
+  // nextTick(async () => {
+  //   const url = await exportToVideo(20, 60)
+  //   console.log(url)
+  // })
 })
+
+const display = ref(false)
 </script>
 
 <template>
   <Motion :width="640" :height="480" id="motion">
     <Window :width="600" :height="400">
       <Arc :radius="100" wid="arc" />
-      <Text wid="text" font-size="50">
+      <Text wid="text" font-size="50" v-if="display">
         vue
         <tspan fill="red">
           motion

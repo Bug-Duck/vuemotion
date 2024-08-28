@@ -18,6 +18,16 @@ export function defineAnimation<
   return animation
 }
 
+export function exec<T extends object>(callback: (widget: T) => void) {
+  return defineAnimation((context) => {
+    callback(context.target as T)
+  })
+}
+
+export const delay = defineAnimation((context, progress) => {
+  // do nothing
+})
+
 interface AnimationInstance<A extends object, T extends object> {
   context: Context<T> & A
   animation: Animation<A, T>
@@ -40,7 +50,7 @@ export class AnimationManager<T extends object> {
         animation.animation(animation.context, 0)
       }
       else {
-        const progress = (elapsed - animation.startAt) / animation.duration
+        const progress = (elapsed - animation.startAt) / (animation.duration ?? (elapsed - animation.startAt))
         animation.animation(animation.context, animation.by(Math.min(progress, 1)))
         if (progress >= 1) {
           this.animations.shift()
@@ -58,6 +68,18 @@ export class AnimationManager<T extends object> {
     const duration = context.duration ?? 1
     Object.assign(context, { target: this.target })
     this.animations.push({ context, animation, duration, by })
+
+    return this
+  }
+
+  exec(callback: (widget: T) => void) {
+    this.animate(exec(callback))
+
+    return this
+  }
+
+  delay(duration: number) {
+    this.animate(delay, { duration })
 
     return this
   }
