@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { usePlayer, useWidget } from '@vuemotion/core'
+import { focusOn } from '@vuemotion/lib';
 import { Arc, Motion, Text, create, fadeOut, rotate } from '@vuemotion/lib'
 import { onMounted, ref } from 'vue'
 

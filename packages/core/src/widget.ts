@@ -21,7 +21,7 @@ export function defineWidget<T extends Widget>(props: T, root?: SVGElement) {
   const widget = inject(props.wid) as T
   Object.assign(widget, props)
   onMounted(() => {
-    widget.element = root ?? getCurrentInstance()!.proxy!.$el
+    widget.element = root ?? getCurrentInstance()!.proxy!.$el.parentElement
     widget.range = widget.element!.getBoundingClientRect()
   })
   return widget
