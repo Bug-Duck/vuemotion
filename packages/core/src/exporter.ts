@@ -6,7 +6,10 @@ export function useExporter(selector: string, player: ReturnType<typeof usePlaye
   async function exportToVideo(duration: number, fps: number) {
     motion = document.querySelector(selector) as SVGElement
     
-    const urls = []
+    const ffmpeg = createFFmpeg({ log: true })
+    await ffmpeg.load()
+    // const urls = []
+    let index = 0
     for (let f = 0; f < duration; f += 1 / fps) {
       player.elapsed.value = f
       const svg = new XMLSerializer().serializeToString(motion as SVGElement);
@@ -20,14 +23,11 @@ export function useExporter(selector: string, player: ReturnType<typeof usePlaye
       img.src = URL.createObjectURL(blob)
       await new Promise(res => img.onload = res)
       ctx?.drawImage(img, 0, 0)
-      const url = canvas.toDataURL('image/png')
-      urls.push(url)
-    }
-
-    const ffmpeg = createFFmpeg({ log: true })
-    await ffmpeg.load()
-    for (let i = 0; i < urls.length; i++) {
-      ffmpeg.FS('writeFile', `image${i}.png`, await fetchFile(urls[i]))
+      let url: string | undefined = canvas.toDataURL('image/png')
+      ffmpeg.FS('writeFile', `image${index}.png`, await fetchFile(url))
+      url = void 0
+      index += 1
+      // urls.push(url)
     }
 
     await ffmpeg.run(

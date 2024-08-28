@@ -18,7 +18,7 @@ onMounted(() => {
   player.play()
   const { exportToVideo } = useExporter('#motion', player)
   nextTick(async () => {
-    const url = await exportToVideo(2, 60)
+    const url = await exportToVideo(20, 60)
     console.log(url)
   })
 })
@@ -27,7 +27,7 @@ onMounted(() => {
 <template>
   <Motion :width="640" :height="480" id="motion">
     <Window :width="600" :height="400">
-      <Arc :radius="100" wid="arc" :x="50" :y="100" />
+      <Arc :radius="100" wid="arc" />
       <Text wid="text" font-size="50">
         vue
         <tspan fill="red">
