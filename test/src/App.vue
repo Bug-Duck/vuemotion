@@ -1,10 +1,7 @@
 <script setup lang="ts">
 import { usePlayer, useWidget } from '@vuemotion/core'
 import { Arc, Motion, Text, create, fadeOut, rotate } from '@vuemotion/lib'
-import { Window } from '@vuemotion/extension-ui'
 import { onMounted, ref } from 'vue'
-import { useExporter } from '@vuemotion/core'
-import { nextTick } from 'vue'
 
 const arc = useWidget<InstanceType<typeof Arc>>('arc').props
 const text = useWidget<InstanceType<typeof Text>>('text').props
@@ -18,6 +15,7 @@ onMounted(() => {
     .exec(() => {
       display.value = true
     })
+    .delay(1)
     .animate(fadeOut, { duration: 1 })
   player.play()
   // const { exportToVideo } = useExporter('#motion', player)
@@ -32,15 +30,7 @@ const display = ref(false)
 
 <template>
   <Motion :width="640" :height="480" id="motion">
-    <Window :width="600" :height="400">
-      <Arc :radius="100" wid="arc" />
-      <Text wid="text" font-size="50" v-if="display">
-        vue
-        <tspan fill="red">
-          motion
-        </tspan>
-      </Text>
-    </Window>
+    <RouterView></RouterView>
   </Motion>
 </template>
 

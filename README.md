@@ -26,7 +26,7 @@ VueMotion's predecessor was the Newcar animation engine, but later the developme
   - [x] rotate
   - [x] scale
   - [x] create
-  - [ ] destroy
+  - [x] destroy
   - [x] stroke
   - [x] stroke-fill
   - [x] zoom-in
