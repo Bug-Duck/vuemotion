@@ -7,7 +7,7 @@ import { figure } from './figure'
 
 export interface TextOptions extends FigureOptions {
   fontFamily?: string
-  fontSize?: | 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | 'xxx-large' | 'larger' | 'smaller' | string & {}
+  fontSize?: | 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | 'xxx-large' | 'larger' | 'smaller' | string | number & {}
   fontWeight?: number | 'normal' | 'bold' | 'bolder' | 'lighter'
   fontStyle?: 'normal' | 'italic' | 'oblique'
   align?: 'start' | 'middle' | 'end'

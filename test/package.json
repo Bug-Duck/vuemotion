@@ -12,7 +12,8 @@
     "@vuemotion/core": "workspace:*",
     "@vuemotion/extension-ui": "workspace:*",
     "@vuemotion/lib": "workspace:*",
-    "vue": "^3.4.37"
+    "vue": "^3.4.37",
+    "vue-router": "^4.4.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.2",
