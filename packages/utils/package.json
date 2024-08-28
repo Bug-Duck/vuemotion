@@ -1,5 +1,5 @@
 {
-  "name": "@vuemotion/core",
+  "name": "@vuemotion/utils",
   "type": "module",
   "version": "0.0.1",
   "description": "The components and hooks of vuemotion",
@@ -7,10 +7,10 @@
   "license": "Apache-2.0",
   "exports": {
     ".": {
+      "dev": "./src/index.ts",
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
-      "require": "./dist/index.cjs",
-      "dev": "./src/index.ts"
+      "require": "./dist/index.cjs"
     }
   },
   "module": "./dist/vuemotion.js",
@@ -20,15 +20,15 @@
   ],
   "scripts": {
     "publish": "npm publish",
-    "build": "vite build",
-    "dev": "vite build --watch"
+    "build": "tsup",
+    "dev": "tsup --watch"
   },
   "publishConfig": {
     "access": "public"
   },
   "dependencies": {
-    "@ffmpeg/ffmpeg": "0.11.0",
-    "@vuemotion/utils": "workspace:*",
+    "@ffmpeg/ffmpeg": "0.12.10",
+    "@ffmpeg/util": "^0.12.1",
     "vue": "^3.4.26"
   },
   "devDependencies": {

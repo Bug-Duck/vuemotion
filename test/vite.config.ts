@@ -14,5 +14,13 @@ export default defineConfig({
       external: ['vue'],
     },
   },
-  plugins: [vue()],
+  plugins: [
+    vue()
+  ],
+  server: {
+    headers: {
+      'Cross-Origin-Opener-Policy': 'same-origin',
+      'Cross-Origin-Embedder-Policy': 'credentialless'
+    }
+  }
 })

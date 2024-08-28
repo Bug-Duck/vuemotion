@@ -14,6 +14,9 @@ export default defineConfig({
     rollupOptions: {
       external: ['vue'],
     },
+    commonjsOptions: {
+      transformMixedEsModules: true
+    }
   },
   plugins: [
     vue(),
