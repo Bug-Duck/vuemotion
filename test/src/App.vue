@@ -3,8 +3,8 @@ import { usePlayer, useWidget } from '@vuemotion/core'
 import { Arc, Motion, Text, create, fadeOut, rotate } from '@vuemotion/lib'
 import { onMounted, ref } from 'vue'
 
-const arc = useWidget<InstanceType<typeof Arc>>('arc').props
-const text = useWidget<InstanceType<typeof Text>>('text').props
+const arc = useWidget<InstanceType<typeof Arc>>('arc')
+const text = useWidget<InstanceType<typeof Text>>('text')
 
 onMounted(() => {
   const player = usePlayer()

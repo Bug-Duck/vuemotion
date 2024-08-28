@@ -10,28 +10,30 @@ export interface Range {
 
 export interface Widget {
   wid?: string
+  element?: SVGElement
+  range?: Range
 }
 
 export function defineWidget<T extends Widget>(props: T, root?: SVGElement) {
   if (props.wid === undefined) {
     return props
   }
-  const widget = inject(props.wid) as WidgetRef<T>
-  Object.assign(widget.props, props)
+  const widget = inject(props.wid) as T
+  Object.assign(widget, props)
   onMounted(() => {
-    widget.element.value = root ?? getCurrentInstance()!.proxy!.$el
-    Object.assign(widget.range, widget.element.value!.getBoundingClientRect())
+    widget.element = root ?? getCurrentInstance()!.proxy!.$el
+    widget.range = widget.element!.getBoundingClientRect()
   })
-  return widget.props
+  return widget
 }
 
-export type WidgetRef<T extends Widget> = ReturnType<typeof useWidget<T>>
-
 export function useWidget<T extends Widget>(wid: string) {
-  const props: Reactive<T> = reactive({} as T)
   const element = ref<SVGElement>()
   const range: Reactive<Range> = reactive({ x: 0, y: 0, width: 0, height: 0 })
-  const widget = { props, element, range }
+  const widget = reactive({
+    element,
+    range
+  })
   provide(wid, widget)
-  return widget
+  return widget as T
 }
