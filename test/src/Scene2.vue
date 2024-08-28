@@ -11,10 +11,10 @@
 </template>
 
 <script setup lang="ts">
-import { usePlayer, useWidget } from '@vuemotion/core'
-import { Arc, Motion, Text, create, fadeOut, rotate } from '@vuemotion/lib'
-import { Window } from '@vuemotion/extension-ui'
+import { usePlayer, useWidget } from '@vue-motion/core'
+import { Arc, Motion, Text, create, fadeOut, rotate } from '@vue-motion/lib'
+import { Window } from '@vue-motion/extension-ui'
 import { onMounted, ref } from 'vue'
-import { useExporter } from '@vuemotion/core'
+import { useExporter } from '@vue-motion/core'
 import { nextTick } from 'vue'
 </script>

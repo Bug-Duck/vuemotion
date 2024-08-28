@@ -1,4 +1,4 @@
-import { defineAnimation } from '@vuemotion/core'
+import { defineAnimation } from '@vue-motion/core'
 import { interpolator } from '../interpolator'
 
 export interface Positional {

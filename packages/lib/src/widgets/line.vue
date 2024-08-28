@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineWidget } from '@vuemotion/core'
+import { defineWidget } from '@vue-motion/core'
 import type { Vector } from '../animations/typings'
 import type { FigureOptions } from './figure'
 import { figure } from './figure'

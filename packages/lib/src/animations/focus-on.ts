@@ -1,5 +1,5 @@
-import { Widget } from "@vuemotion/core";
-import { defineAnimation } from "@vuemotion/core";
+import { Widget } from "@vue-motion/core";
+import { defineAnimation } from "@vue-motion/core";
 import { Positional } from "./move";
 import { interpolator } from "../interpolator";
 

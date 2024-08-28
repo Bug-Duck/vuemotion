@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineProps } from 'vue'
-import { defineWidget } from '@vuemotion/core'
+import { defineWidget } from '@vue-motion/core'
 
 import type { FigureOptions } from './figure'
 import { figure } from './figure'

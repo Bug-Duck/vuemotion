@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { Rect, Widget } from '@vuemotion/lib'
+import { Rect, Widget } from '@vue-motion/lib'
 import { getCurrentInstance, onMounted, ref } from 'vue'
-import { defineWidget } from '@vuemotion/core'
+import { defineWidget } from '@vue-motion/core'
 import type { Unit } from './unit'
 
 const props = defineProps<Unit>()

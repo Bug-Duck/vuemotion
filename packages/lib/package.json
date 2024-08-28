@@ -1,8 +1,8 @@
 {
-  "name": "@vuemotion/lib",
+  "name": "@vue-motion/lib",
   "type": "module",
   "version": "0.0.1",
-  "description": "The basic components of vuemotion",
+  "description": "The basic components of vue-motion",
   "author": "BugDuck Team",
   "license": "Apache-2.0",
   "exports": {
@@ -13,7 +13,7 @@
       "dev": "./src/index.ts"
     }
   },
-  "module": "./dist/vuemotion.js",
+  "module": "./dist/vue-motion.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -27,7 +27,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@vuemotion/core": "workspace:*",
+    "@vue-motion/core": "workspace:*",
     "vue": "^3.4.26"
   },
   "devDependencies": {

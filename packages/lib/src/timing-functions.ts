@@ -9,7 +9,7 @@
  * @returns The dependent variable of x.
  */
 
-import type { TimingFunction } from '@vuemotion/core'
+import type { TimingFunction } from '@vue-motion/core'
 
 const c = 1.701_58
 const n = 7.5625

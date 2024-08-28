@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { Widget, Line, Polygon } from '@vuemotion/lib'
-import { defineWidget } from '@vuemotion/core'
+import { Widget, Line, Polygon } from '@vue-motion/lib'
+import { defineWidget } from '@vue-motion/core'
 import type { NumberAxis } from './number-axis'
-import type { Widget } from '@vuemotion/lib'
+import type { Widget } from '@vue-motion/lib'
 
 export interface NumberAxis extends Widget {
   interval?: number

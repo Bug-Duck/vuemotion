@@ -1,8 +1,8 @@
 {
-  "name": "@vuemotion/core",
+  "name": "@vue-motion/core",
   "type": "module",
   "version": "0.0.1",
-  "description": "The components and hooks of vuemotion",
+  "description": "The components and hooks of vue-motion",
   "author": "BugDuck Team",
   "license": "Apache-2.0",
   "exports": {
@@ -13,7 +13,7 @@
       "dev": "./src/index.ts"
     }
   },
-  "module": "./dist/vuemotion.js",
+  "module": "./dist/vue-motion.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "@ffmpeg/ffmpeg": "0.11.0",
-    "@vuemotion/utils": "workspace:*",
+    "@vue-motion/utils": "workspace:*",
     "vue": "^3.4.26"
   },
   "devDependencies": {

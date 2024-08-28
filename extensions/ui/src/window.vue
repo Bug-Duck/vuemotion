@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { defineWidget } from '@vuemotion/core'
-import type { Grownable, WidgetOptions } from '@vuemotion/lib'
-import { widget } from '@vuemotion/lib'
+import { defineWidget } from '@vue-motion/core'
+import type { Grownable, WidgetOptions } from '@vue-motion/lib'
+import { widget } from '@vue-motion/lib'
 
 export interface WindowOptions extends WidgetOptions, Grownable {
   width: number

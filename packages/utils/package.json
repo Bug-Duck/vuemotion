@@ -1,8 +1,8 @@
 {
-  "name": "@vuemotion/utils",
+  "name": "@vue-motion/utils",
   "type": "module",
   "version": "0.0.1",
-  "description": "The components and hooks of vuemotion",
+  "description": "The components and hooks of vue-motion",
   "author": "BugDuck Team",
   "license": "Apache-2.0",
   "exports": {
@@ -13,7 +13,6 @@
       "require": "./dist/index.cjs"
     }
   },
-  "module": "./dist/vuemotion.js",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"

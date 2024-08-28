@@ -32,10 +32,10 @@ importers:
 
   extensions/math:
     dependencies:
-      '@vuemotion/core':
+      '@vue-motion/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@vuemotion/lib':
+      '@vue-motion/lib':
         specifier: workspace:*
         version: link:../../packages/lib
       vue:
@@ -51,10 +51,10 @@ importers:
 
   extensions/mindmap:
     dependencies:
-      '@vuemotion/core':
+      '@vue-motion/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@vuemotion/lib':
+      '@vue-motion/lib':
         specifier: workspace:*
         version: link:../../packages/lib
       vue:
@@ -70,10 +70,10 @@ importers:
 
   extensions/ui:
     dependencies:
-      '@vuemotion/core':
+      '@vue-motion/core':
         specifier: workspace:*
         version: link:../../packages/core
-      '@vuemotion/lib':
+      '@vue-motion/lib':
         specifier: workspace:*
         version: link:../../packages/lib
       vue:
@@ -92,7 +92,7 @@ importers:
       '@ffmpeg/ffmpeg':
         specifier: 0.11.0
         version: 0.11.0
-      '@vuemotion/utils':
+      '@vue-motion/utils':
         specifier: workspace:*
         version: link:../utils
       vue:
@@ -108,7 +108,7 @@ importers:
 
   packages/lib:
     dependencies:
-      '@vuemotion/core':
+      '@vue-motion/core':
         specifier: workspace:*
         version: link:../core
       vue:
@@ -143,18 +143,21 @@ importers:
 
   test:
     dependencies:
-      '@vuemotion/core':
+      '@vue-motion/core':
         specifier: workspace:*
         version: link:../packages/core
-      '@vuemotion/extension-ui':
+      '@vue-motion/extension-ui':
         specifier: workspace:*
         version: link:../extensions/ui
-      '@vuemotion/lib':
+      '@vue-motion/lib':
         specifier: workspace:*
         version: link:../packages/lib
       vue:
         specifier: ^3.4.37
         version: 3.4.38(typescript@5.5.4)
+      vue-router:
+        specifier: ^4.4.3
+        version: 4.4.3(vue@3.4.38(typescript@5.5.4))
     devDependencies:
       '@vitejs/plugin-vue':
         specifier: ^5.1.2
@@ -971,6 +974,9 @@ packages:
 
   '@vue/compiler-vue2@2.7.16':
     resolution: {integrity: sha512-qYC3Psj9S/mfu9uVi5WvNZIzq+xnXMhOwbTFKKDD7b1lhpnn71jXSFdTQ+WsIEk0ONCd7VV2IMm7ONl6tbQ86A==}
+
+  '@vue/devtools-api@6.6.3':
+    resolution: {integrity: sha512-0MiMsFma/HqA6g3KLKn+AGpL1kgKhFWszC9U29NfpWK5LE7bjeXxySWJrOJ77hBz+TBrBQ7o4QJqbPbqbs8rJw==}
 
   '@vue/language-core@1.8.27':
     resolution: {integrity: sha512-L8Kc27VdQserNaCUNiSFdDl9LWT24ly8Hpwf1ECy3aFb9m6bDhBGQYOujDm21N7EW3moKIOKEanQwe1q5BK+mA==}
@@ -2437,6 +2443,11 @@ packages:
     peerDependencies:
       eslint: '>=6.0.0'
 
+  vue-router@4.4.3:
+    resolution: {integrity: sha512-sv6wmNKx2j3aqJQDMxLFzs/u/mjA9Z5LCgy6BE0f7yFWMjrPLnS/sPNn8ARY/FXw6byV18EFutn5lTO6+UsV5A==}
+    peerDependencies:
+      vue: ^3.2.0
+
   vue-template-compiler@2.7.16:
     resolution: {integrity: sha512-AYbUWAJHLGGQM7+cNTELw+KsOG9nl2CnSv467WobS5Cv9uk3wFcnr1Etsz2sEIHEZvw1U+o9mRlEO6QbZvUPGQ==}
 
@@ -3273,6 +3284,8 @@ snapshots:
     dependencies:
       de-indent: 1.0.2
       he: 1.2.0
+
+  '@vue/devtools-api@6.6.3': {}
 
   '@vue/language-core@1.8.27(typescript@5.5.4)':
     dependencies:
@@ -4771,6 +4784,11 @@ snapshots:
       semver: 7.6.3
     transitivePeerDependencies:
       - supports-color
+
+  vue-router@4.4.3(vue@3.4.38(typescript@5.5.4)):
+    dependencies:
+      '@vue/devtools-api': 6.6.3
+      vue: 3.4.38(typescript@5.5.4)
 
   vue-template-compiler@2.7.16:
     dependencies:

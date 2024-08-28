@@ -7,7 +7,7 @@ export default defineConfig({
   build: {
     lib: {
       entry: 'src/index.ts',
-      name: 'VueMotion',
+      name: 'vue-motion',
       formats: ['es', 'cjs'],
       fileName: 'index',
     },

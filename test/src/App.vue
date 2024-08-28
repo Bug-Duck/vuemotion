@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { usePlayer, useWidget } from '@vuemotion/core'
-import { focusOn } from '@vuemotion/lib';
-import { Arc, Motion, Text, create, fadeOut, rotate } from '@vuemotion/lib'
+import { usePlayer, useWidget } from '@vue-motion/core'
+import { focusOn } from '@vue-motion/lib';
+import { Arc, Motion, Text, create, fadeOut, rotate } from '@vue-motion/lib'
 import { onMounted, ref } from 'vue'
 
 const arc = useWidget<InstanceType<typeof Arc>>('arc')

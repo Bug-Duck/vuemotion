@@ -9,9 +9,9 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vuemotion/core": "workspace:*",
-    "@vuemotion/extension-ui": "workspace:*",
-    "@vuemotion/lib": "workspace:*",
+    "@vue-motion/core": "workspace:*",
+    "@vue-motion/extension-ui": "workspace:*",
+    "@vue-motion/lib": "workspace:*",
     "vue": "^3.4.37",
     "vue-router": "^4.4.3"
   },

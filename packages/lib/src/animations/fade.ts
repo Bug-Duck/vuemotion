@@ -1,4 +1,4 @@
-import { defineAnimation, withDefaults } from '@vuemotion/core'
+import { defineAnimation, withDefaults } from '@vue-motion/core'
 import { interpolator } from '../interpolator'
 
 export interface HasOpacity {

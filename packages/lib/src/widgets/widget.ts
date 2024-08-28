@@ -1,4 +1,4 @@
-import type { Widget } from '@vuemotion/core'
+import type { Widget } from '@vue-motion/core'
 import type { HasOpacity, Positional, Rotatable, Scalable } from '../animations'
 
 export type WidgetOptions = Widget & Positional & Scalable & Rotatable & HasOpacity

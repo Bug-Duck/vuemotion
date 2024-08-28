@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { watch } from 'vue'
-import { Widget } from '@vuemotion/lib'
-import { defineWidget } from '@vuemotion/core'
+import { Widget } from '@vue-motion/lib'
+import { defineWidget } from '@vue-motion/core'
 import type { MathFunction } from './math-function'
 
 export interface MathFunction extends Widget {
