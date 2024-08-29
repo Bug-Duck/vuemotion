@@ -5,15 +5,15 @@ import { interpolator } from "../interpolator";
 
 export const focusOn = defineAnimation<{
   offset?: number
+  circle?: SVGCircleElement
 }, Widget & Positional>((context, progress) => {
-  let circle
   if (progress === 0) {
-    circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    context.target.element?.appendChild(circle)
+    context.circle = document.createElementNS("http://www.w3.org/2000/svg", "circle");
+    context.target.element?.appendChild(context.circle)
     console.log(context.target.element)
-    circle.setAttribute('cx', context.target.x!.toString())
-    circle.setAttribute('cy', context.target.y!.toString())
-    circle.setAttribute('fill', 'rgba(255,255,255,0.5)')
+    context.circle.setAttribute('cx', context.target.x!.toString())
+    context.circle.setAttribute('cy', context.target.y!.toString())
+    context.circle.setAttribute('fill', 'rgba(255,255,255,0.5)')
   }
-  circle!.setAttribute('r', interpolator(context.offset ?? 1000, 0, progress).toString())
+  context.circle!.setAttribute('r', interpolator(context.offset ?? 1000, 0, progress).toString())
 })
