@@ -1,7 +1,6 @@
 {
-  "name": "app",
-  "private": true,
-  "version": "0.0.0",
+  "name": "@vue-motion/app",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
