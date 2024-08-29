@@ -1,11 +1,11 @@
 <template>
-  <Text wid="text" font-size="50" border-color="white">Fuck the World!</Text>
+  <Text wid="text" font-size="50" border-color="white">Fun World!</Text>
 </template>
 
 <script setup lang="ts">
 import { useWidget } from '@vue-motion/core';
 import { usePlayer } from '@vue-motion/core';
-import { circleIndicate } from '@vue-motion/lib';
+import { circleIndicate, showCircleCreationThenDestructionAround } from '@vue-motion/lib';
 import { showCreationThenDestructionAround } from '@vue-motion/lib';
 import { wiggle } from '@vue-motion/lib';
 import { focusOn, strokeFill } from '@vue-motion/lib';
@@ -21,7 +21,7 @@ onMounted(() => {
     .animate(circleIndicate, { duration: 1 })
     .animate(wiggle, { duration: 1 })
     .animate(focusOn, { duration: 1 })
-    .animate(showCreationThenDestructionAround, { duration: 1 })
+    .animate(showCircleCreationThenDestructionAround, { duration: 1 })
   player.play()
 })
 </script>

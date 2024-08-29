@@ -36,7 +36,7 @@ vue-motion's predecessor was the Newcar animation engine, but later the developm
   - [x] flash
   - [x] rippleOut
   - [x] show-creation-then-destruction-around
-  - [ ] show-circle-creation-then-destruction-around
+  - [x] show-circle-creation-then-destruction-around
   - [ ] show-passing-circle-flash-around
   - [ ] show-passing-flash-around
   - [x] wiggle
