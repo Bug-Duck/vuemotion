@@ -1,38 +1,18 @@
 <script setup lang="ts">
-import { usePlayer, useWidget } from '@vue-motion/core'
-import { focusOn } from '@vue-motion/lib';
-import { Arc, Motion, Text, create, fadeOut, rotate } from '@vue-motion/lib'
-import { onMounted, ref } from 'vue'
+import { useExporter, usePlayer } from '@vue-motion/core';
+import { Motion } from '@vue-motion/lib'
+import { onMounted } from 'vue';
 
-const arc = useWidget<InstanceType<typeof Arc>>('arc')
-const text = useWidget<InstanceType<typeof Text>>('text')
-
-onMounted(() => {
-  const player = usePlayer()
-  player.useAnimation(arc)
-    .animate(create)
-  player.useAnimation(text)
-    .animate(rotate, { offset: 360 })
-    .exec(() => {
-      display.value = true
-    })
-    .delay(1)
-    .animate(fadeOut, { duration: 1 })
-  player.play()
-  // const { exportToVideo } = useExporter('#motion', player)
-  // nextTick(async () => {
-  //   const url = await exportToVideo(20, 60)
-  //   console.log(url)
-  // })
-})
-
-const display = ref(false)
+// onMounted(async () => {
+//   const player = usePlayer()
+//   const exporter = useExporter('#motion', player)
+//   const url = await exporter.exportToVideo(2, 16)
+//   console.log(url)
+// })
 </script>
 
 <template>
-  <Motion :width="640" :height="480" id="motion">
-    <RouterView></RouterView>
+  <Motion :width="900" :height="600" id="motion">
+    <RouterView />
   </Motion>
 </template>
-
-<style scoped></style>
