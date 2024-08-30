@@ -57,6 +57,7 @@ export const client = Clerc.create()
     
     const server = await createServer({
       root: resolve(__dirname, '../app'),
+      publicDir: process.cwd() + '/public',
       server: {
         open: true,
         fs: {
