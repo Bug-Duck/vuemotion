@@ -30,6 +30,120 @@ importers:
         specifier: ^5.4.2
         version: 5.4.2(@types/node@22.5.0)
 
+  extensions/chart:
+    dependencies:
+      '@vue-motion/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@vue-motion/lib':
+        specifier: workspace:*
+        version: link:../../packages/lib
+      vue:
+        specifier: ^3.4.26
+        version: 3.4.38(typescript@5.5.4)
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^5.0.4
+        version: 5.1.2(vite@5.4.2(@types/node@22.5.0))(vue@3.4.38(typescript@5.5.4))
+      vite-plugin-dts:
+        specifier: ^3.9.1
+        version: 3.9.1(@types/node@22.5.0)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.0))
+
+  extensions/code:
+    dependencies:
+      '@vue-motion/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@vue-motion/lib':
+        specifier: workspace:*
+        version: link:../../packages/lib
+      vue:
+        specifier: ^3.4.26
+        version: 3.4.38(typescript@5.5.4)
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^5.0.4
+        version: 5.1.2(vite@5.4.2(@types/node@22.5.0))(vue@3.4.38(typescript@5.5.4))
+      vite-plugin-dts:
+        specifier: ^3.9.1
+        version: 3.9.1(@types/node@22.5.0)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.0))
+
+  extensions/geometry:
+    dependencies:
+      '@vue-motion/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@vue-motion/lib':
+        specifier: workspace:*
+        version: link:../../packages/lib
+      vue:
+        specifier: ^3.4.26
+        version: 3.4.38(typescript@5.5.4)
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^5.0.4
+        version: 5.1.2(vite@5.4.2(@types/node@22.5.0))(vue@3.4.38(typescript@5.5.4))
+      vite-plugin-dts:
+        specifier: ^3.9.1
+        version: 3.9.1(@types/node@22.5.0)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.0))
+
+  extensions/layout:
+    dependencies:
+      '@vue-motion/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@vue-motion/lib':
+        specifier: workspace:*
+        version: link:../../packages/lib
+      vue:
+        specifier: ^3.4.26
+        version: 3.4.38(typescript@5.5.4)
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^5.0.4
+        version: 5.1.2(vite@5.4.2(@types/node@22.5.0))(vue@3.4.38(typescript@5.5.4))
+      vite-plugin-dts:
+        specifier: ^3.9.1
+        version: 3.9.1(@types/node@22.5.0)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.0))
+
+  extensions/lights:
+    dependencies:
+      '@vue-motion/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@vue-motion/lib':
+        specifier: workspace:*
+        version: link:../../packages/lib
+      vue:
+        specifier: ^3.4.26
+        version: 3.4.38(typescript@5.5.4)
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^5.0.4
+        version: 5.1.2(vite@5.4.2(@types/node@22.5.0))(vue@3.4.38(typescript@5.5.4))
+      vite-plugin-dts:
+        specifier: ^3.9.1
+        version: 3.9.1(@types/node@22.5.0)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.0))
+
+  extensions/markdown:
+    dependencies:
+      '@vue-motion/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@vue-motion/lib':
+        specifier: workspace:*
+        version: link:../../packages/lib
+      vue:
+        specifier: ^3.4.26
+        version: 3.4.38(typescript@5.5.4)
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^5.0.4
+        version: 5.1.2(vite@5.4.2(@types/node@22.5.0))(vue@3.4.38(typescript@5.5.4))
+      vite-plugin-dts:
+        specifier: ^3.9.1
+        version: 3.9.1(@types/node@22.5.0)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.0))
+
   extensions/math:
     dependencies:
       '@vue-motion/core':
@@ -50,6 +164,82 @@ importers:
         version: 3.9.1(@types/node@22.5.0)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.0))
 
   extensions/mindmap:
+    dependencies:
+      '@vue-motion/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@vue-motion/lib':
+        specifier: workspace:*
+        version: link:../../packages/lib
+      vue:
+        specifier: ^3.4.26
+        version: 3.4.38(typescript@5.5.4)
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^5.0.4
+        version: 5.1.2(vite@5.4.2(@types/node@22.5.0))(vue@3.4.38(typescript@5.5.4))
+      vite-plugin-dts:
+        specifier: ^3.9.1
+        version: 3.9.1(@types/node@22.5.0)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.0))
+
+  extensions/platform:
+    dependencies:
+      '@vue-motion/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@vue-motion/lib':
+        specifier: workspace:*
+        version: link:../../packages/lib
+      vue:
+        specifier: ^3.4.26
+        version: 3.4.38(typescript@5.5.4)
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^5.0.4
+        version: 5.1.2(vite@5.4.2(@types/node@22.5.0))(vue@3.4.38(typescript@5.5.4))
+      vite-plugin-dts:
+        specifier: ^3.9.1
+        version: 3.9.1(@types/node@22.5.0)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.0))
+
+  extensions/table:
+    dependencies:
+      '@vue-motion/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@vue-motion/lib':
+        specifier: workspace:*
+        version: link:../../packages/lib
+      vue:
+        specifier: ^3.4.26
+        version: 3.4.38(typescript@5.5.4)
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^5.0.4
+        version: 5.1.2(vite@5.4.2(@types/node@22.5.0))(vue@3.4.38(typescript@5.5.4))
+      vite-plugin-dts:
+        specifier: ^3.9.1
+        version: 3.9.1(@types/node@22.5.0)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.0))
+
+  extensions/three:
+    dependencies:
+      '@vue-motion/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@vue-motion/lib':
+        specifier: workspace:*
+        version: link:../../packages/lib
+      vue:
+        specifier: ^3.4.26
+        version: 3.4.38(typescript@5.5.4)
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^5.0.4
+        version: 5.1.2(vite@5.4.2(@types/node@22.5.0))(vue@3.4.38(typescript@5.5.4))
+      vite-plugin-dts:
+        specifier: ^3.9.1
+        version: 3.9.1(@types/node@22.5.0)(rollup@4.21.0)(typescript@5.5.4)(vite@5.4.2(@types/node@22.5.0))
+
+  extensions/typst:
     dependencies:
       '@vue-motion/core':
         specifier: workspace:*
