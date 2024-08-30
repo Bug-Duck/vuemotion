@@ -7,6 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import virtualModulePlugin from './resolve';
+import virtualRouterModulePlugin from './router-resolver';
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -48,7 +49,8 @@ export const client = Clerc.create()
   })
   .command('start', 'Start the VueMotion project', {
     parameters: [
-      '[entrypoint]'
+      '[entrypoint]',
+      '[router]',
     ]
   })
   .on('start', async (context) => {
@@ -67,6 +69,7 @@ export const client = Clerc.create()
           include: ['**/*.vue'],
         }),
         virtualModulePlugin(resolve(process.cwd(), context.parameters.entrypoint!)),
+        virtualRouterModulePlugin(resolve(process.cwd(), context.parameters.router!)),
       ]
     })
     await server.listen()

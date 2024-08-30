@@ -1,5 +1,4 @@
 import { Plugin } from 'vite';
-import fs from 'fs';
 
 export default function virtualModulePlugin(file: string): Plugin {
   return {
