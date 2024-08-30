@@ -1,4 +1,5 @@
 import { Plugin } from 'vite';
+import path from 'node:path';
 
 export default function virtualModulePlugin(file: string): Plugin {
   return {
@@ -13,9 +14,8 @@ export default function virtualModulePlugin(file: string): Plugin {
 
     load(id: string) {
       if (id === 'virtual:user-main') {
-        const userMainPath = file
         return {
-          code: `export { default } from '${userMainPath}'`
+          code: `export { default } from '${file.split(path.sep).join('/')}'`
         }
       }
       return null;
