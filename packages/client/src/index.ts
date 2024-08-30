@@ -1,24 +1,23 @@
 #!/usr/bin/env node
 
 import { Clerc } from 'clerc'
-import { exec } from 'node:child_process';
 import fs from 'node:fs'
 import path, { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createServer } from 'vite'
+import vue from '@vitejs/plugin-vue'
+import virtualModulePlugin from './resolve';
 
 const __filename = fileURLToPath(import.meta.url);
 
-// 获取 `__dirname` 等价值
 const __dirname = dirname(__filename);
 
 
 function copyFolderSync(source: string, target: string) {
-  // 确保目标文件夹存在
   if (!fs.existsSync(target)) {
     fs.mkdirSync(target, { recursive: true });
   }
 
-  // 获取源文件夹中的所有文件和子文件夹
   const items = fs.readdirSync(source, { withFileTypes: true });
 
   items.forEach((item) => {
@@ -26,10 +25,8 @@ function copyFolderSync(source: string, target: string) {
     const targetPath = path.join(target, item.name);
 
     if (item.isDirectory()) {
-      // 如果是文件夹，递归复制
       copyFolderSync(sourcePath, targetPath);
     } else {
-      // 如果是文件，复制文件
       fs.copyFileSync(sourcePath, targetPath);
     }
   });
@@ -54,9 +51,24 @@ export const client = Clerc.create()
       '[entrypoint]'
     ]
   })
-  .on('start', (context) => {
-    exec('vite node_modules/@vue-motion/app/dist/index.html', (err, stdout, stderr) => {
-      console.log(stdout, err, stderr);
+  .on('start', async (context) => {
+    console.log(resolve(process.cwd(), context.parameters.entrypoint!));
+    
+    const server = await createServer({
+      root: resolve(__dirname, '../app'),
+      server: {
+        open: true,
+        fs: {
+          allow: ['..']
+        },
+      },
+      plugins: [
+        vue({
+          include: ['**/*.vue'],
+        }),
+        virtualModulePlugin(resolve(process.cwd(), context.parameters.entrypoint!)),
+      ]
     })
+    await server.listen()
   })
   .parse() 

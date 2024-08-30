@@ -9,7 +9,7 @@
           <polygon points="0,0 10,0 5,10" fill="grey" />
         </svg>
       </div>
-      <img :src="icon" :alt="name" class="w-6 h-6 mx-2" />
+      <!-- <img :src="icon" :alt="name" class="w-6 h-6 mx-2" /> -->
       <div class="text-2xl font-mono">
         {{ name }}
       </div>
@@ -34,7 +34,7 @@ export interface Item {
   items?: Item[];
 }
 
-const { name, icon, items } = defineProps<Item>()
+const { name, items } = defineProps<Item>()
 
 const open = ref(false)
 

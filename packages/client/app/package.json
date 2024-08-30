@@ -8,9 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vue-motion/core": "workspace:*",
-    "@vue-motion/lib": "workspace:*",
-    "vue": "^3.4.37"
+    "@vue-motion/core": "latest",
+    "@vue-motion/lib": "latest",
+    "vue": "^3.4.37",
+    "vue-router": "^4.4.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.2",
