@@ -5,10 +5,12 @@
         <WidgetList :list="list"/>
       </div>
       <div class="flex w-3/4 flex-col h-full">
-        <div class="flex flex-grow-[2] border-b-2">
-          <Animation/>
+        <div class="flex h-2/3 border-b-2">
+          <div class="w-full flex justify-center items-center">
+            <Animation class="h-full justify-center self-center flex"/>
+          </div>
         </div>
-        <div class="flex flex-grow-[1] overflow-x-scroll">
+        <div class="flex h-1/3 overflow-x-scroll">
           <TimeLine :duration="120" :division="50" class="mx-12"/>
         </div>
       </div>

@@ -54,7 +54,6 @@ export const client = Clerc.create()
     ]
   })
   .on('start', async (context) => {
-    console.log(resolve(process.cwd(), context.parameters.entrypoint!));
     
     const server = await createServer({
       root: resolve(__dirname, '../app'),
@@ -68,8 +67,8 @@ export const client = Clerc.create()
         vue({
           include: ['**/*.vue'],
         }),
-        virtualModulePlugin(resolve(process.cwd(), context.parameters.entrypoint!)),
-        virtualRouterModulePlugin(resolve(process.cwd(), context.parameters.router!)),
+        virtualModulePlugin(resolve(process.cwd(), context.parameters.entrypoint ?? 'src/App.vue')),
+        virtualRouterModulePlugin(resolve(process.cwd(), context.parameters.router ?? 'src/router.ts')),
       ]
     })
     await server.listen()
