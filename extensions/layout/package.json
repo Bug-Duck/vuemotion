@@ -1,0 +1,38 @@
+{
+  "name": "@vue-motion/extension-layout",
+  "type": "module",
+  "version": "0.0.1",
+  "description": "The components and hooks of vue-motion",
+  "author": "BugDuck Team",
+  "license": "Apache-2.0",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs",
+      "dev": "./src/index.ts"
+    }
+  },
+  "module": "./dist/vue-motion.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "publish": "npm publish",
+    "build": "vite build",
+    "dev": "vite build --watch"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@vue-motion/core": "workspace:*",
+    "@vue-motion/lib": "workspace:*",
+    "vue": "^3.4.26"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.0.4",
+    "vite-plugin-dts": "^3.9.1"
+  }
+}
