@@ -6,7 +6,7 @@ import path, { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { createServer } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import virtualModulePlugin from './resolve';
+import virtualModulePlugin from './resolver';
 import virtualRouterModulePlugin from './router-resolver';
 
 const __filename = fileURLToPath(import.meta.url);
