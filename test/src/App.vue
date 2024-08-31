@@ -1,18 +1,18 @@
 <script setup lang="ts">
-import { useExporter, usePlayer } from '@vue-motion/core';
-import { Motion } from '@vue-motion/lib'
-import { onMounted } from 'vue';
+import { usePlayer, useWidget } from '@vue-motion/core';
+import { Motion, Text } from '@vue-motion/lib'
 
-// onMounted(async () => {
-//   const player = usePlayer()
-//   const exporter = useExporter('#motion', player)
-//   const url = await exporter.exportToVideo(2, 16)
-//   console.log(url)
-// })
+const player = usePlayer()
+player.play()
+
+const text1 = useWidget('text1')
+const text2 = useWidget('text2')
 </script>
 
 <template>
   <Motion :width="900" :height="600" id="motion">
-    <RouterView />
+    <!-- <RouterView /> -->
+    <Text :x="-100" wid="text1">Hello</Text>
+    <Text :x="100" wid="text2">WORLD</Text>
   </Motion>
 </template>

@@ -15,10 +15,10 @@ export interface Widget {
 }
 
 export function defineWidget<T extends Widget>(props: T, root?: SVGElement) {
-  if (props.wid === undefined) {
+  const widget = inject<T>(props.wid as string)
+  if (widget === undefined) {
     return props
   }
-  const widget = inject(props.wid) as T
   Object.assign(widget, props)
   onMounted(() => {
     widget.element = root ?? getCurrentInstance()!.proxy!.$el.parentElement

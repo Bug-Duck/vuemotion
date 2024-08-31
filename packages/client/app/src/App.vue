@@ -6,6 +6,7 @@
       </div>
       <div class="flex w-3/4 flex-col h-full">
         <div class="flex h-2/3 border-b-2">
+          <button @click="exports()">Export</button>
           <div class="w-full flex justify-center items-center">
             <Animation class="h-full justify-center self-center flex"/>
           </div>
@@ -19,11 +20,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { onMounted, ref } from 'vue';
 import WidgetList from './components/WidgetList.vue'
 import TimeLine from './components/TimeLine.vue'
+import { usePlayer } from '@vue-motion/core'
 /** @ts-ignore */
 import Animation from 'virtual:user-main'
+import { exportToVideo } from './export-front'
+
+onMounted(() => {
+  const player = usePlayer()
+  player.play()
+})
+
+function exports() {
+  exportToVideo('#motion', usePlayer(), 2, 90)
+}
 
 const list = ref([
   {

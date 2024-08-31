@@ -4,10 +4,11 @@ import { Clerc } from 'clerc'
 import fs from 'node:fs'
 import path, { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createServer } from 'vite'
+import { createServer, PluginOption } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import virtualModulePlugin from './resolver';
 import virtualRouterModulePlugin from './router-resolver';
+import { listen } from './server';
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -54,7 +55,7 @@ export const client = Clerc.create()
     ]
   })
   .on('start', async (context) => {
-    
+    listen()
     const server = await createServer({
       root: resolve(__dirname, '../app'),
       publicDir: process.cwd() + '/public',
@@ -63,6 +64,13 @@ export const client = Clerc.create()
         fs: {
           allow: ['..']
         },
+        proxy: {
+          '/api': {
+            target: 'http://localhost:12387',
+            changeOrigin: true,
+            rewrite: (path) => path.replace(/^\/api/, '')
+          }
+        }
       },
       plugins: [
         vue({
