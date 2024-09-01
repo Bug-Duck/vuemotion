@@ -9,11 +9,10 @@ import { onMounted } from 'vue';
 const text1 = useWidget<TextOptions>('text1')
 // const text2 = useWidget('text2')
 
-onMounted(() => {
+onMounted(async () => {
   const player = usePlayer()
   player.useAnimation(text1).animate(fadeIn, { duration: 2, from: 0, to: 1 })
   // player.play()
-  player.renderOnce(5)
 })
 </script>
 <template>

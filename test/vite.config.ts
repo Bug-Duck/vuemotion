@@ -3,17 +3,6 @@ import vue from '@vitejs/plugin-vue'
 
 export default defineConfig({
   root: '.',
-  build: {
-    lib: {
-      entry: 'src/index.ts',
-      name: 'vue-motion',
-      formats: ['es', 'cjs'],
-      fileName: 'index',
-    },
-    rollupOptions: {
-      external: ['vue'],
-    },
-  },
   plugins: [
     vue()
   ],

@@ -8,10 +8,5 @@ export const router = createRouter({
       name: 'Home',
       component: () => import('./Scene1.vue')
     },
-    {
-      path: '/about',
-      name: 'About',
-      component: () => import('./Scene2.vue')
-    },
    ]
 })

@@ -1,10 +1,15 @@
-import { ref, inject, Ref, App } from 'vue'
+import { ref, inject, Ref, App, onMounted } from 'vue'
 import { AnimationManager } from './animation'
 
-export function createPlayer(options: {}) {
+export function createPlayer(options: {
+  studio?: boolean
+  fps?: number
+}) {
   return {
     install(app: App) {
       app.provide('elapsed', ref(0))
+      app.provide('studio', options.studio ?? false)
+      app.provide('fps', options.fps ?? 60)
     }
   }
 }
@@ -12,11 +17,20 @@ export function createPlayer(options: {}) {
 export function usePlayer() {
   const startAt = performance.now() / 1000
   const elapsed = inject('elapsed') as Ref<number>
+  const studio = inject('studio') as boolean
+  const fps = inject('fps') as number
   const playing = ref(false)
 
-  // provide('elapsed', elapsed)
+  if (studio) {
+    document.addEventListener('click', () => {
+      requestAnimationFrame(() => {
+        elapsed.value += 1 / fps
+      })
+    })
+  }
 
   function play() {
+    if (studio) return console.log('You are in the studio mode, you are not supposed to call this function!')
     playing.value = true
     elapsed.value = performance.now() / 1000 - startAt
     if (playing.value)
@@ -38,7 +52,7 @@ export function usePlayer() {
   function renderOnce(ela: number) {
     setTimeout(() => {
       elapsed.value = ela
-    },1000)
+    }, 1000)
   }
 
   return { play, elapsed, useAnimation, setElapsed, pause, renderOnce }
