@@ -2,6 +2,7 @@ export async function exportToVideo(selector: string, player: any, duration: num
   const motion = document.querySelector(selector) as SVGElement
 
   await fetch('/api/clear')
+  const uid = await (await fetch('/api/uid')).text()
   let index = 0
   for (let f = 0; f < duration; f += 1 / fps) {
     player.elapsed.value = f
@@ -17,14 +18,15 @@ export async function exportToVideo(selector: string, player: any, duration: num
     await new Promise(res => img.onload = res)
     ctx?.drawImage(img, 0, 0)
     let url: string | undefined = canvas.toDataURL('image/png')
-    // ffmpeg.FS('writeFile', `image${index}.png`, await fetchFile(url))
     console.log(url)
     await fetch('/api/export/', {
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        img: url
+        img: url,
+        uuid: uid,
+        pid: index,
       }),
       method: 'POST'
     })
@@ -33,5 +35,5 @@ export async function exportToVideo(selector: string, player: any, duration: num
     index += 1
     // urls.push(url)
   }
-  await fetch('/api/start/' + fps)
+  await fetch(`/api/start/${uid}/${fps}`)
 }

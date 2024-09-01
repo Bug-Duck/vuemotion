@@ -28,13 +28,15 @@ import { usePlayer } from '@vue-motion/core'
 import Animation from 'virtual:user-main'
 import { exportToVideo } from './export-front'
 
+let player: { play: () => void; };
+
 onMounted(() => {
-  const player = usePlayer()
+  player = usePlayer()
   player.play()
 })
 
 function exports() {
-  exportToVideo('#motion', usePlayer(), 2, 90)
+  exportToVideo('#motion', player, 2, 90)
 }
 
 const list = ref([
