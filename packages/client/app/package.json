@@ -8,8 +8,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@vue-motion/core": "latest",
-    "@vue-motion/lib": "latest",
+    "@vue-motion/core": "0.0.6",
+    "@vue-motion/lib": "0.0.6",
     "vue": "^3.4.37",
     "vue-router": "^4.4.3",
     "autoprefixer": "^10.4.20",

@@ -12,12 +12,13 @@
   "scripts": {
     "dev:core": "pnpm run --parallel --filter=./packages/* dev",
     "dev:ext": "pnpm run --parallel --filter=./extensions/* dev",
-    "build:core": "pnpm run --parallel --filter=./packages/* build",
+    "build:core": "pnpm run --parallel --filter=./packages/{core,lib,utils} build",
     "build:ext": "pnpm run --parallel --filter=./extensions/* build",
     "serve": "pnpm run --filter=./test dev",
     "test": "pnpm run --filter=* test",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "pub:core": "pnpm run build:core && pnpm run --filter=./packages/* pub"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.26.0",

@@ -4,11 +4,12 @@ import { Clerc } from 'clerc'
 import fs from 'node:fs'
 import path, { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { createServer, PluginOption } from 'vite'
+import { createServer } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import virtualModulePlugin from './resolver';
 import virtualRouterModulePlugin from './router-resolver';
 import { listen } from './server';
+import virtualPlayerModulePlugin from './player-resolver';
 
 const __filename = fileURLToPath(import.meta.url);
 
@@ -78,6 +79,7 @@ export const client = Clerc.create()
         }),
         virtualModulePlugin(resolve(process.cwd(), context.parameters.entrypoint ?? 'src/App.vue')),
         virtualRouterModulePlugin(resolve(process.cwd(), context.parameters.router ?? 'src/router.ts')),
+        virtualPlayerModulePlugin(resolve(process.cwd(), 'src/player.ts')),
       ]
     })
     await server.listen()

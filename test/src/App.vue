@@ -1,14 +1,21 @@
 <script setup lang="ts">
 import { usePlayer, useWidget } from '@vue-motion/core';
-import { Motion, Text } from '@vue-motion/lib'
+import { TextOptions } from '@vue-motion/lib';
+import { fadeIn, Motion, Text } from '@vue-motion/lib'
+import { onMounted } from 'vue';
 
-const player = usePlayer()
-player.play()
+// player.play()
 
-const text1 = useWidget('text1')
-const text2 = useWidget('text2')
+const text1 = useWidget<TextOptions>('text1')
+// const text2 = useWidget('text2')
+
+onMounted(() => {
+  const player = usePlayer()
+  player.useAnimation(text1).animate(fadeIn, { duration: 2, from: 0, to: 1 })
+  // player.play()
+  player.renderOnce(5)
+})
 </script>
-
 <template>
   <Motion :width="900" :height="600" id="motion">
     <!-- <RouterView /> -->

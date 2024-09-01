@@ -1,11 +1,15 @@
-export async function exportToVideo(selector: string, player: any, duration: number, fps: number) {
+import { Player } from "@vue-motion/core"
+
+export async function exportToVideo(selector: string, player: Player, duration: number, fps: number) {
   const motion = document.querySelector(selector) as SVGElement
 
   await fetch('/api/clear')
   const uid = await (await fetch('/api/uid')).text()
   let index = 0
+  player.pause()
   for (let f = 0; f < duration; f += 1 / fps) {
-    player.elapsed.value = f
+    console.log(f)
+    player.renderOnce(f)
     const svg = new XMLSerializer().serializeToString(motion as SVGElement);
     const blob = new Blob([svg], { type: 'image/svg+xml' })
     const canvas = document.createElement('canvas')

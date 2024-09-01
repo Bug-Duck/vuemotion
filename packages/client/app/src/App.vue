@@ -23,12 +23,12 @@
 import { onMounted, ref } from 'vue';
 import WidgetList from './components/WidgetList.vue'
 import TimeLine from './components/TimeLine.vue'
-import { usePlayer } from '@vue-motion/core'
+import { Player, usePlayer } from '@vue-motion/core'
 /** @ts-ignore */
 import Animation from 'virtual:user-main'
 import { exportToVideo } from './export-front'
 
-let player: { play: () => void; };
+let player: Player
 
 onMounted(() => {
   player = usePlayer()
