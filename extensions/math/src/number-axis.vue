@@ -1,46 +1,54 @@
 <script setup lang="ts">
-import { Widget, Line, Polygon } from '@vue-motion/lib'
+import { Line, Polygon, Text, widget } from '@vue-motion/lib'
 import { defineWidget } from '@vue-motion/core'
-import type { NumberAxis } from './number-axis'
-import type { Widget } from '@vue-motion/lib'
+import type { WidgetOptions } from '@vue-motion/lib'
 
-export interface NumberAxis extends Widget {
+export interface NumberAxisOptions extends WidgetOptions {
   interval?: number
   trend?: (count: number) => string
   tip?: string // Arrow tip color or 'none'
   trim?: string // Arrow trim color or 'none'
   fontColor?: string // Font color
   fontSize?: number // Font size
-  range: [number, number]
+  ranges: [number, number]
 }
 
-const props = defineProps<numberAxis>()
-const options = defineWidget<numberAxis>(props)
-
-const interval = props.interval ?? 50
-
-function range(start: number, end: number, step = 1) {
-  const array = []
-  for (let i = start; i < end; i += step) {
-    array.push(i)
-  }
-  return array
-}
+const props = defineProps<NumberAxisOptions>()
+const options = defineWidget<NumberAxisOptions>(props)
 </script>
 
 <template>
-  <Widget :scale-x="options.scaleX" :scale-y="options.scaleY" :rotation="options.rotation" :x="options.x" :y="options.y">
-    <!-- <line :x1="options.range[0] * interval" :x2="options.range[1] * interval" :y1="0" :y2="0" :stroke="options.trim ?? 'white'" :stroke-width="5"></line>
-    <polygon points="15,0 0,20 0,-20" :fill="options.trim ?? 'white'" :transform="`translate(${options.range[1] * interval}, 0)`"></polygon>
-    <line y1="5" y2="-5" v-for=""></line> -->
-    <Line :from="[props.range[0] * interval, 0]" :to="[props.range[1] * interval, 0]" :border="options.trim ?? 'white'" />
+  <g v-bind="widget(options)">
+    <Line
+      :from="[options.ranges[0] * (options.interval ?? 100), 0]"
+      :to="[options.ranges[1] * (options.interval ?? 100), 0]" 
+      :border-color="trim ?? 'white'"
+    />
+    <Line v-for="i in Math.abs(options.ranges[1] - options.ranges[0]) + 1"
+      :from="[i * (options.interval ?? 100), -10]"
+      :to="[i * (options.interval ?? 100), 10]"
+      :border-color="trim ?? 'white'"
+      :x="(options.ranges[0] - 1) * (options.interval ?? 100)"
+    />
+    <Text v-for="i in Math.abs(options.ranges[1] - options.ranges[0]) + 1"
+      border-color="none"
+      :fill-color="options.fontColor ?? 'white'"
+      :x="(options.ranges[0] - 1 + i) * (options.interval ?? 100)"
+      :y="20"
+      :rotation="-(options.rotation!?? 0)"
+      :align="'start'"
+      :font-size="20"
+    >{{ (options.trend ?? (x => x.toString()))(i + options.ranges[0] - 1) }}</Text>
     <Polygon
       :points="[
-        [15 + props.range[1] * interval, 0],
-        [props.range[1] * interval, 20],
-        [props.range[1] * interval, -20],
-      ]" :fill="options.tip ?? 'white'" :border="options.tip ?? 'white'"
+        [0, -10],
+        [0, 10],
+        [Math.sqrt(300), 0]
+      ]"
+      :border-color="options.tip ?? 'white'"
+      :fill-color="options.tip ?? 'white'"
+      :x="options.ranges[1] * (options.interval ?? 100)"
+      :y="0"
     />
-    <Line v-for="i in range(...props.range)" :key="i" :from="[i * interval, 10]" :to="[i * interval, -10]" />
-  </Widget>
+  </g>
 </template>

@@ -12,6 +12,7 @@
     "@vue-motion/core": "workspace:*",
     "@vue-motion/export": "workspace:^",
     "@vue-motion/extension-ui": "workspace:*",
+    "@vue-motion/extension-math": "workspace:*",
     "@vue-motion/lib": "workspace:*",
     "vue": "^3.4.37",
     "vue-router": "^4.4.3"

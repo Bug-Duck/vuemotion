@@ -1,1 +1,6 @@
-export default {};
+export { default as MathFunction } from './math-function.vue'
+export type { MathFunctionOptions } from './math-function.vue'
+export { default as NumberAxis } from './number-axis.vue'
+export type { NumberAxisOptions } from './number-axis.vue'
+export { default as NumberPlane } from './number-plane.vue'
+export type { NumberPlaneOptions } from './number-plane.vue'

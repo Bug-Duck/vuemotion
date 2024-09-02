@@ -1,20 +1,20 @@
 <script setup lang="ts">
 import { watch } from 'vue'
-import { Widget } from '@vue-motion/lib'
+import { Path, figure, FigureOptions } from '@vue-motion/lib'
 import { defineWidget } from '@vue-motion/core'
-import type { MathFunction } from './math-function'
+// import type { MathFunction } from './math-function'
 
-export interface MathFunction extends Widget {
+export interface MathFunctionOptions extends FigureOptions {
   fn: (x: number) => number
   domain: [number, number]
-  range?: [number, number]
+  ranges?: [number, number]
   divisionX?: number
   divisionY?: number
   color?: string
   width?: number
 }
 
-const props = defineProps<MathFunction>()
+const props = defineProps<MathFunctionOptions>()
 const options = defineWidget(props)
 
 function mathFunctionToSVGPath(mathFunc: (x: number) => number, xRange: [number, number], step = 0.1, divisionX = 100, divisionY = 100) {
@@ -46,10 +46,5 @@ watch(props, () => {
 </script>
 
 <template>
-  <Widget :scale-x="options.scaleX" :scale-y="options.scaleY" :rotation="options.rotation" :x="options.x" :y="options.y">
-    <path
-      :d="path" :stroke="options.color ?? 'rgba(135,206,250,1)'"
-      :stroke-width="options.width ?? '5'"
-    />
-  </Widget>
+  <Path :d="path" v-bind="figure(options)"></Path>
 </template>

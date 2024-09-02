@@ -452,6 +452,9 @@ importers:
       '@vue-motion/export':
         specifier: workspace:^
         version: link:../packages/export
+      '@vue-motion/extension-math':
+        specifier: workspace:*
+        version: link:../extensions/math
       '@vue-motion/extension-ui':
         specifier: workspace:*
         version: link:../extensions/ui
