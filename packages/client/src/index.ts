@@ -129,6 +129,7 @@ export const client = Clerc.create()
   .on('export', async (context) => {
     await build({
       root: resolve(__dirname, '../app'),
+      publicDir: resolve(process.cwd() + '/public'),
       plugins: [
         vue({
           include: ['**/*.vue'],

@@ -1,4 +1,4 @@
-import puppeteer from 'puppeteer'
+import puppeteer, { ElementFor, ElementHandle } from 'puppeteer'
 import { transformToImage } from './image-process'
 import { createVideoFromImages } from './video-process'
 import express from 'express'
@@ -32,16 +32,20 @@ export default async function (options: ExportOptions) {
   await page.goto('http://localhost:23333', {
     waitUntil: 'networkidle2'
   })
+  page.evaluate(() => {
+    (window as any).isExporting = true
+  })
 
   let index = 0
 
   for (let i = 0; i < options.duration; i += 1 / options.fps) {
     // await new Promise((resolve) => setTimeout(resolve, 1 / options.fps * 1000))
     await page.click('body')
+    await page.waitForSelector('#motion')
     if (!fs.existsSync(resolve('.vuemotion'))) {
       await new Promise((res) => fs.mkdir(resolve('.vuemotion'), res))
     }
-    await transformToImage(resolve(process.cwd(), './.vuemotion', `image${index}.png`), page, index)
+    await transformToImage(resolve(process.cwd(), './.vuemotion', `image${index}.jpeg`), (await page.$('#motion')) as ElementHandle<ElementFor<'svg'>>, index)
     index += 1
     // cpd.send('Debugger.resume')
   }
