@@ -1,7 +1,7 @@
 {
   "name": "@vue-motion/client",
   "type": "module",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "The components and hooks of vue-motion",
   "author": "BugDuck Team",
   "license": "Apache-2.0",
@@ -46,5 +46,6 @@
   },
   "bin": {
     "vuemotion": "./dist/index.js"
-  }
+  },
+  "workspaces": ["./app"]
 }
