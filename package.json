@@ -18,7 +18,7 @@
     "test": "pnpm run --filter=* test",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "pub:core": "pnpm run build:core && pnpm run --filter=./packages/* pub"
+    "pub:core": "pnpm run build:core && pnpm run --filter=./packages/* --sort pub"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.26.0",
