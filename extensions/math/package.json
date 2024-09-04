@@ -29,6 +29,7 @@
   "dependencies": {
     "@vue-motion/core": "workspace:*",
     "@vue-motion/lib": "workspace:*",
+    "mathjax-full": "^3.2.2",
     "vue": "^3.4.26"
   },
   "devDependencies": {

@@ -6,9 +6,8 @@
       </div>
       <div class="flex w-3/4 flex-col h-full">
         <div class="flex h-2/3 border-b-2">
-          <button @click="exports()">Export</button>
           <div class="w-full flex justify-center items-center">
-            <Animation class="h-full justify-center self-center flex"/>
+            <Animation class="justify-center self-center flex"/>
           </div>
         </div>
         <div class="flex h-1/3 overflow-x-scroll">
@@ -26,7 +25,6 @@ import TimeLine from './components/TimeLine.vue'
 import { Player, usePlayer } from '@vue-motion/core'
 /** @ts-ignore */
 import Animation from 'virtual:user-main'
-import { exportToVideo } from './export-front'
 
 let player: Player
 
@@ -34,10 +32,6 @@ onMounted(() => {
   player = usePlayer()
   player.play()
 })
-
-function exports() {
-  exportToVideo('#motion', player, 2, 90)
-}
 
 const list = ref([
   {

@@ -14,17 +14,17 @@ export interface Widget {
   range?: Range
 }
 
-export function defineWidget<T extends Widget>(props: T, root?: SVGElement) {
+export function defineWidget<T extends Widget>(props: T, root?: SVGElement): Reactive<T> {
   const widget = inject<T>(props.wid as string)
   if (widget === undefined) {
-    return props
+    return reactive(props)
   }
   Object.assign(widget, props)
   onMounted(() => {
     widget.element = root ?? getCurrentInstance()!.proxy!.$el.parentElement
     widget.range = widget.element!.getBoundingClientRect()
   })
-  return widget
+  return reactive(widget)
 }
 
 export function useWidget<T extends Widget>(wid: string) {

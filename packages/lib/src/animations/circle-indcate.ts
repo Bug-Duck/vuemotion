@@ -22,7 +22,7 @@ export const circleIndicate = (defineAnimation<{
     context.circle!.style.opacity = interpolator(0, 1, 1 - progress).toString()
     context.circle!.removeAttribute('transform')
     context.circle!.setAttribute('transform', `scale(${interpolator(0.5, context.scale || 1.5, 1 - progress)})`)
-    // console.log(context.circle);
+    // 
   }
   if (progress >= 0.7 && progress <= 1) {
     context.circle!.style.opacity = interpolator(0, 1, 1 - progress).toString()

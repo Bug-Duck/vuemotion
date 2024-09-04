@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { watch } from 'vue'
+import { watch, ref } from 'vue'
 import { Path, figure, FigureOptions } from '@vue-motion/lib'
 import { defineWidget } from '@vue-motion/core'
+import { Grownable } from '@vue-motion/lib'
 // import type { MathFunction } from './math-function'
 
-export interface MathFunctionOptions extends FigureOptions {
+export interface MathFunctionOptions extends FigureOptions, Grownable {
   fn: (x: number) => number
+  ranges: [number, number]
   domain: [number, number]
-  ranges?: [number, number]
   divisionX?: number
   divisionY?: number
   color?: string
@@ -17,34 +18,39 @@ export interface MathFunctionOptions extends FigureOptions {
 const props = defineProps<MathFunctionOptions>()
 const options = defineWidget(props)
 
-function mathFunctionToSVGPath(mathFunc: (x: number) => number, xRange: [number, number], step = 0.1, divisionX = 100, divisionY = 100) {
-  let path = ''
-  let firstPoint = true
+function generateSvgPath(mathFunc: (x: number) => number, ranges: {
+  x: [number, number],
+  y: [number, number]
+}, scaleX: number, scaleY: number) {
+  const { x: [xMin, xMax], y: [yMax] } = ranges;
+  const path = [];
+  const step = (xMax - xMin) / 100; // 分为 100 份
 
-  for (let x = xRange[0]; x <= xRange[1]; x += step) {
-    const y = mathFunc(x)
-
-    const svgX = x * divisionX + 200
-    const svgY = -y * divisionY + 200
-
-    if (firstPoint) {
-      path += `M ${svgX} ${svgY}`
-      firstPoint = false
-    }
-    else {
-      path += ` L ${svgX} ${svgY}`
-    }
+  for (let x = xMin; x <= xMax; x += step) {
+    const y = mathFunc(x);
+    // 将数学函数的值转换为SVG坐标
+    const svgX = (x - xMin) * scaleX;
+    const svgY = (yMax - y) * scaleY; // 反转 y 轴以符合 SVG 坐标系统
+    path.push(`${x === xMin ? 'M' : 'L'} ${svgX} ${svgY}`);
   }
 
-  return path
+  return path.join(' ');
 }
 
-let path = mathFunctionToSVGPath(props.fn, props.domain, 0.1, props.divisionX, props.divisionY)
+let path = ref('')
+
 watch(props, () => {
-  path = mathFunctionToSVGPath(props.fn, props.domain, 0.1, props.divisionX, props.divisionY)
+  path.value = generateSvgPath(options.fn, {
+    x: options.ranges,
+    y: options.domain ?? [Infinity, Infinity]
+  }, options.divisionX ?? 100, options.divisionY ?? 100)
+}, {
+  immediate: true
 })
 </script>
 
 <template>
-  <Path :d="path" v-bind="figure(options)"></Path>
+  <g v-bind="figure(options)">
+    <Path :d="path"></Path>
+  </g>
 </template>

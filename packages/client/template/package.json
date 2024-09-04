@@ -4,9 +4,8 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vuemotion start",
-    "build": "vue-tsc -b && vite build",
-    "preview": "vite preview"
+    "start": "vuemotion start",
+    "export": "vuemotion export"
   },
   "dependencies": {
     "@vue-motion/core": "^0.0.1",

@@ -42,22 +42,10 @@ export class AnimationManager<T extends object> {
 
   constructor(public target: T, elapsed: Ref<number>) {
     watch(elapsed, <A extends object>(elapsed: number) => {
-      console.log(elapsed)
-      let stack = 0
-      this.animations.forEach((animation, index) => {
-        if (elapsed >= stack && elapsed < stack + animation.duration) {
-          this.index = index
-          console.log(index)
-        }
-        else {
-          stack += animation.duration
-        }
-      })
-      if (this.animations.length === 0) {
-        return
-      }
-      const animation: AnimationInstance<A, T> = this.animations[this.index]
-      if (animation.startAt === undefined) {
+      
+      if (this.animations.length === 0) return
+      const animation: AnimationInstance<A, T> = this.animations[0]
+      if (typeof animation.startAt === 'undefined') {
         animation.startAt = elapsed
         animation.animation(animation.context, 0)
       }
@@ -65,8 +53,8 @@ export class AnimationManager<T extends object> {
         const progress = (elapsed - animation.startAt) / (animation.duration ?? (elapsed - animation.startAt))
         animation.animation(animation.context, animation.by(Math.min(progress, 1)))
         if (progress >= 1) {
-          // this.animations.shift()
-          this.index++
+          this.animations.shift()
+          // this.index++
         }
       }
     })

@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Line, WidgetOptions, Text } from '@vue-motion/lib';
+import { Line, WidgetOptions, Text, Grownable } from '@vue-motion/lib';
 import { widget } from '@vue-motion/lib'
 import { defineWidget } from '@vue-motion/core';
-import { NumberAxis } from '.';
+import { NumberAxis } from '.'
 
-export interface NumberPlaneOptions extends WidgetOptions {
+export interface NumberPlaneOptions extends WidgetOptions, Grownable {
   intervalX?: number
   trendX?: (count: number) => string
   tipX?: string // Arrow tip color or 'none'
@@ -26,6 +26,7 @@ export interface NumberPlaneOptions extends WidgetOptions {
 
 const props = defineProps<NumberPlaneOptions>()
 const options = defineWidget<NumberPlaneOptions>(props)
+
 </script>
 
 <template>
@@ -38,6 +39,7 @@ const options = defineWidget<NumberPlaneOptions>(props)
       :font-color="options.fontColorX ?? 'white'"
       :font-size="options.fontSizeX"
       :ranges="options.rangesX"
+      :progress="options.progress ?? 1"
     />
     <number-axis
       :interval="options.intervalY ?? 100"
@@ -48,6 +50,7 @@ const options = defineWidget<NumberPlaneOptions>(props)
       :ranges="options.rangesY"
       :rotation="-90"
       :trend="(x => x === 0 ? '' : (options.trendY ?? (x => x.toString()))(x))"
+      :progress="options.progress ?? 1"
     />
     <Text
       :fill-color="options.fontColorX ?? 'white'"
@@ -61,6 +64,7 @@ const options = defineWidget<NumberPlaneOptions>(props)
       :border-color="options.grid ?? 'white'"
       :border-width="options.gridWidth ?? 1"
       :x="(options.rangesX[0] - 1) * (options.intervalX ?? 100)"
+      :progress="options.progress ?? 1"
     />
     <Line v-for="i in Math.abs(options.rangesY[1] - options.rangesY[0]) + 1"
       :from="[options.rangesX[0] * (options.intervalX ?? 100), i * (options.intervalY ?? 100)]"
@@ -68,6 +72,7 @@ const options = defineWidget<NumberPlaneOptions>(props)
       :border-color="options.grid ?? 'white'"
       :border-width="options.gridWidth ?? 1"
       :y="(options.rangesY[0] - 1) * (options.intervalY ?? 100)"
+      :progress="options.progress ?? 1"
     />
   </g>
 </template>
