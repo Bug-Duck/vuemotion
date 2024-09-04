@@ -39,9 +39,9 @@ export default async function (options: ExportOptions) {
     // await new Promise((resolve) => setTimeout(resolve, 1 / options.fps * 1000))
     await page.click('body')
     if (!fs.existsSync(resolve('.vuemotion'))) {
-      fs.mkdirSync(resolve('.vuemotion'))
+      await new Promise((res) => fs.mkdir(resolve('.vuemotion'), res))
     }
-    await transformToImage(resolve(process.cwd(), './.vuemotion', `image${index}.png`), page)
+    await transformToImage(resolve(process.cwd(), './.vuemotion', `image${index}.png`), page, index)
     index += 1
     // cpd.send('Debugger.resume')
   }

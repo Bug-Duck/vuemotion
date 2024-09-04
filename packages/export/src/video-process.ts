@@ -1,25 +1,27 @@
-import path from "path"
-import { exec } from "child_process";
+import path, { resolve } from "path"
+import ffmpeg from "fluent-ffmpeg"
 
-export function createVideoFromImages(inputDir: string, outputVideoPath: string, frameRate = 1, imagePattern = 'image%d.png') {
-  return new Promise((resolve, reject) => {
-    const inputPath = path.join(inputDir, imagePattern);
-
-    const ffmpegCommand = `ffmpeg -r ${frameRate} -i ${inputPath} -c:v libx264 -pix_fmt yuv420p ${outputVideoPath}`;
-
-    exec(ffmpegCommand, (error, stdout, stderr) => {
-      if (error) {
-        console.error(`Failed: ${error.message}`);
-        reject(new Error(`Failed: ${error.message}`));
-        return;
-      }
-      if (stderr) {
-        console.error(`FFmpeg Error: ${stderr}`);
-        reject(new Error(`FFmpeg Error: ${stderr}`));
-        return;
-      }
-      console.log(`The video is at: ${outputVideoPath}`);
-      resolve(null)
-    });
-  });
+export async function createVideoFromImages(inputDir: string, outputVideoPath: string, frameRate = 60) {
+  const inputPath = path.join(resolve(inputDir + '/image%d.png'));
+  await new Promise((resolve, reject) => {
+    ffmpeg()
+      .input(inputPath)
+      .inputOptions([`-framerate ${frameRate}`])
+      .on('start', (commandLine) => {
+        console.log('Spawned FFmpeg with command:', commandLine);
+      })
+      .on('progress', (progress) => {
+        console.log(`Processing: ${progress.frames} frames done`);
+      })
+      .on('error', (err) => {
+        console.error('Error:', err.message)
+        reject(err)
+      })
+      .on('end', () => {
+        console.log('Video creation completed successfully!')
+        resolve(null)
+      })
+      .output(outputVideoPath)
+      .run()
+  })
 }

@@ -13,7 +13,6 @@ import virtualRouterModulePlugin from './router-resolver';
 import virtualPlayerModulePlugin from './player-resolver';
 
 const __filename = fileURLToPath(import.meta.url);
-
 const __dirname = dirname(__filename);
 
 
