@@ -21,14 +21,14 @@ export function usePlayer() {
   const fps = inject('fps') as number
   const playing = ref(false)
 
-  if (studio && (window as any).isExporting === true) {
+  if (studio) {
     document.addEventListener('click', () => {
       elapsed.value += 1 / fps
     })
   }
 
   function play() {
-    if (studio && (window as any).isExporting === true)
+    if (studio)
       return console.log('You are in the studio mode, you are not supposed to call this function!')
     playing.value = true
     elapsed.value = performance.now() / 1000 - startAt
