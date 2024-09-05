@@ -19,19 +19,12 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue';
+import { ref } from 'vue';
 import WidgetList from './components/WidgetList.vue'
 import TimeLine from './components/TimeLine.vue'
-import { Player, usePlayer } from '@vue-motion/core'
+// import { Player, usePlayer } from '@vue-motion/core'
 /** @ts-ignore */
 import Animation from 'virtual:user-main'
-
-let player: Player
-
-onMounted(() => {
-  player = usePlayer()
-  player.play()
-})
 
 const list = ref([
   {

@@ -1,7 +1,7 @@
 {
   "name": "@vue-motion/client",
   "type": "module",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "The components and hooks of vue-motion",
   "author": "BugDuck Team",
   "license": "Apache-2.0",
@@ -17,8 +17,7 @@
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
-    "pub": "pnpm publish",
-    "postinstall": "npm install --prefix ./app"
+    "pub": "pnpm publish"
   },
   "publishConfig": {
     "access": "public"
