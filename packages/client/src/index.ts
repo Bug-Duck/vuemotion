@@ -36,7 +36,7 @@ function copyFolderSync(source: string, target: string) {
 }
 
 export const client = Clerc.create()
-  .name('VueMotion-Cli')
+  .name('vuemotion')
   .scriptName('vuemotion')
   .description('VueMotion CLI')
   .version('0.0.1')
@@ -70,7 +70,7 @@ export const client = Clerc.create()
   })
   .on('start', async (context) => {
     const server = await createServer({
-      root: resolve(__dirname, '../app'),
+      root: resolve(process.cwd() + '/node_modules/@vue-motion/app'),
       publicDir: process.cwd() + '/public',
       server: {
         open: true,
