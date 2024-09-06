@@ -1,4 +1,4 @@
-import puppeteer, { ElementFor, ElementHandle } from 'puppeteer'
+import puppeteer from 'puppeteer'
 import { transformToImage } from './image-process'
 import { createVideoFromImages } from './video-process'
 import express from 'express'
