@@ -19,8 +19,9 @@ export function defineAnimation<
 }
 
 export function exec<T extends object>(callback: (widget: T) => void) {
-  return defineAnimation((context) => {
-    callback(context.target as T)
+  return defineAnimation((context, progress) => {
+    if (progress === 0)
+      callback(context.target as T)
   })
 }
 
@@ -74,7 +75,7 @@ export class AnimationManager<T extends object> {
   }
 
   exec(callback: (widget: T) => void) {
-    this.animate(exec(callback))
+    this.animate(exec(callback), { duration: 0 })
 
     return this
   }
