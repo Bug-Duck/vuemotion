@@ -1,7 +1,7 @@
 {
   "name": "@vue-motion/client",
   "type": "module",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "The components and hooks of vue-motion",
   "author": "BugDuck Team",
   "license": "Apache-2.0",

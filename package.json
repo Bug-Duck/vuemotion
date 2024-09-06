@@ -10,7 +10,7 @@
     "SVG"
   ],
   "scripts": {
-    "dev:core": "pnpm run --parallel --filter=./packages/* dev",
+    "dev:core": "pnpm run --parallel --filter=./packages/{core,lib,utils,export,client} dev",
     "dev:ext": "pnpm run --parallel --filter=./extensions/* dev",
     "build:core": "pnpm run --parallel --filter=./packages/{core,lib,utils,export} build",
     "build:ext": "pnpm run --parallel --filter=./extensions/* build",
