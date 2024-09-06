@@ -1,5 +1,5 @@
 <template>
-  <div class="h-12 w-full border-b border-l select-none hover:bg-gray-300" @click="toggleOpen">
+  <div class="h-6 w-full border-b border-l select-none hover:bg-gray-300" @click="toggleOpen">
     <div class="mx-4 items-center flex flex-row h-full">
       <div class="mx-2">
         <svg width="10" height="10" v-if="!open">
@@ -10,7 +10,7 @@
         </svg>
       </div>
       <!-- <img :src="icon" :alt="name" class="w-6 h-6 mx-2" /> -->
-      <div class="text-2xl font-mono">
+      <div class="text-xl font-mono">
         {{ name }}
       </div>
     </div>
