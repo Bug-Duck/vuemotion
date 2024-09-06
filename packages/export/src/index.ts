@@ -32,20 +32,18 @@ export default async function (options: ExportOptions) {
   await page.goto('http://localhost:23333', {
     waitUntil: 'networkidle2'
   })
-  page.evaluate(() => {
-    (window as any).isExporting = true
-  })
 
   let index = 0
 
   for (let i = 0; i < options.duration; i += 1 / options.fps) {
     // await new Promise((resolve) => setTimeout(resolve, 1 / options.fps * 1000))
     await page.click('body')
-    await page.waitForSelector('#motion')
+    const element = await page.waitForSelector('#motion')
+    await element?.click()
     if (!fs.existsSync(resolve('.vuemotion'))) {
       await new Promise((res) => fs.mkdir(resolve('.vuemotion'), res))
     }
-    await transformToImage(resolve(process.cwd(), './.vuemotion', `image${index}.jpeg`), (await page.$('#motion')) as ElementHandle<ElementFor<'svg'>>, index)
+    await transformToImage(resolve(process.cwd(), './.vuemotion', `image${index}.jpeg`), page, index)
     index += 1
     // cpd.send('Debugger.resume')
   }
