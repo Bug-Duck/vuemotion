@@ -7,10 +7,7 @@ import { fileURLToPath } from 'node:url';
 import { createServer, build } from 'vite'
 import exportOut from '@vue-motion/export'
 import vue from '@vitejs/plugin-vue'
-import virtualModulePlugin from './resolver';
-import virtualRouterModulePlugin from './router-resolver';
-// import { listen } from './server';
-import virtualPlayerModulePlugin from './player-resolver';
+import resolver from './resolver'
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -54,48 +51,35 @@ export const client = Clerc.create()
       entry: {
         description: 'Specify the entrypoint for the project',
         type: String,
-        default: 'src/App.vue'
+        default: '/src/App.vue'
       },
       router: {
         description: 'Specify the router for the project',
         type: String,
-        default: 'src/router.ts'
+        default: '/src/router.ts'
       },
       player: {
         description: 'Specify the player for the project',
         type: String,
-        default: 'src/player.ts'
+        default: '/src/player.ts'
       }
     }
   })
   .on('start', async (context) => {
+    // console.log(resolve(process.cwd() + '/node_modules/@vue-motion/app'))
     const server = await createServer({
-      root: resolve(process.cwd() + '/node_modules/@vue-motion/app'),
+      root: resolve(process.cwd()),
       publicDir: process.cwd() + '/public',
       server: {
-        open: true,
-        fs: {
-          allow: ['..']
-        },
-        proxy: {
-          '/api': {
-            target: 'http://localhost:12387',
-            changeOrigin: true,
-            rewrite: (path) => path.replace(/^\/api/, '')
-          }
-        }
+        open: true
       },
       plugins: [
-        vue({
-          include: ['**/*.vue'],
-        }),
-        virtualModulePlugin(resolve(process.cwd(), context.flags.entry)),
-        virtualRouterModulePlugin(resolve(process.cwd(), context.flags.router)),
-        virtualPlayerModulePlugin(resolve(process.cwd(), context.flags.player)),
+        vue(),
+        resolver(process.cwd() + '/src/App.vue')
       ],
       build: {
         outDir: resolve(process.cwd() + '/dist'),
-      }
+      },
     })
     await server.listen()
   })
@@ -128,15 +112,14 @@ export const client = Clerc.create()
   })
   .on('export', async (context) => {
     await build({
-      root: resolve(__dirname, '../app'),
+      root: resolve(process.cwd()),
+      base: '',
       publicDir: resolve(process.cwd() + '/public'),
       plugins: [
         vue({
           include: ['**/*.vue'],
         }),
-        virtualModulePlugin(resolve(process.cwd() + context.flags.entry)),
-        virtualRouterModulePlugin(resolve(process.cwd() + context.flags.router)),
-        virtualPlayerModulePlugin(resolve(process.cwd() + context.flags.player)),
+        resolver(process.cwd() + '/src/App.vue')
       ],
       build: {
         outDir: resolve(process.cwd() + '/dist'),
