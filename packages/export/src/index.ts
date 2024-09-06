@@ -36,10 +36,6 @@ export default async function (options: ExportOptions) {
   let index = 0
 
   for (let i = 0; i < options.duration; i += 1 / options.fps) {
-    // await new Promise((resolve) => setTimeout(resolve, 1 / options.fps * 1000))
-    await page.click('body')
-    const element = await page.waitForSelector('#motion')
-    await element?.click()
     if (!fs.existsSync(resolve('.vuemotion'))) {
       await new Promise((res) => fs.mkdir(resolve('.vuemotion'), res))
     }
