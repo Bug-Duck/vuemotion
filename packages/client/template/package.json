@@ -8,11 +8,11 @@
     "export": "vuemotion export"
   },
   "dependencies": {
-    "@vue-motion/core": "^0.2.0",
-    "@vue-motion/lib": "^0.2.0",
+    "@vue-motion/core": "^0.2.1",
+    "@vue-motion/lib": "^0.2.1",
     "vue": "^3.4.38",
     "vue-router": "^4.4.3",
-    "@vue-motion/app": "^0.2.0"
+    "@vue-motion/app": "^0.2.1"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.2",
