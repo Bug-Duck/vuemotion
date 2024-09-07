@@ -34,7 +34,7 @@ onMounted(async () => {
     <!-- <RouterView /> -->
     <Mask :width="100" :height="100">
       <template #mask>
-        <Arc :radius="50" :fill-color="'red'" />
+        <Arc :radius="50" :fill-color="'none'" :border-color="'red'" />
       </template>
       <template #target>
         <Text wid="text1">

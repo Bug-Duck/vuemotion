@@ -2,6 +2,7 @@
   "name": "vue-motion",
   "type": "module",
   "version": "0.0.1",
+  "packageManager": "pnpm@9.1.0",
   "description": "The modern font-end SVG animation engine.",
   "author": "BugDuck Team",
   "license": "Apache-2.0",
@@ -27,6 +28,14 @@
     "tsup": "^8.2.4",
     "typedoc": "^0.26.6",
     "typescript": "^5.5.4",
-    "vite": "^5.4.2"
+    "vite": "^5.4.2",
+    "@changesets/cli": "^2.27.1",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.2",
+    "pnpm": "^9.1.0",
+    "rimraf": "^3.0.2",
+    "simple-git-hooks": "^2.11.1",
+    "taze": "^0.13.8",
+    "vitest": "^1.6.0"
   }
 }
