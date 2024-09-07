@@ -1,10 +1,6 @@
 <template>
   <div class="w-full h-full">
-    <Card class="w-full h-full">
-      <template #content>
-        www
-      </template>
-    </Card>
+    w
   </div>
 </template>
 
