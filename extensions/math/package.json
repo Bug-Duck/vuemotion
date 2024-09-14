@@ -27,9 +27,10 @@
     "access": "public"
   },
   "dependencies": {
+    "@types/katex": "^0.16.7",
     "@vue-motion/core": "workspace:*",
     "@vue-motion/lib": "workspace:*",
-    "mathjax-full": "^3.2.2",
+    "katex": "^0.16.11",
     "vue": "^3.4.26"
   },
   "devDependencies": {
