@@ -18,7 +18,7 @@ const options = defineWidget(props)
 </script>
 
 <template>
-  <text
+  <rect
     v-bind="figure(options)"
     :width="options.width"
     :height="options.height"
