@@ -1,5 +1,5 @@
-import { createApp } from "vue";
-import App from "@vue-motion/app/src/App.vue"
+import { createApp } from 'vue'
+import App from '@vue-motion/app/src/App.vue'
 import '@vue-motion/app/src/out.css'
 import player from './player'
 import router from './router'

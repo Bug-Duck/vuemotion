@@ -1,4 +1,4 @@
-import { Page } from 'puppeteer'
+import type { Page } from 'puppeteer'
 
 export async function transformToImage(path: string, page: Page, index = 0) {
   await page.click('body')

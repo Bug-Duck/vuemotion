@@ -15,8 +15,8 @@ export default defineConfig({
       external: ['vue'],
     },
     commonjsOptions: {
-      transformMixedEsModules: true
-    }
+      transformMixedEsModules: true,
+    },
   },
   plugins: [
     vue(),

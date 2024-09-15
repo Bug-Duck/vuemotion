@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineWidget } from '@vue-motion/core'
-import { widget, type WidgetOptions } from './widget'
+import { type WidgetOptions, widget } from './widget'
 
 export interface MaskOptions extends WidgetOptions {
   width: number
@@ -17,7 +17,7 @@ const id = props.wid || `mask-${Math.random().toString(36).substring(2, 9)}`
   <mask :id="id" :x="options.x" :y="options.y" :width="options.width" :height="options.height">
     <slot name="mask" />
   </mask>
-  <g v-bind="widget(options)" :mask="`url(#${id})`" >
-    <slot name="target"/>
+  <g v-bind="widget(options)" :mask="`url(#${id})`">
+    <slot name="target" />
   </g>
 </template>

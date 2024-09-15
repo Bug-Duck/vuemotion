@@ -1,35 +1,35 @@
 #!/usr/bin/env node
 
-import { Clerc } from 'clerc'
 import fs from 'node:fs'
-import path, { dirname, resolve } from 'node:path';
-import { fileURLToPath } from 'node:url';
-import { createServer, build } from 'vite'
+import path, { dirname, resolve } from 'node:path'
+import { fileURLToPath } from 'node:url'
+import { Clerc } from 'clerc'
+import { build, createServer } from 'vite'
 import exportOut from '@vue-motion/export'
 import vue from '@vitejs/plugin-vue'
 import resolver from './resolver'
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
+const __filename = fileURLToPath(import.meta.url)
+const __dirname = dirname(__filename)
 
 function copyFolderSync(source: string, target: string) {
   if (!fs.existsSync(target)) {
-    fs.mkdirSync(target, { recursive: true });
+    fs.mkdirSync(target, { recursive: true })
   }
 
-  const items = fs.readdirSync(source, { withFileTypes: true });
+  const items = fs.readdirSync(source, { withFileTypes: true })
 
   items.forEach((item) => {
-    const sourcePath = path.join(source, item.name);
-    const targetPath = path.join(target, item.name);
+    const sourcePath = path.join(source, item.name)
+    const targetPath = path.join(target, item.name)
 
     if (item.isDirectory()) {
-      copyFolderSync(sourcePath, targetPath);
-    } else {
-      fs.copyFileSync(sourcePath, targetPath);
+      copyFolderSync(sourcePath, targetPath)
     }
-  });
+    else {
+      fs.copyFileSync(sourcePath, targetPath)
+    }
+  })
 }
 
 export const client = Clerc.create()
@@ -39,46 +39,46 @@ export const client = Clerc.create()
   .version('0.0.1')
   .command('create', 'Create a new VueMotion project', {
     parameters: [
-      '<project name>'
-    ]
+      '<project name>',
+    ],
   })
   .on('create', (context) => {
     fs.mkdirSync(context.parameters.projectName)
-    copyFolderSync(resolve(__dirname, '../template'), process.cwd() + '/' + context.parameters.projectName)
+    copyFolderSync(resolve(__dirname, '../template'), `${process.cwd()}/${context.parameters.projectName}`)
   })
   .command('start', 'Start the VueMotion project', {
     flags: {
       entry: {
         description: 'Specify the entrypoint for the project',
         type: String,
-        default: '/src/App.vue'
+        default: '/src/App.vue',
       },
       router: {
         description: 'Specify the router for the project',
         type: String,
-        default: '/src/router.ts'
+        default: '/src/router.ts',
       },
       player: {
         description: 'Specify the player for the project',
         type: String,
-        default: '/src/player.ts'
-      }
-    }
+        default: '/src/player.ts',
+      },
+    },
   })
   .on('start', async (context) => {
     // console.log(resolve(process.cwd() + '/node_modules/@vue-motion/app'))
     const server = await createServer({
       root: resolve(process.cwd()),
-      publicDir: process.cwd() + '/public',
+      publicDir: `${process.cwd()}/public`,
       server: {
-        open: true
+        open: true,
       },
       plugins: [
         vue(),
-        resolver(process.cwd() + '/src/App.vue')
+        resolver(`${process.cwd()}/src/App.vue`),
       ],
       build: {
-        outDir: resolve(process.cwd() + '/dist'),
+        outDir: resolve(`${process.cwd()}/dist`),
       },
     })
     await server.listen()
@@ -88,50 +88,50 @@ export const client = Clerc.create()
       entry: {
         description: 'Specify the entrypoint for the project',
         type: String,
-        default: '/src/App.vue'
+        default: '/src/App.vue',
       },
       router: {
         description: 'Specify the router for the project',
         type: String,
-        default: '/src/router.ts'
+        default: '/src/router.ts',
       },
       player: {
         description: 'Specify the player for the project',
         type: String,
-        default: '/src/player.ts'
+        default: '/src/player.ts',
       },
       fps: {
         description: 'Specify the FPS for the project',
         type: Number,
-        default: 60
-      }
+        default: 60,
+      },
     },
     parameters: [
-      '<duration>'
-    ]
+      '<duration>',
+    ],
   })
   .on('export', async (context) => {
     await build({
       root: resolve(process.cwd()),
       base: '',
-      publicDir: resolve(process.cwd() + '/public'),
+      publicDir: resolve(`${process.cwd()}/public`),
       plugins: [
         vue({
           include: ['**/*.vue'],
         }),
-        resolver(process.cwd() + '/src/App.vue')
+        resolver(`${process.cwd()}/src/App.vue`),
       ],
       build: {
-        outDir: resolve(process.cwd() + '/dist'),
+        outDir: resolve(`${process.cwd()}/dist`),
       },
     })
     await exportOut({
       outDir: resolve('./.vuemotion'),
-      input: resolve(process.cwd() + '/dist'),
-      inputFile: resolve(process.cwd() + '/dist/index.html'),
+      input: resolve(`${process.cwd()}/dist`),
+      inputFile: resolve(`${process.cwd()}/dist/index.html`),
       duration: Number(context.parameters.duration),
       fps: context.flags.fps,
     })
     process.exit()
   })
-  .parse() 
+  .parse()

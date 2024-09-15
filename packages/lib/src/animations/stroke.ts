@@ -1,6 +1,6 @@
-import { defineAnimation } from "@vue-motion/core"
-import { interpolator } from "../interpolator"
-import { HasOpacity } from "./fade"
+import { defineAnimation } from '@vue-motion/core'
+import { interpolator } from '../interpolator'
+import type { HasOpacity } from './fade'
 
 export interface Strokable {
   borderInterval: number[]
@@ -18,4 +18,3 @@ export const strokeFill = defineAnimation<{
   context.target.borderInterval = [interpolator(0, context.origin ?? 500, progress), interpolator(context.origin ?? 500, 0, progress)] as number[]
   context.target.opacity = interpolator(0, 1, progress)
 })
-

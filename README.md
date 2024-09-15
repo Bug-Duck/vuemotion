@@ -88,7 +88,7 @@ vue-motion's predecessor was the Newcar animation engine, but later the developm
     - [x] Window
     - [ ] Button
     - [ ] ProgressBar
-    - [ ] ... 
+    - [ ] ...
   - [ ] Lights
 - Functions
   - [x] Animation

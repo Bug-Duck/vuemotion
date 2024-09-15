@@ -1,7 +1,7 @@
 {
   "name": "@vue-motion/app",
-  "version": "0.2.1",
   "type": "module",
+  "version": "0.2.1",
   "scripts": {
     "dev": "vite",
     "dev:tw": "npx tailwindcss -i ./src/style.css -o ./src/output.css --watch",

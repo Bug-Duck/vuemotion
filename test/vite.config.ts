@@ -4,12 +4,12 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   root: '.',
   plugins: [
-    vue()
+    vue(),
   ],
   server: {
     headers: {
       'Cross-Origin-Opener-Policy': 'same-origin',
-      'Cross-Origin-Embedder-Policy': 'credentialless'
-    }
-  }
+      'Cross-Origin-Embedder-Policy': 'credentialless',
+    },
+  },
 })

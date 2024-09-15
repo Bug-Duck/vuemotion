@@ -1,6 +1,6 @@
-import { defineAnimation } from "@vue-motion/core";
-import { Scalable } from "./scale";
-import { interpolator } from "../interpolator";
+import { defineAnimation } from '@vue-motion/core'
+import { interpolator } from '../interpolator'
+import type { Scalable } from './scale'
 
 export const indicate = defineAnimation<object, Scalable>((context, progress) => {
   if (progress >= 0 && progress <= 0.3) {

@@ -25,7 +25,7 @@ export function exec<T extends object>(callback: (widget: T) => void) {
   })
 }
 
-export const delay = defineAnimation((context, progress) => {
+export const delay = defineAnimation((_context, _progress) => {
   // do nothing
 })
 
@@ -43,8 +43,8 @@ export class AnimationManager<T extends object> {
 
   constructor(public target: T, elapsed: Ref<number>) {
     watch(elapsed, <A extends object>(elapsed: number) => {
-      
-      if (this.animations.length === 0) return
+      if (this.animations.length === 0)
+        return
       const animation: AnimationInstance<A, T> = this.animations[0]
       if (typeof animation.startAt === 'undefined') {
         animation.startAt = elapsed

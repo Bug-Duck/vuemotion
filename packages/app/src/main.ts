@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
 import './out.css'
-import App from './App.vue'
 import PrimeVue from 'primevue/config'
 import Aura from '@primevue/themes/aura'
+import App from './App.vue'
 import 'primeicons/primeicons.css'
 // /**@ts-ignore */
 // import router from 'virtual:router'
@@ -15,7 +15,7 @@ createApp(App).use(PrimeVue, {
     options: {
       prefix: 'p',
       darkModeSelector: 'system',
-      cssLayer: false
-    }
-  }
+      cssLayer: false,
+    },
+  },
 }).mount('#app')

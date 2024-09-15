@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { defineWidget } from '@vue-motion/core'
-import type { Grownable, WidgetOptions } from '@vue-motion/lib'
+import type { Growable, WidgetOptions } from '@vue-motion/lib'
 import { widget } from '@vue-motion/lib'
 
-export interface WindowOptions extends WidgetOptions, Grownable {
+export interface WindowOptions extends WidgetOptions, Growable {
   width: number
   height: number
   title?: string

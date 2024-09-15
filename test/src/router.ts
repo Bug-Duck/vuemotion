@@ -1,4 +1,4 @@
-import { createWebHistory, createRouter } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 
 export const router = createRouter({
   history: createWebHistory(),
@@ -6,7 +6,7 @@ export const router = createRouter({
     {
       path: '/',
       name: 'Home',
-      component: () => import('./Scene1.vue')
+      component: () => import('./Scene1.vue'),
     },
-   ]
+  ],
 })

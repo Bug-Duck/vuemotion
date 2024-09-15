@@ -14,6 +14,9 @@
     }
   },
   "types": "./dist/index.d.ts",
+  "bin": {
+    "vuemotion": "./dist/index.js"
+  },
   "scripts": {
     "build": "tsup",
     "dev": "tsup --watch",
@@ -45,9 +48,6 @@
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.2",
     "vite-plugin-dts": "^3.9.1"
-  },
-  "bin": {
-    "vuemotion": "./dist/index.js"
   },
   "workspaces": [
     "./app"

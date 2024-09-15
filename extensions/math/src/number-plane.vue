@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { Line, WidgetOptions, Text, Grownable } from '@vue-motion/lib';
-import { widget } from '@vue-motion/lib'
-import { defineWidget } from '@vue-motion/core';
+import type { Growable, WidgetOptions } from '@vue-motion/lib'
+import { Line, Text, widget } from '@vue-motion/lib'
+import { defineWidget } from '@vue-motion/core'
 import { NumberAxis } from '.'
 
-export interface NumberPlaneOptions extends WidgetOptions, Grownable {
+export interface NumberPlaneOptions extends WidgetOptions, Growable {
   intervalX?: number
   trendX?: (count: number) => string
   tipX?: string // Arrow tip color or 'none'
@@ -26,12 +26,11 @@ export interface NumberPlaneOptions extends WidgetOptions, Grownable {
 
 const props = defineProps<NumberPlaneOptions>()
 const options = defineWidget<NumberPlaneOptions>(props)
-
 </script>
 
 <template>
   <g v-bind="widget(options)">
-    <number-axis
+    <NumberAxis
       :interval="options.intervalX ?? 100"
       :trend="(x => x === 0 ? '' : (options.trendY ?? (x => x.toString()))(x))"
       :tip="options.tipX ?? 'white'"
@@ -41,7 +40,7 @@ const options = defineWidget<NumberPlaneOptions>(props)
       :ranges="options.rangesX"
       :progress="options.progress ?? 1"
     />
-    <number-axis
+    <NumberAxis
       :interval="options.intervalY ?? 100"
       :tip="options.tipY ?? 'white'"
       :trim="options.trimY ?? 'white'"
@@ -57,8 +56,11 @@ const options = defineWidget<NumberPlaneOptions>(props)
       :font-size="20"
       :x="20"
       :y="20"
-    >0</Text>
-    <Line v-for="i in Math.abs(options.rangesX[1] - options.rangesX[0]) + 1"
+    >
+      0
+    </Text>
+    <Line
+      v-for="i in Math.abs(options.rangesX[1] - options.rangesX[0]) + 1"
       :from="[i * (options.intervalX ?? 100), options.rangesY[0] * (options.intervalY ?? 100)]"
       :to="[i * (options.intervalX ?? 100), options.rangesY[1] * (options.intervalY ?? 100)]"
       :border-color="options.grid ?? 'white'"
@@ -66,7 +68,8 @@ const options = defineWidget<NumberPlaneOptions>(props)
       :x="(options.rangesX[0] - 1) * (options.intervalX ?? 100)"
       :progress="options.progress ?? 1"
     />
-    <Line v-for="i in Math.abs(options.rangesY[1] - options.rangesY[0]) + 1"
+    <Line
+      v-for="i in Math.abs(options.rangesY[1] - options.rangesY[0]) + 1"
       :from="[options.rangesX[0] * (options.intervalX ?? 100), i * (options.intervalY ?? 100)]"
       :to="[options.rangesX[1] * (options.intervalX ?? 100), i * (options.intervalY ?? 100)]"
       :border-color="options.grid ?? 'white'"

@@ -1,10 +1,10 @@
+import { resolve } from 'node:path'
+import fs from 'node:fs'
 import puppeteer from 'puppeteer'
-import { transformToImage } from './image-process'
-import { createVideoFromImages } from './video-process'
 import express from 'express'
 import cors from 'cors'
-import { resolve } from 'path'
-import fs from 'fs'
+import { transformToImage } from './image-process'
+import { createVideoFromImages } from './video-process'
 
 export interface ExportOptions {
   outDir: string
@@ -27,23 +27,23 @@ export default async function (options: ExportOptions) {
   const page = await browser.newPage()
   page.setViewport({
     width: 10000,
-    height: 10000
+    height: 10000,
   })
   await page.goto('http://localhost:23333', {
-    waitUntil: 'networkidle2'
+    waitUntil: 'networkidle2',
   })
 
   let index = 0
 
   for (let i = 0; i < options.duration; i += 1 / options.fps) {
     if (!fs.existsSync(resolve('.vuemotion'))) {
-      await new Promise((res) => fs.mkdir(resolve('.vuemotion'), res))
+      await new Promise(res => fs.mkdir(resolve('.vuemotion'), res))
     }
     await transformToImage(resolve(process.cwd(), './.vuemotion', `image${index}.jpeg`), page, index)
     index += 1
     // cpd.send('Debugger.resume')
   }
-  
+
   await browser.close()
   await createVideoFromImages(options.outDir, options.outputName ?? 'output.mp4', options.fps)
 }

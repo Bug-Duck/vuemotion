@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { defineWidget } from '@vue-motion/core'
 import { widget } from '@vue-motion/lib'
-import type { FigureOptions, Grownable } from '@vue-motion/lib'
+import type { FigureOptions, Growable } from '@vue-motion/lib'
 
-export interface ProgressBarOptions extends FigureOptions, Grownable {
+export interface ProgressBarOptions extends FigureOptions, Growable {
   width: number
   value: number
   progressColor: string

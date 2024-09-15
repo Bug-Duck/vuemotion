@@ -3,7 +3,7 @@ import { Motion } from '@vue-motion/lib'
 </script>
 
 <template>
-  <Motion :width="900" :height="600" id="motion">
+  <Motion id="motion" :width="900" :height="600">
     <RouterView />
   </Motion>
 </template>

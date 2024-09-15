@@ -1,18 +1,18 @@
 {
   "name": "template",
-  "private": true,
-  "version": "0.0.0",
   "type": "module",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
     "start": "vuemotion start",
     "export": "vuemotion export"
   },
   "dependencies": {
+    "@vue-motion/app": "^0.2.1",
     "@vue-motion/core": "^0.2.1",
     "@vue-motion/lib": "^0.2.1",
     "vue": "^3.4.38",
-    "vue-router": "^4.4.3",
-    "@vue-motion/app": "^0.2.1"
+    "vue-router": "^4.4.3"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.2",

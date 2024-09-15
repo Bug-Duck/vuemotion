@@ -1,4 +1,5 @@
-import { ref, inject, Ref, App, onMounted } from 'vue'
+import type { App, Ref } from 'vue'
+import { inject, ref } from 'vue'
 import { AnimationManager } from './animation'
 
 export function createPlayer(options: {
@@ -10,7 +11,7 @@ export function createPlayer(options: {
       app.provide('elapsed', ref(0))
       app.provide('studio', options.studio ?? false)
       app.provide('fps', options.fps ?? 60)
-    }
+    },
   }
 }
 
@@ -29,6 +30,7 @@ export function usePlayer() {
 
   function play() {
     if (studio)
+    // eslint-disable-next-line no-console
       return console.log('You are in the studio mode, you are not supposed to call this function!')
     playing.value = true
     elapsed.value = performance.now() / 1000 - startAt

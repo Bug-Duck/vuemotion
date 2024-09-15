@@ -1,16 +1,16 @@
 import { defineAnimation } from '@vue-motion/core'
 
-export interface Grownable {
+export interface Growable {
   progress?: number
 }
 
-export const create = defineAnimation<object, Grownable>(
+export const grow = defineAnimation<object, Growable>(
   (context, progress) => {
     context.target.progress = progress
   },
 )
 
-export const destory = defineAnimation<object, Grownable>(
+export const destory = defineAnimation<object, Growable>(
   (context, progress) => {
     context.target.progress = 1 - progress
   },

@@ -23,19 +23,19 @@
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.26.0",
+    "@changesets/cli": "^2.27.1",
     "@types/node": "22.5.0",
     "eslint": "9.9.0",
-    "tsup": "^8.2.4",
-    "typedoc": "^0.26.6",
-    "typescript": "^5.5.4",
-    "vite": "^5.4.2",
-    "@changesets/cli": "^2.27.1",
     "husky": "^8.0.0",
     "lint-staged": "^15.2.2",
     "pnpm": "^9.1.0",
     "rimraf": "^3.0.2",
     "simple-git-hooks": "^2.11.1",
     "taze": "^0.13.8",
+    "tsup": "^8.2.4",
+    "typedoc": "^0.26.6",
+    "typescript": "^5.5.4",
+    "vite": "^5.4.2",
     "vitest": "^1.6.0"
   }
 }

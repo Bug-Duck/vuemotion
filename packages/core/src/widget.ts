@@ -25,7 +25,7 @@ export function defineWidget<T extends Widget>(props: T, root?: SVGElement): Rea
     widget.element = root ?? getCurrentInstance()!.proxy!.$el.parentElement
     widget.range = widget.element!.getBoundingClientRect()
     const slots = useSlots()
-    widget.slots = slots.default ? slots.default().map((v) => v.children).join('') : ''
+    widget.slots = slots.default ? slots.default().map(v => v.children).join('') : ''
   })
   return reactive(widget)
 }

@@ -1,5 +1,5 @@
-import { Plugin } from 'vite';
-import path from 'node:path';
+import path from 'node:path'
+import type { Plugin } from 'vite'
 
 export default function virtualModulePlugin(file: string): Plugin {
   return {
@@ -9,16 +9,16 @@ export default function virtualModulePlugin(file: string): Plugin {
       if (id === 'virtual:user-main') {
         return id
       }
-      return null;
+      return null
     },
 
     load(id: string) {
       if (id === 'virtual:user-main') {
         return {
-          code: `export { default } from '${file.split(path.sep).join('/')}'`
+          code: `export { default } from '${file.split(path.sep).join('/')}'`,
         }
       }
-      return null;
-    }
-  };
+      return null
+    },
+  }
 }

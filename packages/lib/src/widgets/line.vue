@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { defineWidget } from '@vue-motion/core'
 import type { Vector } from '../animations/typings'
+import type { Growable } from '../animations'
 import type { FigureOptions } from './figure'
 import { figure } from './figure'
-import { Grownable } from '../animations'
 
-export interface LineOptions extends FigureOptions, Grownable {
+export interface LineOptions extends FigureOptions, Growable {
   from: Vector
   to: Vector
 }

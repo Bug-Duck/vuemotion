@@ -1,12 +1,12 @@
 <script setup lang="ts">
-import Menubar from 'primevue/menubar';
-import { provide, ref } from 'vue';
-import LeftList from './components/LeftList.vue';
-import WidgetList from './components/WidgetList.vue';
-import Timeline from './components/TimeLine.vue';
-import Tools from './components/Tools.vue';
-import Preview from './components/Preview.vue';
-import Panel from 'primevue/panel';
+import Menubar from 'primevue/menubar'
+import { provide, ref } from 'vue'
+import Panel from 'primevue/panel'
+import LeftList from './components/LeftList.vue'
+import WidgetList from './components/WidgetList.vue'
+import Timeline from './components/TimeLine.vue'
+import Tools from './components/Tools.vue'
+import Preview from './components/Preview.vue'
 
 const scale = ref(1)
 
@@ -42,14 +42,14 @@ const options = ref([
         label: 'Zoom In',
         command() {
           scale.value += 0.1
-        }
+        },
       },
       {
         label: 'Zoom Out',
         command() {
-            scale.value -= 0.1
+          scale.value -= 0.1
         },
-      }
+      },
     ],
   },
   {
@@ -82,9 +82,9 @@ const options = ref([
       },
     ],
   },
-]);
+])
 
-provide('playing', ref(false));
+provide('playing', ref(false))
 </script>
 
 <template>
@@ -99,9 +99,11 @@ provide('playing', ref(false));
           <LeftList />
         </div>
         <div class="w-3/4 border-1 overflow-auto preview-container items-center justify-center">
-          <Preview :style="{
-            scale,
-          }"/>
+          <Preview
+            :style="{
+              scale,
+            }"
+          />
         </div>
       </div>
       <Tools />

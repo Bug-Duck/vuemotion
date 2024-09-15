@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { computed, defineProps, withDefaults } from 'vue'
 import { defineWidget } from '@vue-motion/core'
-import type { Grownable } from '../animations'
+import type { Growable } from '../animations'
 import type { Vector } from '../animations/typings'
 import { type FigureOptions, figure } from './figure'
 
-export interface ArcOptions extends FigureOptions, Grownable {
+export interface ArcOptions extends FigureOptions, Growable {
   radius: number
   from?: number
   to?: number
