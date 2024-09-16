@@ -15,6 +15,7 @@
     "@vue-motion/extension-typst": "workspace:*",
     "@vue-motion/extension-ui": "workspace:*",
     "@vue-motion/extension-code": "workspace:*",
+    "@vue-motion/extension-lights": "workspace:*",
     "@vue-motion/lib": "workspace:*",
     "vue": "^3.4.37",
     "vue-router": "^4.4.3"

@@ -1,4 +1,5 @@
-import type { Widget, defineAnimation } from '@vue-motion/core'
+import type { Widget } from '@vue-motion/core'
+import { defineAnimation } from '@vue-motion/core'
 import { interpolator } from '../interpolator'
 import type { Positional } from './move'
 

@@ -8,9 +8,9 @@
     "export": "vuemotion export"
   },
   "dependencies": {
-    "@vue-motion/app": "^0.2.1",
-    "@vue-motion/core": "^0.2.1",
-    "@vue-motion/lib": "^0.2.1",
+    "@vue-motion/app": "^0.3.0",
+    "@vue-motion/core": "^0.3.0",
+    "@vue-motion/lib": "^0.3.0",
     "vue": "^3.4.38",
     "vue-router": "^4.4.3"
   },
