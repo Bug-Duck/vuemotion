@@ -29,6 +29,7 @@
   "dependencies": {
     "@vue-motion/core": "workspace:*",
     "@vue-motion/lib": "workspace:*",
+    "shiki": "^1.17.6",
     "vue": "^3.4.26"
   },
   "devDependencies": {

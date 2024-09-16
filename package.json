@@ -19,7 +19,11 @@
     "test": "pnpm run --filter=* test",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "pub:core": "pnpm run build:core && pnpm run --filter=./packages/* --sort pub"
+    "pub:core": "pnpm run build:core && pnpm run --filter=./packages/* --sort pub",
+    "preversion": "pnpm build:core && pnpm build:ext",
+    "change": "changeset add",
+    "release": "pnpm preversion && changeset version",
+    "pub": "changeset publish"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.26.0",
