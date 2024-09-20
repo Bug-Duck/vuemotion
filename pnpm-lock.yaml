@@ -255,12 +255,18 @@ importers:
 
   extensions/three:
     dependencies:
+      '@types/three':
+        specifier: ^0.168.0
+        version: 0.168.0
       '@vue-motion/core':
         specifier: workspace:*
         version: link:../../packages/core
       '@vue-motion/lib':
         specifier: workspace:*
         version: link:../../packages/lib
+      three:
+        specifier: ^0.168.0
+        version: 0.168.0
       vue:
         specifier: ^3.4.26
         version: 3.4.38(typescript@5.5.4)
@@ -323,10 +329,10 @@ importers:
         version: 4.0.5
       '@vue-motion/core':
         specifier: latest
-        version: 0.2.1(typescript@5.5.4)
+        version: 0.3.0(typescript@5.5.4)
       '@vue-motion/lib':
         specifier: latest
-        version: 0.2.1(typescript@5.5.4)
+        version: 0.3.0(typescript@5.5.4)
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.41)
@@ -561,6 +567,9 @@ importers:
       '@vue-motion/extension-math':
         specifier: workspace:*
         version: link:../extensions/math
+      '@vue-motion/extension-three':
+        specifier: workspace:*
+        version: link:../extensions/three
       '@vue-motion/extension-typst':
         specifier: workspace:*
         version: link:../extensions/typst
@@ -1550,6 +1559,9 @@ packages:
   '@tootallnate/quickjs-emscripten@0.23.0':
     resolution: {integrity: sha512-C5Mc6rdnsaJDjO3UpGW/CQTHtCKaYlScZTly4JIu97Jxo/odCiH0ITnDXSJPTOrEKk/ycSZ0AOgTmkDtkOsvIA==}
 
+  '@tweenjs/tween.js@23.1.3':
+    resolution: {integrity: sha512-vJmvvwFxYuGnF2axRtPYocag6Clbb5YS7kLL+SO/TeVFzHqDIWrNKYtcsPMibjDx9O+bu+psAy9NKfWklassUA==}
+
   '@types/argparse@1.0.38':
     resolution: {integrity: sha512-ebDJ9b0e702Yr7pWgB0jzm+CX4Srzz8RcXtLJDJB+BSccqMa36uyH/zUsSYao5+BD1ytv3k3rPYCq4mAE1hsXA==}
 
@@ -1625,14 +1637,23 @@ packages:
   '@types/serve-static@1.15.7':
     resolution: {integrity: sha512-W8Ym+h8nhuRwaKPaDw34QUkwsGi6Rc4yYqvKFo5rm2FUEhCFbzVWrxXUxuKK8TASjWsysJY0nsmNCGhCOIsrOw==}
 
+  '@types/stats.js@0.17.3':
+    resolution: {integrity: sha512-pXNfAD3KHOdif9EQXZ9deK82HVNaXP5ZIF5RP2QG6OQFNTaY2YIetfrE9t528vEreGQvEPRDDc8muaoYeK0SxQ==}
+
   '@types/text-table@0.2.5':
     resolution: {integrity: sha512-hcZhlNvMkQG/k1vcZ6yHOl6WAYftQ2MLfTHcYRZ2xYZFD8tGVnE3qFV0lj1smQeDSR7/yY0PyuUalauf33bJeA==}
+
+  '@types/three@0.168.0':
+    resolution: {integrity: sha512-qAGLGzbaYgkkonOBfwOr+TZpOskPfFjrDAj801WQSVkUz0/D9zwir4vhruJ/CC/GteywzR9pqeVVfs5th/2oKw==}
 
   '@types/unist@2.0.11':
     resolution: {integrity: sha512-CmBKiL6NNo/OqgmMn95Fk9Whlp2mtvIv+KNpQKN2F4SjvrEesubTRWGYSg+BnWZOnlCaSTU1sMpsBOzgbYhnsA==}
 
   '@types/unist@3.0.3':
     resolution: {integrity: sha512-ko/gIFJRv177XgZsZcBwnqJN5x/Gien8qNOn0D5bQU/zAzVf9Zt3BlcUiLqhV9y4ARk0GbT3tnUiPNgnTXzc/Q==}
+
+  '@types/webxr@0.5.20':
+    resolution: {integrity: sha512-JGpU6qiIJQKUuVSKx1GtQnHJGxRjtfGIhzO2ilq43VZZS//f1h1Sgexbdk+Lq+7569a6EYhOWrUpIruR/1Enmg==}
 
   '@types/yauzl@2.10.3':
     resolution: {integrity: sha512-oJoftv0LSuaDZE3Le4DbKX+KS9G36NzOeSap90UIK0yMA/NhKJhqlSGtNDORNRaIbQfzjXDrQa0ytJ6mNRGz/Q==}
@@ -1779,14 +1800,14 @@ packages:
   '@volar/typescript@2.4.0':
     resolution: {integrity: sha512-9zx3lQWgHmVd+JRRAHUSRiEhe4TlzL7U7e6ulWXOxHH/WNYxzKwCvZD7WYWEZFdw4dHfTD9vUR0yPQO6GilCaQ==}
 
-  '@vue-motion/core@0.2.1':
-    resolution: {integrity: sha512-3p4TQBBUYfMjL0dJXKG5wZ6dqoHZ5pLk8+gQjceGyh2auTJHAx4vmdn76+OtesMuPL9zKNiP+wSjtyBEfMX2gQ==}
+  '@vue-motion/core@0.3.0':
+    resolution: {integrity: sha512-cRz+D2gfFLgy8ePVCqeW+hyyZtSL5rrr7/s5+NAO/AlS2AsWYwRX+QL+nFKbnzhKs1E54Sdt6ljggKUiFRyU2w==}
 
-  '@vue-motion/lib@0.2.1':
-    resolution: {integrity: sha512-IaBVpb2AR9k8Dqs7scPKl1jBJWLFpLmKHA3xsi5F3gTUlG2Cs/thdX5K6TY957DBdRYYg0VaeqdvxEWIfJLR7g==}
+  '@vue-motion/lib@0.3.0':
+    resolution: {integrity: sha512-OBWJLVcj+humDActG9G6jySnJcJXQR8FKah6pAxWfi6Yo3hnhFqoXe5BajEB9qaKQyXrB9O0/+8GCGpcPS/BHg==}
 
-  '@vue-motion/utils@0.2.1':
-    resolution: {integrity: sha512-10/d46uTqdtGu855tMueTq2gh5g9te48r4X4AJMtSw5ZcK71DNKfSZ/FvrFG/p9lb7QrKBuav2OoIVTynlwCkg==}
+  '@vue-motion/utils@0.3.0':
+    resolution: {integrity: sha512-jTgCZelrf+E4WnfnlCK2yzGZ69y5bGsOscJALhqtnlmuOQCyvDvyyJdJ2ZV8xn0N0y5y4eradmkOU9aaLLqQ3g==}
 
   '@vue/compiler-core@3.4.38':
     resolution: {integrity: sha512-8IQOTCWnLFqfHzOGm9+P8OPSEDukgg3Huc92qSG49if/xI2SAwLHQO2qaPQbjCWPBcQoO1WYfXfTACUrWV3c5A==}
@@ -1838,6 +1859,9 @@ packages:
 
   '@vue/shared@3.4.38':
     resolution: {integrity: sha512-q0xCiLkuWWQLzVrecPb0RMsNWyxICOjPrcrwxTUEHb1fsnvni4dcuyG7RT/Ie7VPTvnjzIaWzRMUBsrqNj/hhw==}
+
+  '@webgpu/types@0.1.45':
+    resolution: {integrity: sha512-0TBBF/mhakJoK0qUWCZugBnh23x+VwmYA5RLmtNQwvZt1pQ4P2fzIvQUiSe6jxzkBi4GF8R4BejJjro0ZSoSXQ==}
 
   accepts@1.3.8:
     resolution: {integrity: sha512-PYAthTa2m2VKxuvSD3DPC/Gy+U+sOA1LAuT8mkmRuvw+NACSaeXEQ+NHcVF7rONl6qcaxV3Uuemwawk+7+SJLw==}
@@ -2747,6 +2771,9 @@ packages:
   fd-slicer@1.1.0:
     resolution: {integrity: sha512-cE1qsB/VwyQozZ+q1dGxR8LBYNZeofhEdUNGSMbQD3Gw2lAzX9Zb3uIU6Ebc/Fmyjo9AWWfnn0AUCHqtevs/8g==}
 
+  fflate@0.8.2:
+    resolution: {integrity: sha512-cPJU47OaAoCbg0pBvzsgpTPhmhqI5eJjh/JIu8tPj5q+T7iLvW/JAYUqmE7KOB4R1ZyEhzBaIQpQpardBF5z8A==}
+
   figures@5.0.0:
     resolution: {integrity: sha512-ej8ksPF4x6e5wvK9yevct0UCXh8TTFlWGVLlgjZuoBH1HwjIfKE/IdL5mq89sFA7zELi1VhKpmtDnrs7zWyeyg==}
     engines: {node: '>=14'}
@@ -3336,6 +3363,9 @@ packages:
   merge2@1.4.1:
     resolution: {integrity: sha512-8q7VEgMJW4J8tcfVPy8g09NcQwZdbwFEqhe/WZkoIzjn/3TGDwtOCYtXGxA3O8tPzpczCCDgv+P2P5y00ZJOOg==}
     engines: {node: '>= 8'}
+
+  meshoptimizer@0.18.1:
+    resolution: {integrity: sha512-ZhoIoL7TNV4s5B6+rx5mC//fw8/POGyNxS/DZyCJeiZ12ScLfVwRE/GfsxwiTkMYYD5DmK2/JXnEVXqL4rF+Sw==}
 
   methods@1.1.2:
     resolution: {integrity: sha512-iclAHeNqNm68zFtnZ0e+1L2yUIdvzNoauKU4WBA3VvH/vPFieF7qfRlwUZU+DA9P9bPXIS90ulxoUoCH23sV2w==}
@@ -4268,6 +4298,9 @@ packages:
 
   thenify@3.3.1:
     resolution: {integrity: sha512-RVZSIV5IG10Hk3enotrhvz0T9em6cyHBLkH/YAZuKqd8hRkKhSfCGIcP2KUY0EPxndzANBmNllzWPwak+bheSw==}
+
+  three@0.168.0:
+    resolution: {integrity: sha512-6m6jXtDwMJEK/GGMbAOTSAmxNdzKvvBzgd7q8bE/7Tr6m7PaBh5kKLrN7faWtlglXbzj7sVba48Idwx+NRsZXw==}
 
   through@2.3.8:
     resolution: {integrity: sha512-w89qg7PI8wAdvX60bMDP+bFoD5Dvhm9oLheFp5O4a2QF0cSBGsBX4qZmadPMvVqlLJBBci+WqGGOAPvcDeNSVg==}
@@ -5632,6 +5665,8 @@ snapshots:
 
   '@tootallnate/quickjs-emscripten@0.23.0': {}
 
+  '@tweenjs/tween.js@23.1.3': {}
+
   '@types/argparse@1.0.38': {}
 
   '@types/body-parser@1.19.5':
@@ -5722,11 +5757,24 @@ snapshots:
       '@types/node': 22.5.0
       '@types/send': 0.17.4
 
+  '@types/stats.js@0.17.3': {}
+
   '@types/text-table@0.2.5': {}
+
+  '@types/three@0.168.0':
+    dependencies:
+      '@tweenjs/tween.js': 23.1.3
+      '@types/stats.js': 0.17.3
+      '@types/webxr': 0.5.20
+      '@webgpu/types': 0.1.45
+      fflate: 0.8.2
+      meshoptimizer: 0.18.1
 
   '@types/unist@2.0.11': {}
 
   '@types/unist@3.0.3': {}
+
+  '@types/webxr@0.5.20': {}
 
   '@types/yauzl@2.10.3':
     dependencies:
@@ -5921,24 +5969,24 @@ snapshots:
       path-browserify: 1.0.1
       vscode-uri: 3.0.8
 
-  '@vue-motion/core@0.2.1(typescript@5.5.4)':
+  '@vue-motion/core@0.3.0(typescript@5.5.4)':
     dependencies:
       '@ffmpeg/ffmpeg': 0.11.0
-      '@vue-motion/utils': 0.2.1(typescript@5.5.4)
+      '@vue-motion/utils': 0.3.0(typescript@5.5.4)
       vue: 3.4.38(typescript@5.5.4)
     transitivePeerDependencies:
       - encoding
       - typescript
 
-  '@vue-motion/lib@0.2.1(typescript@5.5.4)':
+  '@vue-motion/lib@0.3.0(typescript@5.5.4)':
     dependencies:
-      '@vue-motion/core': 0.2.1(typescript@5.5.4)
+      '@vue-motion/core': 0.3.0(typescript@5.5.4)
       vue: 3.4.38(typescript@5.5.4)
     transitivePeerDependencies:
       - encoding
       - typescript
 
-  '@vue-motion/utils@0.2.1(typescript@5.5.4)':
+  '@vue-motion/utils@0.3.0(typescript@5.5.4)':
     dependencies:
       '@ffmpeg/ffmpeg': 0.12.10
       '@ffmpeg/util': 0.12.1
@@ -6033,6 +6081,8 @@ snapshots:
       vue: 3.4.38(typescript@5.5.4)
 
   '@vue/shared@3.4.38': {}
+
+  '@webgpu/types@0.1.45': {}
 
   accepts@1.3.8:
     dependencies:
@@ -7108,6 +7158,8 @@ snapshots:
     dependencies:
       pend: 1.2.0
 
+  fflate@0.8.2: {}
+
   figures@5.0.0:
     dependencies:
       escape-string-regexp: 5.0.0
@@ -7728,6 +7780,8 @@ snapshots:
   merge-stream@2.0.0: {}
 
   merge2@1.4.1: {}
+
+  meshoptimizer@0.18.1: {}
 
   methods@1.1.2: {}
 
@@ -8701,6 +8755,8 @@ snapshots:
   thenify@3.3.1:
     dependencies:
       any-promise: 1.3.0
+
+  three@0.168.0: {}
 
   through@2.3.8: {}
 

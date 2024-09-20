@@ -27,8 +27,10 @@
     "access": "public"
   },
   "dependencies": {
+    "@types/three": "^0.168.0",
     "@vue-motion/core": "workspace:*",
     "@vue-motion/lib": "workspace:*",
+    "three": "^0.168.0",
     "vue": "^3.4.26"
   },
   "devDependencies": {

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { defineWidget } from '@vue-motion/core';
-import { WidgetOptions } from '@vue-motion/lib';
+import { defineWidget } from '@vue-motion/core'
+import type { WidgetOptions } from '@vue-motion/lib'
 
 export interface PointLightOptions extends WidgetOptions {
   constant?: number
@@ -53,6 +53,6 @@ const specularId = options.wid || `specular-${id}`
     </feSpecularLighting>
   </filter>
   <g :filter="`url(#${options.type === 'diffuse' ? diffuseId : specularId})`">
-    <slot></slot>
+    <slot />
   </g>
 </template>
