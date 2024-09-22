@@ -2,8 +2,8 @@
 import type { WidgetOptions } from '@vue-motion/lib'
 import { widget } from '@vue-motion/lib'
 import { defineWidget } from '@vue-motion/core'
-import { BoxGeometry, DirectionalLight, Mesh, MeshPhongMaterial, PerspectiveCamera, Scene, WebGLRenderer } from 'three'
-import { onMounted, ref } from 'vue'
+import { Color, PerspectiveCamera, Scene, WebGLRenderer } from 'three'
+import { onMounted, provide, ref } from 'vue'
 
 export interface ThreeOptions extends WidgetOptions {
   width: number
@@ -14,12 +14,14 @@ export interface ThreeOptions extends WidgetOptions {
     near?: number
     far?: number
   }
+  background?: string
 }
 
 const props = defineProps<ThreeOptions>()
 const options = defineWidget<ThreeOptions>(props)
 
 const scene = new Scene()
+scene.background = new Color(options.background ?? 'black')
 const canvas = new OffscreenCanvas(options.width, options.height)
 const camera = new PerspectiveCamera(
   (options.cameraConfig ?? {}).fov ?? 50,
@@ -27,29 +29,22 @@ const camera = new PerspectiveCamera(
   (options.cameraConfig ?? {}).near ?? 0.1,
   (options.cameraConfig ?? {}).far ?? 2000,
 )
-camera.position.z = 5
 
 const renderer = new WebGLRenderer({
   canvas,
 })
 
+provide('scene', scene)
+provide('camera', camera)
+
 const url = ref('')
 
-// Create a small box
-const geometry = new BoxGeometry(1, 1, 1)
-const material = new MeshPhongMaterial({ color: 0x00FF00 })
-const cube = new Mesh(geometry, material)
-scene.add(cube)
-
-// Add a directional light
-const light = new DirectionalLight(0xFFFFFF, 1)
-light.position.set(5, 5, 5).normalize()
-scene.add(light)
+renderer.setSize(options.width, options.height)
+renderer.setPixelRatio(window.devicePixelRatio)
 
 onMounted(async () => {
   renderer.render(scene, camera)
   url.value = window.URL.createObjectURL(await canvas.convertToBlob())
-  console.log(url)
 })
 </script>
 
@@ -57,8 +52,6 @@ onMounted(async () => {
   <g v-bind="widget(options)">
     <image
       :href="url"
-      :width="options.width"
-      :height="options.height"
     />
   </g>
 </template>
