@@ -561,6 +561,9 @@ importers:
       '@vue-motion/extension-code':
         specifier: workspace:*
         version: link:../extensions/code
+      '@vue-motion/extension-geometry':
+        specifier: workspace:*
+        version: link:../extensions/geometry
       '@vue-motion/extension-lights':
         specifier: workspace:*
         version: link:../extensions/lights

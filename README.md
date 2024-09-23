@@ -49,7 +49,7 @@ vue-motion's predecessor was the Newcar animation engine, but later the developm
   - [ ] Codeblock (Shikijs)
   - [ ] Geometry
     - [ ] Angle
-    - [ ] Dot
+    - [x] Dot
     - [ ] Symmetrical
     - [ ] Center Symmetry
     - [ ] Difference
@@ -67,10 +67,10 @@ vue-motion's predecessor was the Newcar animation engine, but later the developm
   - [ ] Markdown
   - [ ] Math
     - [x] MathFunction
-    - [ ] NumberPlane
-    - [ ] NumberAxis
+    - [x] NumberPlane
+    - [x] NumberAxis
     - [ ] PolarPlane
-    - [ ] Tex
+    - [x] Tex
   - [ ] Mindmap
   - [ ] Social-Platform
     - [ ] ContentCard
@@ -87,7 +87,7 @@ vue-motion's predecessor was the Newcar animation engine, but later the developm
   - [ ] UI
     - [x] Window
     - [ ] Button
-    - [ ] ProgressBar
+    - [x] ProgressBar
     - [ ] ...
   - [ ] Lights
 - Functions
@@ -95,4 +95,4 @@ vue-motion's predecessor was the Newcar animation engine, but later the developm
   - [ ] Event
   - [ ] Resources Preload
   - [ ] Visual App
-  - [ ] Export
+  - [x] Export
