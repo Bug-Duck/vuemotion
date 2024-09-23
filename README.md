@@ -48,7 +48,7 @@ vue-motion's predecessor was the Newcar animation engine, but later the developm
     - [ ] ...
   - [ ] Codeblock (Shikijs)
   - [ ] Geometry
-    - [ ] Angle
+    - [x] Angle
     - [x] Dot
     - [ ] Symmetrical
     - [ ] Center Symmetry
