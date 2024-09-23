@@ -5,7 +5,7 @@ import { onMounted } from 'vue'
 import { Tex } from '@vue-motion/extension-math'
 import { PointLight } from '@vue-motion/extension-lights'
 import { Cube, Three } from '@vue-motion/extension-three'
-import { Dot } from '@vue-motion/extension-geometry'
+import { Angle, Dot } from '@vue-motion/extension-geometry'
 
 onMounted(() => {
   const player = usePlayer()
@@ -31,5 +31,6 @@ onMounted(() => {
       <Cube :width="1" :height="1" :depth="1"/>
     </Three> -->
     <Dot />
+    <Angle :value="200"/>
   </Motion>
 </template>
