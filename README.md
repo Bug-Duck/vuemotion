@@ -21,6 +21,7 @@ vue-motion's predecessor was the Newcar animation engine, but later the developm
   - [x] Text
   - [x] Image
   - [x] Mask
+  - [ ] Video
 - Animations
   - [x] move
   - [x] rotate
