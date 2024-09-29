@@ -1,36 +1,34 @@
 <script setup lang="ts">
-import { usePlayer } from '@vue-motion/core'
-import { Motion } from '@vue-motion/lib'
+import { usePlayer, useWidget } from '@vue-motion/core'
+import { Group, Motion, grow } from '@vue-motion/lib'
 import { onMounted } from 'vue'
-import { Tex } from '@vue-motion/extension-math'
-import { PointLight } from '@vue-motion/extension-lights'
-import { Cube, Three } from '@vue-motion/extension-three'
-import { Angle, Dot } from '@vue-motion/extension-geometry'
+import { MathFunction, NumberPlane } from '@vue-motion/extension-math'
+
+const fn1 = useWidget<InstanceType<typeof MathFunction>>('fn1')
+const fn2 = useWidget<InstanceType<typeof MathFunction>>('fn2')
+const fn3 = useWidget<InstanceType<typeof MathFunction>>('fn3')
 
 onMounted(() => {
-  const player = usePlayer()
-  player.play()
+  const { play, useAnimation } = usePlayer()
+
+  useAnimation(fn1)
+    .animate(grow, { duration: 1 })
+  useAnimation(fn2)
+    .animate(grow, { duration: 1 })
+  useAnimation(fn3)
+    .animate(grow, { duration: 1 })
+
+  play()
 })
 </script>
 
 <template>
   <Motion id="motion" :width="2000" :height="1000">
-    <!-- <Typst>Hello World</Typst> -->
-    <PointLight type="diffuse" :x="20" :y="20" :z="0.5" :constant="0.5" color="skyblue">
-      <Tex
-        :katex-options="{}"
-        wid="www"
-      >
-        c=\sqrt{a^2 + b^2}
-      </Tex>
-      <!--      <Suspense> -->
-      <!--        <Three :width="1000" :height="1000" :camera-config="{}" :x="-500" :y="-500"/> -->
-      <!--      </Suspense> -->
-    </PointLight>
-    <!-- <Three :width="300" :height="300">
-      <Cube :width="1" :height="1" :depth="1"/>
-    </Three> -->
-    <Dot />
-    <Angle :value="200"/>
+    <Group>
+      <NumberPlane :ranges-x="[-5, 5]" :ranges-y="[-5, 5]" />
+      <MathFunction :fn="(x) => Math.sin(x)" color="skyblue" :domain="[-5, 5]" :ranges="[-1, 1]" wid="fn1" />
+      <MathFunction :fn="(x) => Math.cos(x)" color="red" :domain="[-5, 5]" :ranges="[-1, 1]" wid="fn2" />
+      <MathFunction :fn="(x) => Math.tan(x)" color="green" :domain="[-5, 5]" :ranges="[-1, 1]" wid="fn3" />
+    </Group>
   </Motion>
 </template>
