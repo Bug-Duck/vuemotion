@@ -2,7 +2,7 @@
 import { usePlayer, useWidget } from '@vue-motion/core'
 import { Group, Motion, grow } from '@vue-motion/lib'
 import { onMounted } from 'vue'
-import { MathFunction, NumberPlane } from '@vue-motion/extension-math'
+import { MathFunction, NumberPlane, PolarPlane } from '@vue-motion/extension-math'
 
 const fn1 = useWidget<InstanceType<typeof MathFunction>>('fn1')
 const fn2 = useWidget<InstanceType<typeof MathFunction>>('fn2')
@@ -24,11 +24,14 @@ onMounted(() => {
 
 <template>
   <Motion id="motion" :width="2000" :height="1000">
+<!--    <Group>-->
+<!--      <NumberPlane :ranges-x="[-5, 5]" :ranges-y="[-5, 5]" />-->
+<!--      <MathFunction :fn="(x) => Math.sin(x)" color="skyblue" :domain="[-5, 5]" :ranges="[-1, 1]" wid="fn1" />-->
+<!--      <MathFunction :fn="(x) => Math.cos(x)" color="red" :domain="[-5, 5]" :ranges="[-1, 1]" wid="fn2" />-->
+<!--      <MathFunction :fn="(x) => Math.tan(x)" color="green" :domain="[-5, 5]" :ranges="[-1, 1]" wid="fn3" />-->
+<!--    </Group>-->
     <Group>
-      <NumberPlane :ranges-x="[-5, 5]" :ranges-y="[-5, 5]" />
-      <MathFunction :fn="(x) => Math.sin(x)" color="skyblue" :domain="[-5, 5]" :ranges="[-1, 1]" wid="fn1" />
-      <MathFunction :fn="(x) => Math.cos(x)" color="red" :domain="[-5, 5]" :ranges="[-1, 1]" wid="fn2" />
-      <MathFunction :fn="(x) => Math.tan(x)" color="green" :domain="[-5, 5]" :ranges="[-1, 1]" wid="fn3" />
+      <PolarPlane :radius="300" :x="-400"/>
     </Group>
   </Motion>
 </template>
