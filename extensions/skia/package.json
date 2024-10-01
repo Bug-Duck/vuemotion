@@ -29,6 +29,7 @@
   "dependencies": {
     "@vue-motion/core": "workspace:*",
     "@vue-motion/lib": "workspace:*",
+    "canvaskit-wasm": "^0.39.1",
     "vue": "^3.4.26"
   },
   "devDependencies": {
