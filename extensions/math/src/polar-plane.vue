@@ -19,9 +19,11 @@ export interface PolarPlaneOptions extends WidgetOptions {
 const props = defineProps<PolarPlaneOptions>()
 const options = defineWidget<typeof props>(props)
 
+const children = useChildren()
+
 onMounted(() => {
   nextTick(() => {
-    console.log(useChildren())
+    console.log(children)
   })
 })
 </script>
