@@ -1,4 +1,4 @@
-import type { Reactive } from 'vue'
+import type { Reactive, Ref } from 'vue'
 import { getCurrentInstance, inject, onMounted, provide, reactive, ref, useSlots } from 'vue'
 
 export interface Range {
@@ -13,11 +13,15 @@ export interface Widget {
   element?: SVGElement
   range?: Range
   slots?: string
+  children?: Widget[]
 }
 
 export function defineWidget<T extends Widget>(props: T, root?: SVGElement): Reactive<T> {
   const widget = inject<T>(props.wid as string)
-  if (widget === undefined) {
+  const widgets = inject('child-widgets') as Ref<T[]>
+  // const children = ref([])
+  // provide('child-widgets', children)
+  if (typeof widget === 'undefined') {
     return reactive(props)
   }
   Object.assign(widget, props)
@@ -26,6 +30,8 @@ export function defineWidget<T extends Widget>(props: T, root?: SVGElement): Rea
     widget.range = widget.element!.getBoundingClientRect()
     const slots = useSlots()
     widget.slots = slots.default ? slots.default().map(v => v.children).join('') : ''
+    // widget.children = children.value
+    widgets.value.push(widget)
   })
   return reactive(widget)
 }
@@ -41,4 +47,10 @@ export function useWidget<T extends Widget>(wid: string) {
   })
   provide(wid, widget)
   return widget as T
+}
+
+export function useChildren<T extends Widget>() {
+  const widgets = ref([]) as Ref<T[]>
+  provide('child-widgets', widgets)
+  return widgets.value
 }

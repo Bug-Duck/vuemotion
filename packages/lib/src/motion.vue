@@ -1,11 +1,14 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
+import { defineProps, provide } from 'vue'
 import { figure } from './widgets/figure.ts'
 
-defineProps<{
+const props = defineProps<{
   width: number
   height: number
 }>()
+
+provide('motion-width', props.width)
+provide('motion-height', props.height)
 </script>
 
 <template>
