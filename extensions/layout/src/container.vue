@@ -26,8 +26,6 @@ export interface ContainerOptions extends WidgetOptions {
 const props = defineProps<ContainerOptions>()
 const options = defineWidget<ContainerOptions>(props)
 
-console.log(props, options)
-
 const children = useChildren()
 
 const mountedFlag = ref(false)
@@ -59,10 +57,6 @@ onMounted(() => {
   mountedFlag.value = true
 })
 
-onMounted(() => {
-  console.log(width.value, height.value)
-})
-
 const marginTop = computed(() => props.marginTop ?? props.marginY ?? props.margin ?? 0)
 const marginBottom = computed(() => props.marginBottom ?? props.marginY ?? props.margin ?? 0)
 const marginLeft = computed(() => props.marginLeft ?? props.marginX ?? props.margin ?? 0)
@@ -71,8 +65,6 @@ const paddingTop = computed(() => props.paddingTop ?? props.paddingY ?? props.pa
 const paddingBottom = computed(() => props.paddingBottom ?? props.paddingY ?? props.padding ?? 0)
 const paddingLeft = computed(() => props.paddingLeft ?? props.paddingX ?? props.padding ?? 0)
 const paddingRight = computed(() => props.paddingRight ?? props.paddingX ?? props.padding ?? 0)
-
-console.log(marginTop, marginBottom, marginLeft, marginRight, paddingTop, paddingBottom, paddingLeft, paddingRight)
 </script>
 
 <template>
@@ -90,6 +82,8 @@ console.log(marginTop, marginBottom, marginLeft, marginRight, paddingTop, paddin
       height: `${height}px`,
     }"
   >
-    <slot />
+    <g :transform="`translate(${width / 2}, ${height / 2})`">
+      <slot />
+    </g>
   </svg>
 </template>
