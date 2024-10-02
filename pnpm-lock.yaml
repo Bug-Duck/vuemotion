@@ -389,10 +389,10 @@ importers:
         version: 4.0.5
       '@vue-motion/core':
         specifier: latest
-        version: 0.3.0(typescript@5.5.4)
+        version: 0.4.0(typescript@5.5.4)
       '@vue-motion/lib':
         specifier: latest
-        version: 0.3.0(typescript@5.5.4)
+        version: 0.4.0(typescript@5.5.4)
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.41)
@@ -1340,7 +1340,7 @@ packages:
     resolution: {integrity: sha512-bxveV4V8v5Yb4ncFTT3rPSgZBOpCkjfK0y4oVVVJwIuDVBRMDXrPyXRL988i5ap9m9bnyEEjWfm5WkBmtffLfA==}
     engines: {node: '>=12.22'}
 
-  '@humanwhocodes/retry@0.3.0':
+  '@humanwhocodes/retry@0.4.0':
     resolution: {integrity: sha512-d2CGZR2o7fS6sWB7DG/3a95bGKQyHMACZ5aW8qGkkqQpUoZV6C0X7Pc7l4ZNMZkfNBf4VWNe9E1jRsf0G146Ew==}
     engines: {node: '>=18.18'}
 
@@ -1866,13 +1866,13 @@ packages:
   '@volar/typescript@2.4.0':
     resolution: {integrity: sha512-9zx3lQWgHmVd+JRRAHUSRiEhe4TlzL7U7e6ulWXOxHH/WNYxzKwCvZD7WYWEZFdw4dHfTD9vUR0yPQO6GilCaQ==}
 
-  '@vue-motion/core@0.3.0':
+  '@vue-motion/core@0.4.0':
     resolution: {integrity: sha512-cRz+D2gfFLgy8ePVCqeW+hyyZtSL5rrr7/s5+NAO/AlS2AsWYwRX+QL+nFKbnzhKs1E54Sdt6ljggKUiFRyU2w==}
 
-  '@vue-motion/lib@0.3.0':
+  '@vue-motion/lib@0.4.0':
     resolution: {integrity: sha512-OBWJLVcj+humDActG9G6jySnJcJXQR8FKah6pAxWfi6Yo3hnhFqoXe5BajEB9qaKQyXrB9O0/+8GCGpcPS/BHg==}
 
-  '@vue-motion/utils@0.3.0':
+  '@vue-motion/utils@0.4.0':
     resolution: {integrity: sha512-jTgCZelrf+E4WnfnlCK2yzGZ69y5bGsOscJALhqtnlmuOQCyvDvyyJdJ2ZV8xn0N0y5y4eradmkOU9aaLLqQ3g==}
 
   '@vue/compiler-core@3.4.38':
@@ -3422,7 +3422,7 @@ packages:
   mdurl@2.0.0:
     resolution: {integrity: sha512-Lf+9+2r+Tdp5wXDXC4PcIBjTDtq4UKjCPMQhKIuzpJNW0b96kVqSwW0bT7FhRSfmAiFYgP+SCRvdrDozfh0U5w==}
 
-  media-typer@0.3.0:
+  media-typer@0.4.0:
     resolution: {integrity: sha512-dq+qelQ9akHpcOl/gUVRTxVIOkAJ1wR3QAvb4RsVjS8oVoFjDGTc679wJYmUmknUF5HwMLOgb5O+a3KxfWapPQ==}
     engines: {node: '>= 0.6'}
 
@@ -4078,7 +4078,7 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  scslre@0.3.0:
+  scslre@0.4.0:
     resolution: {integrity: sha512-3A6sD0WYP7+QrjbfNA2FN3FsOaGGFoekCVgTyypy53gPxhbkCIjtO6YWgdrfM+n/8sI8JeXZOIxsHjMTNxQ4nQ==}
     engines: {node: ^14.0.0 || >=16.0.0}
 
@@ -5409,7 +5409,7 @@ snapshots:
 
   '@humanwhocodes/module-importer@1.0.1': {}
 
-  '@humanwhocodes/retry@0.3.0': {}
+  '@humanwhocodes/retry@0.4.0': {}
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -6041,24 +6041,24 @@ snapshots:
       path-browserify: 1.0.1
       vscode-uri: 3.0.8
 
-  '@vue-motion/core@0.3.0(typescript@5.5.4)':
+  '@vue-motion/core@0.4.0(typescript@5.5.4)':
     dependencies:
       '@ffmpeg/ffmpeg': 0.11.0
-      '@vue-motion/utils': 0.3.0(typescript@5.5.4)
+      '@vue-motion/utils': 0.4.0(typescript@5.5.4)
       vue: 3.4.38(typescript@5.5.4)
     transitivePeerDependencies:
       - encoding
       - typescript
 
-  '@vue-motion/lib@0.3.0(typescript@5.5.4)':
+  '@vue-motion/lib@0.4.0(typescript@5.5.4)':
     dependencies:
-      '@vue-motion/core': 0.3.0(typescript@5.5.4)
+      '@vue-motion/core': 0.4.0(typescript@5.5.4)
       vue: 3.4.38(typescript@5.5.4)
     transitivePeerDependencies:
       - encoding
       - typescript
 
-  '@vue-motion/utils@0.3.0(typescript@5.5.4)':
+  '@vue-motion/utils@0.4.0(typescript@5.5.4)':
     dependencies:
       '@ffmpeg/ffmpeg': 0.12.10
       '@ffmpeg/util': 0.12.1
@@ -6973,7 +6973,7 @@ snapshots:
       jsdoc-type-pratt-parser: 4.1.0
       refa: 0.12.1
       regexp-ast-analysis: 0.7.1
-      scslre: 0.3.0
+      scslre: 0.4.0
 
   eslint-plugin-toml@0.11.1(eslint@9.9.0(jiti@1.21.6)):
     dependencies:
@@ -7063,7 +7063,7 @@ snapshots:
       '@eslint/eslintrc': 3.1.0
       '@eslint/js': 9.9.0
       '@humanwhocodes/module-importer': 1.0.1
-      '@humanwhocodes/retry': 0.3.0
+      '@humanwhocodes/retry': 0.4.0
       '@nodelib/fs.walk': 1.2.8
       ajv: 6.12.6
       chalk: 4.1.2
@@ -7851,7 +7851,7 @@ snapshots:
 
   mdurl@2.0.0: {}
 
-  media-typer@0.3.0: {}
+  media-typer@0.4.0: {}
 
   merge-descriptors@1.0.1: {}
 
@@ -8478,7 +8478,7 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  scslre@0.3.0:
+  scslre@0.4.0:
     dependencies:
       '@eslint-community/regexpp': 4.11.0
       refa: 0.12.1
@@ -8933,7 +8933,7 @@ snapshots:
 
   type-is@1.6.18:
     dependencies:
-      media-typer: 0.3.0
+      media-typer: 0.4.0
       mime-types: 2.1.35
 
   typed-query-selector@2.12.0: {}

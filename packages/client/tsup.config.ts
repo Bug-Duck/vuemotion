@@ -6,5 +6,5 @@ export default defineConfig({
   tsconfig: '../../tsconfig.json',
   splitting: true,
   clean: true,
-  dts: true,
+  dts: false,
 })

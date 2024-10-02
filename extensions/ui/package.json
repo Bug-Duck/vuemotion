@@ -1,7 +1,7 @@
 {
   "name": "@vue-motion/extension-ui",
   "type": "module",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "The components and hooks of vue-motion of Vuejs",
   "author": "BugDuck Team",
   "license": "Apache-2.0",
