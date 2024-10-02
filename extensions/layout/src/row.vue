@@ -8,7 +8,7 @@ export interface RowOptions extends WidgetOptions {
 
 const props = defineProps<RowOptions>()
 
-const { width, height } = useMotion()
+const { height } = useMotion()
 
 const options = defineWidget<RowOptions>(props)
 </script>
@@ -16,9 +16,7 @@ const options = defineWidget<RowOptions>(props)
 <template>
   <g v-bind="widget(options)">
     <foreignObject :width="options.width - (options.x ?? 0)" :height="height - (options.y ?? 0)">
-      <div xmlns="http://www.w3.org/1999/xhtml">
-        <slot />
-      </div>
+      <slot />
     </foreignObject>
   </g>
 </template>

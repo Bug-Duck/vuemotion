@@ -20,14 +20,6 @@ export interface PolarPlaneOptions extends WidgetOptions {
 const props = defineProps<PolarPlaneOptions>()
 const options = defineWidget<typeof props>(props)
 
-const children = useChildren()
-
-onMounted(() => {
-  nextTick(() => {
-    console.log(children)
-  })
-})
-
 const divide = props.divide ?? 20
 
 function buildRadians(numerator: number, denominator: number) {

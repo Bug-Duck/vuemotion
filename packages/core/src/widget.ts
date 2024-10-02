@@ -55,5 +55,5 @@ export function useWidget<T extends Widget>(wid: string) {
 export function useChildren<T extends Widget>() {
   const widgets = reactive([]) as T[]
   provide('child-widgets', widgets)
-  return widgets
+  return widgets as Reactive<T[]>
 }
