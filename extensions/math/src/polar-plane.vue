@@ -1,11 +1,12 @@
 <script setup lang="ts">
-import { useChildren } from '@vue-motion/core'
-import { defineWidget } from '@vue-motion/core'
+import { defineWidget, useChildren } from '@vue-motion/core'
 import { Arc, Line, Text } from '@vue-motion/lib'
 import { type WidgetOptions, widget } from '@vue-motion/lib'
-import { onMounted, nextTick } from 'vue'
+import { nextTick, onMounted } from 'vue'
+import tex from './tex.vue'
 
 export interface PolarPlaneOptions extends WidgetOptions {
+  azimuthUnits?: ('PI radians' | 'TAU radians' | 'degrees' | 'gradians')
   radius: number
   interval?: number
   intervalR?: number
@@ -26,6 +27,22 @@ onMounted(() => {
     console.log(children)
   })
 })
+
+const divide = props.divide ?? 20
+
+function buildRadians(numerator: number, denominator: number) {
+  if (numerator === denominator)
+    return '\\pi'
+  if (numerator === 0)
+    return '0'
+  const gcd = (a: number, b: number): number => (b === 0 ? a : gcd(b, a % b))
+  const _gcd = gcd(numerator, denominator)
+  return `\\frac{${numerator / _gcd}}{${denominator / _gcd}}\\pi`
+}
+
+function fixAngle(at: number): number {
+  return at % divide
+}
 </script>
 
 <template>
@@ -40,19 +57,30 @@ onMounted(() => {
     </g>
 
     <!-- Radial Lines -->
-    <g v-for="a in options.divide ?? 20" :key="a">
-      <Line :from="[0, 0]" :to="[radius, 0]" :rotation="a * (360 / (options.divide ?? 20))" border-color="white"
-        :border-width="1" />
+    <g v-for="a in divide" :key="a">
+      <Line
+        :from="[0, 0]" :to="[radius, 0]" :rotation="a * (360 / (divide))" border-color="white"
+        :border-width="1"
+      />
     </g>
 
     <!-- Labels at each radial line -->
-    <g v-for="at in options.divide ?? 20" :key="at">
+    <g v-for="at in divide" :key="at">
       <!-- Convert degrees to radians by multiplying by Math.PI / 180 -->
-      <Text :x="Math.cos(at * (360 / (options.divide ?? 20)) * (Math.PI / 180)) * (radius + 15)"
-        :y="-Math.sin(at * (360 / (options.divide ?? 20)) * (Math.PI / 180)) * (radius + 15)" text-anchor="middle"
-        alignment-baseline="middle" :fill-color="options.fontColor ?? 'white'" :font-size="options.fontSize ?? 12">
-        {{ options.trend ? options.trend(at) : at * (360 / (options.divide ?? 20)) }}°
-      </Text>
+      <tex
+        :x="Math.cos(at * (360 / (divide)) * (Math.PI / 180)) * (radius + 25) - 160 / 2 - 20"
+        :y="-Math.sin(at * (360 / (divide)) * (Math.PI / 180)) * (radius + 25) - 160 / 2 - 20" text-anchor="middle"
+        :font-size="options.fontSize ?? 22"
+        :auto-center="true"
+      >
+        {{ (
+          (options.azimuthUnits === 'degrees')
+            ? `${options.trend ? options.trend(at) : fixAngle(at) * (360 / (divide))}\\degree`
+            : ((options.azimuthUnits === 'gradians')
+              ? `${options.trend ? options.trend(at) : fixAngle(at) * (400 / (divide))}\\text{g}`
+              : buildRadians(fixAngle(at) * 2, divide))
+        ) }}
+      </tex>
     </g>
   </g>
 </template>
