@@ -2,7 +2,7 @@
 import { defineWidget, useChildren } from '@vue-motion/core'
 import type { WidgetOptions } from '@vue-motion/lib'
 import type { ComputedRef } from 'vue'
-import { computed, onMounted } from 'vue'
+import { computed, onMounted, ref } from 'vue'
 
 export interface ContainerOptions extends WidgetOptions {
   margin?: number
@@ -26,30 +26,37 @@ export interface ContainerOptions extends WidgetOptions {
 const props = defineProps<ContainerOptions>()
 const options = defineWidget<ContainerOptions>(props)
 
+console.log(props, options)
+
 const children = useChildren()
 
-let width: ComputedRef<number>
-let height: ComputedRef<number>
+const mountedFlag = ref(false)
+
+const width: ComputedRef<number> = computed(() => {
+  if (!mountedFlag.value)
+    return 0
+  if (options.width)
+    return options.width
+  const counter: number[] = []
+  children.forEach((child) => {
+    counter.push(Math.abs(child.range?.x ?? 0) + (child.range?.width ?? 0))
+  })
+  return Math.max(...counter)
+})
+const height: ComputedRef<number> = computed(() => {
+  if (!mountedFlag.value)
+    return 0
+  if (options.height)
+    return options.height
+  const counter: number[] = []
+  children.forEach((child) => {
+    counter.push(Math.abs(child.range?.y ?? 0) + (child.range?.height ?? 0))
+  })
+  return Math.max(...counter)
+})
 
 onMounted(() => {
-  width = computed(() => {
-    if (options.width)
-      return options.width
-    const counter: number[] = []
-    children.forEach((child) => {
-      counter.push(Math.abs(child.range?.x ?? 0) + (child.range?.width ?? 0))
-    })
-    return Math.max(...counter)
-  })
-  height = computed(() => {
-    if (options.height)
-      return options.height
-    const counter: number[] = []
-    children.forEach((child) => {
-      counter.push(Math.abs(child.range?.y ?? 0) + (child.range?.height ?? 0))
-    })
-    return Math.max(...counter)
-  })
+  mountedFlag.value = true
 })
 
 onMounted(() => {
@@ -64,6 +71,8 @@ const paddingTop = computed(() => props.paddingTop ?? props.paddingY ?? props.pa
 const paddingBottom = computed(() => props.paddingBottom ?? props.paddingY ?? props.padding ?? 0)
 const paddingLeft = computed(() => props.paddingLeft ?? props.paddingX ?? props.padding ?? 0)
 const paddingRight = computed(() => props.paddingRight ?? props.paddingX ?? props.padding ?? 0)
+
+console.log(marginTop, marginBottom, marginLeft, marginRight, paddingTop, paddingBottom, paddingLeft, paddingRight)
 </script>
 
 <template>
@@ -77,8 +86,8 @@ const paddingRight = computed(() => props.paddingRight ?? props.paddingX ?? prop
       paddingBottom: `${paddingBottom}px`,
       paddingLeft: `${paddingLeft}px`,
       paddingRight: `${paddingRight}px`,
-      width,
-      height,
+      width: `${width}px`,
+      height: `${height}px`,
     }"
   >
     <slot />
