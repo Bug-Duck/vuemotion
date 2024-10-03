@@ -1,5 +1,5 @@
 {
-  "name": "@vue-motion/extension-sgoogle-fonts",
+  "name": "@vue-motion/extension-google-fonts",
   "type": "module",
   "version": "0.4.0",
   "description": "The components and hooks of vue-motion",

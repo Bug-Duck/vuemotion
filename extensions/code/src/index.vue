@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import { defineWidget } from '@vue-motion/core'
-import { WidgetOptions, widget } from '@vue-motion/lib'
-import { CodeToHastOptions, codeToHtml } from 'shiki'
-import { ref, useSlots } from 'vue';
+import type { WidgetOptions } from '@vue-motion/lib'
+import { widget } from '@vue-motion/lib'
+import type { CodeToHastOptions } from 'shiki'
+import { codeToHtml } from 'shiki'
+import { ref, useSlots } from 'vue'
 
 export interface CodeOptions extends WidgetOptions {
   shikiOptions?: CodeToHastOptions
@@ -31,7 +33,7 @@ const content = ref(await codeToHtml(codes, {
       In the context of SVG embeded into HTML, the XHTML namespace could
       be avoided, but it is mandatory in the context of an SVG document
     -->
-      <div xmlns="http://www.w3.org/1999/xhtml" style="color: white" v-html="content"></div>
+      <div xmlns="http://www.w3.org/1999/xhtml" style="color: white" v-html="content" />
     </foreignObject>
   </g>
 </template>
