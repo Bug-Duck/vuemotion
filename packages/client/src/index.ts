@@ -3,7 +3,7 @@
 import fs from 'node:fs'
 import path, { dirname, resolve } from 'node:path'
 import { fileURLToPath } from 'node:url'
-import { Clerc } from 'clerc'
+import { Clerc, helpPlugin } from 'clerc'
 import { build, createServer } from 'vite'
 import exportOut from '@vue-motion/export'
 import vue from '@vitejs/plugin-vue'
@@ -134,4 +134,5 @@ export const client = Clerc.create()
     })
     process.exit()
   })
+  .use(helpPlugin())
   .parse()
