@@ -7,49 +7,22 @@ import Widgets from './components/Widgets.vue'
 </script>
 
 <template>
-  <div class="w-screen h-screen">
+  <div class="w-screen h-screen flex flex-col">
     <TopMenubar />
-    <div class="h-full w-full">
+    <div class="flex-grow flex flex-col overflow-hidden">
       <Preview :width="1600" :height="900" />
-      <Tools />
-      <div class="w-full h-full flex flex-row">
-        <div class="w-[25%] h-full flex">
+      <Tools class="flex-shrink-0" />
+      <div class="flex-grow flex flex-row overflow-hidden">
+        <div class="w-1/4 overflow-y-auto">
           <Widgets
             :widgets="[
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
               { type: 'Arc' },
               { type: 'Arc' },
               { type: 'Arc' },
             ]"
           />
         </div>
-        <div class="w-[75%] h-full flex">
+        <div class="w-3/4 overflow-auto">
           <Timeline />
         </div>
       </div>

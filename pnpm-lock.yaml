@@ -386,10 +386,10 @@ importers:
     dependencies:
       '@vue-motion/core':
         specifier: latest
-        version: 0.4.0(typescript@5.5.4)
+        version: 0.4.1(typescript@5.5.4)
       '@vue-motion/lib':
         specifier: latest
-        version: 0.4.0(typescript@5.5.4)
+        version: 0.4.1(typescript@5.5.4)
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.41)
@@ -714,7 +714,7 @@ packages:
       svelte-eslint-parser:
         optional: true
 
-  '@antfu/install-pkg@0.4.0':
+  '@antfu/install-pkg@0.4.1':
     resolution: {integrity: sha512-vI73C0pFA9L+5v+djh0WSLXb8qYQGH5fX8nczaFe1OTI/8Fh03JS1Mov1V7urb6P3A2cBlBqZNjJIKv54+zVRw==}
 
   '@antfu/ni@0.21.12':
@@ -778,7 +778,7 @@ packages:
   '@changesets/get-release-plan@4.0.4':
     resolution: {integrity: sha512-SicG/S67JmPTrdcc9Vpu0wSQt7IiuN0dc8iR5VScnnTVPfIaLvKmEGRvIaF0kcn8u5ZqLbormZNTO77bCEvyWw==}
 
-  '@changesets/get-version-range-type@0.4.0':
+  '@changesets/get-version-range-type@0.4.1':
     resolution: {integrity: sha512-hwawtob9DryoGTpixy1D3ZXbGgJu1Rhr+ySH2PvTLHvkZuQ7sRT4oQwMh0hbqZH1weAooedEjRsbrWcGLCeyVQ==}
 
   '@changesets/git@3.0.1':
@@ -787,7 +787,7 @@ packages:
   '@changesets/logger@0.1.1':
     resolution: {integrity: sha512-OQtR36ZlnuTxKqoW4Sv6x5YIhOmClRd5pWsjZsddYxpWs517R0HkyiefQPIytCVh4ZcC5x9XaG8KTdd5iRQUfg==}
 
-  '@changesets/parse@0.4.0':
+  '@changesets/parse@0.4.1':
     resolution: {integrity: sha512-TS/9KG2CdGXS27S+QxbZXgr8uPsP4yNJYb4BC2/NeFUj80Rni3TeD2qwWmabymxmrLo7JEsytXH1FbpKTbvivw==}
 
   '@changesets/pre@2.0.1':
@@ -1850,13 +1850,13 @@ packages:
   '@volar/typescript@2.4.0':
     resolution: {integrity: sha512-9zx3lQWgHmVd+JRRAHUSRiEhe4TlzL7U7e6ulWXOxHH/WNYxzKwCvZD7WYWEZFdw4dHfTD9vUR0yPQO6GilCaQ==}
 
-  '@vue-motion/core@0.4.0':
+  '@vue-motion/core@0.4.1':
     resolution: {integrity: sha512-9ZwZ2UzPJNtNsqPEMmBzio9woRhfm3v+f+cWbucohZQBfEyStXUC5qAM27WQ8EqhYIvHcChJ1wIEnZ6viYDuUw==}
 
-  '@vue-motion/lib@0.4.0':
+  '@vue-motion/lib@0.4.1':
     resolution: {integrity: sha512-9AVxyqYDgguuy3JfEkEIh0gBOdZOEckH61rplHDhQ7UfPUEf1rh1E/YY/0Ap0O1v2OsEuxHlzBmGHcZo6y7+4g==}
 
-  '@vue-motion/utils@0.4.0':
+  '@vue-motion/utils@0.4.1':
     resolution: {integrity: sha512-A+tbfx8BFi1KMg7x5Lk7zHmNM0j4WEknwL6TXBXrUH/I2xsprLIOK2SqhLL5Acjh/kJecPI1acdXlT/QJn3QnQ==}
 
   '@vue/compiler-core@3.4.38':
@@ -1927,16 +1927,16 @@ packages:
 
   acorn-walk@8.3.4:
     resolution: {integrity: sha512-ueEepnujpqee2o5aIYnvHU6C0A42MNdsIDeqy5BydrkuC5R1ZuUFnm27EeFJGoEHJQgn3uleRvmTXaJgfXbt4g==}
-    engines: {node: '>=0.4.0'}
+    engines: {node: '>=0.4.1'}
 
   acorn@8.11.3:
     resolution: {integrity: sha512-Y9rRfJG5jcKOE0CLisYbojUjIrIEE7AGMzA/Sm4BslANhbS+cDMpgBdcPT91oJ7OuJ9hYJBx59RjbhxVnrF8Xg==}
-    engines: {node: '>=0.4.0'}
+    engines: {node: '>=0.4.1'}
     hasBin: true
 
   acorn@8.12.1:
     resolution: {integrity: sha512-tcpGyI9zbizT9JbV6oYE477V6mTlXvvi0T0G3SNIYE2apm/G5huBa1+K89VGeovbg+jycCrfhl3ADxErOuO6Jg==}
-    engines: {node: '>=0.4.0'}
+    engines: {node: '>=0.4.1'}
     hasBin: true
 
   agent-base@7.1.1:
@@ -2483,7 +2483,7 @@ packages:
   electron-to-chromium@1.5.13:
     resolution: {integrity: sha512-lbBcvtIJ4J6sS4tb5TLp1b4LyfCdMkwStzXPyAgVgTRAsep4bvrAGaBOP7ZJtQMNJpSQ9SqG4brWOroNaQtm7Q==}
 
-  emoji-regex@10.4.0:
+  emoji-regex@10.4.1:
     resolution: {integrity: sha512-EC+0oUMY1Rqm4O6LLrgjtYDvcVYTy7chDnM4Q7030tP4Kwj3u/pR6gP9ygnp2CJMK5Gq+9Q2oqmrFJAz01DXjw==}
 
   emoji-regex@8.0.0:
@@ -3557,7 +3557,7 @@ packages:
 
   netmask@2.0.2:
     resolution: {integrity: sha512-dBpDMdxv9Irdq66304OLfEmQ9tbNRFnFTuZiLo+bD+r332bBmMJ8GBLXklIXXgxd3+v9+KUnZaUR5PJMa75Gsg==}
-    engines: {node: '>= 0.4.0'}
+    engines: {node: '>= 0.4.1'}
 
   no-case@3.0.4:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
@@ -3891,7 +3891,7 @@ packages:
 
   progress@2.0.3:
     resolution: {integrity: sha512-7PiHtLll5LdnKIMw100I+8xJXR5gW2QwWYkT6iJva0bXitZKa/XMrSbdmg3r2Xnaidz9Qumd0VPaMrZlF9V9sA==}
-    engines: {node: '>=0.4.0'}
+    engines: {node: '>=0.4.1'}
 
   prompts@2.4.2:
     resolution: {integrity: sha512-NxNv/kLguCA7p3jE8oL2aEBsrJWgAakBpgmgK6lpPWV+WuOmY6r2/zbAVnP+T8bQlA0nzHXSJSJW0Hq7ylaD2Q==}
@@ -4441,7 +4441,7 @@ packages:
     engines: {node: '>=18.0.0'}
     hasBin: true
 
-  type-check@0.4.0:
+  type-check@0.4.1:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
     engines: {node: '>= 0.8.0'}
 
@@ -4554,7 +4554,7 @@ packages:
 
   utils-merge@1.0.1:
     resolution: {integrity: sha512-pMZTvIkT1d+TFGvDOqodOclx0QWkkgi6Tdoa8gC8ffGAAqz9pzPTZWAybbsHHoED/ztMtkv/VoYTYyShUn81hA==}
-    engines: {node: '>= 0.4.0'}
+    engines: {node: '>= 0.4.1'}
 
   validate-npm-package-license@3.0.4:
     resolution: {integrity: sha512-DpKm2Ui/xN7/HQKCtpZxoRWBhZ9Z0kqtygG8XCgNQ8ZlDnxuQmWhj566j8fN4Cu3/JmbhsDo7fcAJq4s9h27Ew==}
@@ -4819,7 +4819,7 @@ snapshots:
 
   '@antfu/eslint-config@2.27.1(@typescript-eslint/utils@8.2.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4))(@vue/compiler-sfc@3.4.38)(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)(vitest@1.6.0(@types/node@22.5.0)(terser@5.31.6))':
     dependencies:
-      '@antfu/install-pkg': 0.4.0
+      '@antfu/install-pkg': 0.4.1
       '@clack/prompts': 0.7.0
       '@eslint-community/eslint-plugin-eslint-comments': 4.4.0(eslint@9.9.0(jiti@1.21.6))
       '@stylistic/eslint-plugin': 2.6.4(eslint@9.9.0(jiti@1.21.6))(typescript@5.5.4)
@@ -4863,7 +4863,7 @@ snapshots:
       - typescript
       - vitest
 
-  '@antfu/install-pkg@0.4.0':
+  '@antfu/install-pkg@0.4.1':
     dependencies:
       package-manager-detector: 0.1.2
       tinyexec: 0.2.0
@@ -4905,7 +4905,7 @@ snapshots:
   '@changesets/apply-release-plan@7.0.5':
     dependencies:
       '@changesets/config': 3.0.3
-      '@changesets/get-version-range-type': 0.4.0
+      '@changesets/get-version-range-type': 0.4.1
       '@changesets/git': 3.0.1
       '@changesets/should-skip-package': 0.1.1
       '@changesets/types': 6.0.0
@@ -4994,7 +4994,7 @@ snapshots:
       '@changesets/types': 6.0.0
       '@manypkg/get-packages': 1.1.3
 
-  '@changesets/get-version-range-type@0.4.0': {}
+  '@changesets/get-version-range-type@0.4.1': {}
 
   '@changesets/git@3.0.1':
     dependencies:
@@ -5008,7 +5008,7 @@ snapshots:
     dependencies:
       picocolors: 1.1.0
 
-  '@changesets/parse@0.4.0':
+  '@changesets/parse@0.4.1':
     dependencies:
       '@changesets/types': 6.0.0
       js-yaml: 3.14.1
@@ -5024,7 +5024,7 @@ snapshots:
     dependencies:
       '@changesets/git': 3.0.1
       '@changesets/logger': 0.1.1
-      '@changesets/parse': 0.4.0
+      '@changesets/parse': 0.4.1
       '@changesets/types': 6.0.0
       fs-extra: 7.0.1
       p-filter: 2.1.0
@@ -5999,24 +5999,24 @@ snapshots:
       path-browserify: 1.0.1
       vscode-uri: 3.0.8
 
-  '@vue-motion/core@0.4.0(typescript@5.5.4)':
+  '@vue-motion/core@0.4.1(typescript@5.5.4)':
     dependencies:
       '@ffmpeg/ffmpeg': 0.11.0
-      '@vue-motion/utils': 0.4.0(typescript@5.5.4)
+      '@vue-motion/utils': 0.4.1(typescript@5.5.4)
       vue: 3.4.38(typescript@5.5.4)
     transitivePeerDependencies:
       - encoding
       - typescript
 
-  '@vue-motion/lib@0.4.0(typescript@5.5.4)':
+  '@vue-motion/lib@0.4.1(typescript@5.5.4)':
     dependencies:
-      '@vue-motion/core': 0.4.0(typescript@5.5.4)
+      '@vue-motion/core': 0.4.1(typescript@5.5.4)
       vue: 3.4.38(typescript@5.5.4)
     transitivePeerDependencies:
       - encoding
       - typescript
 
-  '@vue-motion/utils@0.4.0(typescript@5.5.4)':
+  '@vue-motion/utils@0.4.1(typescript@5.5.4)':
     dependencies:
       '@ffmpeg/ffmpeg': 0.12.10
       '@ffmpeg/util': 0.12.1
@@ -6660,7 +6660,7 @@ snapshots:
 
   electron-to-chromium@1.5.13: {}
 
-  emoji-regex@10.4.0: {}
+  emoji-regex@10.4.1: {}
 
   emoji-regex@8.0.0: {}
 
@@ -7674,7 +7674,7 @@ snapshots:
   levn@0.4.1:
     dependencies:
       prelude-ls: 1.2.1
-      type-check: 0.4.0
+      type-check: 0.4.1
 
   lilconfig@2.1.0: {}
 
@@ -8015,7 +8015,7 @@ snapshots:
       fast-levenshtein: 2.0.6
       levn: 0.4.1
       prelude-ls: 1.2.1
-      type-check: 0.4.0
+      type-check: 0.4.1
       word-wrap: 1.2.5
 
   os-tmpdir@1.0.2: {}
@@ -8631,12 +8631,12 @@ snapshots:
   string-width@6.1.0:
     dependencies:
       eastasianwidth: 0.2.0
-      emoji-regex: 10.4.0
+      emoji-regex: 10.4.1
       strip-ansi: 7.1.0
 
   string-width@7.2.0:
     dependencies:
-      emoji-regex: 10.4.0
+      emoji-regex: 10.4.1
       get-east-asian-width: 1.2.0
       strip-ansi: 7.1.0
 
@@ -8864,7 +8864,7 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
-  type-check@0.4.0:
+  type-check@0.4.1:
     dependencies:
       prelude-ls: 1.2.1
 
