@@ -20,7 +20,8 @@ export interface NumberPlaneOptions extends WidgetOptions, Growable {
   fontSizeY?: number // Font size
   rangesY: [number, number]
 
-  grid?: string
+  grid?: boolean
+  gridColor?: string
   gridWidth?: number
 }
 
@@ -60,19 +61,21 @@ const options = defineWidget<NumberPlaneOptions>(props)
       0
     </Text>
     <Line
+      v-if="options.grid"
       v-for="i in Math.abs(options.rangesX[1] - options.rangesX[0]) + 1"
       :from="[i * (options.intervalX ?? 100), options.rangesY[0] * (options.intervalY ?? 100)]"
       :to="[i * (options.intervalX ?? 100), options.rangesY[1] * (options.intervalY ?? 100)]"
-      :border-color="options.grid ?? 'white'"
+      :border-color="options.gridColor ?? 'white'"
       :border-width="options.gridWidth ?? 1"
       :x="(options.rangesX[0] - 1) * (options.intervalX ?? 100)"
       :progress="options.progress ?? 1"
     />
     <Line
+      v-if="options.grid"
       v-for="i in Math.abs(options.rangesY[1] - options.rangesY[0]) + 1"
       :from="[options.rangesX[0] * (options.intervalX ?? 100), i * (options.intervalY ?? 100)]"
       :to="[options.rangesX[1] * (options.intervalX ?? 100), i * (options.intervalY ?? 100)]"
-      :border-color="options.grid ?? 'white'"
+      :border-color="options.gridColor ?? 'white'"
       :border-width="options.gridWidth ?? 1"
       :y="(options.rangesY[0] - 1) * (options.intervalY ?? 100)"
       :progress="options.progress ?? 1"
