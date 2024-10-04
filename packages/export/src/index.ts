@@ -25,9 +25,10 @@ export default async function (options: ExportOptions) {
   app.listen(23333)
   const browser = await puppeteer.launch()
   const page = await browser.newPage()
-  page.setViewport({
-    width: 10000,
-    height: 10000,
+  await page.setViewport({
+    width: 2560,
+    height: 1600,
+    // deviceScaleFactor: 0.5,
   })
   await page.goto('http://localhost:23333', {
     waitUntil: 'networkidle2',

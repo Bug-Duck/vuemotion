@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from '@vue-motion/app/src/App.vue'
-import '@vue-motion/app/src/out.css'
+import '@vue-motion/app/src/output.css'
 import player from './player'
 import router from './router'
 
