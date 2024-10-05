@@ -1,5 +1,5 @@
-import type { Reactive, Ref } from 'vue'
-import { getCurrentInstance, inject, nextTick, onMounted, provide, reactive, ref, useSlots } from 'vue'
+import type { Reactive } from 'vue'
+import { getCurrentInstance, inject, onMounted, provide, reactive, ref, useSlots } from 'vue'
 
 export interface Range {
   x: number
@@ -16,16 +16,18 @@ export interface Widget {
   children?: Widget[]
 }
 
+export type ReturnWidget<T extends Widget> = ReturnType<typeof defineWidget<T>>
+
 export function defineWidget<T extends Widget>(props: T, root?: SVGElement): Reactive<T> {
   let widget = inject<T>(props.wid as string)
   const widgets = inject('child-widgets') as T[]
-  
+
   // const children = reactive([])
   // provide('child-widgets', children)
 
   widget ??= {} as T
   Object.assign(widget, props)
-  
+
   onMounted(() => {
     widget.element = root ?? getCurrentInstance()!.proxy!.$el.parentElement
     widget.range = widget.element!.getBoundingClientRect()
@@ -35,7 +37,7 @@ export function defineWidget<T extends Widget>(props: T, root?: SVGElement): Rea
       widgets.push(widget)
     }
   })
-  
+
   return reactive(widget)
 }
 
