@@ -1,64 +1,52 @@
 <script setup lang="ts">
 import { usePlayer, useWidget } from '@vue-motion/core'
-import { Group, Motion, flash, grow, indicate, rotate, showCircleCreationThenDestructionAround, Text } from '@vue-motion/lib'
-import { onMounted } from 'vue';
-import { Table, TableItem, TableRow } from '@vue-motion/extension-table';
-// import { onMounted } from 'vue'
-// import { MathFunction } from '@vue-motion/extension-math'
-import { NumberPlane, PolarPlane } from '@vue-motion/extension-math'
-// import { Column, Container, Row } from '@vue-motion/extension-layout'
+import { Motion, grow } from '@vue-motion/lib'
+import { onMounted } from 'vue'
+import type { MathFunction } from '@vue-motion/extension-math'
+import { BarChart, ChartData, ChartDataset } from '@vue-motion/extension-chart'
 
-// const plane = useWidget<InstanceType<typeof PolarPlane>>('plane')
-// const plane2 = useWidget<InstanceType<typeof PolarPlane>>('plane2')
-// const plane3 = useWidget<InstanceType<typeof PolarPlane>>('plane3')
-// const plane4 = useWidget<InstanceType<typeof PolarPlane>>('plane4')
+const fn1 = useWidget<InstanceType<typeof MathFunction>>('fn1')
+const fn2 = useWidget<InstanceType<typeof MathFunction>>('fn2')
+const fn3 = useWidget<InstanceType<typeof MathFunction>>('fn3')
 
 onMounted(() => {
   const { play, useAnimation } = usePlayer()
 
-  // useAnimation(plane)
-  //   .animate(rotate, { duration: 10, offset: -1000 })
-  // useAnimation(plane4)
-  //   .animate(rotate, { duration: 10, offset: 1000 })
-  // useAnimation(plane2)
-  //   .animate(rotate, { duration: 10, offset: -1000 })
-  // useAnimation(plane3)
-  //   .animate(rotate, { duration: 10, offset: 1000 })
+  useAnimation(fn1)
+    .animate(grow, { duration: 1 })
+  useAnimation(fn2)
+    .animate(grow, { duration: 1 })
+  useAnimation(fn3)
+    .animate(grow, { duration: 1 })
 
   play()
 })
 </script>
 
 <template>
-  <Motion id="motion" :width="3000" :height="900">
+  <Motion id="motion" :width="1000" :height="1000">
     <!--    <Group> -->
     <!--      <NumberPlane :ranges-x="[-5, 5]" :ranges-y="[-5, 5]" :grid="false"/> -->
     <!--      <MathFunction :fn="(x) => Math.sin(x)" color="skyblue" :domain="[0, 0]" :ranges="[0, 5]" wid="fn1" /> -->
     <!--      <MathFunction :fn="(x) => Math.cos(x)" color="red" :domain="[0, 0]" :ranges="[0, 5]" wid="fn2" /> -->
     <!--      <MathFunction :fn="(x) => Math.tan(x)" color="green" :domain="[0, 0]" :ranges="[0, 5]" wid="fn3" /> -->
     <!--    </Group> -->
-    
-    <!-- <PolarPlane :radius="300" wid="plane" />
-    <NumberPlane :ranges-x="[-4, 4]" :ranges-y="[-4, 4]" wid="plane2" />
-    <NumberPlane :ranges-x="[-6, 6]" :ranges-y="[-6, 6]" wid="plane3" />
-    <PolarPlane :radius="500" wid="plane4" /> -->
-    <Table :width="3000" :height="1000" :x="-800" :y="-450">
-      <TableRow :width="100" :height="100">
-        <TableItem>
-          <Text>Hello</Text>
-        </TableItem>
-        <TableItem>
-          <Text>World</Text>
-        </TableItem>
-      </TableRow>
-      <TableRow :width="100" :height="100">
-        <TableItem>
-          <Text>Hello</Text>
-        </TableItem>
-        <TableItem>
-          <Text>World</Text>
-        </TableItem>
-      </TableRow>
-    </Table>
+    <!--    <Group> -->
+    <!--      <NumberPlane :ranges-x="[0, 10]" :ranges-y="[0, 10]" /> -->
+    <!--    </Group> -->
+    <BarChart :labels="['A', 'w', 'e', 'm']">
+      <ChartDataset label="test1">
+        <ChartData :cross="1" />
+        <ChartData :cross="1" />
+        <ChartData :cross="1" />
+        <ChartData :cross="1" />
+      </ChartDataset>
+      <ChartDataset label="test2">
+        <ChartData :cross="2" />
+        <ChartData :cross="2" />
+        <ChartData :cross="2" />
+        <ChartData :cross="2" />
+      </ChartDataset>
+    </BarChart>
   </Motion>
 </template>

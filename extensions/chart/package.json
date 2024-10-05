@@ -29,7 +29,10 @@
   "dependencies": {
     "@vue-motion/core": "workspace:*",
     "@vue-motion/lib": "workspace:*",
-    "vue": "^3.4.26"
+    "vue": "^3.4.26",
+    "@types/luxon": "^3.4.2",
+    "luxon": "^3.4.4",
+    "string-width": "^7.1.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.4",
