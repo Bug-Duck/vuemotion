@@ -1,8 +1,9 @@
 <script setup lang="ts">
 /** @ts-expect-error virtual-import */
-// import Animation from 'virtual:user-main'
+import Animation from 'virtual:user-main'
 import { Motion, scale } from '@vue-motion/lib'
 import { ref, watch } from 'vue'
+// import TestAnimation from './__test__/TestAnimation.vue'
 
 const { width, height } = defineProps<{
   width: number
@@ -18,21 +19,24 @@ function updateZoom() {
 window.addEventListener('resize', updateZoom)
 
 watch(() => window.innerHeight, updateZoom)
+
+let dev: boolean
+if (__DEV__)
+  dev = true
+else
+  dev = false
 </script>
 
 <template>
   <div class="w-full h-[60%] flex overflow-hidden">
     <div class="w-full h-full flex items-center justify-center">
-      <svg :viewBox="`0 0 ${width} ${height}`" class="bg-black" :style="{
-        transform: `scale(${zoom})`,
-        minWidth: `${width * zoom}px`,
-        minHeight: `${height * zoom}px`,
-      }" style="transform-origin: center center;">
-        <circle cx="100" cy="100" r="200" fill="white" />
-      </svg>
-      <!-- <Motion id="motion" :width="width" :height="height" :scale="zoom" :min-width="width * zoom" :min-height="height * zoom">
-        <Animation />
-      </Motion> -->
+      <Motion
+        id="motion" :width="width" :height="height" :scale="dev ? zoom : null as any" :min-width="dev ? (width * zoom) : (null as any)"
+        :min-height="dev ? (height * zoom) : (null as any)"
+      >
+        <Animation/>
+        <!-- <TestAnimation/> -->
+      </Motion>
     </div>
   </div>
 </template>

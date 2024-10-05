@@ -1,26 +1,31 @@
 <script setup lang="ts">
-import { defineProps, provide } from 'vue'
+import { defineProps, provide, ref } from 'vue'
 import { figure } from './widgets/figure.ts'
 
 const props = defineProps<{
   width: number
   height: number
-  minWidth: number
-  minHeight: number
-  scale: number
+  minWidth?: number
+  minHeight?: number
+  scale?: number
 }>()
 
-provide('motion-width', props.width)
-provide('motion-height', props.height)
+const w = ref(props.width)
+const h = ref(props.height)
+
+provide('motion-width', w)
+provide('motion-height', h)
+
+
 </script>
 
 <template>
   <svg
-    :viewBox="`0 0 ${width} ${height}`" style="background-color: black;" :style="{
+    :viewBox="`0 0 ${w} ${h}`" style="background-color: black;" :style="{
       transform: `scale(${props.scale ?? 1})`,
       minWidth: `${props.minWidth ?? width}px`,
       minHeight: `${props.minHeight ?? height}px`,
-    }" :width="width" :height="height"
+    }" :width="w" :height="h"
   >
     <g v-bind="figure({ x: width / 2, y: height / 2 })">
       <slot />

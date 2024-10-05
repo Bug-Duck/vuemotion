@@ -1,7 +1,7 @@
 {
   "name": "@vue-motion/lib",
   "type": "module",
-  "version": "0.4.1",
+  "version": "0.4.3",
   "description": "The basic components of vue-motion",
   "author": "BugDuck Team",
   "license": "Apache-2.0",
