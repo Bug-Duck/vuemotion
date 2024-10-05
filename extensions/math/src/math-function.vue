@@ -13,6 +13,7 @@ export interface MathFunctionOptions extends FigureOptions, Growable {
   divisionY?: number
   color?: string
   width?: number
+  fillColor?: string
 }
 
 const props = defineProps<MathFunctionOptions>()
@@ -42,7 +43,7 @@ const path = ref('')
 watch(props, () => {
   path.value = generateSvgPath(options.fn, {
     x: options.ranges,
-    y: options.domain ?? [Infinity, Infinity],
+    y: options.domain ?? [ 0, 0],
   }, options.divisionX ?? 100, options.divisionY ?? 100)
 }, {
   immediate: true,
@@ -51,6 +52,6 @@ watch(props, () => {
 
 <template>
   <g v-bind="figure(options)">
-    <Path :d="path" />
+    <Path :d="path" :stroke="options.color" :stroke-width="options.width" :fill-color="options.fillColor ?? 'none'" />
   </g>
 </template>
