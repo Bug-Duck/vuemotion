@@ -2,6 +2,7 @@
 
 import fs from 'node:fs'
 import path, { dirname, resolve } from 'node:path'
+import process from 'node:process'
 import { fileURLToPath } from 'node:url'
 import { Clerc, helpPlugin } from 'clerc'
 import { build, createServer } from 'vite'
@@ -80,6 +81,9 @@ export const client = Clerc.create()
       build: {
         outDir: resolve(`${process.cwd()}/dist`),
       },
+      define: {
+        __DEV__: process.env.NODE_ENV === 'development'
+      }
     })
     await server.listen()
   })
@@ -124,6 +128,10 @@ export const client = Clerc.create()
       build: {
         outDir: resolve(`${process.cwd()}/dist`),
       },
+      define: {
+        __DEV__: JSON.stringify(false),
+        'process.env.NODE_ENV': JSON.stringify('production')
+      }
     })
     await exportOut({
       outDir: resolve('./.vuemotion'),
