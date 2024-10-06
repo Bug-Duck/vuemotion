@@ -326,7 +326,7 @@ watchEffect(() => {
       <Text
         v-else
         :x="-8"
-        :y="layoutConfig.height! + 4 - (pos - layoutConfig.index!.min) / (layoutConfig.index!.max - layoutConfig.index!.min) * layoutConfig.height!"
+        :y="layoutConfig.height! + 2 - (pos - layoutConfig.index!.min) / (layoutConfig.index!.max - layoutConfig.index!.min) * layoutConfig.height!"
         text-anchor="end"
         :fill="layoutConfig.index!.gridColor"
         font-size="16"
@@ -339,7 +339,7 @@ watchEffect(() => {
       <Text
         v-if="layoutConfig.indexAxis === 'x'"
         :x="-8"
-        :y="layoutConfig.height! + 4 - (pos - layoutConfig.cross!.min) / (layoutConfig.cross!.max - layoutConfig.cross!.min) * layoutConfig.height!"
+        :y="layoutConfig.height! + 2 - (pos - layoutConfig.cross!.min) / (layoutConfig.cross!.max - layoutConfig.cross!.min) * layoutConfig.height!"
         text-anchor="end"
         :fill="layoutConfig.cross!.gridColor"
         font-size="16"
