@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { widget } from '@vue-motion/lib'
 import { defineWidget } from '@vue-motion/core'
-import { DateTime } from 'luxon'
+import type { DateTime } from 'luxon'
 import type { Ref } from 'vue'
 import { inject, provide, ref } from 'vue'
 import type { ChartLayoutConfig } from './chartLayout.vue'
@@ -57,14 +57,6 @@ provide('chartData', data)
 let layoutConfig = inject<Ref<ChartLayoutConfig>>('chartLayoutConfig')
 layoutConfig ??= ref<ChartLayoutConfig>({})
 provide('chartLayoutConfig', layoutConfig)
-
-data.value.datasets.forEach((dataset) => {
-  dataset.data.forEach((dataUnit, index) => {
-    if (!dataUnit.index && data.value.labels && data.value.labels[index] instanceof DateTime) {
-      dataUnit.index = data.value.labels[index] as DateTime
-    }
-  })
-})
 </script>
 
 <template>

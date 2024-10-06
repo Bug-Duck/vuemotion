@@ -24,7 +24,6 @@ export interface BarChartOptions extends BaseChartOptions, Growable {
   labels?: string[] | DateTime[]
   categoryPercentage?: number
   barPercentage?: number
-  style?: BarChartStyle
 }
 
 export interface BaseChartData {
@@ -83,6 +82,7 @@ onMounted(() => {
             / (layoutConfig.value.index!.max - layoutConfig.value.index!.min) * layoutConfig.value.width!
           const categorySize = gridSize * options.categoryPercentage!
           const barSize = (categorySize / data.value.datasets.length) * options.barPercentage!
+
           return {
             width: barSize,
             height: -unit.cross * (options.progress ?? 1) * layoutConfig.value.height!

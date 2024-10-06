@@ -1,5 +1,5 @@
-import type { DateTimeUnit } from 'luxon'
-import { DateTime } from 'luxon'
+import type { DateTime, DateTimeUnit } from 'luxon'
+
 import type { WidgetOptions } from '@vue-motion/lib'
 import type { ReturnWidget } from '@vue-motion/core'
 import type { ChartLayoutConfig } from './chartLayout.vue'
@@ -119,8 +119,8 @@ export interface BaseChartOptions extends ChartAxisOptions {
    * To be noted that the indexType can't be mixed in a chart.
    * It is optional.
    * If not provided, the indexType will be 'label' when labels are provided as strings,
-   * 'date' when labels are provided as DateTimes or {@link ChartDataUnit#isIndexDate} are DateTimes.
-   * and 'number' when {@link ChartDataUnit#isIndexDate} are not DateTimes.
+   * 'date' when labels are provided as DateTimes or {@link DataUtil#isIndexDate} are DateTimes.
+   * and 'number' when {@link DataUtil#isIndexDate} are not DateTimes.
    */
   indexType?: 'label' | 'number' | 'date'
   /**
@@ -188,7 +188,7 @@ export interface BaseChartOptions extends ChartAxisOptions {
    */
   edgeOffset?: boolean
   /**
-   * @property ChartLayout layout
+   * @property ChartLayoutConfig layout
    * @description
    * layout is an object that defines the layout of the chart.
    * To be noted that when the layout is provided, the size of the chart will be ignored, and the layout will be used to calculate the size.
@@ -226,7 +226,7 @@ export interface BaseChartStyle {
    * @description
    * border is a boolean that represents whether the dataUnit has a border.
    */
-  border?: boolean
+  // border?: boolean
   /**
    * @property Color borderColor
    * @description
@@ -252,7 +252,7 @@ export interface BaseChartStyle {
 
 export const DataUtil = {
   indexNumber(ChartDataOption: ReturnWidget<ChartDataOptions>): number {
-    if (!(ChartDataOption.index instanceof DateTime)) {
+    if (!(ChartDataOption.index as DateTime)?.isValid) {
       return ChartDataOption.index as number
     }
     else {
@@ -272,8 +272,8 @@ export const DataUtil = {
     return ChartDataOption.index as DateTime
   },
 
-  indexDuration(ChartDataOption: ReturnWidget<ChartDataOptions>): number {
-    if (!(ChartDataOption.index instanceof DateTime))
+  indexDuration(ChartDataOption: ReturnWidget<ChartDataOptions>): number | undefined {
+    if (!(ChartDataOption.index as DateTime)?.isValid)
       return undefined
     if (!ChartDataOption.intervalUnit)
       throw new Error('Interval unit is not set')
@@ -281,6 +281,6 @@ export const DataUtil = {
   },
 
   isIndexDate(ChartDataOption: ReturnWidget<ChartDataOptions>) {
-    return ChartDataOption.index instanceof DateTime
+    return (ChartDataOption.index as DateTime)?.isValid
   },
 }

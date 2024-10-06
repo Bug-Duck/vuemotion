@@ -394,11 +394,11 @@ importers:
   packages/app:
     dependencies:
       '@vue-motion/core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: latest
+        version: 0.4.3(typescript@5.6.2)
       '@vue-motion/lib':
-        specifier: workspace:*
-        version: link:../lib
+        specifier: latest
+        version: 0.4.3(typescript@5.6.2)
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
@@ -657,6 +657,9 @@ importers:
       '@vue-motion/lib':
         specifier: workspace:*
         version: link:../packages/lib
+      luxon:
+        specifier: ^3.4.4
+        version: 3.5.0
       vue:
         specifier: ^3.4.37
         version: 3.5.11(typescript@5.6.2)
@@ -664,6 +667,9 @@ importers:
         specifier: ^4.4.3
         version: 4.4.5(vue@3.5.11(typescript@5.6.2))
     devDependencies:
+      '@types/luxon':
+        specifier: ^3.4.2
+        version: 3.4.2
       '@vitejs/plugin-vue':
         specifier: ^5.1.2
         version: 5.1.4(vite@5.4.8(@types/node@22.7.4)(terser@5.34.1))(vue@3.5.11(typescript@5.6.2))
@@ -1794,6 +1800,15 @@ packages:
 
   '@volar/typescript@2.4.5':
     resolution: {integrity: sha512-mcT1mHvLljAEtHviVcBuOyAwwMKz1ibXTi5uYtP/pf4XxoAzpdkQ+Br2IC0NPCvLCbjPZmbf3I0udndkfB1CDg==}
+
+  '@vue-motion/core@0.4.3':
+    resolution: {integrity: sha512-J+B22CFCRIKXn0ut5vtpv+OZSW2sji2WeyJ+hx92eMamRRdkYR/yX6QH7GTFBsnkuzQXQ75RHK5LLTyOoVlwKA==}
+
+  '@vue-motion/lib@0.4.3':
+    resolution: {integrity: sha512-Adfwkp8v2K/0r0w+n5UaHZndHlS4ciglvE3sivLhTLO8YTfzJUWJ0dESZgJo2JVvquSK3VDKwhE2dC36ljjrhg==}
+
+  '@vue-motion/utils@0.4.1':
+    resolution: {integrity: sha512-dqjpoqqKwMa4YynFJeR/zvroS64Ca6kooHje8sjXQRgVr6QB7Qw/ZIJJas0BXDBK1HW/vU3vqLiehjTe0vlqng==}
 
   '@vue/compiler-core@3.5.11':
     resolution: {integrity: sha512-PwAdxs7/9Hc3ieBO12tXzmTD+Ln4qhT/56S+8DvrrZ4kLDn4Z/AMUr8tXJD0axiJBS0RKIoNaR0yMuQB9v9Udg==}
@@ -5897,6 +5912,31 @@ snapshots:
       '@volar/language-core': 2.4.5
       path-browserify: 1.0.1
       vscode-uri: 3.0.8
+
+  '@vue-motion/core@0.4.3(typescript@5.6.2)':
+    dependencies:
+      '@ffmpeg/ffmpeg': 0.11.0
+      '@vue-motion/utils': 0.4.1(typescript@5.6.2)
+      vue: 3.5.11(typescript@5.6.2)
+    transitivePeerDependencies:
+      - encoding
+      - typescript
+
+  '@vue-motion/lib@0.4.3(typescript@5.6.2)':
+    dependencies:
+      '@vue-motion/core': 0.4.3(typescript@5.6.2)
+      vue: 3.5.11(typescript@5.6.2)
+    transitivePeerDependencies:
+      - encoding
+      - typescript
+
+  '@vue-motion/utils@0.4.1(typescript@5.6.2)':
+    dependencies:
+      '@ffmpeg/ffmpeg': 0.12.10
+      '@ffmpeg/util': 0.12.1
+      vue: 3.5.11(typescript@5.6.2)
+    transitivePeerDependencies:
+      - typescript
 
   '@vue/compiler-core@3.5.11':
     dependencies:

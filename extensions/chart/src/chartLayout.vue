@@ -140,6 +140,14 @@ function generateDateAxisRange(axis: ChartAxis, data: DateTime[]) {
 }
 
 watchEffect(() => {
+  data.value.datasets.forEach((dataset) => {
+    dataset.data.forEach((dataUnit, index) => {
+      if (!DataUtil.indexNumber(dataUnit) && data.value.labels && (data.value.labels[index] as DateTime).isValid) {
+        dataUnit.index = data.value.labels[index] as DateTime
+      }
+    })
+  })
+
   layoutConfig.value.width = options.width ?? 300
   layoutConfig.value.height = options.height ?? 300
 
@@ -270,6 +278,8 @@ watchEffect(() => {
         dataUnit.index = layoutConfig.value.index!.pos[index]
     })
   })
+}, {
+  flush: 'post',
 })
 </script>
 
