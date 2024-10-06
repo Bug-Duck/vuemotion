@@ -8,7 +8,7 @@ import { defineWidget } from '@vue-motion/core'
 export interface MathFunctionOptions extends FigureOptions, Growable {
   fn: (x: number) => number
   ranges: [number, number]
-  domain: [number, number]
+  domain?: [number, number]
   divisionX?: number
   divisionY?: number
   color?: string
@@ -44,13 +44,14 @@ function generateSvgPath(mathFunc: (x: number) => number, ranges: {
 
 const path = ref('')
 
-watch(props, () => {
+watch(props.fn, () => {
   path.value = generateSvgPath(options.fn, {
     x: options.ranges,
-    y: options.domain ?? [ 0, 0],
+    y: options.domain ?? [0, 0],
   }, options.divisionX ?? 100, options.divisionY ?? 100)
 }, {
   immediate: true,
+  deep: true,
 })
 </script>
 
