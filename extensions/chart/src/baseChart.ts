@@ -2,7 +2,6 @@ import type { DateTime, DateTimeUnit } from 'luxon'
 
 import type { WidgetOptions } from '@vue-motion/lib'
 import type { ReturnWidget } from '@vue-motion/core'
-import type { ChartLayoutConfig } from './chartLayout.vue'
 import type { LineChartStyle } from './lineChart.vue'
 import type { BarChartStyle, ChartDataOptions, DateTimeWithDuration } from '.'
 // import type { default as ChartLayout } from './chartLayout'
@@ -197,7 +196,7 @@ export interface BaseChartOptions extends ChartAxisOptions {
    * It is optional.
    * If not provided, the layout will be generated automatically.
    */
-  layout?: ChartLayoutConfig
+  layout?: boolean
 }
 
 /**

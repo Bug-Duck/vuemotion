@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted, ref, watchEffect } from 'vue'
-import type { Growable } from '@vue-motion/lib'
 import type { BaseSimpleChartOptions } from './baseSimpleChart.vue'
 import BaseSimpleChart from './baseSimpleChart.vue'
 import { useSimpleChart } from './utils/useSimpleChart.ts'
@@ -18,7 +17,7 @@ export interface BarChartStyle extends BaseChartStyle {
   borderRadius?: number
 }
 
-export interface BarChartOptions extends BaseSimpleChartOptions, Growable {
+export interface BarChartOptions extends BaseSimpleChartOptions {
   categoryPercentage?: number
   barPercentage?: number
 }
@@ -62,8 +61,8 @@ onMounted(() => {
 
       if (layoutConfig.value.indexAxis === 'x') {
         return set.data.map((unit) => {
-          const gridSize = (DataUtil.indexDuration(unit) ?? layoutConfig.value.index.interval)
-            / (layoutConfig.value.index.max - layoutConfig.value.index.min) * layoutConfig.value.width!
+          const gridSize = (DataUtil.indexDuration(unit) ?? layoutConfig.value.index!.interval)
+            / (layoutConfig.value.index!.max - layoutConfig.value.index!.min) * layoutConfig.value.width!
           const categorySize = gridSize * options.categoryPercentage!
           const barSize = (categorySize / data.value.datasets.length) * options.barPercentage!
 

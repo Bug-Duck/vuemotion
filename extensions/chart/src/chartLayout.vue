@@ -77,12 +77,10 @@ const props = withDefaults(defineProps<ChartLayoutOptions>(), {
 })
 const options = defineWidget(props)
 
-const data = inject<Ref<BaseSimpleChartData>>('chartData', inject<Ref<BaseSimpleChartData>>('mixedData', ref({ datasets: [] })))
-const layoutConfig = inject<Ref<ChartLayoutConfig>>('chartLayoutConfig', ref({}))
+const data = inject<Ref<BaseSimpleChartData>>('chartData', inject<Ref<BaseSimpleChartData>>('mixedData', ref<BaseSimpleChartData>({ datasets: [] })))
+const layoutConfig = inject<Ref<ChartLayoutConfig>>('chartLayoutConfig', ref<ChartLayoutConfig>({}))
 
 const legendWidthPrefix = ref([0])
-
-const onload = ref(false)
 
 function generateAxisRange(axis: ChartAxis, data: number[]) {
   const minDataValue = Math.min(...data, typeof axis.suggestedMin === 'number' ? axis.suggestedMin : Number.NEGATIVE_INFINITY)
@@ -148,8 +146,8 @@ watchEffect(() => {
     return
   if (data.value.datasets.some(dataset => (dataset.data.length === 0)))
     return
-
-  onload.value = true
+  if ((data.value.labels ?? []).length === 0)
+    return
 
   data.value.datasets.forEach((dataset) => {
     dataset.data.forEach((dataUnit, index) => {
@@ -297,7 +295,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <g v-if="onload" v-bind="widget(options)">
+  <g v-if="layoutConfig.done" v-bind="widget(options)">
     <!-- Index Axis -->
     <Line
       :from="layoutConfig.indexAxis === 'x' ? [0, layoutConfig.height!] : [0, layoutConfig.height!]"
@@ -417,48 +415,48 @@ watchEffect(() => {
         stroke-opacity="0.3"
       />
     </g>
-  </g>
-  <!-- Cross Grids -->
-  <g v-for="(pos, index) in layoutConfig.cross?.pos" :key="index">
-    <Line
-      v-if="layoutConfig.indexAxis === 'x'"
-      :from="[0, layoutConfig.height! - (pos - layoutConfig.cross!.min) / (layoutConfig.cross!.max - layoutConfig.cross!.min) * layoutConfig.height!]"
-      :to="[layoutConfig.width!, layoutConfig.height! - (pos - layoutConfig.cross!.min) / (layoutConfig.cross!.max - layoutConfig.cross!.min) * layoutConfig.height!]"
-      :stroke="layoutConfig.cross!.gridColor"
-      :stroke-width="layoutConfig.cross!.gridWidth"
-      stroke-opacity="0.3"
-    />
-    <Line
-      v-else
-      :from="[(pos - layoutConfig.cross!.min) / (layoutConfig.cross!.max - layoutConfig.cross!.min) * layoutConfig.width!, layoutConfig.height!]"
-      :to="[(pos - layoutConfig.cross!.min) / (layoutConfig.cross!.max - layoutConfig.cross!.min) * layoutConfig.width!, 0]"
-      :stroke="layoutConfig.cross!.gridColor"
-      :stroke-width="layoutConfig.cross!.gridWidth"
-      stroke-opacity="0.3"
-    />
-  </g>
-  <!-- Legends -->
-  <g v-for="(dataset, index) in data.datasets" :key="index">
-    <Text
-      :x="layoutConfig.width! / 2 - legendWidthPrefix[data.datasets.length] / 2 + legendWidthPrefix[index] + 24"
-      :y="-16"
-      width="100"
-      text-anchor="left"
-      :fill="layoutConfig.index!.gridColor"
-      font-size="16"
-    >
-      {{ dataset.label }}
-    </Text>
-    <Rect
-      :x="layoutConfig.width! / 2 - legendWidthPrefix[data.datasets.length] / 2 + legendWidthPrefix[index]"
-      :y="-26"
-      :width="20"
-      :height="16"
-      :fill="dataset.style?.backgroundColor ?? dataset.data[0].style?.backgroundColor ?? ColorEnum.WHITE"
-      fill-opacity="0.3"
-      :border-color="dataset.style?.borderColor ?? dataset.data[0].style?.borderColor ?? ColorEnum.WHITE"
-      :border-width="dataset.style?.borderWidth ?? dataset.data[0].style?.borderWidth ?? 1"
-    />
+    <!-- Cross Grids -->
+    <g v-for="(pos, index) in layoutConfig.cross?.pos" :key="index">
+      <Line
+        v-if="layoutConfig.indexAxis === 'x'"
+        :from="[0, layoutConfig.height! - (pos - layoutConfig.cross!.min) / (layoutConfig.cross!.max - layoutConfig.cross!.min) * layoutConfig.height!]"
+        :to="[layoutConfig.width!, layoutConfig.height! - (pos - layoutConfig.cross!.min) / (layoutConfig.cross!.max - layoutConfig.cross!.min) * layoutConfig.height!]"
+        :stroke="layoutConfig.cross!.gridColor"
+        :stroke-width="layoutConfig.cross!.gridWidth"
+        stroke-opacity="0.3"
+      />
+      <Line
+        v-else
+        :from="[(pos - layoutConfig.cross!.min) / (layoutConfig.cross!.max - layoutConfig.cross!.min) * layoutConfig.width!, layoutConfig.height!]"
+        :to="[(pos - layoutConfig.cross!.min) / (layoutConfig.cross!.max - layoutConfig.cross!.min) * layoutConfig.width!, 0]"
+        :stroke="layoutConfig.cross!.gridColor"
+        :stroke-width="layoutConfig.cross!.gridWidth"
+        stroke-opacity="0.3"
+      />
+    </g>
+    <!-- Legends -->
+    <g v-for="(dataset, index) in data.datasets" :key="index">
+      <Text
+        :x="layoutConfig.width! / 2 - legendWidthPrefix[data.datasets.length] / 2 + legendWidthPrefix[index] + 24"
+        :y="-16"
+        width="100"
+        text-anchor="left"
+        :fill="layoutConfig.index!.gridColor"
+        font-size="16"
+      >
+        {{ dataset.label }}
+      </Text>
+      <Rect
+        :x="layoutConfig.width! / 2 - legendWidthPrefix[data.datasets.length] / 2 + legendWidthPrefix[index]"
+        :y="-26"
+        :width="20"
+        :height="16"
+        :fill="dataset.style?.backgroundColor ?? dataset.data[0].style?.backgroundColor ?? ColorEnum.WHITE"
+        fill-opacity="0.3"
+        :border-color="dataset.style?.borderColor ?? dataset.data[0].style?.borderColor ?? ColorEnum.WHITE"
+        :border-width="dataset.style?.borderWidth ?? dataset.data[0].style?.borderWidth ?? 1"
+      />
+    </g>
   </g>
 </template>
 

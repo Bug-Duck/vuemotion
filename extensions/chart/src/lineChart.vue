@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import { onMounted, ref, watchEffect } from 'vue'
-import type { Growable } from '@vue-motion/lib'
 import type { BaseSimpleChartOptions } from './baseSimpleChart.vue'
 import BaseSimpleChart from './baseSimpleChart.vue'
 import { useSimpleChart } from './utils/useSimpleChart.ts'
@@ -90,7 +89,7 @@ export interface LineChartStyle extends BaseChartStyle {
   animateIndex?: boolean
 }
 
-export interface LineChartOptions extends BaseSimpleChartOptions, Growable {
+export interface LineChartOptions extends BaseSimpleChartOptions {
 }
 
 const props = withDefaults(defineProps<LineChartOptions>(), {

@@ -17,18 +17,16 @@ export function useSimpleChart<T extends BaseSimpleChartOptions>(props: T) {
       datasets: [],
     })
     mixedData.value.push({
-      data: unref(data),
-      options,
+      data: unref(data) as BaseSimpleChartData,
+      options: options as BaseSimpleChartOptions,
     })
   }
   provide('chartData', data)
   let layoutConfig = inject<Ref<ChartLayoutConfig>>('chartLayoutConfig')
-  if (layoutConfig) {
-    options.layout = layoutConfig
-  }
-  else {
+  if (layoutConfig)
+    options.layout = true
+  else
     layoutConfig = ref<ChartLayoutConfig>({})
-  }
   provide('chartLayoutConfig', layoutConfig)
 
   data.value.style ??= {}

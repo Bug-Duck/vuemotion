@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import { defineWidget } from '@vue-motion/core'
-import { type Ref, inject, provide, ref, watchEffect } from 'vue'
+import { type Ref, inject, provide, ref, toRaw, watchEffect } from 'vue'
 import { widget } from '@vue-motion/lib'
+import { DateTime } from 'luxon'
 import type { ChartLayoutConfig } from './chartLayout.vue'
 import ChartLayout from './chartLayout.vue'
 import type { BaseSimpleChartData, BaseSimpleChartOptions } from './baseSimpleChart.vue'
@@ -25,24 +26,29 @@ provide('mixedChartData', mixedChartData)
 const mixedData = inject<Ref<BaseSimpleChartData>>('mixedData', ref({ datasets: [] }))
 provide('mixedData', mixedData)
 
-watchEffect(() => {
-  mixedData.value.labels = options.labels ?? mixedChartData.value.flatMap(data => data.data.labels)
-  mixedData.value.datasets = mixedChartData.value.flatMap(data => data.data.datasets)
-}, {
-  flush: 'post',
-})
-
 const layoutConfig = inject<Ref<ChartLayoutConfig>>('chartLayoutConfig', ref<ChartLayoutConfig>({}))
 provide('chartLayoutConfig', layoutConfig)
 
 const mixedOptions = ref<BaseSimpleChartOptions>({})
 
 watchEffect(() => {
+  const stringLabels: string[] = []
+  const dateLabels: DateTime[] = []
+  mixedChartData.value.forEach(data => data.data.labels?.forEach((label) => {
+    if (typeof label === 'string')
+      stringLabels.push(label)
+    else if (label instanceof DateTime)
+      dateLabels.push(label)
+  }))
+  mixedData.value.labels = options.labels ?? (stringLabels.length > 0 ? stringLabels : dateLabels)
+  mixedData.value.datasets = mixedChartData.value.flatMap(data => data.data.datasets)
+}, {
+  flush: 'post',
+})
+
+watchEffect(() => {
   mixedChartData.value.forEach((data) => {
-    for (const key in data.options) {
-      if (key as keyof BaseSimpleChartOptions)
-        mixedOptions.value[key as keyof BaseSimpleChartOptions] = data.options[key as keyof BaseSimpleChartOptions]
-    }
+    Object.assign(mixedOptions.value, toRaw(data.options))
   })
 }, {
   flush: 'post',

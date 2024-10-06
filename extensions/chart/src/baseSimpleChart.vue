@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import type { Growable } from '@vue-motion/lib'
 import { widget } from '@vue-motion/lib'
 import type { DateTime } from 'luxon'
 import { withDefaults } from 'vue'
@@ -12,7 +13,7 @@ import { useSimpleChart } from './utils/useSimpleChart.ts'
  * @interface
  * @extends BaseChartOptions
  */
-export interface BaseSimpleChartOptions extends BaseChartOptions {
+export interface BaseSimpleChartOptions extends BaseChartOptions, Growable {
   labels?: string[] | DateTime[]
   style?: ChartStyle
 }
