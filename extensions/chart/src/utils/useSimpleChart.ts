@@ -18,6 +18,12 @@ export function useSimpleChart<T extends BaseSimpleChartOptions>(props: T) {
   layoutConfig ??= ref<ChartLayoutConfig>({})
   provide('chartLayoutConfig', layoutConfig)
 
+  data.value.style ??= {}
+  data.value.style = {
+    ...data.value.style,
+    ...options.style,
+  }
+
   return {
     props,
     options: options as ReturnType<typeof defineWidget<T>>,
