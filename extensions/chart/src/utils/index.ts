@@ -1,1 +1,3 @@
-export * as ChartUtil from './chartUtil'
+import * as ChartUtil from './chartUtil'
+
+export { ChartUtil }

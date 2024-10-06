@@ -3,10 +3,9 @@ import type { Growable } from '@vue-motion/lib'
 import { widget } from '@vue-motion/lib'
 import type { DateTime } from 'luxon'
 import { withDefaults } from 'vue'
+import { useSimpleChart } from '../utils/useSimpleChart.ts'
+import type { BaseChartDataSet, BaseChartOptions, ChartStyle } from '..'
 import ChartLayout from './chartLayout.vue'
-import type { BaseChartOptions, ChartStyle } from './baseChart.ts'
-import type { BaseChartDataSet } from './chartDataset.vue'
-import { useSimpleChart } from './utils/useSimpleChart.ts'
 
 /**
  * BaseSimpleChartOptions

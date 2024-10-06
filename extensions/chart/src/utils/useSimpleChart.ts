@@ -2,9 +2,9 @@ import { defineWidget } from '@vue-motion/core'
 import type { Ref } from 'vue'
 import { inject, provide, ref, unref } from 'vue'
 
-import type { BaseSimpleChartData, BaseSimpleChartOptions } from '../baseSimpleChart.vue'
-import type { ChartLayoutConfig } from '../chartLayout.vue'
-import type { MixedChartData } from '../mixedChart.vue'
+import type { BaseSimpleChartData, BaseSimpleChartOptions } from '../widgets/baseSimpleChart.vue'
+import type { ChartLayoutConfig } from '../widgets/chartLayout.vue'
+import type { MixedChartData } from '../widgets/mixedChart.vue'
 
 export function useSimpleChart<T extends BaseSimpleChartOptions>(props: T) {
   const options = defineWidget<T>(props)

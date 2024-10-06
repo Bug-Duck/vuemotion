@@ -7,9 +7,9 @@ import { type Ref, inject, ref, watchEffect } from 'vue'
 import type { DateTimeUnit } from 'luxon'
 import { DateTime } from 'luxon'
 import stringWidth from 'string-width'
+import type { BaseChartOptions, Color, DateTimeFormatOptions } from '..'
+import { ColorEnum, DataUtil } from '..'
 import type { BaseSimpleChartData } from './baseSimpleChart.vue'
-import type { BaseChartOptions, Color, DateTimeFormatOptions } from '.'
-import { ColorEnum, DataUtil } from '.'
 
 export interface ChartLayoutOptions extends BaseChartOptions, Growable {
 }

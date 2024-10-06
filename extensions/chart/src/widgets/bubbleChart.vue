@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import { useSimpleChart } from './utils/useSimpleChart.ts'
-import type { LineChartOptions } from '.'
-import { LineChart } from '.'
+import { useSimpleChart } from '../utils/useSimpleChart.ts'
+import type { LineChartOptions } from '..'
+import { LineChart } from '..'
 
 export interface BubbleChartOptions extends LineChartOptions {
 }

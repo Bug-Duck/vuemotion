@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import { onMounted, ref, watchEffect } from 'vue'
-import type { BaseSimpleChartOptions } from './baseSimpleChart.vue'
+import { useSimpleChart } from '../utils/useSimpleChart.ts'
+import type { BaseChartStyle, Color } from '..'
+import { ColorEnum, DataUtil } from '..'
 import BaseSimpleChart from './baseSimpleChart.vue'
-import { useSimpleChart } from './utils/useSimpleChart.ts'
-import type { BaseChartStyle, Color } from '.'
-import { ColorEnum, DataUtil } from '.'
+import type { BaseSimpleChartOptions } from './baseSimpleChart.vue'
 
 /**
  * BarChart style.

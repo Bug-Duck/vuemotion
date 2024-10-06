@@ -6,7 +6,7 @@ import { defineWidget } from '@vue-motion/core'
 
 import type { Ref } from 'vue'
 import { inject } from 'vue'
-import type { BaseChartDataSet, ChartStyle } from '.'
+import type { BaseChartDataSet, ChartStyle } from '..'
 
 export interface ChartDataOptions extends WidgetOptions {
   index?: number | DateTimeWithDuration
