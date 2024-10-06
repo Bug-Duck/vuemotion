@@ -8,7 +8,7 @@ import 'font-awesome/css/font-awesome.css'
 // /**@ts-ignore */
 // import player from 'virtual:player'
 
-if (__DEV__) {
+if (__D__) {
   createApp(App).mount('#app')
 } else {
   createApp(Preview).mount('#app')

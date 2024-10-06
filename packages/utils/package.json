@@ -1,7 +1,7 @@
 {
   "name": "@vue-motion/utils",
   "type": "module",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "description": "The components and hooks of vue-motion",
   "author": "BugDuck Team",
   "license": "Apache-2.0",
@@ -29,10 +29,10 @@
   "dependencies": {
     "@ffmpeg/ffmpeg": "0.12.10",
     "@ffmpeg/util": "^0.12.1",
-    "vue": "^3.4.26"
+    "vue": "^3.5.11"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.0.4",
+    "@vitejs/plugin-vue": "^5.1.4",
     "vite-plugin-dts": "^3.9.1"
   }
 }

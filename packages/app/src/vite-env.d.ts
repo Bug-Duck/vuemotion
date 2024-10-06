@@ -6,5 +6,3 @@ declare module '*.vue' {
   const componentOptions: ComponentOptions
   export default componentOptions
 }
-
-declare const __DEV__: boolean

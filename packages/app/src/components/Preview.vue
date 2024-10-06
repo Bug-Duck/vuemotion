@@ -21,7 +21,7 @@ window.addEventListener('resize', updateZoom)
 watch(() => window.innerHeight, updateZoom)
 
 let dev: boolean
-if (__DEV__)
+if (__D__)
   dev = true
 else
   dev = false
@@ -31,7 +31,7 @@ else
   <div class="w-full h-[60%] flex overflow-hidden">
     <div class="w-full h-full flex items-center justify-center">
       <Motion
-        id="motion" :width="width" :height="height" :scale="dev ? zoom : null as any" :min-width="dev ? (width * zoom) : (null as any)"
+        id="motion" :width="width" :height="height" :scale="dev ? zoom : (null as any)" :min-width="dev ? (width * zoom) : (null as any)"
         :min-height="dev ? (height * zoom) : (null as any)"
       >
         <Animation/>

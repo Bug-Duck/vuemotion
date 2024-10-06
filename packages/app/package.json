@@ -1,7 +1,7 @@
 {
   "name": "@vue-motion/app",
   "type": "module",
-  "version": "0.4.3",
+  "version": "0.5.0",
   "scripts": {
     "dev": "vite",
     "dev:tw": "npx tailwindcss -i ./src/style.css -o ./src/output.css --watch",
@@ -13,15 +13,15 @@
     "@vue-motion/lib": "latest",
     "autoprefixer": "^10.4.20",
     "font-awesome": "^4.7.0",
-    "postcss": "^8.4.41",
-    "tailwindcss": "^3.4.10",
-    "vue": "^3.4.37",
-    "vue-router": "^4.4.3"
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.13",
+    "vue": "^3.5.11",
+    "vue-router": "^4.4.5"
   },
   "devDependencies": {
-    "@vitejs/plugin-vue": "^5.1.2",
-    "typescript": "^5.5.3",
-    "vite": "^5.4.1",
-    "vue-tsc": "^2.0.29"
+    "@vitejs/plugin-vue": "^5.1.4",
+    "typescript": "^5.6.2",
+    "vite": "^5.4.8",
+    "vue-tsc": "^2.1.6"
   }
 }

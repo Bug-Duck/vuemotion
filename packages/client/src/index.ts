@@ -37,7 +37,7 @@ export const client = Clerc.create()
   .name('vuemotion')
   .scriptName('vuemotion')
   .description('VueMotion CLI')
-  .version('0.4.1')
+  .version('0.5.0')
   .command('create', 'Create a new VueMotion project', {
     parameters: [
       '<project name>',
@@ -66,7 +66,7 @@ export const client = Clerc.create()
       },
     },
   })
-  .on('start', async (context) => {
+  .on('start', async (_context) => {
     // console.log(resolve(process.cwd() + '/node_modules/@vue-motion/app'))
     const server = await createServer({
       root: resolve(process.cwd()),
@@ -82,8 +82,8 @@ export const client = Clerc.create()
         outDir: resolve(`${process.cwd()}/dist`),
       },
       define: {
-        __DEV__: process.env.NODE_ENV === 'development'
-      }
+        __D__: JSON.stringify(true),
+      },
     })
     await server.listen()
   })
@@ -129,9 +129,8 @@ export const client = Clerc.create()
         outDir: resolve(`${process.cwd()}/dist`),
       },
       define: {
-        __DEV__: JSON.stringify(false),
-        'process.env.NODE_ENV': JSON.stringify('production')
-      }
+        __D__: JSON.stringify(false),
+      },
     })
     await exportOut({
       outDir: resolve('./.vuemotion'),
