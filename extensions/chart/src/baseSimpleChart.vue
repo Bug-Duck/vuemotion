@@ -1,13 +1,11 @@
 <script setup lang="ts">
 import { widget } from '@vue-motion/lib'
-import { defineWidget } from '@vue-motion/core'
 import type { DateTime } from 'luxon'
-import type { Ref } from 'vue'
-import { inject, provide, ref } from 'vue'
-import type { ChartLayoutConfig } from './chartLayout.vue'
+import { withDefaults } from 'vue'
 import ChartLayout from './chartLayout.vue'
 import type { BaseChartOptions, ChartStyle } from './baseChart.ts'
 import type { BaseChartDataSet } from './chartDataset.vue'
+import { useSimpleChart } from './utils/useSimpleChart.ts'
 
 /**
  * BaseSimpleChartOptions
@@ -35,7 +33,7 @@ export interface BaseSimpleChartData {
    */
   datasets: BaseChartDataSet<ChartStyle>[]
   /**
-   * @property BaseChartStyle style
+   * @property ChartStyle style
    * @description
    * style is an object that defines the style of the chart.
    */
@@ -45,18 +43,9 @@ export interface BaseSimpleChartData {
 const props = withDefaults(defineProps<BaseSimpleChartOptions>(), {
   gridAlign: true,
 })
-const options = defineWidget<BaseSimpleChartOptions>(props)
-
-let data = inject<Ref<BaseSimpleChartData>>('chartData')
-data ??= ref<BaseSimpleChartData>({
-  labels: options.labels,
-  datasets: [],
-})
-provide('chartData', data)
-
-let layoutConfig = inject<Ref<ChartLayoutConfig>>('chartLayoutConfig')
-layoutConfig ??= ref<ChartLayoutConfig>({})
-provide('chartLayoutConfig', layoutConfig)
+const {
+  options,
+} = useSimpleChart<BaseSimpleChartOptions>(props)
 </script>
 
 <template>

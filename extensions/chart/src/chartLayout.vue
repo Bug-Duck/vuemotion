@@ -7,7 +7,8 @@ import { type Ref, inject, ref, watchEffect } from 'vue'
 import type { DateTimeUnit } from 'luxon'
 import { DateTime } from 'luxon'
 import stringWidth from 'string-width'
-import type { BaseChartData, BaseChartOptions, Color, DateTimeFormatOptions } from '.'
+import type { BaseSimpleChartData } from './baseSimpleChart.vue'
+import type { BaseChartOptions, Color, DateTimeFormatOptions } from '.'
 import { ColorEnum, DataUtil } from '.'
 
 export interface ChartLayoutOptions extends BaseChartOptions, Growable {
@@ -75,10 +76,12 @@ const props = withDefaults(defineProps<ChartLayoutOptions>(), {
 })
 const options = defineWidget(props)
 
-const data = inject<Ref<BaseChartData>>('chartData', ref({ datasets: [] }))
+const data = inject<Ref<BaseSimpleChartData>>('chartData', ref({ datasets: [] }))
 const layoutConfig = inject<Ref<ChartLayoutConfig>>('chartLayoutConfig', ref({}))
 
 const legendWidthPrefix = ref([0])
+
+const onload = ref(false)
 
 function generateAxisRange(axis: ChartAxis, data: number[]) {
   const minDataValue = Math.min(...data, typeof axis.suggestedMin === 'number' ? axis.suggestedMin : Number.NEGATIVE_INFINITY)
@@ -140,6 +143,13 @@ function generateDateAxisRange(axis: ChartAxis, data: DateTime[]) {
 }
 
 watchEffect(() => {
+  if (data.value.datasets.length === 0)
+    return
+  if (data.value.datasets.some(dataset => (dataset.data.length === 0)))
+    return
+
+  onload.value = true
+
   data.value.datasets.forEach((dataset) => {
     dataset.data.forEach((dataUnit, index) => {
       if (!DataUtil.indexNumber(dataUnit) && data.value.labels && (data.value.labels[index] as DateTime).isValid) {
@@ -284,7 +294,7 @@ watchEffect(() => {
 </script>
 
 <template>
-  <g v-bind="widget(options)">
+  <g v-if="onload" v-bind="widget(options)">
     <!-- Index Axis -->
     <Line
       :from="layoutConfig.indexAxis === 'x' ? [0, layoutConfig.height!] : [0, layoutConfig.height!]"

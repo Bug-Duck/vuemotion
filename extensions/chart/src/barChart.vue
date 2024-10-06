@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { defineWidget } from '@vue-motion/core'
-import { onMounted, provide, ref, watchEffect } from 'vue'
+import { onMounted, ref, watchEffect } from 'vue'
 import type { DateTime } from 'luxon'
 import type { Growable } from '@vue-motion/lib'
 import { Rect as VMRect } from '@vue-motion/lib'
-import type { ChartLayoutConfig } from './chartLayout.vue'
 import BaseSimpleChart from './baseSimpleChart.vue'
-import type { BaseChartDataSet, BaseChartOptions, BaseChartStyle, ChartStyle, Color } from '.'
+import { useSimpleChart } from './utils/useSimpleChart.ts'
+import type { BaseChartOptions, BaseChartStyle, Color } from '.'
 import { ColorEnum, DataUtil } from '.'
 
 /**
@@ -26,33 +25,16 @@ export interface BarChartOptions extends BaseChartOptions, Growable {
   barPercentage?: number
 }
 
-export interface BaseChartData {
-  /**
-   * @property string[] labels
-   * @description
-   * labels is an array of strings that represent the labels of the chart, which are displayed on the index-axis.
-   * It is optional.
-   * If not provided, the labels will be generated automatically.
-   */
-  labels?: string[] | DateTime[]
-  datasets: BaseChartDataSet<BarChartStyle>[]
-  style?: ChartStyle
-}
-
 const props = withDefaults(defineProps<BarChartOptions>(), {
   gridAlign: true,
   categoryPercentage: 0.8,
   barPercentage: 0.8,
 })
-const options = defineWidget<BarChartOptions>(props)
-
-const data = ref<BaseChartData>({
-  labels: options.labels,
-  datasets: [],
-})
-provide('chartData', data)
-const layoutConfig = ref<ChartLayoutConfig>({})
-provide('chartLayoutConfig', layoutConfig)
+const {
+  options,
+  data,
+  layoutConfig,
+} = useSimpleChart<BarChartOptions>(props)
 
 const barSets = ref<{
   width: number
