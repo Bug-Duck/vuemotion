@@ -1,6 +1,6 @@
 ---
-name: Contribute to Newcar
-about: Have a contribution to Newcar! Thank you!
+name: Contribute to VueMotion
+about: Have a contribution to VueMotion! Thank you!
 ---
 
 **Description:** [Please describe the background, purpose, changes made, and how to test this PR]
