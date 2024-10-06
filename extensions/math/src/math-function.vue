@@ -30,6 +30,10 @@ function generateSvgPath(mathFunc: (x: number) => number, ranges: {
   for (let x = xMin; x <= xMax; x += step) {
     const y = mathFunc(x)
     // 将数学函数的值转换为SVG坐标
+    if (y > 30 || y < -30) {
+      console.info(`Math function returned infinity or negative infinity at x=${x}. Skipping this point.`)
+      path.push('Z')
+    }
     const svgX = (x - xMin) * scaleX
     const svgY = (yMax - y) * scaleY // 反转 y 轴以符合 SVG 坐标系统
     path.push(`${x === xMin ? 'M' : 'L'} ${svgX} ${svgY}`)
