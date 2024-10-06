@@ -3,12 +3,14 @@ import { usePlayer, useWidget } from '@vue-motion/core'
 import { Motion, grow } from '@vue-motion/lib'
 import { onMounted } from 'vue'
 import type { MathFunction } from '@vue-motion/extension-math'
-import { BubbleChart, ChartData, ChartDataset, ChartUtil } from '@vue-motion/extension-chart'
+import type { BubbleChart } from '@vue-motion/extension-chart'
+import { BarChart, ChartData, ChartDataset, ChartUtil } from '@vue-motion/extension-chart'
 import { DateTime, Duration } from 'luxon'
 
 const fn1 = useWidget<InstanceType<typeof MathFunction>>('fn1')
 const fn2 = useWidget<InstanceType<typeof MathFunction>>('fn2')
 const fn3 = useWidget<InstanceType<typeof MathFunction>>('fn3')
+const chart1 = useWidget<InstanceType<typeof BubbleChart>>('chart1')
 
 onMounted(() => {
   const { play, useAnimation } = usePlayer()
@@ -18,6 +20,8 @@ onMounted(() => {
   useAnimation(fn2)
     .animate(grow, { duration: 1 })
   useAnimation(fn3)
+    .animate(grow, { duration: 1 })
+  useAnimation(chart1)
     .animate(grow, { duration: 1 })
 
   play()
@@ -35,13 +39,15 @@ onMounted(() => {
     <!--    <Group> -->
     <!--      <NumberPlane :ranges-x="[0, 10]" :ranges-y="[0, 10]" /> -->
     <!--    </Group> -->
-    <BubbleChart
+    <BarChart
       :labels="ChartUtil.dateSequence(
         DateTime.fromISO('2021-01-01').setLocale('en-US'),
         Duration.fromObject({ months: 4 }),
         'month',
         1,
       )"
+      wid="chart1"
+      index-axis="y"
     >
       <ChartDataset label="test1" :style="{ borderColor: '#f00', backgroundColor: '#f00' }">
         <ChartData :cross="1" />
@@ -54,8 +60,8 @@ onMounted(() => {
         <ChartData :cross="1" />
         <ChartData :cross="3" />
         <ChartData :cross="2" />
-        <ChartData :cross="1.5" :index="DateTime.fromISO('2021-03-15').setLocale('en-US')" :weight="10" />
+        <!--        <ChartData :cross="1.5" :index="DateTime.fromISO('2021-03-15').setLocale('en-US')" :weight="10" /> -->
       </ChartDataset>
-    </BubbleChart>
+    </BarChart>
   </Motion>
 </template>

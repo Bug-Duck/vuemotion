@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import { onMounted, ref, watchEffect } from 'vue'
 import type { Growable } from '@vue-motion/lib'
-import { Rect as VMRect } from '@vue-motion/lib'
 import type { BaseSimpleChartOptions } from './baseSimpleChart.vue'
 import BaseSimpleChart from './baseSimpleChart.vue'
 import { useSimpleChart } from './utils/useSimpleChart.ts'
@@ -125,7 +124,7 @@ onMounted(() => {
     <!-- BarSets -->
     <g v-for="(barSet, setIndex) in barSets" :key="setIndex">
       <g v-for="(bar, barIndex) in barSet" :key="barIndex">
-        <VMRect
+        <rect
           :x="bar.x"
           :y="bar.height < 0 ? bar.y + bar.height : bar.y"
           :width="bar.width"
@@ -134,7 +133,7 @@ onMounted(() => {
           fill-opacity="0.2"
           :stroke="bar.style.borderColor"
           :stroke-width="bar.style.borderWidth"
-          :radius="bar.style.radius"
+          :rx="bar.style.radius"
         />
       </g>
     </g>
