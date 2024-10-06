@@ -35,13 +35,13 @@ onMounted(() => {
     <!--      <NumberPlane :ranges-x="[0, 10]" :ranges-y="[0, 10]" /> -->
     <!--    </Group> -->
     <BarChart :labels="['A', 'w', 'e', 'm']">
-      <ChartDataset label="test1">
+      <ChartDataset label="test1" :style="{ borderColor: '#f00', backgroundColor: '#f00' }">
         <ChartData :cross="1" />
         <ChartData :cross="1" />
         <ChartData :cross="1" />
         <ChartData :cross="1" />
       </ChartDataset>
-      <ChartDataset label="test2">
+      <ChartDataset label="test2" :style="{ borderColor: '#ff0', backgroundColor: '#ff0', borderRadius: 4 }">
         <ChartData :cross="2" />
         <ChartData :cross="2" />
         <ChartData :cross="2" />

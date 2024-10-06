@@ -3,7 +3,7 @@ import { defineWidget } from '@vue-motion/core'
 import { onMounted, provide, ref, watchEffect } from 'vue'
 import type { DateTime } from 'luxon'
 import type { Growable } from '@vue-motion/lib'
-import { Rect } from '@vue-motion/lib'
+import { Rect as VMRect } from '@vue-motion/lib'
 import type { ChartLayoutConfig } from './chartLayout.vue'
 import BaseSimpleChart from './baseSimpleChart.vue'
 import type { BaseChartDataSet, BaseChartOptions, BaseChartStyle, ChartStyle, Color } from '.'
@@ -144,7 +144,7 @@ onMounted(() => {
     <!-- BarSets -->
     <g v-for="(barSet, setIndex) in barSets" :key="setIndex">
       <g v-for="(bar, barIndex) in barSet" :key="barIndex">
-        <Rect
+        <VMRect
           :x="bar.x"
           :y="bar.height < 0 ? bar.y + bar.height : bar.y"
           :width="bar.width"
