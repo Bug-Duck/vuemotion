@@ -3,7 +3,7 @@ import { usePlayer, useWidget } from '@vue-motion/core'
 import { Motion, grow } from '@vue-motion/lib'
 import { onMounted } from 'vue'
 import type { MathFunction } from '@vue-motion/extension-math'
-import { BarChart, ChartData, ChartDataset, ChartUtil } from '@vue-motion/extension-chart'
+import { ChartData, ChartDataset, ChartUtil, LineChart } from '@vue-motion/extension-chart'
 import { DateTime, Duration } from 'luxon'
 
 const fn1 = useWidget<InstanceType<typeof MathFunction>>('fn1')
@@ -35,7 +35,7 @@ onMounted(() => {
     <!--    <Group> -->
     <!--      <NumberPlane :ranges-x="[0, 10]" :ranges-y="[0, 10]" /> -->
     <!--    </Group> -->
-    <BarChart
+    <LineChart
       :labels="ChartUtil.dateSequence(
         DateTime.fromISO('2021-01-01').setLocale('en-US'),
         Duration.fromObject({ months: 4 }),
@@ -54,10 +54,10 @@ onMounted(() => {
       </ChartDataset>
       <ChartDataset label="test2" :style="{ borderColor: '#ff0', backgroundColor: '#ff0', borderRadius: 4 }">
         <ChartData :cross="2" />
-        <ChartData :cross="2" />
-        <ChartData :cross="2" />
+        <ChartData :cross="1" />
+        <ChartData :cross="3" />
         <ChartData :cross="2" />
       </ChartDataset>
-    </BarChart>
+    </LineChart>
   </Motion>
 </template>

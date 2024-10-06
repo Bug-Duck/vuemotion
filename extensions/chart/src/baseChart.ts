@@ -3,6 +3,7 @@ import type { DateTime, DateTimeUnit } from 'luxon'
 import type { WidgetOptions } from '@vue-motion/lib'
 import type { ReturnWidget } from '@vue-motion/core'
 import type { ChartLayoutConfig } from './chartLayout.vue'
+import type { LineChartStyle } from './lineChart.vue'
 import type { BarChartStyle, ChartDataOptions, DateTimeWithDuration } from '.'
 // import type { default as ChartLayout } from './chartLayout'
 // import type { ChartDataUnit } from './chartDataUnit'
@@ -23,7 +24,7 @@ export class ColorEnum {
   static readonly DARK_GRAY = 'darkGray'
 }
 
-export type ChartStyle = BaseChartStyle & BarChartStyle
+export type ChartStyle = BaseChartStyle & BarChartStyle & LineChartStyle
 
 /**
  * ChartAxisOptions

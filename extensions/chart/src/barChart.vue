@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { onMounted, ref, watchEffect } from 'vue'
-import type { DateTime } from 'luxon'
 import type { Growable } from '@vue-motion/lib'
 import { Rect as VMRect } from '@vue-motion/lib'
+import type { BaseSimpleChartOptions } from './baseSimpleChart.vue'
 import BaseSimpleChart from './baseSimpleChart.vue'
 import { useSimpleChart } from './utils/useSimpleChart.ts'
-import type { BaseChartOptions, BaseChartStyle, Color } from '.'
+import type { BaseChartStyle, Color } from '.'
 import { ColorEnum, DataUtil } from '.'
 
 /**
@@ -19,8 +19,7 @@ export interface BarChartStyle extends BaseChartStyle {
   borderRadius?: number
 }
 
-export interface BarChartOptions extends BaseChartOptions, Growable {
-  labels?: string[] | DateTime[]
+export interface BarChartOptions extends BaseSimpleChartOptions, Growable {
   categoryPercentage?: number
   barPercentage?: number
 }

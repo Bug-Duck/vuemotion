@@ -6,7 +6,8 @@ import { defineWidget } from '@vue-motion/core'
 import type { Ref } from 'vue'
 import { inject, provide, ref, unref } from 'vue'
 
-import type { BaseChartData, ChartDataOptions, ChartStyle } from '.'
+import type { BaseSimpleChartData } from './baseSimpleChart.vue'
+import type { ChartDataOptions, ChartStyle } from '.'
 
 export interface ChartDatasetOptions extends WidgetOptions {
   label: string
@@ -29,7 +30,7 @@ const dataset = ref<BaseChartDataSet<ChartStyle>>({
 })
 provide('chartDataset', dataset)
 
-const datasetList = inject<Ref<BaseChartData>>('chartData')
+const datasetList = inject<Ref<BaseSimpleChartData>>('chartData')
 datasetList?.value.datasets.push(unref(dataset))
 </script>
 
