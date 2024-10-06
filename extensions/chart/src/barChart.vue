@@ -25,6 +25,7 @@ export interface BarChartOptions extends BaseSimpleChartOptions, Growable {
 
 const props = withDefaults(defineProps<BarChartOptions>(), {
   gridAlign: true,
+  edgeOffset: undefined,
   categoryPercentage: 0.8,
   barPercentage: 0.8,
 })
@@ -49,6 +50,9 @@ const barSets = ref<{
 
 onMounted(() => {
   watchEffect(() => {
+    if (!layoutConfig.value.done)
+      return
+
     barSets.value = data.value.datasets.map((set, setIndex) => {
       set.style ??= {}
       set.style.backgroundColor ??= data.value.style?.backgroundColor ?? ColorEnum.WHITE
@@ -58,8 +62,8 @@ onMounted(() => {
 
       if (layoutConfig.value.indexAxis === 'x') {
         return set.data.map((unit) => {
-          const gridSize = (DataUtil.indexDuration(unit) ?? layoutConfig.value.index!.interval)
-            / (layoutConfig.value.index!.max - layoutConfig.value.index!.min) * layoutConfig.value.width!
+          const gridSize = (DataUtil.indexDuration(unit) ?? layoutConfig.value.index.interval)
+            / (layoutConfig.value.index.max - layoutConfig.value.index.min) * layoutConfig.value.width!
           const categorySize = gridSize * options.categoryPercentage!
           const barSize = (categorySize / data.value.datasets.length) * options.barPercentage!
 
@@ -93,11 +97,11 @@ onMounted(() => {
               / (layoutConfig.value.cross!.max - layoutConfig.value.cross!.min),
             height: barSize,
             x: (0 - layoutConfig.value.cross!.min) / (layoutConfig.value.cross!.max - layoutConfig.value.cross!.min) * layoutConfig.value.width!,
-            y: (DataUtil.indexNumber(unit) - (DataUtil.indexDuration(unit) ?? layoutConfig.value.index!.interval) / 2 - layoutConfig.value.index!.min)
+            y: layoutConfig.value.height! - ((DataUtil.indexNumber(unit) - (DataUtil.indexDuration(unit) ?? layoutConfig.value.index!.interval) / 2 - layoutConfig.value.index!.min)
               / (layoutConfig.value.index!.max - layoutConfig.value.index!.min) * layoutConfig.value.height!
-              + (gridSize - categorySize) / 2
-              + (setIndex * categorySize) / data.value.datasets.length
-              + (categorySize / data.value.datasets.length - barSize) / 2,
+              + (gridSize + categorySize) / 2
+              - (setIndex * categorySize) / data.value.datasets.length
+              - (categorySize / data.value.datasets.length - barSize) / 2),
             style: {
               fillColor: unit.style?.backgroundColor ?? set.style!.backgroundColor!,
               borderColor: unit.style?.borderColor ?? set.style!.borderColor!,
@@ -108,8 +112,12 @@ onMounted(() => {
         })
       }
     })
+  }, {
+    flush: 'post',
   })
 })
+
+options.edgeOffset ??= !(options.gridAlign)
 </script>
 
 <template>

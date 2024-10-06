@@ -68,6 +68,7 @@ export interface ChartLayoutConfig {
   dateFormatOptions?: DateTimeFormatOptions
   gridAlign?: boolean
   edgeOffset?: boolean
+  done?: boolean
 }
 
 const props = withDefaults(defineProps<ChartLayoutOptions>(), {
@@ -76,7 +77,7 @@ const props = withDefaults(defineProps<ChartLayoutOptions>(), {
 })
 const options = defineWidget(props)
 
-const data = inject<Ref<BaseSimpleChartData>>('chartData', ref({ datasets: [] }))
+const data = inject<Ref<BaseSimpleChartData>>('chartData', inject<Ref<BaseSimpleChartData>>('mixedData', ref({ datasets: [] })))
 const layoutConfig = inject<Ref<ChartLayoutConfig>>('chartLayoutConfig', ref({}))
 
 const legendWidthPrefix = ref([0])
@@ -288,6 +289,8 @@ watchEffect(() => {
         dataUnit.index = layoutConfig.value.index!.pos[index]
     })
   })
+
+  layoutConfig.value.done = true
 }, {
   flush: 'post',
 })

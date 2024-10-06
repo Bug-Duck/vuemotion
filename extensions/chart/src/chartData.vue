@@ -23,7 +23,7 @@ export interface DateTimeWithDuration extends DateTime {
 const props = defineProps<ChartDataOptions>()
 const options = defineWidget<ChartDataOptions>(props)
 
-const dataset = inject<Ref<BaseChartDataSet>>('chartDataset')
+const dataset = inject<Ref<BaseChartDataSet<ChartStyle>>>('chartDataset')
 dataset?.value.data.push(options)
 </script>
 

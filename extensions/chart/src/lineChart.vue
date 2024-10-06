@@ -94,7 +94,7 @@ export interface LineChartOptions extends BaseSimpleChartOptions, Growable {
 }
 
 const props = withDefaults(defineProps<LineChartOptions>(), {
-  gridAlign: false,
+  gridAlign: undefined,
 })
 const {
   options,
@@ -117,6 +117,8 @@ const paths = ref<string[]>([])
 
 onMounted(() => {
   watchEffect(() => {
+    if (!layoutConfig.value.done)
+      return
     if (data.value.datasets.length === 0)
       return
     if (data.value.datasets.some(dataset => (dataset.data.length === 0)))
@@ -184,7 +186,7 @@ onMounted(() => {
 <template>
   <BaseSimpleChart
     v-bind="{
-      gridAlign: true,
+      gridAlign: false,
       edgeOffset: !(options.gridAlign),
       ...options,
     }"
