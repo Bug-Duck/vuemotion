@@ -152,7 +152,7 @@ watchEffect(() => {
 
   data.value.datasets.forEach((dataset) => {
     dataset.data.forEach((dataUnit, index) => {
-      if (!DataUtil.indexNumber(dataUnit) && data.value.labels && (data.value.labels[index] as DateTime).isValid) {
+      if (!dataUnit.index && data.value.labels && (data.value.labels[index] as DateTime).isValid) {
         dataUnit.index = data.value.labels[index] as DateTime
       }
     })

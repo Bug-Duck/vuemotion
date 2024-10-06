@@ -44,19 +44,17 @@ onMounted(() => {
       )"
     >
       <ChartDataset label="test1" :style="{ borderColor: '#f00', backgroundColor: '#f00' }">
-        <ChartData
-          :cross="1"
-          :style="{ borderRadius: 8 }"
-        />
         <ChartData :cross="1" />
-        <ChartData :cross="1" />
+        <ChartData :cross="2" />
+        <ChartData :cross="0" />
         <ChartData :cross="1" />
       </ChartDataset>
-      <ChartDataset label="test2" :style="{ borderColor: '#ff0', backgroundColor: '#ff0', borderRadius: 4 }">
+      <ChartDataset label="test2" :style="{ borderColor: '#ff0', backgroundColor: '#ff0', borderRadius: 4, tension: 0.2 }">
         <ChartData :cross="2" />
         <ChartData :cross="1" />
         <ChartData :cross="3" />
         <ChartData :cross="2" />
+        <ChartData :cross="1.5" :index="DateTime.fromISO('2021-03-15').setLocale('en-US')" />
       </ChartDataset>
     </LineChart>
   </Motion>
