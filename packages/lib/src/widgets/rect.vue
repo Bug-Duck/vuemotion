@@ -22,6 +22,6 @@ const options = defineWidget(props)
     v-bind="figure(options)"
     :width="options.width"
     :height="options.height"
-    :radius="radius"
+    :rx="options.radius"
   />
 </template>
