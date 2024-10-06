@@ -25,18 +25,16 @@ function generateSvgPath(mathFunc: (x: number) => number, ranges: {
 }, scaleX: number, scaleY: number) {
   const { x: [xMin, xMax], y: [yMax] } = ranges
   const path = []
-  const step = (xMax - xMin) / 100 // 分为 100 份
+  const step = (xMax - xMin) / 500 // Set segmentation fineness
 
   for (let x = xMin; x <= xMax; x += step) {
     const y = mathFunc(x)
-    // 将数学函数的值转换为SVG坐标
-    if (y > 30 || y < -30) {
-      console.info(`Math function returned infinity or negative infinity at x=${x}. Skipping this point.`)
-      path.push('Z')
-    }
+    
+    // Convert the values ​​of a mathematical function to SVG coordinates
     const svgX = (x - xMin) * scaleX
-    const svgY = (yMax - y) * scaleY // 反转 y 轴以符合 SVG 坐标系统
-    path.push(`${x === xMin ? 'M' : 'L'} ${svgX} ${svgY}`)
+    const svgY = (yMax - y) * scaleY // Invert the y-axis to conform to the SVG coordinate system
+    
+    path.push(`${x === xMin || svgY > 1500 || svgY < -1500  ? 'M' : 'L'} ${svgX} ${svgY}`)   
   }
 
   return path.join(' ')
