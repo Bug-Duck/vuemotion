@@ -46,6 +46,11 @@ vue-motion's predecessor was the Newcar animation engine, but later the developm
   - [ ] transform
 - Extensions
   - [ ] Chart
+    - [x] BarChart
+    - [x] LineChart
+    - [x] ScatterChart
+    - [x] BubbleChart
+    - [x] MixedChart
     - [ ] ...
   - [ ] Codeblock (Shikijs)
   - [ ] Geometry
