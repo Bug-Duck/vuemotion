@@ -7,8 +7,8 @@ import { defineWidget } from '@vue-motion/core'
 
 export interface MathFunctionOptions extends FigureOptions, Growable {
   fn: (x: number) => number
-  ranges: [number, number]
-  domain?: [number, number]
+  domain: [number, number]
+  ranges?: [number, number]
   divisionX?: number
   divisionY?: number
   color?: string
@@ -19,11 +19,11 @@ export interface MathFunctionOptions extends FigureOptions, Growable {
 const props = defineProps<MathFunctionOptions>()
 const options = defineWidget(props)
 
-function generateSvgPath(mathFunc: (x: number) => number, ranges: {
+function generateSvgPath(mathFunc: (x: number) => number, domain: {
   x: [number, number]
   y: [number, number]
 }, scaleX: number, scaleY: number) {
-  const { x: [xMin, xMax], y: [yMax] } = ranges
+  const { x: [xMin, xMax], y: [yMax] } = domain
   const path = []
   const step = (xMax - xMin) / 500 // Set segmentation fineness
 
@@ -44,8 +44,8 @@ const path = ref('')
 
 watch(props.fn, () => {
   path.value = generateSvgPath(options.fn, {
-    x: options.ranges,
-    y: options.domain ?? [0, 0],
+    x: options.domain,
+    y: options.ranges ?? [0, 0],
   }, options.divisionX ?? 100, options.divisionY ?? 100)
 }, {
   immediate: true,
@@ -55,6 +55,6 @@ watch(props.fn, () => {
 
 <template>
   <g v-bind="figure(options)">
-    <Path :d="path" :stroke="options.color" :stroke-width="options.width" :fill-color="options.fillColor ?? 'none'" />
+    <Path :d="path" :stroke="options.color ?? 'white'" :stroke-width="options.width" :fill-color="options.fillColor ?? 'none'" />
   </g>
 </template>
