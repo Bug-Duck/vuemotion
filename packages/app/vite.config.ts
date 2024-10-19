@@ -7,6 +7,6 @@ export default defineConfig({
     vue(),
   ],
   define: {
-    __DEV__: process.env.NODE_ENV === 'development',
+    __D__: process.env.NODE_ENV === 'development',
   },
 })

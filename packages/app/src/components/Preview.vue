@@ -1,6 +1,6 @@
 <script setup lang="ts">
 /** @ts-expect-error virtual-import */
-import Animation from 'virtual:user-main'
+// import Animation from 'virtual:user-main'
 import { Motion } from '@vue-motion/lib'
 import { ref, watch } from 'vue'
 // import TestAnimation from './__test__/TestAnimation.vue'
@@ -34,7 +34,7 @@ else
         id="motion" :width="width" :height="height" :scale="dev ? zoom : (null as any)" :min-width="dev ? (width * zoom) : (null as any)"
         :min-height="dev ? (height * zoom) : (null as any)"
       >
-        <Animation/>
+        <!-- <Animation/> -->
         <!-- <TestAnimation/> -->
       </Motion>
     </div>
