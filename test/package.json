@@ -17,6 +17,7 @@
     "@vue-motion/extension-google-fonts": "workspace:*",
     "@vue-motion/extension-layout": "workspace:*",
     "@vue-motion/extension-lights": "workspace:*",
+    "@vue-motion/extension-markdown": "workspace:*",
     "@vue-motion/extension-math": "workspace:*",
     "@vue-motion/extension-table": "workspace:*",
     "@vue-motion/extension-three": "workspace:*",

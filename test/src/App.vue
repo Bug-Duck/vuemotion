@@ -4,8 +4,9 @@ import { Line, Motion, grow } from '@vue-motion/lib'
 import { onMounted, ref } from 'vue'
 import type { MathFunction } from '@vue-motion/extension-math'
 import type { BubbleChart } from '@vue-motion/extension-chart'
-// import { BarChart, ChartData, ChartDataset, ChartUtil, LineChart, MixedChart } from '@vue-motion/extension-chart'
+import { BarChart, ChartData, ChartDataset, ChartUtil, LineChart, MixedChart } from '@vue-motion/extension-chart'
 import { DateTime, Duration } from 'luxon'
+import { Markdown } from '@vue-motion/extension-markdown'
 
 // const fn1 = useWidget<InstanceType<typeof MathFunction>>('fn1')
 // const fn2 = useWidget<InstanceType<typeof MathFunction>>('fn2')
@@ -36,17 +37,16 @@ onMounted(() => {
 
 <template>
   <Motion id="motion" :width="1000" :height="1000">
-    <Line :from="[0, 0]" :to="[x, 1000]" wid="www" :border-width="x"/>
-    <!--    <Group> -->
-    <!--      <NumberPlane :ranges-x="[-5, 5]" :ranges-y="[-5, 5]" :grid="false"/> -->
-    <!--      <MathFunction :fn="(x) => Math.sin(x)" color="skyblue" :domain="[0, 0]" :ranges="[0, 5]" wid="fn1" /> -->
-    <!--      <MathFunction :fn="(x) => Math.cos(x)" color="red" :domain="[0, 0]" :ranges="[0, 5]" wid="fn2" /> -->
-    <!--      <MathFunction :fn="(x) => Math.tan(x)" color="green" :domain="[0, 0]" :ranges="[0, 5]" wid="fn3" /> -->
-    <!--    </Group> -->
-    <!--    <Group> -->
-    <!--      <NumberPlane :ranges-x="[0, 10]" :ranges-y="[0, 10]" /> -->
-    <!--    </Group> -->
-    <!-- <MixedChart
+       <!-- <Group>
+         <NumberPlane :ranges-x="[-5, 5]" :ranges-y="[-5, 5]" :grid="false"/>
+         <MathFunction :fn="(x) => Math.sin(x)" color="skyblue" :domain="[0, 0]" :ranges="[0, 5]" wid="fn1" />
+         <MathFunction :fn="(x) => Math.cos(x)" color="red" :domain="[0, 0]" :ranges="[0, 5]" wid="fn2" />
+         <MathFunction :fn="(x) => Math.tan(x)" color="green" :domain="[0, 0]" :ranges="[0, 5]" wid="fn3" />
+       </Group>
+       <Group>
+         <NumberPlane :ranges-x="[0, 10]" :ranges-y="[0, 10]" />
+       </Group> -->
+    <MixedChart
       :labels="ChartUtil.dateSequence(
         DateTime.fromISO('2021-01-01').setLocale('en-US'),
         Duration.fromObject({ months: 4 }),
@@ -69,7 +69,7 @@ onMounted(() => {
           <ChartData :cross="3" />
           <ChartData :cross="2" />
           <ChartData :cross="1.5" :index="DateTime.fromISO('2021-03-15').setLocale('en-US')" :weight="10" /> -->
-    <!-- </ChartDataset>
+    </ChartDataset>
       </BarChart>
       <LineChart>
         <ChartDataset label="Line1" :style="{ borderColor: '#00f', backgroundColor: '#00f' }">
@@ -86,6 +86,13 @@ onMounted(() => {
           <ChartData :cross="1.5" :index="DateTime.fromISO('2021-03-15').setLocale('en-US')" :weight="10" />
         </ChartDataset>
       </LineChart>
-    </MixedChart> -->
+    </MixedChart>
+    <Markdown>
+      # Hello world
+      - 111
+      - 222
+      - 333
+
+    </Markdown>
   </Motion>
 </template>

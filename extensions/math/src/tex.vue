@@ -2,7 +2,7 @@
 import { defineWidget } from '@vue-motion/core'
 import type { FigureOptions } from '@vue-motion/lib'
 import { figure } from '@vue-motion/lib'
-import { computed, useSlots } from 'vue'
+import { computed, onUpdated, ref, useSlots } from 'vue'
 import katex from 'katex'
 
 export interface TexOptions extends FigureOptions {
@@ -13,10 +13,16 @@ export interface TexOptions extends FigureOptions {
 const props = defineProps<TexOptions>()
 const options = defineWidget<TexOptions>(props)
 
-const content = computed(() => {
+const slots = useSlots()
+const tex = ref(slots.default ? slots.default().map(vnode => vnode.children).join('') : '')
+
+onUpdated(() => {
   const slots = useSlots()
-  const tex = slots.default ? slots.default().map(vnode => vnode.children).join('') : ''
-  return `<div>${katex.renderToString(tex, options.katexOptions).match(/<math.[^\n\r>\u2028\u2029]*>.+<\/math>/)![0]}</div>`
+  tex.value = slots.default ? slots.default().map(vnode => vnode.children).join('') : ''
+})
+
+const content = computed(() => {
+  return `<div>${katex.renderToString(tex.value, options.katexOptions).match(/<math.[^\n\r>\u2028\u2029]*>.+<\/math>/)![0]}</div>`
 })
 </script>
 
@@ -27,17 +33,12 @@ const content = computed(() => {
       In the context of SVG embeded into HTML, the XHTML namespace could
       be avoided, but it is mandatory in the context of an SVG document
     -->
-      <div
-        xmlns="http://www.w3.org/1999/xhtml"
-        style="color: white;"
-        :style="options.autoCenter ? {
-          'display': 'flex',
-          'justify-content': 'center',
-          'align-items': 'center',
-          'height': '100%',
-        } : undefined"
-        v-html="content"
-      />
+      <div xmlns="http://www.w3.org/1999/xhtml" style="color: white;" :style="options.autoCenter ? {
+        'display': 'flex',
+        'justify-content': 'center',
+        'align-items': 'center',
+        'height': '100%',
+      } : undefined" v-html="content" />
     </foreignObject>
   </g>
 </template>
