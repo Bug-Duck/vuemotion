@@ -5,7 +5,7 @@ import { marked } from 'marked'
 import { computed, onUpdated, ref, useSlots } from 'vue'
 
 export interface MarkdownOptions extends WidgetOptions {
-  autoCenter: boolean
+  autoCenter?: boolean
 }
 
 const props = defineProps<MarkdownOptions>()

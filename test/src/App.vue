@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineAnimation, usePlayer, useWidget } from '@vue-motion/core'
-import { Line, Motion, grow } from '@vue-motion/lib'
+import { Line, Motion, Video, grow } from '@vue-motion/lib'
 import { onMounted, ref } from 'vue'
 import type { MathFunction } from '@vue-motion/extension-math'
 import type { BubbleChart } from '@vue-motion/extension-chart'
@@ -37,7 +37,7 @@ onMounted(() => {
 
 <template>
   <Motion id="motion" :width="1000" :height="1000">
-       <!-- <Group>
+    <!-- <Group>
          <NumberPlane :ranges-x="[-5, 5]" :ranges-y="[-5, 5]" :grid="false"/>
          <MathFunction :fn="(x) => Math.sin(x)" color="skyblue" :domain="[0, 0]" :ranges="[0, 5]" wid="fn1" />
          <MathFunction :fn="(x) => Math.cos(x)" color="red" :domain="[0, 0]" :ranges="[0, 5]" wid="fn2" />
@@ -46,7 +46,7 @@ onMounted(() => {
        <Group>
          <NumberPlane :ranges-x="[0, 10]" :ranges-y="[0, 10]" />
        </Group> -->
-    <MixedChart
+    <!-- <MixedChart
       :labels="ChartUtil.dateSequence(
         DateTime.fromISO('2021-01-01').setLocale('en-US'),
         Duration.fromObject({ months: 4 }),
@@ -68,7 +68,7 @@ onMounted(() => {
           <ChartData :cross="1" />
           <ChartData :cross="3" />
           <ChartData :cross="2" />
-          <ChartData :cross="1.5" :index="DateTime.fromISO('2021-03-15').setLocale('en-US')" :weight="10" /> -->
+          <ChartData :cross="1.5" :index="DateTime.fromISO('2021-03-15').setLocale('en-US')" :weight="10" />
     </ChartDataset>
       </BarChart>
       <LineChart>
@@ -86,13 +86,15 @@ onMounted(() => {
           <ChartData :cross="1.5" :index="DateTime.fromISO('2021-03-15').setLocale('en-US')" :weight="10" />
         </ChartDataset>
       </LineChart>
-    </MixedChart>
+    </MixedChart> -->
     <Markdown>
       # Hello world
       - 111
       - 222
       - 333
-
     </Markdown>
+    <Suspense>
+      <Video href="./assets/output.mp4"/>
+    </Suspense>
   </Motion>
 </template>
