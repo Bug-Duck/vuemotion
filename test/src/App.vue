@@ -7,6 +7,7 @@ import type { BubbleChart } from '@vue-motion/extension-chart'
 import { BarChart, ChartData, ChartDataset, ChartUtil, LineChart, MixedChart } from '@vue-motion/extension-chart'
 import { DateTime, Duration } from 'luxon'
 import { Markdown } from '@vue-motion/extension-markdown'
+import { SpotLight, DistantLight } from '@vue-motion/extension-lights'
 
 // const fn1 = useWidget<InstanceType<typeof MathFunction>>('fn1')
 // const fn2 = useWidget<InstanceType<typeof MathFunction>>('fn2')
@@ -87,14 +88,16 @@ onMounted(() => {
         </ChartDataset>
       </LineChart>
     </MixedChart> -->
-    <Markdown>
-      # Hello world
-      - 111
-      - 222
-      - 333
-    </Markdown>
+    <DistantLight color="red">
+      <Markdown>
+        # Hello world
+        - 111
+        - 222
+        - 333
+      </Markdown>
+    </DistantLight>
     <Suspense>
-      <Video href="./assets/output.mp4"/>
+      <!-- <Video href="./assets/output.mp4"/> -->
     </Suspense>
   </Motion>
 </template>

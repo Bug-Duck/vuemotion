@@ -7,10 +7,10 @@ export interface PointLightOptions extends WidgetOptions {
   exponent?: number
   surfaceScale?: number
   color: string
-  x: number
-  y: number
-  z: number
-  type: 'diffuse' | 'specular'
+  sourceX: number
+  sourceY: number
+  sourceZ: number
+  type?: 'diffuse' | 'specular'
 }
 
 const props = defineProps<PointLightOptions>()
@@ -28,9 +28,9 @@ const specularId = options.wid || `specular-${id}`
       :lighting-color="options.color"
     >
       <fePointLight
-        :x="options.x"
-        :y="options.y"
-        :z="options.z"
+        :x="options.sourceX"
+        :y="options.sourceY"
+        :z="options.sourceZ"
         :diffuse-constant="options.type === 'diffuse' ? options.constant : ''"
         :diffuse-exponent="options.type === 'diffuse' ? options.exponent : ''"
         :surface-scale="options.surfaceScale"
@@ -43,9 +43,9 @@ const specularId = options.wid || `specular-${id}`
       :lighting-color="options.color"
     >
       <fePointLight
-        :x="options.x"
-        :y="options.y"
-        :z="options.z"
+        :x="options.sourceX"
+        :y="options.sourceY"
+        :z="options.sourceZ"
         :specular-constant="options.type === 'specular' ? options.constant : ''"
         :specular-exponent="options.type === 'specular' ? options.exponent : ''"
         :surface-scale="options.surfaceScale"
