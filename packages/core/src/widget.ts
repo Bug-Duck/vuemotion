@@ -1,5 +1,5 @@
 import type { Reactive } from 'vue'
-import { getCurrentInstance, inject, onMounted, provide, reactive, ref, useSlots } from 'vue'
+import { getCurrentInstance, inject, onMounted, provide, reactive } from 'vue'
 
 export interface Range {
   x: number
@@ -9,52 +9,43 @@ export interface Range {
 }
 
 export interface Widget {
-  wid?: string
+  wid?: Reactive<any>
   element?: SVGElement
   range?: Range
-  slots?: string
+  // slots?: string
   children?: Widget[]
 }
 
 export type ReturnWidget<T extends Widget> = ReturnType<typeof defineWidget<T>>
 
 export function defineWidget<T extends Widget>(props: T, methods?: Record<string, () => any>, root?: SVGElement): Reactive<T> {
-  let widget = inject<T>(props.wid as string)
-  const widgets = inject('child-widgets') as T[]
-
-  // const children = reactive([])
-  // provide('child-widgets', children)
-
-  widget ??= {} as T
-  Object.assign(widget, {
-    ...props,
-    ...methods
-  })
 
   onMounted(() => {
-    widget.element = root ?? getCurrentInstance()!.proxy!.$el.parentElement
-    widget.range = widget.element!.getBoundingClientRect()
-    const slots = useSlots()
-    widget.slots = slots.default ? slots.default().map(v => v.children).join('') : ''
-    if (widgets) {
-      widgets.push(widget)
+    const widgets = inject('child-widgets') as T[]
+
+    // const children = reactive([])
+    // provide('child-widgets', children)
+    if (typeof props.wid !== typeof void 0) {
+      for (const key in props) {
+        props.wid![key] = props[key]
+      }
+      for (const method in methods) {
+        props.wid![method] = methods[method]
+      }
+    }
+    props.wid!.element = root ?? getCurrentInstance()!.proxy!.$el.parentElement
+    props.wid!.range = props.wid!.element!.getBoundingClientRect()
+    if (widgets && props.wid) {
+      widgets.push(props)
     }
   })
 
-  return reactive(widget)
+  return props.wid as Reactive<typeof props>
 }
 
-export function useWidget<T extends Widget>(wid: string) {
-  const element = ref<SVGElement>()
-  const range: Reactive<Range> = reactive({ x: 0, y: 0, width: 0, height: 0 })
-  const slots = ref<string>()
-  const widget = reactive({
-    element,
-    range,
-    slots,
-  })
-  provide(wid, widget)
-  return widget as T
+export function useWidget<T extends abstract new (...args: any) => any>() {
+  const wid = reactive<InstanceType<T>>({} as any)
+  return wid
 }
 
 export function useChildren<T extends Widget>() {
