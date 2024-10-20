@@ -353,11 +353,11 @@ importers:
   extensions/typst:
     dependencies:
       '@myriaddreamin/typst-ts-web-compiler':
-        specifier: 0.5.0-rc7
-        version: 0.5.0-rc7
+        specifier: 0.5.1-rc7
+        version: 0.5.1-rc7
       '@myriaddreamin/typst.ts':
-        specifier: 0.5.0-rc7
-        version: 0.5.0-rc7(@myriaddreamin/typst-ts-web-compiler@0.5.0-rc7)
+        specifier: 0.5.1-rc7
+        version: 0.5.1-rc7(@myriaddreamin/typst-ts-web-compiler@0.5.1-rc7)
       '@vue-motion/core':
         specifier: workspace:*
         version: link:../../packages/core
@@ -398,10 +398,10 @@ importers:
     dependencies:
       '@vue-motion/core':
         specifier: latest
-        version: 0.5.0(typescript@5.6.2)
+        version: 0.5.1(typescript@5.6.2)
       '@vue-motion/lib':
         specifier: latest
-        version: 0.5.0(typescript@5.6.2)
+        version: 0.5.1(typescript@5.6.2)
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
@@ -1416,14 +1416,14 @@ packages:
   '@microsoft/tsdoc@0.14.2':
     resolution: {integrity: sha512-9b8mPpKrfeGRuhFH5iO1iwCLeIIsV6+H1sRfxbkoGXIyQE2BTsPd9zqSqQJ+pv5sJ/hT5M1zvOFL02MnEezFug==}
 
-  '@myriaddreamin/typst-ts-web-compiler@0.5.0-rc7':
+  '@myriaddreamin/typst-ts-web-compiler@0.5.1-rc7':
     resolution: {integrity: sha512-+XNeYZfpCiC+eSkPKkni9nT7Hi+Ghqe6f7YsZw4k5/HD6pd6gTrvh00ATA15v8pjrvrtZ8MkY24Jt0A1q/Nh8Q==}
 
-  '@myriaddreamin/typst.ts@0.5.0-rc7':
+  '@myriaddreamin/typst.ts@0.5.1-rc7':
     resolution: {integrity: sha512-4Oc8zUb2reQ5wbtn+YnPzSpOAe0dE+To7d1YzLTCy8VVtxM8hBoKmWKZPJUiW0NW7E0rpwvnvXeRrhvPG6LxRg==}
     peerDependencies:
-      '@myriaddreamin/typst-ts-renderer': ^0.5.0-rc7
-      '@myriaddreamin/typst-ts-web-compiler': ^0.5.0-rc7
+      '@myriaddreamin/typst-ts-renderer': ^0.5.1-rc7
+      '@myriaddreamin/typst-ts-web-compiler': ^0.5.1-rc7
     peerDependenciesMeta:
       '@myriaddreamin/typst-ts-renderer':
         optional: true
@@ -1807,13 +1807,13 @@ packages:
   '@volar/typescript@2.4.5':
     resolution: {integrity: sha512-mcT1mHvLljAEtHviVcBuOyAwwMKz1ibXTi5uYtP/pf4XxoAzpdkQ+Br2IC0NPCvLCbjPZmbf3I0udndkfB1CDg==}
 
-  '@vue-motion/core@0.5.0':
+  '@vue-motion/core@0.5.1':
     resolution: {integrity: sha512-BiBhBJ8e5ywxTxzkgyCFqQ9iDLW25WaaJkGjKFJA1T3bY8z/maq4vSezcIM5bBiY232KxZGwFwri9hOnOjxndQ==}
 
-  '@vue-motion/lib@0.5.0':
+  '@vue-motion/lib@0.5.1':
     resolution: {integrity: sha512-jk1r/gZFS0/PaTo0gnnRa28j5cD/gT6t+m19KAzM+P8iU7p23nevaX2kXoetZ8NV0cjlOQkmlWKe7ZH+EJEA/g==}
 
-  '@vue-motion/utils@0.5.0':
+  '@vue-motion/utils@0.5.1':
     resolution: {integrity: sha512-IORqz7ONfNk3L0ulVn9HcxumRyMtmixLirP216nX5iyRa31yG99xXnAnYTWwLUPKFSKO+HggRK6wadTEUfmgcQ==}
 
   '@vue/compiler-core@3.5.11':
@@ -3209,7 +3209,7 @@ packages:
     resolution: {integrity: sha512-Hicd6JK5Njt2QB6XYFS7ok9e37O8AYk3jTcppG4YVQnYjOemymvTcmc7OWsmq/Qqj5TdRFO5/x/tIPmBeRtGHg==}
     engines: {node: '>=12.0.0'}
 
-  jsesc@0.5.0:
+  jsesc@0.5.1:
     resolution: {integrity: sha512-uZz5UnB7u4T9LvwmFqXii7pZSouaRPorGs5who1Ip7VO0wxanFvBL7GkM6dTHlgX+jhBApRetaWpnDabOeTcnA==}
     hasBin: true
 
@@ -3291,7 +3291,7 @@ packages:
     resolution: {integrity: sha512-IXO6OCs9yg8tMKzfPZ1YmheJbZCiEsnBdcB03l0OcfK9prKnJb96siuHCr5Fl37/yo9DnKU+TLpxzTUspw9shg==}
     engines: {node: ^12.20.0 || ^14.13.1 || >=16.0.0}
 
-  local-pkg@0.5.0:
+  local-pkg@0.5.1:
     resolution: {integrity: sha512-ok6z3qlYyCDS4ZEU27HaU6x/xZa9Whf8jD4ptH5UZTQYZVYeb9bnZ3ojVhiJNLiXK1Hfc0GNbLXcmZ5plLDDBg==}
     engines: {node: '>=14'}
 
@@ -3603,7 +3603,7 @@ packages:
     resolution: {integrity: sha512-D2FR03Vir7FIu45XBY20mTb+/ZSWB00sjU9jdQXt83gDrI4Ztz5Fs7/yy74g2N5SVQY4xY1qDr4rNddwYRVX0g==}
     engines: {node: '>=0.10.0'}
 
-  outdent@0.5.0:
+  outdent@0.5.1:
     resolution: {integrity: sha512-/jHxFIzoMXdqPzTaCpFzAAWhpkSjZPF4Vsn6jAfNpmbH/ymsmd7Qc6VE9BGn0L6YMj6uwpQLxCECpus4ukKS9Q==}
 
   p-filter@2.1.0:
@@ -4801,7 +4801,7 @@ snapshots:
       eslint-processor-vue-blocks: 0.1.2(@vue/compiler-sfc@3.5.11)(eslint@9.9.0(jiti@1.21.6))
       globals: 15.10.0
       jsonc-eslint-parser: 2.4.0
-      local-pkg: 0.5.0
+      local-pkg: 0.5.1
       parse-gitignore: 2.0.0
       picocolors: 1.1.0
       toml-eslint-parser: 0.10.0
@@ -4866,7 +4866,7 @@ snapshots:
       detect-indent: 6.1.0
       fs-extra: 7.0.1
       lodash.startcase: 4.4.0
-      outdent: 0.5.0
+      outdent: 0.5.1
       prettier: 2.8.8
       resolve-from: 5.0.0
       semver: 7.6.3
@@ -5455,13 +5455,13 @@ snapshots:
 
   '@microsoft/tsdoc@0.14.2': {}
 
-  '@myriaddreamin/typst-ts-web-compiler@0.5.0-rc7': {}
+  '@myriaddreamin/typst-ts-web-compiler@0.5.1-rc7': {}
 
-  '@myriaddreamin/typst.ts@0.5.0-rc7(@myriaddreamin/typst-ts-web-compiler@0.5.0-rc7)':
+  '@myriaddreamin/typst.ts@0.5.1-rc7(@myriaddreamin/typst-ts-web-compiler@0.5.1-rc7)':
     dependencies:
       idb: 7.1.1
     optionalDependencies:
-      '@myriaddreamin/typst-ts-web-compiler': 0.5.0-rc7
+      '@myriaddreamin/typst-ts-web-compiler': 0.5.1-rc7
 
   '@nodelib/fs.scandir@2.1.5':
     dependencies:
@@ -5924,24 +5924,24 @@ snapshots:
       path-browserify: 1.0.1
       vscode-uri: 3.0.8
 
-  '@vue-motion/core@0.5.0(typescript@5.6.2)':
+  '@vue-motion/core@0.5.1(typescript@5.6.2)':
     dependencies:
       '@ffmpeg/ffmpeg': 0.11.0
-      '@vue-motion/utils': 0.5.0(typescript@5.6.2)
+      '@vue-motion/utils': 0.5.1(typescript@5.6.2)
       vue: 3.5.11(typescript@5.6.2)
     transitivePeerDependencies:
       - encoding
       - typescript
 
-  '@vue-motion/lib@0.5.0(typescript@5.6.2)':
+  '@vue-motion/lib@0.5.1(typescript@5.6.2)':
     dependencies:
-      '@vue-motion/core': 0.5.0(typescript@5.6.2)
+      '@vue-motion/core': 0.5.1(typescript@5.6.2)
       vue: 3.5.11(typescript@5.6.2)
     transitivePeerDependencies:
       - encoding
       - typescript
 
-  '@vue-motion/utils@0.5.0(typescript@5.6.2)':
+  '@vue-motion/utils@0.5.1(typescript@5.6.2)':
     dependencies:
       '@ffmpeg/ffmpeg': 0.12.10
       '@ffmpeg/util': 0.12.1
@@ -7549,7 +7549,7 @@ snapshots:
 
   jsdoc-type-pratt-parser@4.1.0: {}
 
-  jsesc@0.5.0: {}
+  jsesc@0.5.1: {}
 
   jsesc@3.0.2: {}
 
@@ -7638,7 +7638,7 @@ snapshots:
 
   load-tsconfig@0.2.5: {}
 
-  local-pkg@0.5.0:
+  local-pkg@0.5.1:
     dependencies:
       mlly: 1.7.1
       pkg-types: 1.2.0
@@ -7937,7 +7937,7 @@ snapshots:
 
   os-tmpdir@1.0.2: {}
 
-  outdent@0.5.0: {}
+  outdent@0.5.1: {}
 
   p-filter@2.1.0:
     dependencies:
@@ -8272,7 +8272,7 @@ snapshots:
 
   regjsparser@0.10.0:
     dependencies:
-      jsesc: 0.5.0
+      jsesc: 0.5.1
 
   relateurl@0.2.7: {}
 
@@ -9007,7 +9007,7 @@ snapshots:
       chai: 4.5.0
       debug: 4.3.7
       execa: 8.0.1
-      local-pkg: 0.5.0
+      local-pkg: 0.5.1
       magic-string: 0.30.11
       pathe: 1.1.2
       picocolors: 1.1.0

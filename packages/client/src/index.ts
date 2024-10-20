@@ -37,7 +37,7 @@ export const client = Clerc.create()
   .name('vuemotion')
   .scriptName('vuemotion')
   .description('VueMotion CLI')
-  .version('0.5.0')
+  .version('0.5.1')
   .command('create', 'Create a new VueMotion project', {
     parameters: [
       '<project name>',
