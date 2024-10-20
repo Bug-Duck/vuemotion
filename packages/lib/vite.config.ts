@@ -8,7 +8,7 @@ export default defineConfig({
     lib: {
       entry: 'src/index.ts',
       name: 'vue-motion',
-      formats: ['es', 'cjs'],
+      formats: ['es', 'cjs', 'iife'],
       fileName: 'index',
     },
     rollupOptions: {
