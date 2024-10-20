@@ -10,10 +10,7 @@ export default defineConfig({
       name: 'vue-motion',
       formats: ['es', 'cjs'],
       fileName: 'index',
-    },
-    rollupOptions: {
-      external: ['vue'],
-    },
+    }
   },
   plugins: [
     vue(),
