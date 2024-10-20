@@ -12,7 +12,7 @@ export default defineConfig({
       fileName: 'index',
     },
     rollupOptions: {
-      
+
     },
     commonjsOptions: {
       transformMixedEsModules: true,
@@ -26,4 +26,5 @@ export default defineConfig({
       copyDtsFiles: true,
     }),
   ],
+  define: { "process.env.NODE_ENV": JSON.stringify(true) }
 })

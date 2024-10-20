@@ -1,7 +1,7 @@
 {
   "name": "@vue-motion/extension-platform",
   "type": "module",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "description": "The components and hooks of vue-motion",
   "author": "BugDuck Team",
   "license": "Apache-2.0",

@@ -20,4 +20,5 @@ export default defineConfig({
       copyDtsFiles: true,
     }),
   ],
+  define: { "process.env.NODE_ENV": JSON.stringify(true) }
 })

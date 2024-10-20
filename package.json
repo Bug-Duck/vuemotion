@@ -1,7 +1,7 @@
 {
   "name": "vue-motion",
   "type": "module",
-  "version": "0.5.1",
+  "version": "0.5.2",
   "packageManager": "pnpm@9.1.0",
   "description": "The modern font-end SVG animation engine.",
   "author": "BugDuck Team",
