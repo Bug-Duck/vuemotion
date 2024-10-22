@@ -1,4 +1,6 @@
+/* eslint-disable no-new-func */
 import { usePlayer, useWidget } from '@vue-motion/core'
+import * as lib from '@vue-motion/lib'
 import type { VueMotionJsonApp, Widget } from './formats'
 
 export function createParser(data: string | VueMotionJsonApp) {
@@ -39,7 +41,19 @@ export function createParser(data: string | VueMotionJsonApp) {
         const { useAnimation } = usePlayer()
         function process(json: Widget<any>) {
           const widget = useWidget((json.props as any).wid)
-          useAnimation(widget)
+          const manager = useAnimation(widget)
+          for (const animation of json.animations ?? []) {
+            switch (animation.type) {
+              case 'delay':
+                manager.delay(animation.duration!)
+                break
+              case 'exec':
+                manager.exec(new Function(`return ${animation.function!}`)())
+                break
+              case 'preset':
+                manager.animate((lib as Record<string, any>)[animation.preset!], animation.props)
+            }
+          }
         }
         json.widgets.forEach(widget => process(widget))
       },

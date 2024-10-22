@@ -48,7 +48,10 @@
           "type": "string"
         },
         "animations": {
-          "$ref": "#/definitions/Animation"
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/Animation"
+          }
         }
       }
     },
@@ -58,10 +61,19 @@
       "properties": {
         "type": {
           "type": "string",
-          "enum": ["preset", "custom", "exec", "delay"]
+          "enum": ["preset", "exec", "delay"]
         },
         "duration": {
           "type": "number"
+        },
+        "function": {
+          "type": "string"
+        },
+        "preset": {
+          "type": "string"
+        },
+        "props": {
+          "type": "object"
         }
       }
     },

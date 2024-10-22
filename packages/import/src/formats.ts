@@ -10,12 +10,15 @@ export interface Widget<T extends 'common' | 'function' | 'widget'> {
   props?: Record<string, PropertyValue<T>>
   children?: Widget<any>[]
   slot?: string
-  animations?: Animation
+  animations?: Animation[]
 }
 
 export interface Animation {
-  type: 'preset' | 'custom' | 'exec' | 'delay'
+  type: 'preset' | 'exec' | 'delay'
   duration?: number
+  function?: string
+  preset?: string
+  props?: Record<string, unknown>
 }
 
 export interface PropertyValue<T extends ('common' | 'function' | 'widget')> {
