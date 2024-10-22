@@ -1,0 +1,17 @@
+{
+  "$schema": "../schema.json",
+  "name": "test",
+  "version": "1.0.0",
+  "description": "A test package",
+  "widgets": [
+    {
+      "type": "Arc",
+      "props": {
+        "radius": {
+          "type": "common",
+          "value": 100
+        }
+      }
+    }
+  ]
+}

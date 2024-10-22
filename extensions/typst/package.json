@@ -27,8 +27,8 @@
     "access": "public"
   },
   "dependencies": {
-    "@myriaddreamin/typst-ts-web-compiler": "0.5.3-rc7",
-    "@myriaddreamin/typst.ts": "0.5.3-rc7",
+    "@myriaddreamin/typst-ts-web-compiler": "0.5.0-rc7",
+    "@myriaddreamin/typst.ts": "0.5.0-rc7",
     "@vue-motion/core": "workspace:*",
     "@vue-motion/lib": "workspace:*",
     "vue": "^3.5.11"
