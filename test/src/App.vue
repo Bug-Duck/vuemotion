@@ -1,27 +1,98 @@
 <script setup lang="ts">
-import { defineAnimation, usePlayer, useWidget } from '@vue-motion/core'
-import { Line, Motion, Rect, Video, grow } from '@vue-motion/lib'
-import { onMounted, ref } from 'vue'
-import type { MathFunction } from '@vue-motion/extension-math'
-import type { BubbleChart } from '@vue-motion/extension-chart'
-import { BarChart, ChartData, ChartDataset, ChartUtil, LineChart, MixedChart } from '@vue-motion/extension-chart'
-import { DateTime, Duration } from 'luxon'
-import { Markdown } from '@vue-motion/extension-markdown'
-import { SpotLight, DistantLight } from '@vue-motion/extension-lights'
+import { usePlayer } from '@vue-motion/core';
+import { defineComponent, onMounted } from 'vue';
+import { createParser } from '@vue-motion/import';
+import { Motion, Rect } from '@vue-motion/lib';
 
-// const fn1 = useWidget<InstanceType<typeof MathFunction>>('fn1')
-// const fn2 = useWidget<InstanceType<typeof MathFunction>>('fn2')
-// const fn3 = useWidget<InstanceType<typeof MathFunction>>('fn3')
-const line = useWidget<InstanceType<typeof BubbleChart>>('www')
+// import { defineAnimation, usePlayer, useWidget } from '@vue-motion/core'
+// import { Line, Motion, Rect, Video, grow } from '@vue-motion/lib'
+// import { onMounted, ref } from 'vue'
+// import type { MathFunction } from '@vue-motion/extension-math'
+// import type { BubbleChart } from '@vue-motion/extension-chart'
+// import { BarChart, ChartData, ChartDataset, ChartUtil, LineChart, MixedChart } from '@vue-motion/extension-chart'
+// import { DateTime, Duration } from 'luxon'
+// import { Markdown } from '@vue-motion/extension-markdown'
+// import { SpotLight, DistantLight } from '@vue-motion/extension-lights'
 
-const x = ref(0)
+// // const fn1 = useWidget<InstanceType<typeof MathFunction>>('fn1')
+// // const fn2 = useWidget<InstanceType<typeof MathFunction>>('fn2')
+// // const fn3 = useWidget<InstanceType<typeof MathFunction>>('fn3')
+// const line = useWidget<InstanceType<typeof BubbleChart>>('www')
 
-const change = defineAnimation((_context, progress) => {
-  x.value = progress * 4000
+// const x = ref(0)
+
+// const change = defineAnimation((_context, progress) => {
+//   x.value = progress * 4000
+// })
+const { parseTemplate, parseScript } = createParser(`
+{
+  "version": "0.5.0",
+  "name": "Rotating Square",
+  "description": "A square rotating 360 degrees",
+  "widgets": [
+    {
+      "type": "Rect",
+      "props": {
+        "wid": {
+          "type": "common",
+          "value": "rotatingSquare"
+        },
+        "x": {
+          "type": "common",
+          "value": 200
+        },
+        "y": {
+          "type": "common",
+          "value": 200
+        },
+        "width": {
+          "type": "common",
+          "value": 100
+        },
+        "height": {
+          "type": "common",
+          "value": 100
+        },
+        "fill-color": {
+          "type": "common",
+          "value": "rgba(0, 150, 255, 0.7)"
+        },
+        "border-color": {
+          "type": "common",
+          "value": "rgba(0, 100, 200, 1)"
+        },
+        "border-width": {
+          "type": "common",
+          "value": 3
+        }
+      },
+      "animations": [
+        {
+          "type": "preset",
+          "preset": "rotate",
+          "duration": 3,
+          "props": {
+            "offset": 1000
+          }
+        }
+      ]
+    }
+  ],
+  "reflects": {
+    "a": 23333
+  }
+}
+`)
+
+const Test = defineComponent({
+  template: parseTemplate(),
+  ...parseScript()
 })
+console.log(Test.setup?.toString())
+console.log(Test.template)
 
 onMounted(() => {
-  const { play, useAnimation } = usePlayer()
+  const { play } = usePlayer()
 
   // useAnimation(fn1)
   //   .animate(grow, { duration: 1 })
@@ -29,16 +100,9 @@ onMounted(() => {
   //   .animate(grow, { duration: 1 })
   // useAnimation(fn3)
   //   .animate(grow, { duration: 1 })
-  useAnimation(line)
-    .animate(change, { duration: 4 })
 
   play()
 })
-
-const color = ref('red')
-setTimeout(() => {
-  color.value = 'skyblue'
-}, 2000)
 </script>
 
 <template>
@@ -93,7 +157,7 @@ setTimeout(() => {
         </ChartDataset>
       </LineChart>
     </MixedChart> -->
-    <DistantLight :color="color">
+    <!-- <DistantLight :color="color">
       <Markdown>
         # Hello world
         - 111
@@ -103,7 +167,8 @@ setTimeout(() => {
     </DistantLight>
     <Rect :width="100" :height="100" :fill-color="color"/>
     <Suspense>
-      <!-- <Video href="./assets/output.mp4"/> -->
-    </Suspense>
+      <Video href="./assets/output.mp4"/>
+    </Suspense> -->
+    <Test/>
   </Motion>
 </template>

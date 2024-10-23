@@ -30,6 +30,7 @@
   },
   "dependencies": {
     "@vue-motion/core": "workspace:*",
-    "@vue-motion/lib": "workspace:*"
+    "@vue-motion/lib": "workspace:*",
+    "vue": "^3.5.11"
   }
 }

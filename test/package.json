@@ -23,6 +23,7 @@
     "@vue-motion/extension-three": "workspace:*",
     "@vue-motion/extension-typst": "workspace:*",
     "@vue-motion/extension-ui": "workspace:*",
+    "@vue-motion/import": "workspace:^",
     "@vue-motion/lib": "workspace:*",
     "luxon": "^3.5.0",
     "vue": "^3.5.11",
