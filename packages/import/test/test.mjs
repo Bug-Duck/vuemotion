@@ -6,3 +6,4 @@ console.log(json)
 
 const parser = createParser(json)
 console.log(parser.parseTemplate())
+console.log(parser.parseScript().setup.toString())

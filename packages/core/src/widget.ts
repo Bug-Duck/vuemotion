@@ -18,7 +18,7 @@ export interface Widget {
 
 export type ReturnWidget<T extends Widget> = ReturnType<typeof defineWidget<T>>
 
-export function defineWidget<T extends Widget>(props: T, methods?: Record<string, () => any>, root?: SVGElement): Reactive<T> {
+export function defineWidget<T extends Widget>(props: Reactive<T>, methods?: Record<string, () => any>, root?: SVGElement): Reactive<T> {
   let widget = inject<T>(props.wid as string)
   const widgets = inject('child-widgets') as T[]
 
@@ -26,22 +26,22 @@ export function defineWidget<T extends Widget>(props: T, methods?: Record<string
   // provide('child-widgets', children)
 
   widget ??= {} as T
-  Object.assign(widget, {
-    ...props,
+  Object.assign(props, {
+    ...widget,
     ...methods
   })
 
   onMounted(() => {
-    widget.element = root ?? getCurrentInstance()!.proxy!.$el.parentElement
-    widget.range = widget.element!.getBoundingClientRect()
+    props.element = root ?? getCurrentInstance()!.proxy!.$el.parentElement
+    props.range = widget.element!.getBoundingClientRect()
     const slots = useSlots()
-    widget.slots = slots.default ? slots.default().map(v => v.children).join('') : ''
+    props.slots = slots.default ? slots.default().map(v => v.children).join('') : ''
     if (widgets) {
       widgets.push(widget)
     }
   })
 
-  return reactive(widget)
+  return props
 }
 
 export function useWidget<T extends Widget>(wid: string) {

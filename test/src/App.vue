@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { defineAnimation, usePlayer, useWidget } from '@vue-motion/core'
-import { Line, Motion, Video, grow } from '@vue-motion/lib'
+import { Line, Motion, Rect, Video, grow } from '@vue-motion/lib'
 import { onMounted, ref } from 'vue'
 import type { MathFunction } from '@vue-motion/extension-math'
 import type { BubbleChart } from '@vue-motion/extension-chart'
@@ -34,6 +34,11 @@ onMounted(() => {
 
   play()
 })
+
+const color = ref('red')
+setTimeout(() => {
+  color.value = 'skyblue'
+}, 2000)
 </script>
 
 <template>
@@ -88,7 +93,7 @@ onMounted(() => {
         </ChartDataset>
       </LineChart>
     </MixedChart> -->
-    <DistantLight color="red">
+    <DistantLight :color="color">
       <Markdown>
         # Hello world
         - 111
@@ -96,6 +101,7 @@ onMounted(() => {
         - 333
       </Markdown>
     </DistantLight>
+    <Rect :width="100" :height="100" :fill-color="color"/>
     <Suspense>
       <!-- <Video href="./assets/output.mp4"/> -->
     </Suspense>

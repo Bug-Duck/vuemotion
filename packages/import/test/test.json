@@ -1,17 +1,54 @@
 {
-  "$schema": "../schema.json",
-  "name": "test",
-  "version": "1.0.0",
-  "description": "A test package",
+  "version": "0.5.0",
+  "name": "Rotating Square",
+  "description": "A square rotating 360 degrees",
   "widgets": [
     {
-      "type": "Arc",
+      "type": "Rect",
       "props": {
-        "radius": {
+        "wid": {
+          "type": "common",
+          "value": "rotatingSquare"
+        },
+        "x": {
+          "type": "common",
+          "value": 200
+        },
+        "y": {
+          "type": "common",
+          "value": 200
+        },
+        "width": {
           "type": "common",
           "value": 100
+        },
+        "height": {
+          "type": "common",
+          "value": 100
+        },
+        "fill-color": {
+          "type": "common",
+          "value": "rgba(0, 150, 255, 0.7)"
+        },
+        "border-color": {
+          "type": "common",
+          "value": "rgba(0, 100, 200, 1)"
+        },
+        "border-width": {
+          "type": "common",
+          "value": 3
         }
-      }
+      },
+      "animations": [
+        {
+          "type": "preset",
+          "preset": "rotate",
+          "duration": 3000,
+          "props": {
+            "rotation": 360
+          }
+        }
+      ]
     }
   ]
 }
