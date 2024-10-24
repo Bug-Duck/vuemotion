@@ -26,7 +26,7 @@ import { Motion, Rect } from '@vue-motion/lib';
 // })
 const { parseTemplate, parseScript } = createParser(`
 {
-  "version": "0.5.0",
+  "version": "0.6.0",
   "name": "Rotating Square",
   "description": "A square rotating 360 degrees",
   "widgets": [

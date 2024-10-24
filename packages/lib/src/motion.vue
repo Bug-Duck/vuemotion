@@ -8,6 +8,7 @@ const props = defineProps<{
   minWidth?: number
   minHeight?: number
   scale?: number
+  backgroundColor?: string
 }>()
 
 const w = ref(props.width)
@@ -21,10 +22,11 @@ provide('motion-height', h)
 
 <template>
   <svg
-    :viewBox="`0 0 ${w} ${h}`" style="background-color: black;" :style="{
+    :viewBox="`0 0 ${w} ${h}`" :style="{
       transform: `scale(${props.scale ?? 1})`,
       minWidth: `${props.minWidth ?? width}px`,
       minHeight: `${props.minHeight ?? height}px`,
+      backgroundColor: props.backgroundColor ?? 'black'
     }" :width="w" :height="h"
   >
     <g v-bind="figure({ x: width / 2, y: height / 2 })">

@@ -1,10 +1,10 @@
 /* eslint-disable no-new-func */
 import { defineAnimation, usePlayer, useWidget } from '@vue-motion/core'
 import * as lib from '@vue-motion/lib'
-import { onMounted, type Ref, ref } from 'vue'
+import { type Ref, ref } from 'vue'
 import type { VueMotionJsonApp, Widget } from './formats'
 
-export function createParser(data: string | VueMotionJsonApp) {
+export function createParser(data: string | VueMotionJsonApp, extensions?: Record<string, any>) {
   let json: VueMotionJsonApp
   if (typeof data === 'string')
     json = JSON.parse(data)
@@ -28,17 +28,20 @@ export function createParser(data: string | VueMotionJsonApp) {
         else
           return `:${key}="${widget.props![key].value}"`
       }).join(' ')
-        }>
+      }>
         ${widget.slot ?? ''}
           ${(widget.children ?? []).map(child => unwrap(child)).join('\n')
-        }
+          }
 </${widget.type}>`
     }
     return json.widgets.map(widget => unwrap(widget)).join('\n')
   }
 
   const components: Record<string, any> = {}
-  for (const key in lib) {
+  for (const key in {
+    ...lib,
+    ...(extensions ?? {}),
+  }) {
     if ((lib as Record<string, any>)[key].setup)
       components[key] = ((lib as Record<string, any>)[key])
   }
@@ -53,7 +56,6 @@ export function createParser(data: string | VueMotionJsonApp) {
         })
         function process(json: Widget<any>) {
           const widget = useWidget((json.props as any).wid.value)
-          console.log((json.props as any).wid.value)
           const manager = useAnimation(widget)
           for (const animation of json.animations ?? []) {
             switch (animation.type) {
@@ -65,7 +67,6 @@ export function createParser(data: string | VueMotionJsonApp) {
                 break
               case 'preset':
                 manager.animate((lib as Record<string, any>)[animation.preset!], animation.props)
-                console.log('set!')
                 break
               case 'change':
                 manager.animate(

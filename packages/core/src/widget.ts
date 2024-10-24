@@ -42,6 +42,15 @@ export function defineWidget<T extends Widget>(props: Reactive<T>, methods?: Rec
   //   }
   // })
 
+  watch(props, (v) => {
+    for (const key in v) {
+      (widget as Record<string, any>)[key] = (v as Record<string, any>)[key]
+    }
+  }, {
+    immediate: true,
+    deep: true,
+  })
+
   onMounted(() => {
     widget.element = root ?? getCurrentInstance()!.proxy!.$el.parentElement
     widget.range = (root ?? getCurrentInstance()!.proxy!.$el.parentElement)!.getBoundingClientRect()
