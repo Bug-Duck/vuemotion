@@ -4,4 +4,4 @@ import './style.css'
 import { router } from './router'
 import { createPlayer } from '@vue-motion/core'
 
-createApp(App).use(router).use(createPlayer({})).mount('#app')
+createApp(App).use(createPlayer({})).mount('#app')

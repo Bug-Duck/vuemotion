@@ -23,13 +23,13 @@ export interface NumberPlaneOptions extends WidgetOptions, Growable {
   grid?: boolean;
   gridColor?: string;
   gridWidth?: number;
-  Yrotation?: number;
+  yRotation?: number;
 }
 
 const props = defineProps<NumberPlaneOptions>();
 const options = defineWidget<NumberPlaneOptions>(props);
 
-const Yrotation = options.Yrotation ?? 90;
+const Yrotation = options.yRotation ?? 90;
 const domain = [options.domainX.sort(), options.domainY.sort()];
 </script>
 

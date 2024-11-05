@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import dts from 'vite-plugin-dts'
+import { templateCompilerOptions } from '@tresjs/core'
 
 export default defineConfig({
   root: '.',
@@ -16,7 +17,9 @@ export default defineConfig({
     },
   },
   plugins: [
-    vue(),
+    vue({
+      ...templateCompilerOptions
+    }),
     dts({
       include: ['./src/**/*.ts'],
       rollupTypes: true,

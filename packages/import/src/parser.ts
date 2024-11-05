@@ -25,6 +25,8 @@ export function createParser(data: string | VueMotionJsonApp, extensions?: Recor
           return `:${key}="${widget.props![key].value}"`
         else if (typeof widget.props![key].value === 'string')
           return `${key}="${widget.props![key].value}"`
+        else if (Array.isArray(widget.props![key].value))
+          return `:${key}="[${widget.props![key].value.toString()}]"`
         else
           return `:${key}="${widget.props![key].value}"`
       }).join(' ')

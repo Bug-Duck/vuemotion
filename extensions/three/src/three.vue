@@ -1,57 +1,54 @@
 <script setup lang="ts">
+import { defineWidget } from '@vue-motion/core'
 import type { WidgetOptions } from '@vue-motion/lib'
 import { widget } from '@vue-motion/lib'
-import { defineWidget } from '@vue-motion/core'
-import { Color, PerspectiveCamera, Scene, WebGLRenderer } from 'three'
-import { onMounted, provide, ref } from 'vue'
+import { TresCanvas } from '@tresjs/core'
 
 export interface ThreeOptions extends WidgetOptions {
   width: number
   height: number
-  cameraConfig?: {
-    fov?: number
-    aspect?: number
-    near?: number
-    far?: number
-  }
-  background?: string
+  cameraPosition?: [number, number, number]
+  cameraLookAt?: [number, number, number]
+  fov?: number
+  near?: number
+  far?: number
+  aspect?: number
+  backgroundColor?: string
+  autoCenter?: boolean
 }
 
 const props = defineProps<ThreeOptions>()
 const options = defineWidget<ThreeOptions>(props)
-
-const scene = new Scene()
-scene.background = new Color(options.background ?? 'black')
-const canvas = new OffscreenCanvas(options.width, options.height)
-const camera = new PerspectiveCamera(
-  (options.cameraConfig ?? {}).fov ?? 50,
-  (options.cameraConfig ?? {}).aspect ?? options.width / options.height,
-  (options.cameraConfig ?? {}).near ?? 0.1,
-  (options.cameraConfig ?? {}).far ?? 2000,
-)
-
-const renderer = new WebGLRenderer({
-  canvas,
-})
-
-provide('scene', scene)
-provide('camera', camera)
-
-const url = ref('')
-
-renderer.setSize(options.width, options.height)
-renderer.setPixelRatio(window.devicePixelRatio)
-
-onMounted(async () => {
-  renderer.render(scene, camera)
-  url.value = window.URL.createObjectURL(await canvas.convertToBlob())
-})
 </script>
 
 <template>
   <g v-bind="widget(options)">
-    <image
-      :href="url"
-    />
+    <foreignObject :width="options.width" :height="options.height">
+      <div
+        :style="{
+          color: 'white',
+          margin: '0',
+          width: `${options.width}px`,
+          height: `${options.height}px`,
+        }" xmlns="http://www.w3.org/1999/xhtml"
+      >
+        <TresCanvas
+          :clear-color="options.backgroundColor ?? 'black'"
+        >
+          <TresPerspectiveCamera/>
+          <slot />
+        </TresCanvas>
+      </div>
+    </foreignObject>
   </g>
 </template>
+
+<!-- 
+
+            :position="options.cameraPosition ?? void 0"
+            :look-at="options.cameraLookAt ?? void 0"
+            :fov="options.fov ?? void 0"
+            :near="options.near ?? void 0"
+            :far="options.far ?? void 0"
+            :aspect="options.aspect ?? void 0"
+-->
