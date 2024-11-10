@@ -61,7 +61,7 @@ export function defineWidget<T extends Widget>(props: Reactive<T>, methods?: Rec
     }
   })
 
-  return widget
+  return reactive(widget)
 }
 
 export function useWidget<T extends Widget>(wid: string) {
