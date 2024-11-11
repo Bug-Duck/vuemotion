@@ -1,20 +1,35 @@
 <script setup lang="ts">
-import { usePlayer } from '@vue-motion/core';
-import { defineComponent, onMounted } from 'vue';
-import { createParser } from '@vue-motion/import';
-import { Motion, Rect } from '@vue-motion/lib';
-import { Three, Cube } from '@vue-motion/extension-three'
+import { usePlayer, useWidget } from '@vue-motion/core'
+import type { TextOptions } from '@vue-motion/lib'
+import { Group, Image, Text, fadeIn, stroke } from '@vue-motion/lib'
+import { onMounted } from 'vue'
+
+const title = useWidget<TextOptions>('title')
+const text = useWidget<TextOptions>('text')
 
 onMounted(() => {
-  const { play } = usePlayer()
-  play()
+  const player = usePlayer()
+  player.useAnimation(title)
+    .animate(stroke, { duration: 1 })
+  player.useAnimation(text)
+    .delay(1)
+    .animate(fadeIn, { duration: 1, from: 0, to: 1 })
+  player.play()
 })
 </script>
 
 <template>
-  <Motion id="motion" :width="1000" :height="1000">
-    <Three :width="1000" :height="1000" background-color="orange" :x="-500" :y="-500">
-      <Cube :width="1" :height="1" :depth="1"/>
-    </Three>
-  </Motion>
+  <Group :y="-200">
+    <Image href="/vite.svg" :x="-350" :width="150" :height="150" />
+    <Image href="/logo.svg" :x="200" :width="150" :height="150" />
+    <Image href="/vue.svg" :x="-75" :width="150" :height="150" />
+  </Group>
+  <Group>
+    <Text :y="10" :font-size="50" wid="title" border-color="white" fill-color="none">
+      Vue + Vite + VueMotion
+    </Text>
+    <Text :y="70" :font-size="20" wid="text" :opacity="0">
+      Build your animation with Vuejs
+    </Text>
+  </Group>
 </template>
