@@ -1,84 +1,41 @@
-import type { Reactive } from 'vue'
-import { getCurrentInstance, inject, onMounted, provide, reactive, ref, useSlots, watch } from 'vue'
+import type { InjectionKey, Reactive, Ref, Slots } from 'vue'
+import { getCurrentInstance, inject, onMounted, provide, reactive, ref, useSlots, watchEffect } from 'vue'
 
-export interface Range {
-  x: number
-  y: number
-  width: number
-  height: number
-}
+const childWidgets: InjectionKey<Ref<Widget[]>> = Symbol('child-widgets')
 
-export interface Widget {
-  wid?: string
+export interface Widget<T extends Widget = any> {
+  ref?: string | InjectionKey<Reactive<T>>
   element?: SVGElement
-  range?: Range
-  slots?: string
+  range?: DOMRect
+  slots?: Slots
   children?: Widget[]
 }
 
-export type ReturnWidget<T extends Widget> = ReturnType<typeof defineWidget<T>>
-
-export function defineWidget<T extends Widget>(props: Reactive<T>, methods?: Record<string, () => any>, root?: SVGElement): Reactive<T> {
-  let widget = inject<T>(props.wid as string)
-  const widgets = inject('child-widgets') as T[]
-
-  // const children = reactive([])
-  // provide('child-widgets', children)
-
-  widget ??= {} as T
-  // Object.assign(props, {
-  //   ...widget,
-  //   ...methods,
-  // })
-  Object.assign(widget, {
-    ...props,
-    ...methods,
-  })
-
-  // const propsProxy = reactive({ ...props })
-  // watch(props, (v) => {
-  //   for (const key in v) {
-  //     (propsProxy as Record<string, any>)[key] = (v as Record<string, any>)[key]
-  //   }
-  // })
-
-  watch(props, (v) => {
-    for (const key in v) {
-      (widget as Record<string, any>)[key] = (v as Record<string, any>)[key]
-    }
-  }, {
-    immediate: true,
-    deep: true,
-  })
-
-  onMounted(() => {
-    widget.element = root ?? getCurrentInstance()!.proxy!.$el.parentElement
-    widget.range = (root ?? getCurrentInstance()!.proxy!.$el.parentElement)!.getBoundingClientRect()
-    const slots = useSlots()
-    widget.slots = slots.default ? slots.default().map(v => v.children).join('') : ''
-    if (widgets) {
-      widgets.push(widget)
-    }
-  })
-
-  return widget
-}
-
-export function useWidget<T extends Widget>(wid: string) {
-  const element = ref<SVGElement>()
-  const range: Reactive<Range> = reactive({ x: 0, y: 0, width: 0, height: 0 })
-  const slots = ref<string>()
-  const widget = reactive({
-    element,
-    range,
-    slots,
-  })
-  provide(wid, widget)
+export function useWidget<T extends Widget>(ref: string | InjectionKey<T>): T {
+  const widget = reactive({})
+  provide(ref, widget)
   return widget as T
 }
 
-export function useChildren<T extends Widget>() {
-  const widgets = reactive([]) as T[]
-  provide('child-widgets', widgets)
-  return widgets as Reactive<T[]>
+export function useChildren(): Ref<Widget[]> {
+  const children = ref([])
+  provide(childWidgets, children)
+  return children
+}
+
+export function defineWidget<T extends Widget>(props: T, root?: SVGElement): T {
+  if (props.ref) {
+    const widget = inject<Reactive<T>>(props.ref)
+    if (widget) {
+      watchEffect(() => Object.assign(widget, props))
+      onMounted(() => {
+        widget.element = root ?? getCurrentInstance()?.proxy?.$el.parentElement
+        widget.range = widget.element?.getBoundingClientRect()
+        widget.slots = useSlots()
+        inject(childWidgets)?.value.push(widget)
+      })
+      return widget
+    }
+  }
+  return props as Reactive<T>
 }
