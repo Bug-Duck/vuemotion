@@ -12,11 +12,11 @@ export const showCircleCreationThenDestructionAround = defineAnimation<{
     context.circle.setAttribute('fill', 'none')
     context.circle.setAttribute('stroke', context.color || 'yellow')
     context.circle.setAttribute('stroke-width', '3')
-    context.circle.setAttribute('r', Math.max(context.target.range!.width / 2, context.target.range!.height / 2).toString())
-    context.circle.setAttribute('stroke-dasharray', `0,${Number(context.target.element?.getAttribute('r')) * 2 * Math.PI}`)
-    context.circle.setAttribute('cx', context.target.x?.toString() ?? '0')
-    context.circle.setAttribute('cy', context.target.y?.toString() ?? '0')
-    context.target.element?.appendChild(context.circle)
+    context.circle.setAttribute('r', Math.max(target.range!.width / 2, target.range!.height / 2).toString())
+    context.circle.setAttribute('stroke-dasharray', `0,${Number(target.element?.getAttribute('r')) * 2 * Math.PI}`)
+    context.circle.setAttribute('cx', target.x?.toString() ?? '0')
+    context.circle.setAttribute('cy', target.y?.toString() ?? '0')
+    target.element?.appendChild(context.circle)
   }
   if (progress >= 0 && progress < 0.5) {
     context.circle?.setAttribute('stroke-dasharray', `${interpolator(0, Number(context.circle.getAttribute('r')) * 2 * Math.PI, progress * 2)},${interpolator(Number(context.circle.getAttribute('r')) * 2 * Math.PI, 0, progress * 2)}`)

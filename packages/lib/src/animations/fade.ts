@@ -1,19 +1,21 @@
+import type { Methodize } from '@vue-motion/core'
 import { defineAnimation, withDefaults } from '@vue-motion/core'
 import { interpolator } from '../interpolator'
 
 export interface HasOpacity {
   opacity?: number
 }
+export type HasOpacityMethods = Methodize<HasOpacity, { fadeTo: ['opacity'] }>
 
 export const fadeTo = defineAnimation<{
   from?: number
   to?: number
 }, HasOpacity>((context, progress) => {
   if (progress === 0) {
-    context.from ??= context.target.opacity ?? 1
-    context.to ??= context.target.opacity ?? 1
+    context.from ??= target.opacity ?? 1
+    context.to ??= target.opacity ?? 1
   }
-  context.target.opacity = interpolator(context.from!, context.to!, progress)
+  target.opacity = interpolator(context.from!, context.to!, progress)
 })
 
 export const fadeOut = withDefaults(fadeTo, { to: 0 })

@@ -9,10 +9,10 @@ export const rippleOut = defineAnimation<{
   let circle
   if (progress === 0) {
     circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle')
-    context.target.element?.appendChild(circle)
+    target.element?.appendChild(circle)
 
-    circle.setAttribute('cx', context.target.x!.toString())
-    circle.setAttribute('cy', context.target.y!.toString())
+    circle.setAttribute('cx', target.x!.toString())
+    circle.setAttribute('cy', target.y!.toString())
     circle.setAttribute('fill', 'rgba(255,255,255,0.5)')
   }
   circle!.setAttribute('r', interpolator(0, context.offset ?? 1000, progress).toString())

@@ -6,12 +6,12 @@ export interface Growable {
 
 export const grow = defineAnimation<object, Growable>(
   (context, progress) => {
-    context.target.progress = progress
+    target.progress = progress
   },
 )
 
 export const destory = defineAnimation<object, Growable>(
   (context, progress) => {
-    context.target.progress = 1 - progress
+    target.progress = 1 - progress
   },
 )

@@ -13,13 +13,13 @@ export const zoomTo = defineAnimation<{
   toY?: number
 }, HasScale>((context, progress) => {
   if (progress === 0) {
-    context.fromX ??= context.target.scaleX ?? 1
-    context.toX ??= context.target.scaleX ?? 1
-    context.fromY ??= context.target.scaleY ?? 1
-    context.toY ??= context.target.scaleY ?? 1
+    context.fromX ??= target.scaleX ?? 1
+    context.toX ??= target.scaleX ?? 1
+    context.fromY ??= target.scaleY ?? 1
+    context.toY ??= target.scaleY ?? 1
   }
-  context.target.scaleX = interpolator(context.fromX!, context.toX!, progress)
-  context.target.scaleY = interpolator(context.fromY!, context.toY!, progress)
+  target.scaleX = interpolator(context.fromX!, context.toX!, progress)
+  target.scaleY = interpolator(context.fromY!, context.toY!, progress)
 })
 
 export const zoomOut = withDefaults(zoomTo, { toX: 0, toY: 0 })

@@ -9,5 +9,5 @@ export const wiggle = defineAnimation<{
   // Wiggle effect using a sine function for smooth oscillation
   const angle = Math.sin(progress * Math.PI * 8) * (amplitude ?? 5)
 
-  context.target.rotation = angle
+  target.rotation = angle
 })

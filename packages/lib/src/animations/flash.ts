@@ -37,7 +37,7 @@ export const flash = defineAnimation<FlashConfig, Widget & FlashConfig>((context
       line.setAttribute('stroke', color)
       line.setAttribute('stroke-width', lineStrokeWidth.toString())
       line.setAttribute('transform', ` translate(${x}, ${y}) rotate(${(angle * 180) / Math.PI}, ${0}, ${0}) translate(${flashRadius}, 0)`)
-      context.target.element?.appendChild(line)
+      target.element?.appendChild(line)
       context.lines?.push(line)
     }
   }

@@ -1,7 +1,8 @@
-import type { Widget } from '@vue-motion/core'
-import type { HasOpacity, Positional, Rotatable, Scalable } from '../animations'
+import { type Widget, defineMethods } from '@vue-motion/core'
+import type { HasOpacity, HasOpacityMethods, Positional, PositionalMethods, Rotatable, RotatableMethods, Scalable, ScalableMethods } from '../animations'
 
 export type WidgetOptions = Widget & Positional & Scalable & Rotatable & HasOpacity
+export type WidgetMethods = PositionalMethods & ScalableMethods & RotatableMethods & HasOpacityMethods
 
 export function widget(options: WidgetOptions) {
   const props = {} as {
@@ -20,4 +21,11 @@ export function widget(options: WidgetOptions) {
   if (options.opacity !== 1)
     props.style = `opacity: ${options.opacity}`
   return props
+}
+
+export function buildWidgetMethods(methods?: WidgetMethods) {
+  return defineMethods<WidgetMethods>({
+    ...methods!,
+    moveTo(x?: number, y?: number, parameters?: {}) {},
+  })
 }

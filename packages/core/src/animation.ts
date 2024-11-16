@@ -5,7 +5,47 @@ export type TimingFunction = (x: number) => number
 export const linear: TimingFunction = x => x
 
 export type Animation<T extends object, A extends object = object> =
-  (target: T, context: A, progress: number) => void
+  (target: T, context: A, progress: number) => void;
+
+type BuildParams<T, Keys extends Array<keyof T>, Optional extends boolean = false> = Keys extends []
+  ? [parameters?: Record<string, any>]
+  : Keys extends [infer First extends keyof T]
+  ? [Optional extends true ? T[First] | undefined : T[First], parameters?: Record<string, any>]
+  : Keys extends [infer First extends keyof T, ...infer Rest extends Array<keyof T>]
+  ? [Optional extends true ? T[First] | undefined : T[First], ...BuildParams<T, Rest, Optional>, parameters?: Record<string, any>]
+  : never
+
+/**
+ * If
+ * ```ts
+ * interface A {
+ *   x: number
+ *   y: number
+ *   z: number
+ * }
+ * ```
+ * Then
+ * ```ts
+ * type B = Methodize<A, { 
+ *   move: ['x', 'y'],
+ *   move3d: ['x', 'y', 'z']
+ * }>
+ * ```
+ * is
+ * ```ts
+ * interface B {
+ *   move: (x: number, y: number, parameters?: Record<string, any>) => void
+ *   move3d: (x: number, y: number, z: number, parameters?: Record<string, any>) => void
+ * }
+ * ```
+ */
+export type Methodize<
+  T,
+  Methods extends Record<string, Array<keyof T>>,
+  Optional extends boolean = false
+> = {
+  [K in keyof Methods]: (...args: BuildParams<T, Methods[K], Optional>) => void
+}
 
 interface AnimationInstance<T extends object, A extends object> {
   context: A
