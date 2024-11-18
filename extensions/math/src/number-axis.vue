@@ -18,11 +18,11 @@ const props = defineProps<NumberAxisOptions>()
 const options = defineWidget<NumberAxisOptions>(props)
 
 function getIntervalOrDefault(interval?: number): number {
-  return interval ?? 100;
+  return interval ?? 100
 }
 
 function getProgressOrDefault(progress?: number): number {
-  return progress ?? 1;
+  return progress ?? 1
 }
 </script>
 
@@ -50,10 +50,10 @@ function getProgressOrDefault(progress?: number): number {
         [0, -10],
         [0, 10],
         [Math.sqrt(300), 0],
-      ]" 
-      :border-color="options.tip ?? 'white'" 
+      ]"
+      :border-color="options.tip ?? 'white'"
       :fill-color="options.tip ?? 'white'"
-      :x="options.domain[1] * getIntervalOrDefault(options.interval)" 
+      :x="options.domain[1] * getIntervalOrDefault(options.interval)"
       :y="0"
     />
   </g>
@@ -65,20 +65,20 @@ function getProgressOrDefault(progress?: number): number {
       :border-color="options.trim ?? 'white'"
     />
     <Line
-      v-for="i in Math.abs(options.domain[1] - options.domain[0])" 
-      :from="[(i + 1) * getIntervalOrDefault(options.interval), -10]" 
-      :to="[(i + 1) * getIntervalOrDefault(options.interval), 10]" 
-      :border-color="options.trim ?? 'white'" 
+      v-for="i in Math.abs(options.domain[1] - options.domain[0])"
+      :from="[(i + 1) * getIntervalOrDefault(options.interval), -10]"
+      :to="[(i + 1) * getIntervalOrDefault(options.interval), 10]"
+      :border-color="options.trim ?? 'white'"
       :x="(options.domain[0] - 1) * getIntervalOrDefault(options.interval)"
     />
     <Text
-      v-for="i in Math.abs(options.domain[1] - options.domain[0] + 1)" 
+      v-for="i in Math.abs(options.domain[1] - options.domain[0] + 1)"
       border-color="none"
-      :fill-color="options.fontColor ?? 'white'" 
-      :x="(options.domain[0] + i - 1) * getIntervalOrDefault(options.interval)" 
+      :fill-color="options.fontColor ?? 'white'"
+      :x="(options.domain[0] + i - 1) * getIntervalOrDefault(options.interval)"
       :y="20"
-      :rotation="-(options.rotation ?? 0)" 
-      align="start" 
+      :rotation="-(options.rotation ?? 0)"
+      align="start"
       :font-size="20"
     >
       {{ (options.trend ?? (x => x.toString()))(i + options.domain[0] - 1) }}
@@ -88,10 +88,10 @@ function getProgressOrDefault(progress?: number): number {
         [0, -10],
         [0, 10],
         [Math.sqrt(300), 0],
-      ]" 
-      :border-color="options.tip ?? 'white'" 
+      ]"
+      :border-color="options.tip ?? 'white'"
       :fill-color="options.tip ?? 'white'"
-      :x="options.domain[1] * getIntervalOrDefault(options.interval)" 
+      :x="options.domain[1] * getIntervalOrDefault(options.interval)"
       :y="0"
     />
   </g>

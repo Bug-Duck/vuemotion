@@ -12,11 +12,11 @@ const props = defineProps<MarkdownOptions>()
 const options = defineWidget<MarkdownOptions>(props)
 
 const slots = useSlots()
-const md = ref(slots.default ? slots.default().map(vnode => vnode.children).join('') : '')
+const md = ref(slots.default ? slots.default().map((vnode) => vnode.children).join('') : '')
 
 onUpdated(() => {
   const slots = useSlots()
-  md.value = slots.default ? slots.default().map(vnode => vnode.children).join('') : ''
+  md.value = slots.default ? slots.default().map((vnode) => vnode.children).join('') : ''
 })
 
 const content = computed(() => {

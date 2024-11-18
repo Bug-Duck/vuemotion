@@ -8,5 +8,5 @@ motion.height.value = 900
 </script>
 
 <template>
-  <Arc :radius="100"/>
+  <Arc :radius="100" />
 </template>

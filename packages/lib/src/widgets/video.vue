@@ -21,15 +21,15 @@ video.loop = props.loop ?? false
 video.autoplay = props.autoPlay ?? false
 video.load()
 
-const canvas = new OffscreenCanvas(video.width, video.height)  // Initial size
+const canvas = new OffscreenCanvas(video.width, video.height) // Initial size
 const ctx = canvas.getContext('2d')
 
 const url = ref('')
 
 async function updateFrame(newVal: number) {
   video.currentTime = Math.floor(newVal)
-  console.log(newVal);
-  
+  console.log(newVal)
+
   // console.log(newVal / (options.fps ?? 60))
   canvas.width = 1000
   canvas.height = 600
@@ -45,6 +45,6 @@ updateFrame(elapsed.value)
 
 <template>
   <g v-bind="widget(options)">
-    <image :href="url" width="1000" height="600"/>
+    <image :href="url" width="1000" height="600" />
   </g>
 </template>

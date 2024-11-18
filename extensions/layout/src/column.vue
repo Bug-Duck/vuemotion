@@ -20,7 +20,7 @@ const options = defineWidget<ColumnOptions>(props)
         :style="{
           width: '100%',
           display: 'flex',
-          flexDirection: 'column'
+          flexDirection: 'column',
         }"
       >
         <slot />

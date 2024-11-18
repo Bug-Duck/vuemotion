@@ -35,7 +35,7 @@ const options = defineWidget<ThreeOptions>(props)
         <TresCanvas
           :clear-color="options.backgroundColor ?? 'black'"
         >
-          <TresPerspectiveCamera/>
+          <TresPerspectiveCamera />
           <slot />
         </TresCanvas>
       </div>
@@ -43,7 +43,7 @@ const options = defineWidget<ThreeOptions>(props)
   </g>
 </template>
 
-<!-- 
+<!--
 
             :position="options.cameraPosition ?? void 0"
             :look-at="options.cameraLookAt ?? void 0"

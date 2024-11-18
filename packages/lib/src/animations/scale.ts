@@ -1,4 +1,4 @@
-import type { Methodize } from '@vue-motion/core'
+import type { AnimationParams } from '@vue-motion/core'
 import { defineAnimation } from '@vue-motion/core'
 import { interpolator } from '../interpolator'
 
@@ -6,14 +6,18 @@ export interface Scalable {
   scaleX?: number
   scaleY?: number
 }
-export type ScalableMethods = Methodize<Scalable, { scaleTo: ['scaleX', 'scaleY'] }>
 
-export const scale = defineAnimation<Scalable,{
+export interface ScalableMixin extends Scalable {
+  scale: (offsetX: number, offsetY: number, options?: AnimationParams) => void
+  scaleTo: (toX: number, toY: number, options?: AnimationParams) => void
+}
+
+export const scale = defineAnimation<Scalable, {
   fromX?: number
   fromY?: number
   offsetX?: number
   offsetY?: number
-}>((context, progress) => {
+}>((target, context) => (progress) => {
   if (progress === 0) {
     context.fromX ??= target.scaleX ?? 1
     context.fromY ??= target.scaleY ?? 1
@@ -24,18 +28,12 @@ export const scale = defineAnimation<Scalable,{
   target.scaleY = context.fromY! * interpolator(1, context.offsetY!, progress)
 })
 
-export const scaleTo = defineAnimation<{
+export const scaleTo = defineAnimation<Scalable, {
   fromX?: number
   fromY?: number
   toX?: number
   toY?: number
-}, Scalable>((context, progress) => {
-  if (progress === 0) {
-    context.fromX ??= target.scaleX ?? 1
-    context.fromY ??= target.scaleY ?? 1
-    context.toX ??= target.scaleX ?? 1
-    context.toY ??= target.scaleY ?? 1
-  }
+}>((target, context) => (progress) => {
   target.scaleX = interpolator(context.fromX!, context.toX!, progress)
   target.scaleY = interpolator(context.fromY!, context.toY!, progress)
 })

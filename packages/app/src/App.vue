@@ -23,9 +23,11 @@ import Widgets from './components/Widgets.vue'
           />
         </div>
         <div class="w-3/4 overflow-auto">
-          <Timeline :widget="{
-            duration: 1000
-          }"/>
+          <Timeline
+            :widget="{
+              duration: 1000,
+            }"
+          />
         </div>
       </div>
     </div>

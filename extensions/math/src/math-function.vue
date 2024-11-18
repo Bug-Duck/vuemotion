@@ -29,12 +29,12 @@ function generateSvgPath(mathFunc: (x: number) => number, domain: {
 
   for (let x = xMin; x <= xMax; x += step) {
     const y = mathFunc(x)
-    
+
     // Convert the values ​​of a mathematical function to SVG coordinates
     const svgX = (x - xMin) * scaleX
     const svgY = (yMax - y) * scaleY // Invert the y-axis to conform to the SVG coordinate system
-    
-    path.push(`${x === xMin || svgY > 1500 || svgY < -1500  ? 'M' : 'L'} ${svgX} ${svgY}`)   
+
+    path.push(`${x === xMin || svgY > 1500 || svgY < -1500 ? 'M' : 'L'} ${svgX} ${svgY}`)
   }
 
   return path.join(' ')

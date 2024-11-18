@@ -1,9 +1,8 @@
 <script setup lang="ts">
-import { defineWidget } from '@vue-motion/core';
+import { defineWidget } from '@vue-motion/core'
 import type { WidgetOptions } from '@vue-motion/lib'
-import { onBeforeMount, ref } from 'vue';
-import type { Surface } from 'canvaskit-wasm'
-import CanvasKitInit from 'canvaskit-wasm';
+import { ref } from 'vue'
+import CanvasKitInit from 'canvaskit-wasm'
 
 export interface SkiaOptions extends WidgetOptions {
   width: number
@@ -30,5 +29,4 @@ const surfaceProxy = new Proxy(surface!, {
     return target(...argArray)
   },
 })
-
 </script>

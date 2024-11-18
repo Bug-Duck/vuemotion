@@ -27,6 +27,6 @@ export interface Animation {
 export interface PropertyValue<T extends ('common' | 'function' | 'widget' | 'ref')> {
   type: T
   value: T extends ('common' | 'ref')
-    ? (string | boolean | number | Array<any> | object)
+    ? (string | boolean | number | any[] | object)
     : T extends 'function' ? (...args: any[]) => any : T extends 'widget' ? Widget<any> : never
 }

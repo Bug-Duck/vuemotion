@@ -2,11 +2,13 @@
 import { computed, defineProps } from 'vue'
 import { defineWidget } from '@vue-motion/core'
 import type { Vector } from '../animations/typings'
-import { type FigureOptions, figure } from './figure'
+import type { FigureMixin, FigureOptions } from './figure'
+import { figure } from './figure'
 
 export interface PolygonOptions extends FigureOptions {
   points: Vector[]
 }
+export type PolygonMixin = PolygonOptions & FigureMixin
 
 const props = defineProps<PolygonOptions>()
 const options = defineWidget(props)

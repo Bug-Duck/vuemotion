@@ -14,10 +14,10 @@ export interface DistantLightOptions extends WidgetOptions {
 
 // Set default values for the optional props
 const props = withDefaults(defineProps<DistantLightOptions>(), {
-  color: '#ffffff',    // Default color is white
-  azimuth: 45,         // Default azimuth angle
-  elevation: 30,       // Default elevation angle
-  type: 'diffuse'      // Default light type is 'diffuse'
+  color: '#ffffff', // Default color is white
+  azimuth: 45, // Default azimuth angle
+  elevation: 30, // Default elevation angle
+  type: 'diffuse', // Default light type is 'diffuse'
 })
 
 // Define the widget options for the component, which are of type DistantLightOptions

@@ -18,7 +18,7 @@ export default defineConfig({
   },
   plugins: [
     vue({
-      ...templateCompilerOptions
+      ...templateCompilerOptions,
     }),
     dts({
       include: ['./src/**/*.ts'],

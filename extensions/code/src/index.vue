@@ -18,7 +18,7 @@ const props = defineProps<CodeOptions>()
 const options = defineWidget<CodeOptions>(props)
 
 const slots = useSlots()
-const codes = slots.default ? slots.default().map(vnode => vnode.children).join('') : ''
+const codes = slots.default ? slots.default().map((vnode) => vnode.children).join('') : ''
 const content = ref(await codeToHtml(codes, {
   ...options.shikiOptions,
   lang: options.lang,

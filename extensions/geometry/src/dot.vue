@@ -35,7 +35,9 @@ const position = computed(() => {
 
 <template>
   <g v-bind="figure(options)">
-    <Arc :radius="(options.size ?? 20) / 2"/>
-    <Text v-if="options.tag" :x="position[0]" :y="position[1]">{{ options.tag }}</Text>
+    <Arc :radius="(options.size ?? 20) / 2" />
+    <Text v-if="options.tag" :x="position[0]" :y="position[1]">
+      {{ options.tag }}
+    </Text>
   </g>
 </template>

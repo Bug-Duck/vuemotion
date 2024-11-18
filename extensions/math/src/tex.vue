@@ -14,11 +14,11 @@ const props = defineProps<TexOptions>()
 const options = defineWidget<TexOptions>(props)
 
 const slots = useSlots()
-const tex = ref(slots.default ? slots.default().map(vnode => vnode.children).join('') : '')
+const tex = ref(slots.default ? slots.default().map((vnode) => vnode.children).join('') : '')
 
 onUpdated(() => {
   const slots = useSlots()
-  tex.value = slots.default ? slots.default().map(vnode => vnode.children).join('') : ''
+  tex.value = slots.default ? slots.default().map((vnode) => vnode.children).join('') : ''
 })
 
 const content = computed(() => {
@@ -33,12 +33,14 @@ const content = computed(() => {
       In the context of SVG embeded into HTML, the XHTML namespace could
       be avoided, but it is mandatory in the context of an SVG document
     -->
-      <div xmlns="http://www.w3.org/1999/xhtml" style="color: white;" :style="options.autoCenter ? {
-        'display': 'flex',
-        'justify-content': 'center',
-        'align-items': 'center',
-        'height': '100%',
-      } : undefined" v-html="content" />
+      <div
+        xmlns="http://www.w3.org/1999/xhtml" style="color: white;" :style="options.autoCenter ? {
+          'display': 'flex',
+          'justify-content': 'center',
+          'align-items': 'center',
+          'height': '100%',
+        } : undefined" v-html="content"
+      />
     </foreignObject>
   </g>
 </template>

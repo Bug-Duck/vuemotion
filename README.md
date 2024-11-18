@@ -56,27 +56,20 @@ vue-motion's predecessor was the Newcar animation engine, but later the developm
   - [ ] Geometry
     - [x] Angle
     - [x] Dot
-    - [ ] Symmetrical
-    - [ ] Center Symmetry
     - [ ] Difference
     - [ ] Intersection
     - [ ] Union
-    - [ ] CenterDot
-    - [ ] Bisector
-    - [ ] Perpendicular
-    - [ ] Parallel Lines
     - [ ] Brace
-  - [ ] Layout
-    - [ ] Row
-    - [ ] Column
-    - [ ] Center
-  - [ ] Markdown
-  - [ ] Math
+  - [x] Layout
+    - [x] Row
+    - [x] Column
+  - [x] Markdown
+  - [x] Math
     - [x] MathFunction
     - [x] NumberPlane
     - [x] NumberAxis
-    - [ ] PolarPlane
-    - [x] Tex
+    - [x] PolarPlane
+    - [x] Text
   - [ ] Mindmap
   - [ ] Social-Platform
     - [ ] ContentCard

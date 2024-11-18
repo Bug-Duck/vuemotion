@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { defineWidget, useChildren } from '@vue-motion/core'
-import { Arc, Line, Text } from '@vue-motion/lib'
+import { defineWidget } from '@vue-motion/core'
+import { Arc, Line } from '@vue-motion/lib'
 import { type WidgetOptions, widget } from '@vue-motion/lib'
-import { nextTick, onMounted } from 'vue'
 import tex from './tex.vue'
 
 export interface PolarPlaneOptions extends WidgetOptions {

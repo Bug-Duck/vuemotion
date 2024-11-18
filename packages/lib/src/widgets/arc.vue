@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import { computed, defineProps, withDefaults } from 'vue'
 import { defineWidget } from '@vue-motion/core'
-import type { Growable } from '../animations'
+import type { Growable, GrowableMixin } from '../animations'
 import type { Vector } from '../animations/typings'
 import { type FigureOptions, figure } from './figure'
-import { buildWidgetMethods } from './widget'
 
 export interface ArcOptions extends FigureOptions, Growable {
   radius: number
@@ -12,12 +11,14 @@ export interface ArcOptions extends FigureOptions, Growable {
   to?: number
 }
 
+export type ArcMixin = ArcOptions & GrowableMixin
+
 const props = withDefaults(defineProps<ArcOptions>(), {
   progress: 1,
   from: 0,
   to: 360,
 })
-const options = defineWidget(props, buildWidgetMethods())
+const options = defineWidget(props)
 
 function polarToCartesian(center: Vector, radius: number, angleInDegrees: number): Vector {
   const angleInRadians = (angleInDegrees - 90) * Math.PI / 180

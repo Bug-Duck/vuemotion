@@ -34,7 +34,7 @@ else
         id="motion" :width="width" :height="height" :scale="dev ? zoom : (null as any)" :min-width="dev ? (width * zoom) : (null as any)"
         :min-height="dev ? (height * zoom) : (null as any)"
       >
-        <Animation/>
+        <Animation />
         <!-- <TestAnimation/> -->
       </Motion>
     </div>

@@ -34,14 +34,14 @@ const mixedOptions = ref<BaseSimpleChartOptions>({})
 watchEffect(() => {
   const stringLabels: string[] = []
   const dateLabels: DateTime[] = []
-  mixedChartData.value.forEach(data => data.data.labels?.forEach((label) => {
+  mixedChartData.value.forEach((data) => data.data.labels?.forEach((label) => {
     if (typeof label === 'string')
       stringLabels.push(label)
     else if (label instanceof DateTime)
       dateLabels.push(label)
   }))
   mixedData.value.labels = options.labels ?? (stringLabels.length > 0 ? stringLabels : dateLabels)
-  mixedData.value.datasets = mixedChartData.value.flatMap(data => data.data.datasets)
+  mixedData.value.datasets = mixedChartData.value.flatMap((data) => data.data.datasets)
 }, {
   flush: 'post',
 })

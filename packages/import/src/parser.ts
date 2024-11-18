@@ -16,7 +16,7 @@ export function createParser(data: string | VueMotionJsonApp, extensions?: Recor
     for (const child of widget.children ?? [])
       processRandomWID(child)
   }
-  json.widgets.forEach(widget => processRandomWID(widget))
+  json.widgets.forEach((widget) => processRandomWID(widget))
 
   function parseTemplate() {
     function unwrap(widget: Widget<'common' | 'function' | 'widget' | 'ref'>): string {
@@ -32,11 +32,11 @@ export function createParser(data: string | VueMotionJsonApp, extensions?: Recor
       }).join(' ')
       }>
         ${widget.slot ?? ''}
-          ${(widget.children ?? []).map(child => unwrap(child)).join('\n')
+          ${(widget.children ?? []).map((child) => unwrap(child)).join('\n')
           }
 </${widget.type}>`
     }
-    return json.widgets.map(widget => unwrap(widget)).join('\n')
+    return json.widgets.map((widget) => unwrap(widget)).join('\n')
   }
 
   const components: Record<string, any> = {}
@@ -79,7 +79,7 @@ export function createParser(data: string | VueMotionJsonApp, extensions?: Recor
             }
           }
         }
-        json.widgets.forEach(widget => process(widget))
+        json.widgets.forEach((widget) => process(widget))
 
         return reflects
       },

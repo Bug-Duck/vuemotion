@@ -2,7 +2,6 @@
 import { defineWidget } from '@vue-motion/core'
 import { ref, watchEffect } from 'vue'
 import type { WidgetOptions } from '@vue-motion/lib'
-import { widget } from '@vue-motion/lib'
 
 export interface GoogleFontsOptions extends WidgetOptions {
   fontName: string

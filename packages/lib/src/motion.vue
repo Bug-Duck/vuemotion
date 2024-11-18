@@ -16,8 +16,6 @@ const h = ref(props.height)
 
 provide('motion-width', w)
 provide('motion-height', h)
-
-
 </script>
 
 <template>
@@ -26,7 +24,7 @@ provide('motion-height', h)
       transform: `scale(${props.scale ?? 1})`,
       minWidth: `${props.minWidth ?? width}px`,
       minHeight: `${props.minHeight ?? height}px`,
-      backgroundColor: props.backgroundColor ?? 'black'
+      backgroundColor: props.backgroundColor ?? 'black',
     }" :width="w" :height="h"
   >
     <g v-bind="figure({ x: width / 2, y: height / 2 })">

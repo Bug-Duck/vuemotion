@@ -15,7 +15,7 @@ const options = defineWidget<TypstOptions>(props)
 const compiled = ref()
 
 const slots = useSlots()
-const content = slots.default ? slots.default().map(vnode => vnode.children).join('') : ''
+const content = slots.default ? slots.default().map((vnode) => vnode.children).join('') : ''
 
 onMounted(async () => {
   console.log(content)

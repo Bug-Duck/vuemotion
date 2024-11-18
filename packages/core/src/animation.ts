@@ -1,53 +1,14 @@
 import type { WatchSource } from 'vue'
-import { watch } from 'vue'
+import { getCurrentInstance, watch } from 'vue'
+import { usePlayer } from './player'
 
 export type TimingFunction = (x: number) => number
-export const linear: TimingFunction = x => x
+export const linear: TimingFunction = (x) => x
 
-export type Animation<T extends object, A extends object = object> =
-  (target: T, context: A, progress: number) => void;
+export type Animation<T, A = object> =
+  (target: T, context: A, progress: number) => void
 
-type BuildParams<T, Keys extends Array<keyof T>, Optional extends boolean = false> = Keys extends []
-  ? [parameters?: Record<string, any>]
-  : Keys extends [infer First extends keyof T]
-  ? [Optional extends true ? T[First] | undefined : T[First], parameters?: Record<string, any>]
-  : Keys extends [infer First extends keyof T, ...infer Rest extends Array<keyof T>]
-  ? [Optional extends true ? T[First] | undefined : T[First], ...BuildParams<T, Rest, Optional>, parameters?: Record<string, any>]
-  : never
-
-/**
- * If
- * ```ts
- * interface A {
- *   x: number
- *   y: number
- *   z: number
- * }
- * ```
- * Then
- * ```ts
- * type B = Methodize<A, { 
- *   move: ['x', 'y'],
- *   move3d: ['x', 'y', 'z']
- * }>
- * ```
- * is
- * ```ts
- * interface B {
- *   move: (x: number, y: number, parameters?: Record<string, any>) => void
- *   move3d: (x: number, y: number, z: number, parameters?: Record<string, any>) => void
- * }
- * ```
- */
-export type Methodize<
-  T,
-  Methods extends Record<string, Array<keyof T>>,
-  Optional extends boolean = false
-> = {
-  [K in keyof Methods]: (...args: BuildParams<T, Methods[K], Optional>) => void
-}
-
-interface AnimationInstance<T extends object, A extends object> {
+interface AnimationInstance<T, A> {
   context: A
   animation: Animation<T, A>
   startAt?: number
@@ -55,11 +16,11 @@ interface AnimationInstance<T extends object, A extends object> {
   by: TimingFunction
 }
 
-export class AnimationManager<T extends object> {
+export class AnimationManager<T> {
   animations: AnimationInstance<T, any>[] = []
 
   constructor(target: T, elapsed: WatchSource<number>) {
-    watch(elapsed, <A extends object>(elapsed: number) => {
+    watch(elapsed, <A>(elapsed: number) => {
       if (this.animations.length === 0) {
         return
       }
@@ -87,11 +48,11 @@ export class AnimationManager<T extends object> {
     })
   }
 
-  animate<A extends object>(animation: Animation<T, A>, context: {
+  animate<A>(animation: Animation<T, A>, context: {
     duration?: AnimationInstance<T, A>['duration']
     by?: TimingFunction
   } & A) {
-    context ??= {} as A
+    context ??= {} as any
     const duration = context.duration ?? 1
     const by = context.by ?? linear
     this.animations.push({ context, animation, duration, by })
@@ -112,43 +73,46 @@ export class AnimationManager<T extends object> {
   }
 }
 
+export type AnimationSetup<T, A> = (target: T, context: A) => (progress: number) => void
 export function defineAnimation<
-  T extends object,
-  A extends object = object,
->(animation: Animation<T, A>): Animation<T, A>
-
-export function defineAnimation<
-  T extends object,
-  A extends object = object,
->(
-  setup: (target: T, context: A) => (progress: number) => void,
-  dispose?: (target: T, context: A) => void
-): Animation<T, A>
-
-export function defineAnimation<
-  T extends object,
-  A extends object = object,
->(...args: [Animation<T, A>] | Parameters<typeof defineAnimation>) {
-  if (typeof args[0] === 'function') {
-    return args[0] as Animation<T, A>
-  }
-  const [setup, dispose] = args as Parameters<typeof defineAnimation>
+  T,
+  A = object,
+>(setup: AnimationSetup<T, A>) {
   let animation: (progress: number) => void | undefined
-  return function (target: T, context: A, progress: number) {
-    (animation ??= setup(target, context))(progress)
-    if (dispose && progress === 1) {
-      dispose(target, context)
+  return function (target: T, context: A, progress: number): void {
+    if (progress === 0) {
+      animation = setup(target, context)
     }
+    animation!(progress)
   }
 }
 
 export function parallel<
-  T extends object,
-  A extends object = object,
+  T,
+  A = object,
 >(...animations: Animation<T, A>[]): Animation<T, A> {
   return function (target: T, context: A, progress: number) {
     for (const animation of animations) {
       animation(target, context, progress)
     }
   }
+}
+
+export function registerAnimation<T>(name: string, setup: (...args: any[]) => (animate: AnimationManager<T>) => void): void {
+  const current = getCurrentInstance()
+  const { widget } = current?.props as { widget: T & { manager?: AnimationManager<T> } }
+  if (widget) {
+    if (typeof widget.manager === 'undefined') {
+      const { elapsed } = usePlayer()
+      widget.manager = new AnimationManager<T>(widget, elapsed)
+    }
+    ;(widget as Record<string, any>)[name] = (...args: Parameters<typeof setup>): void => {
+      setup(...args)(widget.manager!)
+    }
+  }
+}
+
+export interface AnimationParams {
+  duration?: number
+  by?: TimingFunction
 }

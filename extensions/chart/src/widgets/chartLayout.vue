@@ -144,7 +144,7 @@ function generateDateAxisRange(axis: ChartAxis, data: DateTime[]) {
 watchEffect(() => {
   if (data.value.datasets.length === 0)
     return
-  if (data.value.datasets.some(dataset => (dataset.data.length === 0)))
+  if (data.value.datasets.some((dataset) => (dataset.data.length === 0)))
     return
   if ((data.value.labels ?? []).length === 0)
     return
@@ -162,10 +162,10 @@ watchEffect(() => {
 
   layoutConfig.value.indexAxis = options.indexAxis ?? 'x'
   layoutConfig.value.indexType = options.indexType
-  ?? (data.value.labels && data.value.labels.every(label => (typeof label === 'string')))
+  ?? (data.value.labels && data.value.labels.every((label) => (typeof label === 'string')))
     ? 'label'
-    : (data.value.labels && data.value.labels.every(label => (label instanceof DateTime)))
-      || (data.value.datasets.flatMap(set => (set.data.map(unit => (DataUtil.isIndexDate(unit))))).every(isDate => (isDate)))
+    : (data.value.labels && data.value.labels.every((label) => (label instanceof DateTime)))
+      || (data.value.datasets.flatMap((set) => (set.data.map((unit) => (DataUtil.isIndexDate(unit))))).every((isDate) => (isDate)))
         ? 'date'
         : 'number'
   layoutConfig.value.indexIntervalUnit = options.indexIntervalUnit
@@ -187,9 +187,9 @@ watchEffect(() => {
   // indexType validation
   if (layoutConfig.value.indexType === 'label' && !data.value.labels)
     throw new Error('indexType is label but labels are not provided')
-  if (layoutConfig.value.indexType === 'date' && data.value.datasets.flatMap(set => (set.data.map(unit => (DataUtil.isIndexDate(unit))))).some(isDate => (!isDate)))
+  if (layoutConfig.value.indexType === 'date' && data.value.datasets.flatMap((set) => (set.data.map((unit) => (DataUtil.isIndexDate(unit))))).some((isDate) => (!isDate)))
     throw new Error('indexType is date but some index/labels are not DateTimes')
-  if (layoutConfig.value.indexType === 'number' && data.value.datasets.flatMap(set => (set.data.map(unit => (DataUtil.isIndexDate(unit))))).some(isDate => (isDate)))
+  if (layoutConfig.value.indexType === 'number' && data.value.datasets.flatMap((set) => (set.data.map((unit) => (DataUtil.isIndexDate(unit))))).some((isDate) => (isDate)))
     throw new Error('indexType is number but some index are DateTimes')
 
   layoutConfig.value.index = {
@@ -217,12 +217,12 @@ watchEffect(() => {
     layoutConfig.value.index.interval = 1
     for (let i = 0; i < data.value.labels!.length; i++)
       layoutConfig.value.index.pos.push(i)
-    layoutConfig.value.index.labelTexts = data.value.labels!.map(label => (label.toString()))
+    layoutConfig.value.index.labelTexts = data.value.labels!.map((label) => (label.toString()))
   }
   else if (layoutConfig.value.indexType === 'date') {
     generateDateAxisRange(
       layoutConfig.value.index,
-      data.value.datasets.flatMap(set => (set.data.map(unit => (DataUtil.indexDate(unit))))),
+      data.value.datasets.flatMap((set) => (set.data.map((unit) => (DataUtil.indexDate(unit))))),
     )
     data.value.datasets.forEach((dataset) => {
       dataset.data.forEach((dataUnit) => {
@@ -233,7 +233,7 @@ watchEffect(() => {
   else {
     generateAxisRange(
       layoutConfig.value.index,
-      data.value.datasets.flatMap(set => (set.data.map(unit => (DataUtil.indexNumber(unit))))),
+      data.value.datasets.flatMap((set) => (set.data.map((unit) => (DataUtil.indexNumber(unit))))),
     )
   }
   layoutConfig.value.index.posLine = [...layoutConfig.value.index.pos]
@@ -241,7 +241,7 @@ watchEffect(() => {
     layoutConfig.value.index.min -= 0.5 * layoutConfig.value.index.interval
     layoutConfig.value.index.max += 0.5 * layoutConfig.value.index.interval
     layoutConfig.value.index.posLine.push(layoutConfig.value.index.posLine[layoutConfig.value.index.posLine.length - 1] + layoutConfig.value.index.interval)
-    layoutConfig.value.index.posLine = layoutConfig.value.index.posLine.map(pos => (pos - 0.5 * layoutConfig.value.index!.interval))
+    layoutConfig.value.index.posLine = layoutConfig.value.index.posLine.map((pos) => (pos - 0.5 * layoutConfig.value.index!.interval))
   }
   if (layoutConfig.value.edgeOffset) {
     layoutConfig.value.index.min -= 0.5 * layoutConfig.value.index.interval
@@ -271,7 +271,7 @@ watchEffect(() => {
 
   generateAxisRange(
     layoutConfig.value.cross,
-    data.value.datasets.flatMap(set => (set.data.map(unit => (unit.cross)))),
+    data.value.datasets.flatMap((set) => (set.data.map((unit) => (unit.cross)))),
   )
 
   for (let i = 1; i <= data.value.datasets.length; i++) {

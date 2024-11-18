@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineWidget } from '@vue-motion/core';
+import { defineWidget } from '@vue-motion/core'
 import type { WidgetOptions } from '@vue-motion/lib'
 
 export interface TableRowOptions extends WidgetOptions {

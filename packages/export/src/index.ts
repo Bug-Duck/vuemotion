@@ -38,7 +38,7 @@ export default async function (options: ExportOptions) {
 
   for (let i = 0; i < options.duration; i += 1 / options.fps) {
     if (!fs.existsSync(resolve('.vuemotion'))) {
-      await new Promise(res => fs.mkdir(resolve('.vuemotion'), res))
+      await new Promise((res) => fs.mkdir(resolve('.vuemotion'), res))
     }
     await transformToImage(resolve(process.cwd(), './.vuemotion', `image${index}.jpeg`), page, index)
     index += 1

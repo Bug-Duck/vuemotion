@@ -12,7 +12,7 @@ const { widget } = defineProps<{
       <svg
         :style="{
           width: `${widget.duration * 10}px`,
-          textAlign: 'center'
+          textAlign: 'center',
         }"
       >
         <line
@@ -24,7 +24,7 @@ const { widget } = defineProps<{
           " stroke="grey" stroke-width="1"
         />
         <text :x="0" :y="50">0</text>
-        <text :x="i * 100" :y="50" v-for="i in (widget.duration - 1)" :key="i">{{ i }}</text>
+        <text v-for="i in (widget.duration - 1)" :key="i" :x="i * 100" :y="50">{{ i }}</text>
       </svg>
     </div>
   </div>

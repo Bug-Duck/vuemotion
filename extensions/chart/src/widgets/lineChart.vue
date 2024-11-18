@@ -120,7 +120,7 @@ onMounted(() => {
       return
     if (data.value.datasets.length === 0)
       return
-    if (data.value.datasets.some(dataset => (dataset.data.length === 0)))
+    if (data.value.datasets.some((dataset) => (dataset.data.length === 0)))
       return
 
     dotSets.value = data.value.datasets.map((set) => {

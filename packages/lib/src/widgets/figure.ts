@@ -1,4 +1,4 @@
-import type { WidgetOptions } from './widget'
+import type { WidgetMixin, WidgetOptions } from './widget'
 import { widget } from './widget'
 
 export interface FigureOptions extends WidgetOptions {
@@ -8,6 +8,8 @@ export interface FigureOptions extends WidgetOptions {
   borderOffset?: number
   borderInterval?: number[]
 }
+
+export type FigureMixin = FigureOptions & WidgetMixin
 
 export function figure(options: FigureOptions) {
   const props = widget(options) as ReturnType<typeof widget> & {

@@ -36,13 +36,15 @@ const help = ref(false)
         <a href="https://github.com/Bug-Duck/vuemotion">
           <div class="hover:bg-gray-300 h-8 w-full">
             <span class="font-mono text-sm h-full flex items-center justify-center"><i
-                class="fa fa-github mx-1" />GitHub</span>
+              class="fa fa-github mx-1"
+            />GitHub</span>
           </div>
         </a>
         <a href="https://vuemotion.dev">
           <div class="hover:bg-gray-300 h-8 w-full">
             <span class="font-mono text-sm h-full flex items-center justify-center"><i
-                class="fa fa-book mx-1" />Docs</span>
+              class="fa fa-book mx-1"
+            />Docs</span>
           </div>
         </a>
         <a href="https://discord.gg/hpB4n7Vm">
@@ -58,7 +60,8 @@ const help = ref(false)
         <a href="mailto:bugduck@163.com">
           <div class="hover:bg-gray-300 h-8 w-full">
             <span class="font-mono text-sm h-full flex items-center justify-center"><i
-                class="fa fa-envelope mx-1" />Contact
+              class="fa fa-envelope mx-1"
+            />Contact
               us</span>
           </div>
         </a>

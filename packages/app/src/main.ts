@@ -10,6 +10,7 @@ import 'font-awesome/css/font-awesome.css'
 
 if (__D__) {
   createApp(App).mount('#app')
-} else {
+}
+else {
   createApp(Preview).mount('#app')
 }
