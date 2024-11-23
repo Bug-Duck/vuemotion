@@ -1,7 +1,10 @@
 <script setup lang="ts">
-import { usePlayer, useWidget } from '@vue-motion/core'
-import { Motion, Rect, type RectMixin } from '@vue-motion/lib'
+import { add, usePlayer, useWidget } from '@vue-motion/core'
+import { easeBounce, easeInExpo, easeInOutCirc, Motion, Rect, type RectMixin } from '@vue-motion/lib'
 import { onMounted } from 'vue'
+import { setups } from '@vue-motion/extension-animations'
+
+add(...setups)
 
 const rect = useWidget<RectMixin>()
 
@@ -9,11 +12,22 @@ const { play } = usePlayer()
 
 onMounted(() => {
   rect.move(100, 100)
-  rect.rotate(180)
-  rect.rotateTo(200)
-  rect.zoomIn()
-  rect.zoomOut()
-  rect.zoomTo(3, 3)
+  // rect.rotate(180)
+  // rect.rotateTo(200)
+  // rect.zoomTo(3, 3)
+  rect.focusOn({
+    by: easeInOutCirc
+  })
+  rect.moveOnPath('M 100 100 Q 100 200 200 200 Q 300 200 300 100 Q 300 0 200 0 Q 100 0 100 100 Z', {
+    by: easeInOutCirc
+  })
+  rect.moveOnFunction((progress) => ({
+    x: 100 + 200 * progress,
+    y: 100 + 200 * progress
+  }), {
+    by: easeInOutCirc
+  })
+  rect.discolorate('border', 'rgba(0, 10, 10, 0.5)')
   play()
 })
 </script>

@@ -1,14 +1,17 @@
 import type { AnimationParams, Widget } from '@vue-motion/core'
 import { registerAnimation } from '@vue-motion/core'
-import type { HasOpacity, HasOpacityMixin, HasScale, HasScaleMixin, Positional, PositionalMixin, Rotatable, RotatableMixin, Scalable, StrokableMixin } from '../animations'
+import { inject } from 'vue'
+import { type HasOpacity, type HasOpacityMixin, type HasScale, type HasScaleMixin, type Positional, type PositionalMixin, type Rotatable, type RotatableMixin, type Scalable, type StrokableMixin, moveOnFunction, moveOnPath } from '../animations'
 import { fadeIn, fadeOut, fadeTo } from '../animations/fade'
 import { move, moveTo } from '../animations/move'
 import { rotate, rotateTo } from '../animations/rotate'
 import { scale, scaleTo } from '../animations/scale'
 import { zoomIn, zoomOut, zoomTo } from '../animations/zoom'
+import type { Colorable, colorableMixin } from '../animations/color'
+import { discolorate } from '../animations/color'
 
-export type WidgetOptions = Widget & Positional & Scalable & Rotatable & HasOpacity
-export type WidgetMixin = WidgetOptions & PositionalMixin & RotatableMixin & HasScaleMixin & StrokableMixin & HasOpacityMixin
+export type WidgetOptions = Widget & Positional & Scalable & Rotatable & HasOpacity & Colorable
+export type WidgetMixin = WidgetOptions & PositionalMixin & RotatableMixin & HasScaleMixin & StrokableMixin & HasOpacityMixin & colorableMixin
 
 export function widget(options: WidgetOptions) {
   const props = {} as {
@@ -100,6 +103,27 @@ export function widget(options: WidgetOptions) {
       duration: 1 ?? params?.duration,
     })
   })
+  registerAnimation<Colorable>('discolorate', (on: 'fill' | 'border' | 'color', offset: string, params?: AnimationParams) => {
+    return (manager) => manager.animate(discolorate, {
+      offset,
+      on,
+      duration: 1 ?? params?.duration,
+    })
+  })
+  registerAnimation<Positional>('moveOnPath', (path: string, params?: AnimationParams) => {
+    return (manager) => manager.animate(moveOnPath, {
+      path,
+      duration: 1 ?? params?.duration,
+    })
+  })
+  registerAnimation<Positional>('moveOnFunction', (path: (progress: number) => { x: number, y: number }, params?: AnimationParams) => {
+    return (manager) => manager.animate(moveOnFunction, {
+      path,
+      duration: 1 ?? params?.duration,
+    })
+  })
+  const animations = inject<(() => void)[]>('ADDITION_ANIMATIONS')
+  animations?.forEach((animation) => animation())
 
   return props
 }

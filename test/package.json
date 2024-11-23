@@ -12,6 +12,7 @@
     "@tresjs/core": "^4.3.1",
     "@vue-motion/core": "workspace:*",
     "@vue-motion/export": "workspace:^",
+    "@vue-motion/extension-animations": "workspace:*",
     "@vue-motion/extension-chart": "workspace:*",
     "@vue-motion/extension-code": "workspace:*",
     "@vue-motion/extension-geometry": "workspace:*",

@@ -54,6 +54,25 @@ importers:
         specifier: ^1.6.0
         version: 1.6.0(@types/node@22.5.0)(terser@5.36.0)
 
+  extensions/animations:
+    dependencies:
+      '@vue-motion/core':
+        specifier: workspace:*
+        version: link:../../packages/core
+      '@vue-motion/lib':
+        specifier: workspace:*
+        version: link:../../packages/lib
+      vue:
+        specifier: ^3.5.11
+        version: 3.5.12(typescript@5.6.3)
+    devDependencies:
+      '@vitejs/plugin-vue':
+        specifier: ^5.1.4
+        version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite-plugin-dts:
+        specifier: ^3.9.1
+        version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
+
   extensions/chart:
     dependencies:
       '@types/luxon':
@@ -642,6 +661,9 @@ importers:
       '@vue-motion/export':
         specifier: workspace:^
         version: link:../packages/export
+      '@vue-motion/extension-animations':
+        specifier: workspace:*
+        version: link:../extensions/animations
       '@vue-motion/extension-chart':
         specifier: workspace:*
         version: link:../extensions/chart

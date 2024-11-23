@@ -10,6 +10,8 @@ export interface Positional {
 export interface PositionalMixin extends Positional {
   move: (offsetX: number, offsetY: number, options?: AnimationParams) => void
   moveTo: (toX: number, toY: number, options?: AnimationParams) => void
+  moveOnPath: (path: string, options?: AnimationParams) => void
+  moveOnFunction: (path: (progress: number) => { x: number, y: number }, options?: AnimationParams) => void
 }
 
 export const move = defineAnimation<Positional, {
