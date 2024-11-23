@@ -25,21 +25,27 @@ export const discolorate = defineAnimation<Colorable, {
     return null
   }
   const parsedFrom = resolve(context.from ?? (
-    context.on === 'fill' ? target.fillColor ?? '#000000' :
-      context.on === 'border' ? target.borderColor ?? '#000000' :
-        target.color ?? '#000000'
+    context.on === 'fill'
+      ? target.fillColor ?? '#000000'
+      : context.on === 'border'
+        ? target.borderColor ?? '#000000'
+        : target.color ?? '#000000'
   ))
-  if (!parsedFrom) return () => {}
+  if (!parsedFrom)
+    return () => {}
 
   const parsedOffset = resolve(context.offset ?? (
-    context.on === 'fill' ? target.fillColor ?? '#000000' :
-      context.on === 'border' ? target.borderColor ?? '#000000' :
-        target.color ?? '#000000'
+    context.on === 'fill'
+      ? target.fillColor ?? '#000000'
+      : context.on === 'border'
+        ? target.borderColor ?? '#000000'
+        : target.color ?? '#000000'
   ))
-  if (!parsedOffset) return () => {}
+  if (!parsedOffset)
+    return () => {}
 
   return (progress) => {
-    const offset = parsedOffset.map((value, _index) => value * progress) 
+    const offset = parsedOffset.map((value, _index) => value * progress)
     const result = parsedFrom.map((value, index) => value + offset[index])
     if (context.on === 'fill')
       target.fillColor = `rgba(${result.join(',')})`

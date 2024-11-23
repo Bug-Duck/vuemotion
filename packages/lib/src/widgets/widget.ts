@@ -2,11 +2,7 @@ import type { AnimationParams, Widget } from '@vue-motion/core'
 import { registerAnimation } from '@vue-motion/core'
 import { inject } from 'vue'
 import { type HasOpacity, type HasOpacityMixin, type HasScale, type HasScaleMixin, type Positional, type PositionalMixin, type Rotatable, type RotatableMixin, type Scalable, type StrokableMixin, moveOnFunction, moveOnPath } from '../animations'
-import { fadeIn, fadeOut, fadeTo } from '../animations/fade'
-import { move, moveTo } from '../animations/move'
-import { rotate, rotateTo } from '../animations/rotate'
-import { scale, scaleTo } from '../animations/scale'
-import { zoomIn, zoomOut, zoomTo } from '../animations/zoom'
+import { fadeIn, fadeOut, fadeTo, move, moveTo, rotate, rotateTo, scale, scaleTo, zoomIn, zoomOut, zoomTo } from '../animations'
 import type { Colorable, colorableMixin } from '../animations/color'
 import { discolorate } from '../animations/color'
 
@@ -30,96 +26,98 @@ export function widget(options: WidgetOptions) {
   if (options.opacity !== 1)
     props.style = `opacity: ${options.opacity}`
 
+  const defaultDuration = 1
+
   registerAnimation<Positional>('move', (offsetX: number, offsetY: number, params?: AnimationParams) => {
     return (manager) => manager.animate(move, {
       offsetX,
       offsetY,
-      duration: 1 ?? params?.duration,
+      duration: params?.duration ?? defaultDuration,
     })
   })
   registerAnimation<Positional>('moveTo', (toX: number, toY: number, params?: AnimationParams) => {
     return (manager) => manager.animate(moveTo, {
       toX,
       toY,
-      duration: 1 ?? params?.duration,
+      duration: params?.duration ?? defaultDuration,
     })
   })
   registerAnimation<Scalable>('scale', (offsetX: number, offsetY: number, params?: AnimationParams) => {
     return (manager) => manager.animate(scale, {
       offsetX,
       offsetY,
-      duration: 1 ?? params?.duration,
+      duration: params?.duration ?? defaultDuration,
     })
   })
   registerAnimation<Scalable>('scaleTo', (toX: number, toY: number, params?: AnimationParams) => {
     return (manager) => manager.animate(scaleTo, {
       toX,
       toY,
-      duration: 1 ?? params?.duration,
+      duration: params?.duration ?? defaultDuration,
     })
   })
   registerAnimation<Rotatable>('rotate', (offset: number, params?: AnimationParams) => {
     return (manager) => manager.animate(rotate, {
       offset,
-      duration: 1 ?? params?.duration,
+      duration: params?.duration ?? defaultDuration,
     })
   })
   registerAnimation<Rotatable>('rotateTo', (to: number, params?: AnimationParams) => {
     return (manager) => manager.animate(rotateTo, {
       to,
-      duration: 1 ?? params?.duration,
+      duration: params?.duration ?? defaultDuration,
     })
   })
   registerAnimation<HasOpacity>('fadeTo', (to: number, params?: AnimationParams) => {
     return (manager) => manager.animate(fadeTo, {
       to,
-      duration: 1 ?? params?.duration,
+      duration: params?.duration ?? defaultDuration,
     })
   })
   registerAnimation<HasOpacity>('fadeIn', (params?: AnimationParams) => {
     return (manager) => manager.animate(fadeIn, {
-      duration: 1 ?? params?.duration,
+      duration: params?.duration ?? defaultDuration,
     })
   })
   registerAnimation<HasOpacity>('fadeOut', (params?: AnimationParams) => {
     return (manager) => manager.animate(fadeOut, {
-      duration: 1 ?? params?.duration,
+      duration: params?.duration ?? defaultDuration,
     })
   })
   registerAnimation<HasScale>('zoomTo', (toX: number, toY: number, params?: AnimationParams) => {
     return (manager) => manager.animate(zoomTo, {
       toX,
       toY,
-      duration: 1 ?? params?.duration,
+      duration: params?.duration ?? defaultDuration,
     })
   })
   registerAnimation<HasScale>('zoomIn', (params?: AnimationParams) => {
     return (manager) => manager.animate(zoomIn, {
-      duration: 1 ?? params?.duration,
+      duration: params?.duration ?? defaultDuration,
     })
   })
   registerAnimation<HasScale>('zoomOut', (params?: AnimationParams) => {
     return (manager) => manager.animate(zoomOut, {
-      duration: 1 ?? params?.duration,
+      duration: params?.duration ?? defaultDuration,
     })
   })
   registerAnimation<Colorable>('discolorate', (on: 'fill' | 'border' | 'color', offset: string, params?: AnimationParams) => {
     return (manager) => manager.animate(discolorate, {
       offset,
       on,
-      duration: 1 ?? params?.duration,
+      duration: params?.duration ?? defaultDuration,
     })
   })
   registerAnimation<Positional>('moveOnPath', (path: string, params?: AnimationParams) => {
     return (manager) => manager.animate(moveOnPath, {
       path,
-      duration: 1 ?? params?.duration,
+      duration: params?.duration ?? defaultDuration,
     })
   })
   registerAnimation<Positional>('moveOnFunction', (path: (progress: number) => { x: number, y: number }, params?: AnimationParams) => {
     return (manager) => manager.animate(moveOnFunction, {
       path,
-      duration: 1 ?? params?.duration,
+      duration: params?.duration ?? defaultDuration,
     })
   })
   const animations = inject<(() => void)[]>('ADDITION_ANIMATIONS')

@@ -20,9 +20,9 @@ export const moveOnFunction = defineAnimation<Positional, {
     y: number
   }
 }>((target, context) => {
-  return (progress) => {
-    const point = context.path(progress)
-    target.x = point.x
-    target.y = point.y
-  }
-})
+      return (progress) => {
+        const point = context.path(progress)
+        target.x = point.x
+        target.y = point.y
+      }
+    })
