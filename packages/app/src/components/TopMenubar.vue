@@ -9,7 +9,7 @@ const help = ref(false)
 <template>
   <div class="w-full h-10 border flex flex-row select-none">
     <div class="flex flex-row">
-      <img src="../assets/logo.svg" class="w-10 h-10 p-1 mr-5">
+      <img src="../assets/logo.svg" class="w-10 h-10 p-1 mr-5" alt="logo">
     </div>
     <div class="h-full w-16 hover:bg-gray-300" @mouseleave="options = false" @mouseenter="options = true">
       <span class="font-mono text-sm h-full flex items-center justify-center">Options</span>
@@ -35,14 +35,14 @@ const help = ref(false)
       <div v-if="help" class="absolute bg-white border top-10 w-40 rounded-md">
         <a href="https://github.com/Bug-Duck/vuemotion">
           <div class="hover:bg-gray-300 h-8 w-full">
-            <span class="font-mono text-sm h-full flex items-center justify-center"><i
+            <span class="font-mono text-sm h-full flex items-center justify-center"><em
               class="fa fa-github mx-1"
             />GitHub</span>
           </div>
         </a>
         <a href="https://vuemotion.dev">
           <div class="hover:bg-gray-300 h-8 w-full">
-            <span class="font-mono text-sm h-full flex items-center justify-center"><i
+            <span class="font-mono text-sm h-full flex items-center justify-center"><em
               class="fa fa-book mx-1"
             />Docs</span>
           </div>
@@ -59,7 +59,7 @@ const help = ref(false)
         </a>
         <a href="mailto:bugduck@163.com">
           <div class="hover:bg-gray-300 h-8 w-full">
-            <span class="font-mono text-sm h-full flex items-center justify-center"><i
+            <span class="font-mono text-sm h-full flex items-center justify-center"><em
               class="fa fa-envelope mx-1"
             />Contact
               us</span>
