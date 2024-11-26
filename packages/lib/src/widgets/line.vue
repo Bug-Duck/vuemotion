@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { defineProps } from 'vue'
 import { defineWidget } from '@vue-motion/core'
 import type { Vector } from '../animations/typings'
 import type { Growable } from '../animations'
