@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.4",
+    "@vue-motion/core": "workspace:*",
     "vite-plugin-dts": "^3.9.1"
   },
   "workspaces": [
