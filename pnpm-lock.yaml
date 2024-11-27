@@ -4,6 +4,15 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+catalogs:
+  default:
+    vite:
+      specifier: ^5.4.8
+      version: 5.4.10
+    vitest:
+      specifier: ^1.6.0
+      version: 1.6.0
+
 importers:
 
   .:
@@ -69,10 +78,10 @@ importers:
         specifier: ^8.16.0
         version: 8.16.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3)
       vite:
-        specifier: ^5.4.8
+        specifier: 'catalog:'
         version: 5.4.10(@types/node@22.5.0)(terser@5.36.0)
       vitest:
-        specifier: ^1.6.0
+        specifier: 'catalog:'
         version: 1.6.0(@types/node@22.5.0)(terser@5.36.0)
 
   extensions/animations:
@@ -90,6 +99,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -118,6 +130,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -140,6 +155,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -159,6 +177,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -178,6 +199,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -197,6 +221,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -216,6 +243,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -235,6 +265,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -257,6 +290,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -282,6 +318,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -301,6 +340,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -320,6 +362,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -342,6 +387,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -361,6 +409,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -389,6 +440,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -414,6 +468,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -433,6 +490,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -441,10 +501,10 @@ importers:
     dependencies:
       '@vue-motion/core':
         specifier: latest
-        version: 0.6.0(typescript@5.6.3)
+        version: 0.7.0-alpha.0(typescript@5.6.3)
       '@vue-motion/lib':
         specifier: latest
-        version: 0.6.0(typescript@5.6.3)
+        version: 0.7.0-alpha.0(typescript@5.6.3)
       autoprefixer:
         specifier: ^10.4.20
         version: 10.4.20(postcss@8.4.47)
@@ -471,7 +531,7 @@ importers:
         specifier: ^5.6.2
         version: 5.6.3
       vite:
-        specifier: ^5.4.8
+        specifier: 'catalog:'
         version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vue-tsc:
         specifier: ^2.1.6
@@ -518,9 +578,6 @@ importers:
       tailwindcss:
         specifier: ^3.4.13
         version: 3.4.14
-      vite:
-        specifier: ^5.4.8
-        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-express:
         specifier: ^1.0.3
         version: 1.0.3(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -537,6 +594,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -556,6 +616,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -604,9 +667,6 @@ importers:
       tailwindcss:
         specifier: ^3.4.13
         version: 3.4.14
-      vite:
-        specifier: ^5.4.8
-        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-express:
         specifier: ^1.0.3
         version: 1.0.3(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -620,6 +680,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -636,6 +699,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -655,6 +721,9 @@ importers:
       '@vitejs/plugin-vue':
         specifier: ^5.1.4
         version: 5.1.4(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))(vue@3.5.12(typescript@5.6.3))
+      vite:
+        specifier: 'catalog:'
+        version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vite-plugin-dts:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
@@ -732,7 +801,7 @@ importers:
         specifier: ^5.6.2
         version: 5.6.3
       vite:
-        specifier: ^5.4.8
+        specifier: 'catalog:'
         version: 5.4.10(@types/node@22.7.9)(terser@5.36.0)
       vue-tsc:
         specifier: ^2.1.6
@@ -1940,14 +2009,14 @@ packages:
   '@volar/typescript@2.4.6':
     resolution: {integrity: sha512-NMIrA7y5OOqddL9VtngPWYmdQU03htNKFtAYidbYfWA0TOhyGVd9tfcP4TsLWQ+RBWDZCbBqsr8xzU0ZOxYTCQ==}
 
-  '@vue-motion/core@0.6.0':
-    resolution: {integrity: sha512-qEPndvV9oUjV7Mfi7XJFz1sTZY1f1TW80Hhv2HVvPxwaaKeIuzlGS8+pn14h0vHPAlYoha0t7CQag0NgjOcK4A==}
+  '@vue-motion/core@0.7.0-alpha.0':
+    resolution: {integrity: sha512-U44xEkY4MnUdhk106BgdlRsHi1OK7X7djfBXK/vSUAu3xy3bgAYb71P1g4adTIIU3rrUmpa3YNPKQfM26soZLA==}
 
-  '@vue-motion/lib@0.6.0':
-    resolution: {integrity: sha512-3C1PonMfrjJv9Jk/FNjpd799lHtSiPIYtF5K7OyQ6CI441K7cFhAeQ3pBCnDPlLYkgF6ZJI5T10u4PuPs/ET9w==}
+  '@vue-motion/lib@0.7.0-alpha.0':
+    resolution: {integrity: sha512-IbGpCwIjgIJqMOEejA4/Av5O5HB2r3Z9CkORQYg6VJ5ULtWR94duJJ0+DW1Dwf4SbuGO5R7QY9ZWwIGBXH7U3w==}
 
-  '@vue-motion/utils@0.6.0':
-    resolution: {integrity: sha512-fp6EKLEMqBWtvSVn4wr2BlpSLhV5QkQMo/dr+omjlTF0pqAJ9zvghkM6ZmsRpJN883JFM4jGTrN9CTmwDFWBqg==}
+  '@vue-motion/utils@0.7.0-alpha.0':
+    resolution: {integrity: sha512-PcuzRIKyk+gTdDDA8ri9EepuVhvo/VD0t8K4nSP5F3Gy8g7vBwvWeXmHbky04aM7ksfEIy1JQl9+IfY9gyYzdw==}
 
   '@vue/compiler-core@3.5.12':
     resolution: {integrity: sha512-ISyBTRMmMYagUxhcpyEH0hpXRd/KqDU4ymofPgl2XAkY9ZhQ+h0ovEZJIiPop13UmR/54oA2cgMDjgroRelaEw==}
@@ -6282,24 +6351,24 @@ snapshots:
       path-browserify: 1.0.1
       vscode-uri: 3.0.8
 
-  '@vue-motion/core@0.6.0(typescript@5.6.3)':
+  '@vue-motion/core@0.7.0-alpha.0(typescript@5.6.3)':
     dependencies:
       '@ffmpeg/ffmpeg': 0.11.0
-      '@vue-motion/utils': 0.6.0(typescript@5.6.3)
+      '@vue-motion/utils': 0.7.0-alpha.0(typescript@5.6.3)
       vue: 3.5.12(typescript@5.6.3)
     transitivePeerDependencies:
       - encoding
       - typescript
 
-  '@vue-motion/lib@0.6.0(typescript@5.6.3)':
+  '@vue-motion/lib@0.7.0-alpha.0(typescript@5.6.3)':
     dependencies:
-      '@vue-motion/core': 0.6.0(typescript@5.6.3)
+      '@vue-motion/core': 0.7.0-alpha.0(typescript@5.6.3)
       vue: 3.5.12(typescript@5.6.3)
     transitivePeerDependencies:
       - encoding
       - typescript
 
-  '@vue-motion/utils@0.6.0(typescript@5.6.3)':
+  '@vue-motion/utils@0.7.0-alpha.0(typescript@5.6.3)':
     dependencies:
       '@ffmpeg/ffmpeg': 0.12.10
       '@ffmpeg/util': 0.12.1
