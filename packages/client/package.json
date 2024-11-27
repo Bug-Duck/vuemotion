@@ -39,6 +39,7 @@
     "express": "^4.21.0",
     "postcss": "^8.4.47",
     "tailwindcss": "^3.4.13",
+    "vite": "catalog:",
     "vite-plugin-express": "^1.0.3",
     "vite-plugin-html": "^3.2.2",
     "vite-plugin-mock": "^3.0.2",
@@ -46,7 +47,6 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.1.4",
-    "vite": "catalog:",
     "vite-plugin-dts": "^3.9.1"
   },
   "workspaces": [
