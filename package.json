@@ -17,7 +17,9 @@
     "serve": "pnpm run --filter=./test dev",
     "test": "pnpm run --filter=* test",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix ."
+    "lint:fix": "eslint --fix .",
+    "pub:core": "pnpm run --parallel --filter=./packages/{core,lib,utils,export,client} pub",
+    "pub:ext": "pnpm run --parallel --filter=./extensions/* pub"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.27.3",
