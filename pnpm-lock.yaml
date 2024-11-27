@@ -624,18 +624,6 @@ importers:
         specifier: ^3.9.1
         version: 3.9.1(@types/node@22.7.9)(rollup@4.24.0)(typescript@5.6.3)(vite@5.4.10(@types/node@22.7.9)(terser@5.36.0))
 
-  packages/import:
-    dependencies:
-      '@vue-motion/core':
-        specifier: workspace:*
-        version: link:../core
-      '@vue-motion/lib':
-        specifier: workspace:*
-        version: link:../lib
-      vue:
-        specifier: ^3.5.11
-        version: 3.5.12(typescript@5.6.3)
-
   packages/lib:
     dependencies:
       '@vue-motion/core':
@@ -721,9 +709,6 @@ importers:
       '@vue-motion/extension-ui':
         specifier: workspace:*
         version: link:../extensions/ui
-      '@vue-motion/import':
-        specifier: workspace:^
-        version: link:../packages/import
       '@vue-motion/lib':
         specifier: workspace:*
         version: link:../packages/lib
@@ -5048,7 +5033,7 @@ snapshots:
       '@clack/prompts': 0.7.0
       '@eslint-community/eslint-plugin-eslint-comments': 4.4.0(eslint@9.9.0(jiti@1.21.6))
       '@stylistic/eslint-plugin': 2.9.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3)
-      '@typescript-eslint/eslint-plugin': 8.11.0(@typescript-eslint/parser@8.16.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3))(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3)
+      '@typescript-eslint/eslint-plugin': 8.11.0(@typescript-eslint/parser@8.11.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3))(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3)
       '@typescript-eslint/parser': 8.11.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3)
       '@vitest/eslint-plugin': 1.1.7(@typescript-eslint/utils@8.16.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3))(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3)(vitest@1.6.0(@types/node@22.5.0)(terser@5.36.0))
       eslint: 9.9.0(jiti@1.21.6)
@@ -6065,10 +6050,10 @@ snapshots:
       '@types/node': 22.7.9
     optional: true
 
-  '@typescript-eslint/eslint-plugin@8.11.0(@typescript-eslint/parser@8.16.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3))(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3)':
+  '@typescript-eslint/eslint-plugin@8.11.0(@typescript-eslint/parser@8.11.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3))(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3)':
     dependencies:
       '@eslint-community/regexpp': 4.11.1
-      '@typescript-eslint/parser': 8.16.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3)
+      '@typescript-eslint/parser': 8.11.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3)
       '@typescript-eslint/scope-manager': 8.11.0
       '@typescript-eslint/type-utils': 8.11.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3)
       '@typescript-eslint/utils': 8.11.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3)
@@ -7321,7 +7306,7 @@ snapshots:
     dependencies:
       eslint: 9.9.0(jiti@1.21.6)
     optionalDependencies:
-      '@typescript-eslint/eslint-plugin': 8.11.0(@typescript-eslint/parser@8.16.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3))(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3)
+      '@typescript-eslint/eslint-plugin': 8.11.0(@typescript-eslint/parser@8.11.0(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3))(eslint@9.9.0(jiti@1.21.6))(typescript@5.6.3)
 
   eslint-plugin-vue@9.31.0(eslint@9.9.0(jiti@1.21.6)):
     dependencies:
