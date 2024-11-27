@@ -18,17 +18,13 @@
     "serve": "pnpm run --filter=./test dev",
     "test": "pnpm run --filter=* test",
     "lint": "eslint .",
-    "lint:fix": "eslint --fix .",
-    "pub:core": "pnpm run build:core && pnpm run --filter=./packages/* --sort pub",
-    "preversion": "pnpm build:core && pnpm build:ext",
-    "change": "changeset add",
-    "release": "pnpm preversion && changeset version",
-    "pub": "changeset publish"
+    "lint:fix": "eslint --fix ."
   },
   "devDependencies": {
     "@antfu/eslint-config": "^2.27.3",
     "@changesets/cli": "^2.27.9",
     "@types/node": "22.5.0",
+    "bumpp": "^9.8.1",
     "eslint": "9.9.0",
     "husky": "^8.0.3",
     "lint-staged": "^15.2.10",

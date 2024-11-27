@@ -5,12 +5,14 @@ import { AnimationManager } from './animation'
 export function createPlayer(options: {
   studio?: boolean
   fps?: number
+  additions?: (() => void)[]
 }) {
   return {
     install(app: App) {
       app.provide('elapsed', ref(0))
       app.provide('studio', options.studio ?? false)
       app.provide('fps', options.fps ?? 60)
+      app.provide('ADDITION_ANIMATIONS', options.additions ?? [])
     },
   }
 }

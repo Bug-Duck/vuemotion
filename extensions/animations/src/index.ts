@@ -14,7 +14,7 @@ export const setups = [
 
 declare module '@vue-motion/lib' {
   interface PositionalMixin {
-    focusOn: (params?: AnimationParams) => void
+    focusOn: (params?: any) => void
   }
 }
 
