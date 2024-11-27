@@ -1,7 +1,7 @@
 {
   "name": "vue-motion",
   "type": "module",
-  "version": "0.6.0",
+  "version": "0.7.0-alpha.1",
   "packageManager": "pnpm@9.1.0",
   "description": "The modern font-end SVG animation engine.",
   "author": "BugDuck Team",
@@ -11,9 +11,9 @@
     "SVG"
   ],
   "scripts": {
-    "dev:core": "pnpm run --parallel --filter=./packages/{core,lib,utils,import,export,client} dev",
+    "dev:core": "pnpm run --parallel --filter=./packages/{core,lib,utils,export,client} dev",
     "dev:ext": "pnpm run --parallel --filter=./extensions/* dev",
-    "build:core": "pnpm run --parallel --filter=./packages/{core,lib,utils,import,export,client} build",
+    "build:core": "pnpm run --parallel --filter=./packages/{core,lib,utils,export,client} build",
     "build:ext": "pnpm run --parallel --filter=./extensions/* build",
     "serve": "pnpm run --filter=./test dev",
     "test": "pnpm run --filter=* test",
