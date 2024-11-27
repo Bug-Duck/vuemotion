@@ -83,6 +83,9 @@ importers:
       vitest:
         specifier: 'catalog:'
         version: 1.6.0(@types/node@22.5.0)(terser@5.36.0)
+      vue-tsc:
+        specifier: ^2.1.6
+        version: 2.1.6(typescript@5.6.3)
 
   extensions/animations:
     dependencies:

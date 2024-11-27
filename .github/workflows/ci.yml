@@ -30,7 +30,7 @@ jobs:
 
       - name: Run tsc
         run: |
-          pnpm tsc --noEmit
+          pnpm vue-tsc --noEmit
 
   prettier:
     runs-on: ubuntu-latest
