@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { defineProps } from 'vue'
 import { defineWidget } from '@vue-motion/core'
 import type { TextOptions } from './text.vue'
 import { figure } from './figure'

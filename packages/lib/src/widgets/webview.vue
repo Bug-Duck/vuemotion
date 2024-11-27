@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { defineProps } from 'vue'
 import { defineWidget } from '@vue-motion/core'
 import type { WidgetMixin, WidgetOptions } from './widget'
 import { widget } from './widget'
@@ -17,12 +18,13 @@ const options = defineWidget<WebViewOptions>(props)
   <g v-bind="widget(options)">
     <foreignObject :width="options.width" :height="options.height">
       <div
-        :style="{
-          color: 'white',
-        }" xmlns="http://www.w3.org/1999/xhtml"
+          :style="{
+             color: 'white',
+           }" xmlns="http://www.w3.org/1999/xhtml"
       >
         <slot />
       </div>
     </foreignObject>
   </g>
 </template>
+   

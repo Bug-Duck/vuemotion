@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { defineProps } from 'vue'
 import { defineWidget, usePlayer } from '@vue-motion/core'
 import { ref, watch } from 'vue'
 import { type WidgetOptions, widget } from './widget'

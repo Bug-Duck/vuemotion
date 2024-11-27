@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { defineProps } from 'vue'
 import { defineWidget } from '@vue-motion/core'
 import { type WidgetOptions, widget } from './widget'
 
