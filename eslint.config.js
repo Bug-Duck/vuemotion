@@ -14,4 +14,7 @@ export default [
     files: ["**/*.vue"],
     languageOptions: { parserOptions: { parser: tseslint.parser } },
   },
+  {
+    ignores: ["**/dist/**/*"],
+  },
 ];
