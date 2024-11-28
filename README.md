@@ -10,6 +10,16 @@ vue-motion is a modern animation engine like Python's Manim for Vuejs ecosystem,
 
 vue-motion's predecessor was the Newcar animation engine, but later the development was stopped for some special reasons. If you are an old user of Newcar, you are welcome to migrate to vue-motion.
 
+# 🎥 Demos
+
+<table>
+  <tr>
+    <td><video src="./assets/1.mp4" alt="demo1"></td>
+    <td><video src="./assets/2.mp4" alt="demo2"></td>
+    <td><video src="./assets/3.mp4" alt="demo3"></td>
+  </tr>
+</table>
+
 # 🗺 Roadmap
 
 - Basic Widget
