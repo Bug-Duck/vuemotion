@@ -14,9 +14,9 @@ vue-motion's predecessor was the Newcar animation engine, but later the developm
 
 <table>
   <tr>
-    <td><video src="./assets/1.mp4" alt="demo1" controls></video></td>
-    <td><video src="./assets/2.mp4" alt="demo2" controls></video></td>
-    <td><video src="./assets/3.mp4" alt="demo3" controls></video></td>
+    <td><img src="./assets/1.gif" alt="demo1"></td>
+    <td><img src="./assets/2.gif" alt="demo2" controls></img></td>
+    <td><img src="./assets/3.gif" alt="demo3" controls></img></td>
   </tr>
 </table>
 
