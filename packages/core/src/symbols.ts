@@ -1,1 +1,0 @@
-export const ADDITION_ANIMATIONS = Symbol('ADDITION_ANIMATIONS')

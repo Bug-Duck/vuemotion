@@ -1,19 +1,40 @@
-import type { AnimationParams, Widget } from '@vue-motion/core'
+import type { AnimationManager, AnimationParams, Widget } from '@vue-motion/core'
 import { registerAnimation } from '@vue-motion/core'
 import { inject } from 'vue'
 import { type HasOpacity, type HasOpacityMixin, type HasScale, type HasScaleMixin, type Positional, type PositionalMixin, type Rotatable, type RotatableMixin, type Scalable, type StrokableMixin, moveOnFunction, moveOnPath } from '../animations'
 import { fadeIn, fadeOut, fadeTo, move, moveTo, rotate, rotateTo, scale, scaleTo, zoomIn, zoomOut, zoomTo } from '../animations'
 import type { Colorable, colorableMixin } from '../animations/color'
 import { discolorate } from '../animations/color'
+import type { Animation, AnimationInstance, TimingFunction } from '@vue-motion/core'
 
-export type WidgetOptions = Widget & Positional & Scalable & Rotatable & HasOpacity & Colorable
-export type WidgetMixin = WidgetOptions & PositionalMixin & RotatableMixin & HasScaleMixin & StrokableMixin & HasOpacityMixin & colorableMixin
+export type WidgetOptions = Widget & Positional & Scalable & Rotatable & HasOpacity & Colorable & {
+  manager?: AnimationManager<any>
+}
+export type WidgetMixin = WidgetOptions & PositionalMixin & RotatableMixin & HasScaleMixin & StrokableMixin & HasOpacityMixin & colorableMixin & {
+  parallel: (...animations: ((widget: WidgetMixin & { manager: AnimationManager<any> }) => void)[]) => void
+  animate: <A>(animation: Animation<Widget, A>, context: {
+    duration?: AnimationInstance<Widget, A>['duration']
+    by?: TimingFunction
+  } & A) => void
+  once: (animation: (target: Widget) => void) => void
+  delay: (duration: number) => void
+}
+export interface Animatable {
+  animate: <A>(animation: Animation<Widget, A>, context: {
+    duration?: number
+    by?: TimingFunction
+  } & A) => void
+  once: (animation: (target: Widget) => void) => void
+  delay: (duration: number) => void
+  parallel: (...animations: ((widget: WidgetMixin) => void)[]) => void
+}
 
 export function widget(options: WidgetOptions) {
   const props = {} as {
     transform?: string
     style?: string
-  }
+  } & WidgetMixin
+
   const transform = []
   if (options.x || options.y)
     transform.push(`translate(${options.x ?? 0},${options.y ?? 0})`)
@@ -120,8 +141,40 @@ export function widget(options: WidgetOptions) {
       duration: params?.duration ?? defaultDuration,
     })
   })
-  const animations = inject<(() => void)[]>('ADDITION_ANIMATIONS')
+  registerAnimation<Widget>('animate', <A>(animation: Animation<Widget, A>, context: {
+    duration?: AnimationInstance<Widget, A>['duration']
+    by?: TimingFunction
+  } & A) => {
+    return (manager) => manager.animate(animation, context)
+  })
+  registerAnimation<Widget>('once', (animation: (target: Widget) => void) => {
+    return (manager) => manager.once(animation)
+  })
+  registerAnimation<Widget>('delay', (duration: number) => {
+    return (manager) => manager.delay(duration)
+  })
+  registerAnimation<WidgetMixin>('parallel', 
+    <A>(...animations: ((widget: WidgetMixin & { manager: AnimationManager<any> }) => void)[]) => {
+      return (manager: AnimationManager<WidgetMixin>) => {
+        return manager.parallel(...animations)
+      }
+    }
+  )
+  const animations = inject<(() => Animation<Widget, any>)[]>('ADDITION_ANIMATIONS')
   animations?.forEach((animation) => animation())
 
   return props
+}
+
+export interface MoveAnimationContext {
+  offsetX: number
+  offsetY: number
+  duration?: number
+  by?: TimingFunction
+}
+
+export interface RotateAnimationContext {
+  offset: number
+  duration?: number
+  by?: TimingFunction
 }

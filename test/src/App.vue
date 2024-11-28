@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { usePlayer, useWidget } from '@vue-motion/core'
-import { Motion, Rect, type RectMixin, easeInOutCirc } from '@vue-motion/lib'
+import { parallel, usePlayer, useWidget } from '@vue-motion/core'
+import { Motion, Rect, type RectMixin, easeInOutCirc, move, rotate } from '@vue-motion/lib'
 import { onMounted } from 'vue'
 import '@vue-motion/extension-animations'
 
@@ -25,7 +25,10 @@ onMounted(() => {
   }), {
     by: easeInOutCirc,
   })
-  rect.discolorate('border', 'rgba(0, 10, 10, 0.5)')
+  rect.parallel(
+    (widget) => widget.move(200, 300),
+    (widget) => widget.rotate(180),
+  )
   play()
 })
 </script>

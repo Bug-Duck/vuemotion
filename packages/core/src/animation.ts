@@ -8,7 +8,7 @@ export const linear: TimingFunction = (x) => x
 export type Animation<T, A = object> =
   (target: T, context: A, progress: number) => void
 
-interface AnimationInstance<T, A> {
+export interface AnimationInstance<T, A> {
   context: A
   animation: Animation<T, A>
   startAt?: number
@@ -18,8 +18,10 @@ interface AnimationInstance<T, A> {
 
 export class AnimationManager<T> {
   animations: AnimationInstance<T, any>[] = []
+  private target: T
 
   constructor(target: T, elapsed: WatchSource<number>) {
+    this.target = target
     watch(elapsed, <A>(elapsed: number) => {
       if (this.animations.length === 0) {
         return
@@ -71,6 +73,49 @@ export class AnimationManager<T> {
 
     return this
   }
+
+  parallel<A>(
+    ...animations: (
+      | (() => [Animation<T, A>, A])
+      | ((target: T & { manager: AnimationManager<T> }) => void)
+    )[]
+  ) {
+    type ParallelResult = AnimationInstance<T, A> | { 
+      animation: Animation<T, A>
+      context: A
+      duration?: number
+      by?: TimingFunction
+    }
+
+    // Create a non-reactive temporary array
+    const tempAnimations: AnimationInstance<T, any>[] = []
+    
+    // Store the original push method
+    const originalAnimations = this.animations
+    this.animations = tempAnimations // Temporarily replace the animations array
+    
+    // Collect all animations
+    animations.forEach(fn => {
+      fn({ ...this.target, manager: this } as T & { manager: AnimationManager<T> })
+      
+      if (tempAnimations.length === 0) {
+        throw new Error('No animation was registered in parallel callback')
+      }
+    })
+    
+    // Restore original animations array
+    this.animations = originalAnimations
+
+    // Create the parallel animation
+    this.animate((target, _, progress) => {
+      // Execute all animations simultaneously with the same progress
+      tempAnimations.forEach((result: ParallelResult) => {
+        result.animation(target, result.context, progress)
+      })
+    }, { duration: 1 })
+
+    return this
+  }
 }
 
 export type AnimationSetup<T, A> = (target: T, context: A) => (progress: number) => void
@@ -84,17 +129,6 @@ export function defineAnimation<
       animation = setup(target, context)
     }
     animation!(progress)
-  }
-}
-
-export function parallel<
-  T,
-  A = object,
->(...animations: Animation<T, A>[]): Animation<T, A> {
-  return function (target: T, context: A, progress: number) {
-    for (const animation of animations) {
-      animation(target, context, progress)
-    }
   }
 }
 
