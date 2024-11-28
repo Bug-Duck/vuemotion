@@ -22,7 +22,8 @@
     "skipLibCheck": true,
     "paths": {
       "@vue-motion/core": ["./packages/core/src"],
-      "@vue-motion/cliet": ["./packages/client/src"]
+      "@vue-motion/cliet": ["./packages/client/src"],
+      "@vue-motion/lib": ["./packages/lib/src"]
     }
   },
   "include": ["packages/*/src", "extensions/*/src"],
