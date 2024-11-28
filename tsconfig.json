@@ -19,12 +19,12 @@
     "noUnusedParameters": false,
     "noEmit": true,
     "isolatedModules": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@vue-motion/core": ["./packages/core/src"],
+      "@vue-motion/cliet": ["./packages/client/src"]
+    }
   },
-  "include": [
-    "packages/**/*.ts",
-    "extensions/**/*.*",
-    "**/shims.d.ts",
-    "**/*.vue"
-  ]
+  "include": ["packages/*/src", "extensions/*/src"],
+  "exclude": ["**/node_modules", "**/.*/", "**/dist", "**/template"]
 }
