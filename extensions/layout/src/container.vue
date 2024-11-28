@@ -1,5 +1,7 @@
 <script setup lang="ts">
-import { defineWidget, useChilimport type { ComputedRef } from "vue";
+import { defineWidget, useChildren } from "@vue-motion/core";
+import type { WidgetOptions } from "@vue-motion/lib";
+import type { ComputedRef } from "vue";
 import { computed, onMounted, ref } from "vue";
 
 export interface ContainerOptions extends WidgetOptions {
