@@ -15,7 +15,7 @@
     "strict": true,
     "strictNullChecks": true,
     "noFallthroughCasesInSwitch": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false, // 在 ESLint 中启用，以 warn 形式出现
     "noUnusedParameters": false,
     "noEmit": true,
     "isolatedModules": true,

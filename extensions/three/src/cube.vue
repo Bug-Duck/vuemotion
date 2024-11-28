@@ -1,15 +1,15 @@
 <script setup lang="ts">
-import { defineWidget } from '@vue-motion/core'
-import type { Object3DOptions } from './object3d'
+import { defineWidget } from "@vue-motion/core";
+import type { Object3DOptions } from "./object3d";
 
 export interface CubeOptions extends Object3DOptions {
-  width: number
-  height: number
-  depth: number
+  width: number;
+  height: number;
+  depth: number;
 }
 
-const props = defineProps<CubeOptions>()
-const options = defineWidget<CubeOptions>(props)
+const props = defineProps<CubeOptions>();
+const options = defineWidget<CubeOptions>(props);
 </script>
 
 <template>

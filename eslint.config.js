@@ -22,8 +22,7 @@ export default [
       // 暂时禁用这几条规则避免干扰提交
       "@typescript-eslint/no-explicit-any": "off",
       "vue/multi-word-component-names": "off",
-      // 禁用这几条规则优化 ESLint 性能
-      "@typescript-eslint/no-unused-vars": "off", // tsc has this rule
+      "@typescript-eslint/no-unused-vars": "warn",
     },
   },
 ];
