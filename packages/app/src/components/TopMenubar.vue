@@ -1,109 +1,109 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { reactive } from "vue";
 
-const options = ref(false);
-const view = ref(false);
-const help = ref(false);
+interface MenuItem {
+  name: string;
+  action?: () => void;
+  children?: MenuItem[];
+}
+
+const menu: MenuItem[] = reactive([
+  {
+    name: "Options",
+    children: [
+      {
+        name: "Export",
+        action: () => {
+          console.log("Export");
+        },
+      },
+    ],
+  },
+  {
+    name: "View",
+    children: [
+      {
+        name: "Zoom In",
+        action: () => {
+          console.log("Zoom In");
+        },
+      },
+      {
+        name: "Zoom Out",
+        action: () => {
+          console.log("Zoom Out");
+        },
+      },
+    ],
+  },
+  {
+    name: "Help",
+    children: [
+      {
+        name: "GitHub",
+        action: () => {
+          window.open("https://github.com/Bug-Duck/vuemotion");
+        },
+      },
+      {
+        name: "Docs",
+        action: () => {
+          window.open("https://vuemotion.dev/");
+        },
+      },
+      {
+        name: "Discord",
+        action: () => {
+          window.open("https://discord.gg/PUVcpkv8");
+        },
+      },
+      {
+        name: "X",
+        action: () => {
+          window.open("https://twitter.com/bugduckteam");
+        },
+      },
+      {
+        name: "Contact us",
+        action: () => {
+          window.open("");
+        },
+      },
+    ],
+  },
+]);
 </script>
 
 <template>
   <div class="w-full h-10 border flex flex-row select-none">
     <div class="flex flex-row">
-      <img src="../assets/logo.svg" class="w-10 h-10 p-1 mr-5" alt="logo" />
+      <img src="../assets/logo.svg" class="w-10 h-10 p-1" alt="logo" />
     </div>
     <div
-      class="h-full w-16 hover:bg-gray-300"
-      @mouseleave="options = false"
-      @mouseenter="options = true"
+      class="relative h-full inline-block hover:bg-gray-300 transition-all cursor-pointer p-3"
+      @mouseleave="item.showMenu = false"
+      @mouseenter="item.showMenu = true"
+      v-for="(item, key) in menu"
+      @click="item.action"
+      v-bind:key="key"
     >
-      <span class="font-mono text-sm h-full flex items-center justify-center"
-        >Options</span
+      <span class="font-mono text-sm h-full flex items-center justify-center">{{
+        item.name
+      }}</span>
+      <span
+        v-if="item.children"
+        v-show="item.showMenu"
+        class="absolute bg-white border top-full left-0 w-40 rounded-md z-30"
       >
-      <div
-        v-if="options"
-        class="absolute bg-white border top-10 w-40 rounded-md"
-      >
-        <div class="hover:bg-gray-300 h-8 w-full">
-          <span
-            class="font-mono text-sm h-full flex items-center justify-center"
-            >Export</span
-          >
+        <div
+          class="hover:bg-gray-300 transition-all p-2 pl-4 w-full"
+          v-for="(child, key) in item.children"
+          @click="child.action"
+          v-bind:key="key"
+        >
+          <span class="font-mono text-sm h-full">{{ child.name }}</span>
         </div>
-      </div>
-    </div>
-    <div
-      class="h-full w-16 hover:bg-gray-300"
-      @mouseenter="view = true"
-      @mouseleave="view = false"
-    >
-      <span class="font-mono text-sm h-full flex items-center justify-center"
-        >View</span
-      >
-      <div v-if="view" class="absolute bg-white border top-10 w-40 rounded-md">
-        <div class="hover:bg-gray-300 h-8 w-full">
-          <span
-            class="font-mono text-sm h-full flex items-center justify-center"
-            >Zoom In</span
-          >
-        </div>
-        <div class="hover:bg-gray-300 h-8 w-full">
-          <span
-            class="font-mono text-sm h-full flex items-center justify-center"
-            >Zoom Out</span
-          >
-        </div>
-      </div>
-    </div>
-    <div
-      class="h-full w-16 hover:bg-gray-300"
-      @mouseenter="help = true"
-      @mouseleave="help = false"
-    >
-      <span class="font-mono text-sm h-full flex items-center justify-center"
-        >Help</span
-      >
-      <div v-if="help" class="absolute bg-white border top-10 w-40 rounded-md">
-        <a href="https://github.com/Bug-Duck/vuemotion">
-          <div class="hover:bg-gray-300 h-8 w-full">
-            <span
-              class="font-mono text-sm h-full flex items-center justify-center"
-              ><em class="fa fa-github mx-1" />GitHub</span
-            >
-          </div>
-        </a>
-        <a href="https://vuemotion.dev">
-          <div class="hover:bg-gray-300 h-8 w-full">
-            <span
-              class="font-mono text-sm h-full flex items-center justify-center"
-              ><em class="fa fa-book mx-1" />Docs</span
-            >
-          </div>
-        </a>
-        <a href="https://discord.gg/hpB4n7Vm">
-          <div class="hover:bg-gray-300 h-8 w-full">
-            <span
-              class="font-mono text-sm h-full flex items-center justify-center"
-              >Discord</span
-            >
-          </div>
-        </a>
-        <a href="https://x.com/bugduckteam">
-          <div class="hover:bg-gray-300 h-8 w-full">
-            <span
-              class="font-mono text-sm h-full flex items-center justify-center"
-              >X</span
-            >
-          </div>
-        </a>
-        <a href="mailto:bugduck@163.com">
-          <div class="hover:bg-gray-300 h-8 w-full">
-            <span
-              class="font-mono text-sm h-full flex items-center justify-center"
-              ><em class="fa fa-envelope mx-1" />Contact us</span
-            >
-          </div>
-        </a>
-      </div>
+      </span>
     </div>
   </div>
 </template>
