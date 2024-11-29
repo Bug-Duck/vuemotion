@@ -1,6 +1,6 @@
 <script setup lang="ts">
-/** @ts-expect-error virtual-import */
 import { Motion } from "@vue-motion/lib";
+/** @ts-expect-error virtual-import */
 import Animation from "virtual:user-main";
 import { ref, watch } from "vue";
 // import TestAnimation from './__test__/TestAnimation.vue'

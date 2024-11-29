@@ -1,12 +1,11 @@
-import { createApp } from 'vue'
-// import './out.css'
-/** @ts-ignore  */
-import App from 'virtual:user-main'
-/** @ts-ignore */
-import router from 'virtual:router'
-/** @ts-ignore */
-import player from 'virtual:player'
+import { createApp } from "vue";
+/** @ts-expect-error virtual-import */
+import player from "virtual:player";
+/** @ts-expect-error virtual-import */
+import router from "virtual:router";
+/** @ts-expect-error virtual-import */
+import App from "virtual:user-main";
 
-console.log(player)
+console.log(player);
 
-createApp(App).use(router).use(player).mount('#app')
+createApp(App).use(router).use(player).mount("#app");
