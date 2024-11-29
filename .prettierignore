@@ -6,3 +6,4 @@ dist
 *timestamp*
 pnpm-lock.yaml
 pnpm-workspace.yaml
+output.css

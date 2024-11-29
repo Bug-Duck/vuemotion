@@ -5,6 +5,7 @@ interface MenuItem {
   name: string;
   action?: () => void;
   children?: MenuItem[];
+  showMenu?: boolean;
 }
 
 const menu: MenuItem[] = reactive([
