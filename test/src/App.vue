@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { parallel, usePlayer, useWidget } from '@vue-motion/core'
-import { Motion, Rect, type RectMixin, easeInOutCirc, move, rotate } from '@vue-motion/lib'
+import { usePlayer, useWidget } from '@vue-motion/core'
+import { Motion, Rect, type RectMixin, easeInOutCirc } from '@vue-motion/lib'
 import { onMounted } from 'vue'
 import '@vue-motion/extension-animations'
 

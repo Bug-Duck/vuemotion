@@ -131,7 +131,7 @@ export function widget(options: WidgetOptions) {
   registerAnimation<HasScale>('zoomIn', (params?: AnimationParams) => {
     return (manager) => manager.animate(zoomIn, {
       duration: params?.duration ?? defaultDuration,
-      by: params?.by ?? ((x) => x),
+      by: params?.bWidgetMixiny ?? ((x) => x),
     })
   })
   registerAnimation<HasScale>('zoomOut', (params?: AnimationParams) => {
@@ -184,18 +184,8 @@ export function widget(options: WidgetOptions) {
   const animations = inject<(() => Animation<Widget, any>)[]>('ADDITION_ANIMATIONS')
   animations?.forEach((animation) => animation())
 
-  return props
-}
-
-export interface MoveAnimationContext {
-  offsetX: number
-  offsetY: number
-  duration?: number
-  by?: TimingFunction
-}
-
-export interface RotateAnimationContext {
-  offset: number
-  duration?: number
-  by?: TimingFunction
+  return props as {
+    transform?: string
+    style?: string
+  }
 }

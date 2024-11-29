@@ -7,8 +7,8 @@ export interface Strokable {
   borderInterval: number[]
 }
 export interface StrokableMixin extends Strokable {
-  stroke: (origin: number, options?: AnimationParams) => void
-  strokeFill: (origin: number, options?: AnimationParams) => void
+  trace: (origin: number, options?: AnimationParams) => void
+  traceFill: (origin: number, options?: AnimationParams) => void
 }
 
 export const stroke = defineAnimation<Strokable, {
