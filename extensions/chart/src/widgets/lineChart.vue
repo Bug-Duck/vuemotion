@@ -89,7 +89,7 @@ export interface LineChartStyle extends BaseChartStyle {
   animateIndex?: boolean;
 }
 
-export interface LineChartOptions extends BaseSimpleChartOptions {}
+export type LineChartOptions = BaseSimpleChartOptions;
 
 const props = withDefaults(defineProps<LineChartOptions>(), {
   gridAlign: undefined,
@@ -118,7 +118,7 @@ onMounted(() => {
     if (data?.value.datasets.some((dataset) => dataset.data.length === 0))
       return;
 
-    dotSets.value = data.value.datasets.map((set) => {
+    dotSets.value = data!.value.datasets.map((set) => {
       set.style ??= {};
       set.style.backgroundColor ??=
         data?.value.style?.backgroundColor ?? ColorEnum.WHITE;

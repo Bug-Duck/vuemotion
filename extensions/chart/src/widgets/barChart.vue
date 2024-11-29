@@ -50,7 +50,7 @@ onMounted(() => {
     () => {
       if (!layoutConfig.value.done) return;
 
-      barSets.value = data.value.datasets.map((set, setIndex) => {
+      barSets.value = data!.value.datasets.map((set, setIndex) => {
         set.style ??= {};
         set.style.backgroundColor ??=
           data?.value.style?.backgroundColor ?? ColorEnum.WHITE;
@@ -69,7 +69,7 @@ onMounted(() => {
               layoutConfig.value.width!;
             const categorySize = gridSize * options.categoryPercentage!;
             const barSize =
-              (categorySize / data?.value.datasets.length) *
+              (categorySize / data!.value.datasets.length) *
               options.barPercentage!;
 
             return {
@@ -89,8 +89,8 @@ onMounted(() => {
                     layoutConfig.value.index!.min)) *
                   layoutConfig.value.width! +
                 (gridSize - categorySize) / 2 +
-                (setIndex * categorySize) / data?.value.datasets.length +
-                (categorySize / data?.value.datasets.length - barSize) / 2,
+                (setIndex * categorySize) / data!.value.datasets.length +
+                (categorySize / data!.value.datasets.length - barSize) / 2,
               y:
                 layoutConfig.value.height! -
                 ((0 - layoutConfig.value.cross!.min) /
@@ -116,7 +116,7 @@ onMounted(() => {
               layoutConfig.value.height!;
             const categorySize = gridSize * options.categoryPercentage!;
             const barSize =
-              (categorySize / data?.value.datasets.length) *
+              (categorySize / data!.value.datasets.length) *
               options.barPercentage!;
             return {
               width:
@@ -141,8 +141,8 @@ onMounted(() => {
                     layoutConfig.value.index!.min)) *
                   layoutConfig.value.height! +
                   (gridSize + categorySize) / 2 -
-                  (setIndex * categorySize) / data?.value.datasets.length -
-                  (categorySize / data?.value.datasets.length - barSize) / 2),
+                  (setIndex * categorySize) / data!.value.datasets.length -
+                  (categorySize / data!.value.datasets.length - barSize) / 2),
               style: {
                 fillColor:
                   unit.style?.backgroundColor ?? set.style!.backgroundColor!,

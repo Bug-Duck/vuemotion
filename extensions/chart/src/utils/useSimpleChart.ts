@@ -14,14 +14,14 @@ export function useSimpleChart<T extends BaseSimpleChartOptions>(props: T) {
 
   const mixedData = inject<Ref<MixedChartData[]>>(
     "mixedChartData",
-    ref<MixedChartData[]>([]),
+    ref<MixedChartData[]>([]) as Ref<MixedChartData[]>,
   );
   let data = inject<Ref<BaseSimpleChartData>>("chartData");
   if (!data) {
     data = ref<BaseSimpleChartData>({
       labels: (options as BaseSimpleChartOptions).labels,
       datasets: [],
-    });
+    }) as Ref<BaseSimpleChartData>;
     mixedData.value.push({
       data: unref(data) as BaseSimpleChartData,
       options: options as BaseSimpleChartOptions,
