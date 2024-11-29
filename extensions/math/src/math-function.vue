@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { defineWidget } from "@vue-motion/core";
 import type { FigureOptions, Growable } from "@vue-motion/lib";
 import { Path, figure } from "@vue-motion/lib";
-import { defineWidget } from "@vue-motion/core";
+import { ref, watch } from "vue";
 // import type { MathFunction } from './math-function'
 
 export interface MathFunctionOptions extends FigureOptions, Growable {
@@ -38,7 +38,7 @@ function generateSvgPath(
   for (let x = xMin; x <= xMax; x += step) {
     const y = mathFunc(x);
 
-    // Convert the values ​​of a mathematical function to SVG coordinates
+    // Convert the values of a mathematical function to SVG coordinates
     const svgX = (x - xMin) * scaleX;
     const svgY = (yMax - y) * scaleY; // Invert the y-axis to conform to the SVG coordinate system
 
