@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import { onMounted, ref, watchEffect } from 'vue'
-import { useSimpleChart } from '../utils/useSimpleChart.ts'
-import type { BaseChartStyle, Color } from '..'
-import { ColorEnum, DataUtil } from '..'
-import BaseSimpleChart from './baseSimpleChart.vue'
-import type { BaseSimpleChartOptions } from './baseSimpleChart.vue'
+import { onMounted, ref, watchEffect } from "vue";
+import type { BaseChartStyle, Color } from "..";
+import { ColorEnum, DataUtil } from "..";
+import { useSimpleChart } from "../utils/useSimpleChart.ts";
+import type { BaseSimpleChartOptions } from "./baseSimpleChart.vue";
+import BaseSimpleChart from "./baseSimpleChart.vue";
 
 /**
  * BarChart style.
@@ -14,12 +14,12 @@ import type { BaseSimpleChartOptions } from './baseSimpleChart.vue'
  * @property borderRadius - The border radius of the bar. Default is 0. Not supported yet.
  */
 export interface BarChartStyle extends BaseChartStyle {
-  borderRadius?: number
+  borderRadius?: number;
 }
 
 export interface BarChartOptions extends BaseSimpleChartOptions {
-  categoryPercentage?: number
-  barPercentage?: number
+  categoryPercentage?: number;
+  barPercentage?: number;
 }
 
 const props = withDefaults(defineProps<BarChartOptions>(), {
@@ -27,103 +27,148 @@ const props = withDefaults(defineProps<BarChartOptions>(), {
   edgeOffset: undefined,
   categoryPercentage: 0.8,
   barPercentage: 0.8,
-})
-const {
-  options,
-  data,
-  layoutConfig,
-} = useSimpleChart<BarChartOptions>(props)
+});
+const { options, data, layoutConfig } = useSimpleChart<BarChartOptions>(props);
 
-const barSets = ref<{
-  width: number
-  height: number
-  x: number
-  y: number
-  style: {
-    fillColor: Color
-    borderColor: Color
-    borderWidth: number
-    radius: number
-  }
-}[][]>([])
+const barSets = ref<
+  {
+    width: number;
+    height: number;
+    x: number;
+    y: number;
+    style: {
+      fillColor: Color;
+      borderColor: Color;
+      borderWidth: number;
+      radius: number;
+    };
+  }[][]
+>([]);
 
 onMounted(() => {
-  watchEffect(() => {
-    if (!layoutConfig.value.done)
-      return
+  watchEffect(
+    () => {
+      if (!layoutConfig.value.done) return;
 
-    barSets.value = data.value.datasets.map((set, setIndex) => {
-      set.style ??= {}
-      set.style.backgroundColor ??= data.value.style?.backgroundColor ?? ColorEnum.WHITE
-      set.style.borderColor ??= data.value.style?.borderColor ?? ColorEnum.WHITE
-      set.style.borderWidth ??= data.value.style?.borderWidth ?? 1
-      set.style.borderRadius ??= data.value.style?.borderRadius ?? 0
+      barSets.value = data.value.datasets.map((set, setIndex) => {
+        set.style ??= {};
+        set.style.backgroundColor ??=
+          data?.value.style?.backgroundColor ?? ColorEnum.WHITE;
+        set.style.borderColor ??=
+          data?.value.style?.borderColor ?? ColorEnum.WHITE;
+        set.style.borderWidth ??= data?.value.style?.borderWidth ?? 1;
+        set.style.borderRadius ??= data?.value.style?.borderRadius ?? 0;
 
-      if (layoutConfig.value.indexAxis === 'x') {
-        return set.data.map((unit) => {
-          const gridSize = (DataUtil.indexDuration(unit) ?? layoutConfig.value.index!.interval)
-            / (layoutConfig.value.index!.max - layoutConfig.value.index!.min) * layoutConfig.value.width!
-          const categorySize = gridSize * options.categoryPercentage!
-          const barSize = (categorySize / data.value.datasets.length) * options.barPercentage!
+        if (layoutConfig.value.indexAxis === "x") {
+          return set.data.map((unit) => {
+            const gridSize =
+              ((DataUtil.indexDuration(unit) ??
+                layoutConfig.value.index!.interval) /
+                (layoutConfig.value.index!.max -
+                  layoutConfig.value.index!.min)) *
+              layoutConfig.value.width!;
+            const categorySize = gridSize * options.categoryPercentage!;
+            const barSize =
+              (categorySize / data?.value.datasets.length) *
+              options.barPercentage!;
 
-          return {
-            width: barSize,
-            height: -unit.cross * (options.progress ?? 1) * layoutConfig.value.height!
-              / (layoutConfig.value.cross!.max - layoutConfig.value.cross!.min),
-            x: (DataUtil.indexNumber(unit) - (DataUtil.indexDuration(unit) ?? layoutConfig.value.index!.interval) / 2 - layoutConfig.value.index!.min)
-              / (layoutConfig.value.index!.max - layoutConfig.value.index!.min) * layoutConfig.value.width!
-              + (gridSize - categorySize) / 2 + (setIndex * categorySize) / data.value.datasets.length
-              + (categorySize / data.value.datasets.length - barSize) / 2,
-            y: layoutConfig.value.height! - (0 - layoutConfig.value.cross!.min)
-            / (layoutConfig.value.cross!.max - layoutConfig.value.cross!.min) * layoutConfig.value.height!,
-            style: {
-              fillColor: unit.style?.backgroundColor ?? set.style!.backgroundColor!,
-              borderColor: unit.style?.borderColor ?? set.style!.borderColor!,
-              borderWidth: unit.style?.borderWidth ?? set.style!.borderWidth!,
-              radius: unit.style?.borderRadius ?? set.style!.borderRadius!,
-            },
-          }
-        })
-      }
-      else {
-        return set.data.map((unit) => {
-          const gridSize = (DataUtil.indexDuration(unit) ?? layoutConfig.value.index!.interval)
-            / (layoutConfig.value.index!.max - layoutConfig.value.index!.min) * layoutConfig.value.height!
-          const categorySize = gridSize * options.categoryPercentage!
-          const barSize = (categorySize / data.value.datasets.length) * options.barPercentage!
-          return {
-            width: unit.cross * (options.progress ?? 1) * layoutConfig.value.width!
-              / (layoutConfig.value.cross!.max - layoutConfig.value.cross!.min),
-            height: barSize,
-            x: (0 - layoutConfig.value.cross!.min) / (layoutConfig.value.cross!.max - layoutConfig.value.cross!.min) * layoutConfig.value.width!,
-            y: layoutConfig.value.height! - ((DataUtil.indexNumber(unit) - (DataUtil.indexDuration(unit) ?? layoutConfig.value.index!.interval) / 2 - layoutConfig.value.index!.min)
-              / (layoutConfig.value.index!.max - layoutConfig.value.index!.min) * layoutConfig.value.height!
-              + (gridSize + categorySize) / 2
-              - (setIndex * categorySize) / data.value.datasets.length
-              - (categorySize / data.value.datasets.length - barSize) / 2),
-            style: {
-              fillColor: unit.style?.backgroundColor ?? set.style!.backgroundColor!,
-              borderColor: unit.style?.borderColor ?? set.style!.borderColor!,
-              borderWidth: unit.style?.borderWidth ?? set.style!.borderWidth!,
-              radius: unit.style?.borderRadius ?? set.style!.borderRadius!,
-            },
-          }
-        })
-      }
-    })
-  }, {
-    flush: 'post',
-  })
-})
+            return {
+              width: barSize,
+              height:
+                (-unit.cross *
+                  (options.progress ?? 1) *
+                  layoutConfig.value.height!) /
+                (layoutConfig.value.cross!.max - layoutConfig.value.cross!.min),
+              x:
+                ((DataUtil.indexNumber(unit) -
+                  (DataUtil.indexDuration(unit) ??
+                    layoutConfig.value.index!.interval) /
+                    2 -
+                  layoutConfig.value.index!.min) /
+                  (layoutConfig.value.index!.max -
+                    layoutConfig.value.index!.min)) *
+                  layoutConfig.value.width! +
+                (gridSize - categorySize) / 2 +
+                (setIndex * categorySize) / data?.value.datasets.length +
+                (categorySize / data?.value.datasets.length - barSize) / 2,
+              y:
+                layoutConfig.value.height! -
+                ((0 - layoutConfig.value.cross!.min) /
+                  (layoutConfig.value.cross!.max -
+                    layoutConfig.value.cross!.min)) *
+                  layoutConfig.value.height!,
+              style: {
+                fillColor:
+                  unit.style?.backgroundColor ?? set.style!.backgroundColor!,
+                borderColor: unit.style?.borderColor ?? set.style!.borderColor!,
+                borderWidth: unit.style?.borderWidth ?? set.style!.borderWidth!,
+                radius: unit.style?.borderRadius ?? set.style!.borderRadius!,
+              },
+            };
+          });
+        } else {
+          return set.data.map((unit) => {
+            const gridSize =
+              ((DataUtil.indexDuration(unit) ??
+                layoutConfig.value.index!.interval) /
+                (layoutConfig.value.index!.max -
+                  layoutConfig.value.index!.min)) *
+              layoutConfig.value.height!;
+            const categorySize = gridSize * options.categoryPercentage!;
+            const barSize =
+              (categorySize / data?.value.datasets.length) *
+              options.barPercentage!;
+            return {
+              width:
+                (unit.cross *
+                  (options.progress ?? 1) *
+                  layoutConfig.value.width!) /
+                (layoutConfig.value.cross!.max - layoutConfig.value.cross!.min),
+              height: barSize,
+              x:
+                ((0 - layoutConfig.value.cross!.min) /
+                  (layoutConfig.value.cross!.max -
+                    layoutConfig.value.cross!.min)) *
+                layoutConfig.value.width!,
+              y:
+                layoutConfig.value.height! -
+                (((DataUtil.indexNumber(unit) -
+                  (DataUtil.indexDuration(unit) ??
+                    layoutConfig.value.index!.interval) /
+                    2 -
+                  layoutConfig.value.index!.min) /
+                  (layoutConfig.value.index!.max -
+                    layoutConfig.value.index!.min)) *
+                  layoutConfig.value.height! +
+                  (gridSize + categorySize) / 2 -
+                  (setIndex * categorySize) / data?.value.datasets.length -
+                  (categorySize / data?.value.datasets.length - barSize) / 2),
+              style: {
+                fillColor:
+                  unit.style?.backgroundColor ?? set.style!.backgroundColor!,
+                borderColor: unit.style?.borderColor ?? set.style!.borderColor!,
+                borderWidth: unit.style?.borderWidth ?? set.style!.borderWidth!,
+                radius: unit.style?.borderRadius ?? set.style!.borderRadius!,
+              },
+            };
+          });
+        }
+      });
+    },
+    {
+      flush: "post",
+    },
+  );
+});
 
-options.edgeOffset ??= !(options.gridAlign)
+options.edgeOffset ??= !options.gridAlign;
 </script>
 
 <template>
   <BaseSimpleChart
     v-bind="{
       gridAlign: true,
-      edgeOffset: !(options.gridAlign),
+      edgeOffset: !options.gridAlign,
       ...options,
     }"
   >
@@ -147,6 +192,4 @@ options.edgeOffset ??= !(options.gridAlign)
   </BaseSimpleChart>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
