@@ -30,7 +30,7 @@ const children = useChildren();
 
 const mountedFlag = ref(false);
 
-const width: ComputedRef<number> = computed(() => {
+const _width: ComputedRef<number> = computed(() => {
   if (!mountedFlag.value) return 0;
   if (options.width) return options.width;
   const counter: number[] = [];
@@ -39,7 +39,7 @@ const width: ComputedRef<number> = computed(() => {
   });
   return Math.max(...counter);
 });
-const height: ComputedRef<number> = computed(() => {
+const _height: ComputedRef<number> = computed(() => {
   if (!mountedFlag.value) return 0;
   if (options.height) return options.height;
   const counter: number[] = [];
@@ -99,7 +99,7 @@ const paddingRight = computed(
         height: `${height}px`,
       }"
     >
-      <g :transform="`translate(${width / 2}, ${height / 2})`">
+      <g :transform="`translate(${_width / 2}, ${_height / 2})`">
         <slot />
       </g>
     </svg>

@@ -23,6 +23,8 @@ export default [
       "@typescript-eslint/no-explicit-any": "off",
       "vue/multi-word-component-names": "off",
       "@typescript-eslint/no-unused-vars": "warn",
+      // 这条规则被类型检查器替代
+      "no-undef": "off",
     },
   },
 ];
