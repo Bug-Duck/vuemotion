@@ -18,6 +18,10 @@ VueMotion's predecessor was the Newcar animation engine, but later the developme
     <td><img src="./assets/2.gif" alt="demo2" controls></img></td>
     <td><img src="./assets/3.gif" alt="demo3" controls></img></td>
   </tr>
+  <tr>
+    <td colspan="1.5"><img src="./assets/4.gif"></td>
+    <td colspan="1.5"><img src="./assets/5.gif"></td>
+  </tr>
 </table>
 
 # 📚 Documentation
