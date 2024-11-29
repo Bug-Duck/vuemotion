@@ -6,9 +6,9 @@
  * @description
  * This module provides utility functions for the chart widgets.
  */
-import type { DateTime, DateTimeUnit } from 'luxon'
-import { Duration } from 'luxon'
-import type { DateTimeWithDuration } from '..'
+import type { DateTime, DateTimeUnit } from "luxon";
+import { Duration } from "luxon";
+import type { DateTimeWithDuration } from "..";
 
 /**
  * Convert data to data units.
@@ -34,13 +34,23 @@ import type { DateTimeWithDuration } from '..'
  * @param intervalUnit
  * @param interval
  */
-export function dateSequence(start: DateTime, duration: Duration, intervalUnit: DateTimeUnit, interval: number = 1): DateTimeWithDuration[] {
-  const sequence = []
-  for (let i = 0; start.startOf(intervalUnit).plus({ [intervalUnit]: i }) < start.startOf(intervalUnit).plus(duration); i += interval)
-    sequence.push(start.startOf(intervalUnit).plus({ [intervalUnit]: i }))
+export function dateSequence(
+  start: DateTime,
+  duration: Duration,
+  intervalUnit: DateTimeUnit,
+  interval: number = 1,
+): DateTimeWithDuration[] {
+  const sequence = [];
+  for (
+    let i = 0;
+    start.startOf(intervalUnit).plus({ [intervalUnit]: i }) <
+    start.startOf(intervalUnit).plus(duration);
+    i += interval
+  )
+    sequence.push(start.startOf(intervalUnit).plus({ [intervalUnit]: i }));
   return sequence.map((date) => {
-    const dateWithPeriod = date as DateTimeWithDuration
-    dateWithPeriod.duration = Duration.fromObject({ [intervalUnit]: interval })
-    return dateWithPeriod
-  })
+    const dateWithPeriod = date as DateTimeWithDuration;
+    dateWithPeriod.duration = Duration.fromObject({ [intervalUnit]: interval });
+    return dateWithPeriod;
+  });
 }

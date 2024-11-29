@@ -1,18 +1,18 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import dts from 'vite-plugin-dts'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import dts from "vite-plugin-dts";
 
 export default defineConfig({
-  root: '.',
+  root: ".",
   build: {
     lib: {
-      entry: 'src/index.ts',
-      name: 'VueMotionCore',
-      formats: ['es', 'cjs', 'iife'],
-      fileName: 'index',
+      entry: "src/index.ts",
+      name: "VueMotionCore",
+      formats: ["es", "cjs", "iife"],
+      fileName: "index",
     },
     rollupOptions: {
-      external: ['vue'],
+      external: ["vue"],
     },
     commonjsOptions: {
       transformMixedEsModules: true,
@@ -21,9 +21,9 @@ export default defineConfig({
   plugins: [
     vue(),
     dts({
-      include: ['./src/**/*.ts'],
+      include: ["./src/**/*.ts"],
       rollupTypes: true,
       copyDtsFiles: true,
     }),
   ],
-})
+});

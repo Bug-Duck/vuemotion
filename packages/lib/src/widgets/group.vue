@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import { defineWidget } from '@vue-motion/core'
-import type { WidgetOptions } from './widget'
-import { widget } from './widget'
+import { defineProps } from "vue";
+import { defineWidget } from "@vue-motion/core";
+import type { WidgetOptions } from "./widget";
+import { widget } from "./widget";
 
-const props = defineProps<WidgetOptions>()
-const options = defineWidget(props)
+const props = defineProps<WidgetOptions>();
+const options = defineWidget(props);
 </script>
 
 <template>

@@ -1,30 +1,42 @@
 <script setup lang="ts">
-import { defineProps } from 'vue'
-import { defineWidget } from '@vue-motion/core'
+import { defineProps } from "vue";
+import { defineWidget } from "@vue-motion/core";
 
-import type { FigureMixin, FigureOptions } from './figure'
-import { figure } from './figure'
+import type { FigureMixin, FigureOptions } from "./figure";
+import { figure } from "./figure";
 
 export interface TextOptions extends FigureOptions {
-  fontFamily?: string
-  fontSize?: | 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | 'xxx-large' | 'larger' | 'smaller' | string | number & {}
-  fontWeight?: number | 'normal' | 'bold' | 'bolder' | 'lighter'
-  fontStyle?: 'normal' | 'italic' | 'oblique'
-  align?: 'start' | 'middle' | 'end'
-  baseline?: 'top' | 'middle' | 'bottom'
-  decoration?: 'none' | 'underline' | 'overline' | 'line-through' | 'blink'
-  wordSpacing?: number
-  letterSpacing?: number
+  fontFamily?: string;
+  fontSize?:
+    | "xx-small"
+    | "x-small"
+    | "small"
+    | "medium"
+    | "large"
+    | "x-large"
+    | "xx-large"
+    | "xxx-large"
+    | "larger"
+    | "smaller"
+    | string
+    | (number & {});
+  fontWeight?: number | "normal" | "bold" | "bolder" | "lighter";
+  fontStyle?: "normal" | "italic" | "oblique";
+  align?: "start" | "middle" | "end";
+  baseline?: "top" | "middle" | "bottom";
+  decoration?: "none" | "underline" | "overline" | "line-through" | "blink";
+  wordSpacing?: number;
+  letterSpacing?: number;
 }
-export type TextMixin = TextOptions & FigureMixin
+export type TextMixin = TextOptions & FigureMixin;
 
 const props = withDefaults(defineProps<TextOptions>(), {
-  borderColor: 'none',
-  fillColor: 'white',
-  align: 'middle',
-  baseline: 'middle',
-})
-const options = defineWidget(props)
+  borderColor: "none",
+  fillColor: "white",
+  align: "middle",
+  baseline: "middle",
+});
+const options = defineWidget(props);
 </script>
 
 <template>

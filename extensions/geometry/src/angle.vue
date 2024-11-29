@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { defineWidget } from '@vue-motion/core'
-import { Arc, type FigureOptions, Line, figure } from '@vue-motion/lib'
+import { defineWidget } from "@vue-motion/core";
+import { Arc, type FigureOptions, Line, figure } from "@vue-motion/lib";
 
 export interface AngleOptions extends FigureOptions {
-  value: number
-  start?: number
-  lengthFrom?: number
-  lengthTo?: number
-  radius?: number
+  value: number;
+  start?: number;
+  lengthFrom?: number;
+  lengthTo?: number;
+  radius?: number;
 }
 
-const props = defineProps<AngleOptions>()
-const options = defineWidget<AngleOptions>(props)
+const props = defineProps<AngleOptions>();
+const options = defineWidget<AngleOptions>(props);
 </script>
 
 <template>

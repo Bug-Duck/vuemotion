@@ -1,10 +1,10 @@
-export { default as MathFunction } from './math-function.vue'
-export type { MathFunctionOptions } from './math-function.vue'
-export { default as NumberAxis } from './number-axis.vue'
-export type { NumberAxisOptions } from './number-axis.vue'
-export { default as NumberPlane } from './number-plane.vue'
-export type { NumberPlaneOptions } from './number-plane.vue'
-export { default as Tex } from './tex.vue'
-export { default as PolarPlane } from './polar-plane.vue'
-export type { PolarPlaneOptions } from './polar-plane.vue'
-export type { TexOptions } from './tex.vue'
+export { default as MathFunction } from "./math-function.vue";
+export type { MathFunctionOptions } from "./math-function.vue";
+export { default as NumberAxis } from "./number-axis.vue";
+export type { NumberAxisOptions } from "./number-axis.vue";
+export { default as NumberPlane } from "./number-plane.vue";
+export type { NumberPlaneOptions } from "./number-plane.vue";
+export { default as Tex } from "./tex.vue";
+export { default as PolarPlane } from "./polar-plane.vue";
+export type { PolarPlaneOptions } from "./polar-plane.vue";
+export type { TexOptions } from "./tex.vue";

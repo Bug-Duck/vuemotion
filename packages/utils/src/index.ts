@@ -1,2 +1,2 @@
-export * from './deep-clone'
-export * from './judgements'
+export * from "./deep-clone";
+export * from "./judgements";

@@ -1,21 +1,21 @@
-import { defineAnimation } from '@vue-motion/core'
+import { defineAnimation } from "@vue-motion/core";
 
 export interface Growable {
-  progress?: number
+  progress?: number;
 }
 
 export interface GrowableMixin extends Growable {
-  grow: () => void
+  grow: () => void;
 }
 
 export const grow = defineAnimation<Growable, object>(
   (target) => (progress) => {
-    target.progress = progress
+    target.progress = progress;
   },
-)
+);
 
 export const destory = defineAnimation<Growable, object>(
   (target) => (progress) => {
-    target.progress = 1 - progress
+    target.progress = 1 - progress;
   },
-)
+);

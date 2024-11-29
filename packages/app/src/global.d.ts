@@ -1,1 +1,1 @@
-declare const __D__: boolean
+declare const __D__: boolean;

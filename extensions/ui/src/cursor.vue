@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import type { FigureOptions } from '@vue-motion/lib'
-import { Path, figure } from '@vue-motion/lib'
-import { defineWidget } from '@vue-motion/core'
+import type { FigureOptions } from "@vue-motion/lib";
+import { Path, figure } from "@vue-motion/lib";
+import { defineWidget } from "@vue-motion/core";
 
 export interface CursorOptions extends FigureOptions {
-  status?: 'normal' | 'input' | 'hover'
+  status?: "normal" | "input" | "hover";
 }
 
 const props = withDefaults(defineProps<CursorOptions>(), {
-  status: 'normal',
+  status: "normal",
   size: 16,
-  borderColor: 'white',
-  fillColor: 'black',
-})
-const options = defineWidget<CursorOptions>(props)
+  borderColor: "white",
+  fillColor: "black",
+});
+const options = defineWidget<CursorOptions>(props);
 </script>
 
 <template>

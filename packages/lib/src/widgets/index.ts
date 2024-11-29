@@ -1,31 +1,31 @@
-export { widget } from './widget'
-export type { WidgetOptions, WidgetMixin } from './widget'
-export { figure } from './figure'
-export type { FigureOptions, FigureMixin } from './figure'
-export { default as Group } from './group.vue'
+export { widget } from "./widget";
+export type { WidgetOptions, WidgetMixin } from "./widget";
+export { figure } from "./figure";
+export type { FigureOptions, FigureMixin } from "./figure";
+export { default as Group } from "./group.vue";
 
-export { default as Arc } from './arc.vue'
-export type { ArcOptions, ArcMixin } from './arc.vue'
-export { default as Line } from './line.vue'
-export type { LineOptions, LineMixin } from './line.vue'
-export { default as Polygon } from './polygon.vue'
-export type { PolygonOptions, PolygonMixin } from './polygon.vue'
-export { default as Rect } from './rect.vue'
-export type { RectOptions, RectMixin } from './rect.vue'
-export { default as Ellipse } from './ellipse.vue'
-export type { EllipseOptions, EllipseMixin } from './ellipse.vue'
-export { default as Circle } from './circle.vue'
-export type { CircleOptions, CircleMixin } from './circle.vue'
-export { default as Text } from './text.vue'
-export type { TextOptions, TextMixin } from './text.vue'
-export { default as TextUnit } from './text-unit.vue'
-export { default as Image } from './image.vue'
-export type { ImageOptions } from './image.vue'
-export { default as Mask } from './mask.vue'
-export type { MaskOptions } from './mask.vue'
-export { default as Path } from './path.vue'
-export type { PathOptions, PathMixin } from './path.vue'
-export { default as WebView } from './webview.vue'
-export type { WebViewOptions, WebViewMixin } from './webview.vue'
-export { default as Video } from './video.vue'
-export type { VideoOptions } from './video.vue'
+export { default as Arc } from "./arc.vue";
+export type { ArcOptions, ArcMixin } from "./arc.vue";
+export { default as Line } from "./line.vue";
+export type { LineOptions, LineMixin } from "./line.vue";
+export { default as Polygon } from "./polygon.vue";
+export type { PolygonOptions, PolygonMixin } from "./polygon.vue";
+export { default as Rect } from "./rect.vue";
+export type { RectOptions, RectMixin } from "./rect.vue";
+export { default as Ellipse } from "./ellipse.vue";
+export type { EllipseOptions, EllipseMixin } from "./ellipse.vue";
+export { default as Circle } from "./circle.vue";
+export type { CircleOptions, CircleMixin } from "./circle.vue";
+export { default as Text } from "./text.vue";
+export type { TextOptions, TextMixin } from "./text.vue";
+export { default as TextUnit } from "./text-unit.vue";
+export { default as Image } from "./image.vue";
+export type { ImageOptions } from "./image.vue";
+export { default as Mask } from "./mask.vue";
+export type { MaskOptions } from "./mask.vue";
+export { default as Path } from "./path.vue";
+export type { PathOptions, PathMixin } from "./path.vue";
+export { default as WebView } from "./webview.vue";
+export type { WebViewOptions, WebViewMixin } from "./webview.vue";
+export { default as Video } from "./video.vue";
+export type { VideoOptions } from "./video.vue";

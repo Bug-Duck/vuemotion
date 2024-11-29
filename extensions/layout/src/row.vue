@@ -1,21 +1,24 @@
 <script setup lang="ts">
-import { defineWidget, useMotion } from '@vue-motion/core'
-import { type WidgetOptions, widget } from '@vue-motion/lib'
+import { defineWidget, useMotion } from "@vue-motion/core";
+import { type WidgetOptions, widget } from "@vue-motion/lib";
 
 export interface RowOptions extends WidgetOptions {
-  width: number
+  width: number;
 }
 
-const props = defineProps<RowOptions>()
+const props = defineProps<RowOptions>();
 
-const { height } = useMotion()
+const { height } = useMotion();
 
-const options = defineWidget<RowOptions>(props)
+const options = defineWidget<RowOptions>(props);
 </script>
 
 <template>
   <g v-bind="widget(options)">
-    <foreignObject :width="options.width - (options.x ?? 0)" :height="height - (options.y ?? 0)">
+    <foreignObject
+      :width="options.width - (options.x ?? 0)"
+      :height="height - (options.y ?? 0)"
+    >
       <slot />
     </foreignObject>
   </g>

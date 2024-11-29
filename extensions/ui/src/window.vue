@@ -1,19 +1,19 @@
 <script setup lang="ts">
-import { defineWidget } from '@vue-motion/core'
-import type { Growable, WidgetOptions } from '@vue-motion/lib'
-import { widget } from '@vue-motion/lib'
+import { defineWidget } from "@vue-motion/core";
+import type { Growable, WidgetOptions } from "@vue-motion/lib";
+import { widget } from "@vue-motion/lib";
 
 export interface WindowOptions extends WidgetOptions, Growable {
-  width: number
-  height: number
-  title?: string
-  theme?: 'light' | 'dark'
+  width: number;
+  height: number;
+  title?: string;
+  theme?: "light" | "dark";
 }
 
 const props = withDefaults(defineProps<WindowOptions>(), {
-  theme: 'dark',
-})
-const options = defineWidget(props)
+  theme: "dark",
+});
+const options = defineWidget(props);
 </script>
 
 <template>
@@ -24,7 +24,9 @@ const options = defineWidget(props)
       :width="options.width"
       :height="options.height"
       :fill="options.theme === 'light' ? 'white' : 'gray'"
-      rx="10" ry="10" stroke="none"
+      rx="10"
+      ry="10"
+      stroke="none"
     />
     <rect
       :x="10 - options.width / 2"
@@ -32,25 +34,33 @@ const options = defineWidget(props)
       :width="options.width - 20"
       :height="options.height - 40"
       :fill="options.theme === 'light' ? 'white' : '#333333'"
-      rx="10" ry="10" stroke="none"
+      rx="10"
+      ry="10"
+      stroke="none"
     />
-    <g
-      :x="-(options.width - 20) / 2"
-      :y="-(options.height - 100) / 2 - 40"
-    >
+    <g :x="-(options.width - 20) / 2" :y="-(options.height - 100) / 2 - 40">
       <slot />
     </g>
     <circle
-      :cx="15 - options.width / 2" :cy="15 - options.height / 2"
-      r="10" fill="red" stroke="none"
+      :cx="15 - options.width / 2"
+      :cy="15 - options.height / 2"
+      r="10"
+      fill="red"
+      stroke="none"
     />
     <circle
-      :cx="40 - options.width / 2" :cy="15 - options.height / 2"
-      r="10" fill="yellow" stroke="none"
+      :cx="40 - options.width / 2"
+      :cy="15 - options.height / 2"
+      r="10"
+      fill="yellow"
+      stroke="none"
     />
     <circle
-      :cx="65 - options.width / 2" :cy="15 - options.height / 2"
-      r="10" fill="lightgreen" stroke="none"
+      :cx="65 - options.width / 2"
+      :cy="15 - options.height / 2"
+      r="10"
+      fill="lightgreen"
+      stroke="none"
     />
   </g>
 </template>

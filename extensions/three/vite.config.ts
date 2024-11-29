@@ -1,19 +1,19 @@
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
-import dts from 'vite-plugin-dts'
-import { templateCompilerOptions } from '@tresjs/core'
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
+import dts from "vite-plugin-dts";
+import { templateCompilerOptions } from "@tresjs/core";
 
 export default defineConfig({
-  root: '.',
+  root: ".",
   build: {
     lib: {
-      entry: 'src/index.ts',
-      name: 'vuemotion',
-      formats: ['es', 'cjs', 'iife'],
-      fileName: 'index',
+      entry: "src/index.ts",
+      name: "vuemotion",
+      formats: ["es", "cjs", "iife"],
+      fileName: "index",
     },
     rollupOptions: {
-      external: ['vue'],
+      external: ["vue"],
     },
   },
   plugins: [
@@ -21,9 +21,9 @@ export default defineConfig({
       ...templateCompilerOptions,
     }),
     dts({
-      include: ['./src/**/*.ts'],
+      include: ["./src/**/*.ts"],
       rollupTypes: true,
       copyDtsFiles: true,
     }),
   ],
-})
+});

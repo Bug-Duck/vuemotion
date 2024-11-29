@@ -1,29 +1,29 @@
-import type { DateTime, DateTimeUnit } from 'luxon'
+import type { DateTime, DateTimeUnit } from "luxon";
 
-import type { WidgetOptions } from '@vue-motion/lib'
-import type { ReturnWidget } from '@vue-motion/core'
-import type { BarChartStyle, ChartDataOptions, DateTimeWithDuration } from '..'
-import type { LineChartStyle } from './lineChart.vue'
+import type { WidgetOptions } from "@vue-motion/lib";
+import type { ReturnWidget } from "@vue-motion/core";
+import type { BarChartStyle, ChartDataOptions, DateTimeWithDuration } from "..";
+import type { LineChartStyle } from "./lineChart.vue";
 // import type { default as ChartLayout } from './chartLayout'
 // import type { ChartDataUnit } from './chartDataUnit'
 
-export type Color = string
+export type Color = string;
 
 export class ColorEnum {
-  static readonly WHITE = 'white'
-  static readonly BLACK = 'black'
-  static readonly RED = 'red'
-  static readonly GREEN = 'green'
-  static readonly BLUE = 'blue'
-  static readonly YELLOW = 'yellow'
-  static readonly CYAN = 'cyan'
-  static readonly MAGENTA = 'magenta'
-  static readonly GRAY = 'gray'
-  static readonly LIGHT_GRAY = 'lightGray'
-  static readonly DARK_GRAY = 'darkGray'
+  static readonly WHITE = "white";
+  static readonly BLACK = "black";
+  static readonly RED = "red";
+  static readonly GREEN = "green";
+  static readonly BLUE = "blue";
+  static readonly YELLOW = "yellow";
+  static readonly CYAN = "cyan";
+  static readonly MAGENTA = "magenta";
+  static readonly GRAY = "gray";
+  static readonly LIGHT_GRAY = "lightGray";
+  static readonly DARK_GRAY = "darkGray";
 }
 
-export type ChartStyle = BaseChartStyle & BarChartStyle & LineChartStyle
+export type ChartStyle = BaseChartStyle & BarChartStyle & LineChartStyle;
 
 /**
  * ChartAxisOptions
@@ -40,7 +40,7 @@ export interface ChartAxisOptions extends WidgetOptions {
    * It is optional.
    * If not provided, the beginAtZero will be `true`.
    */
-  beginAtZero?: boolean
+  beginAtZero?: boolean;
   /**
    * @property number suggestedMin
    * @description
@@ -49,7 +49,7 @@ export interface ChartAxisOptions extends WidgetOptions {
    * It is optional.
    * If not provided, the suggestedMin will be `0` when `beginAtZero` is `true` and `undefined` when `beginAtZero` is `false`.
    */
-  suggestedMin?: number | DateTime
+  suggestedMin?: number | DateTime;
   /**
    * @property number suggestedMax
    * @description
@@ -58,7 +58,7 @@ export interface ChartAxisOptions extends WidgetOptions {
    * It is optional.
    * If not provided, the suggestedMax will be `undefined`.
    */
-  suggestedMax?: number | DateTime
+  suggestedMax?: number | DateTime;
   /**
    * @property Color girdColor
    * @description
@@ -66,7 +66,7 @@ export interface ChartAxisOptions extends WidgetOptions {
    * It is optional.
    * If not provided, the gridColor will be `Color.WHITE`.
    */
-  gridColor?: Color
+  gridColor?: Color;
   /**
    * @property number gridWidth
    * @description
@@ -74,7 +74,7 @@ export interface ChartAxisOptions extends WidgetOptions {
    * It is optional.
    * If not provided, the gridWidth will be `1`.
    */
-  gridWidth?: number
+  gridWidth?: number;
 }
 
 /**
@@ -85,15 +85,21 @@ export interface ChartAxisOptions extends WidgetOptions {
  * DateTimeFormatOptions is an interface that defines the options of the date time format.
  */
 export interface DateTimeFormatOptions {
-  year: 'year'
-  quarter: 'quarter'
-  month: 'month' | 'monthShort' | 'monthLong'
-  week: 'weekNumber'
-  day: 'day' | 'weekday' | 'localWeekNumber' | 'weekdayLong' | 'weekdayShort' | 'ordinal'
-  hour: 'hour'
-  minute: 'minute'
-  second: 'second'
-  millisecond: 'millisecond'
+  year: "year";
+  quarter: "quarter";
+  month: "month" | "monthShort" | "monthLong";
+  week: "weekNumber";
+  day:
+    | "day"
+    | "weekday"
+    | "localWeekNumber"
+    | "weekdayLong"
+    | "weekdayShort"
+    | "ordinal";
+  hour: "hour";
+  minute: "minute";
+  second: "second";
+  millisecond: "millisecond";
 }
 
 /**
@@ -111,7 +117,7 @@ export interface BaseChartOptions extends ChartAxisOptions {
    * It is optional.
    * If not provided, the index-axis will be 'x'.
    */
-  indexAxis?: 'x' | 'y'
+  indexAxis?: "x" | "y";
   /**
    * @property 'number' | 'label' | 'date' indexType
    * @description
@@ -122,7 +128,7 @@ export interface BaseChartOptions extends ChartAxisOptions {
    * 'date' when labels are provided as DateTimes or {@link DataUtil#isIndexDate} are DateTimes.
    * and 'number' when {@link DataUtil#isIndexDate} are not DateTimes.
    */
-  indexType?: 'label' | 'number' | 'date'
+  indexType?: "label" | "number" | "date";
   /**
    * @property DateTimeUnit indexIntervalUnit
    * @description
@@ -131,13 +137,13 @@ export interface BaseChartOptions extends ChartAxisOptions {
    * It is optional.
    * If not provided, the indexIntervalUnit will be generated automatically.
    */
-  indexIntervalUnit?: DateTimeUnit
+  indexIntervalUnit?: DateTimeUnit;
   /**
    * @property DateTimeFormatOptions dateFormatOptions
    * @description
    * dateFormatOptions is an object that defines the options of the date time format.
    */
-  dateFormatOptions?: DateTimeFormatOptions
+  dateFormatOptions?: DateTimeFormatOptions;
   /**
    * @property object axis
    * @description
@@ -149,28 +155,28 @@ export interface BaseChartOptions extends ChartAxisOptions {
      * @description
      * index is an object that defines the options of the index-axis in the chart.
      */
-    index?: ChartAxisOptions
+    index?: ChartAxisOptions;
     /**
      * @property ChartAxisOptions cross
      * @description
      * cross is an object that defines the options of the cross-axis in the chart.
      */
-    cross?: ChartAxisOptions
-  }
+    cross?: ChartAxisOptions;
+  };
   /**
    * @property number width
    * @description
    * width is a number that represents the width of the chart.
    * To be noted that the width is the width of chart layout (excluding label, legend, etc.).
    */
-  width?: number
+  width?: number;
   /**
    * @property number height
    * @description
    * height is a number that represents the height of the chart.
    * To be noted that the height is the height of chart layout (excluding label, legend, etc.).
    */
-  height?: number
+  height?: number;
   /**
    * @property boolean gridAlign
    * @description
@@ -178,7 +184,7 @@ export interface BaseChartOptions extends ChartAxisOptions {
    * It is optional.
    * If not provided, the gridAlign will be `true` for `BarChart` and `false` for other types.
    */
-  gridAlign?: boolean
+  gridAlign?: boolean;
   /**
    * @property boolean edgeOffset
    * @description
@@ -186,7 +192,7 @@ export interface BaseChartOptions extends ChartAxisOptions {
    * It is optional.
    * If not provided, the edgeOffset will be `false` when `gridAlign` is `true` and `true` when `gridAlign` is `false`.
    */
-  edgeOffset?: boolean
+  edgeOffset?: boolean;
   /**
    * @property ChartLayoutConfig layout
    * @description
@@ -196,7 +202,7 @@ export interface BaseChartOptions extends ChartAxisOptions {
    * It is optional.
    * If not provided, the layout will be generated automatically.
    */
-  layout?: boolean
+  layout?: boolean;
 }
 
 /**
@@ -213,7 +219,7 @@ export interface BaseChartStyle {
    * backgroundColor is a color that represents the background color of the dataUnit, which may be displayed in various forms.
    * It is optional.
    */
-  backgroundColor?: Color
+  backgroundColor?: Color;
   /**
    * @property Shader backgroundShader
    * @description
@@ -233,7 +239,7 @@ export interface BaseChartStyle {
    * borderColor is a color that represents the border color of the dataUnit, which may be displayed in various forms.
    * It is optional.
    */
-  borderColor?: Color
+  borderColor?: Color;
   /**
    * @property Shader borderShader
    * @description
@@ -247,40 +253,50 @@ export interface BaseChartStyle {
    * borderWidth is a number that represents the border width of the dataUnit, which may be displayed in various forms.
    * It is optional.
    */
-  borderWidth?: number
+  borderWidth?: number;
 }
 
 export const DataUtil = {
   indexNumber(ChartDataOption: ReturnWidget<ChartDataOptions>): number {
     if (!(ChartDataOption.index as DateTime)?.isValid) {
-      return ChartDataOption.index as number
-    }
-    else {
-      const date = ChartDataOption.index as DateTime
+      return ChartDataOption.index as number;
+    } else {
+      const date = ChartDataOption.index as DateTime;
       if (!ChartDataOption.intervalUnit)
-        throw new Error('Interval unit is not set')
-      const start = date.startOf(ChartDataOption.intervalUnit)
-      const end = date.endOf(ChartDataOption.intervalUnit)
-      if (ChartDataOption.intervalUnit !== 'week')
-        return start.get(ChartDataOption.intervalUnit) + date.diff(start).as('milliseconds') / (end.diff(start).as('milliseconds'))
+        throw new Error("Interval unit is not set");
+      const start = date.startOf(ChartDataOption.intervalUnit);
+      const end = date.endOf(ChartDataOption.intervalUnit);
+      if (ChartDataOption.intervalUnit !== "week")
+        return (
+          start.get(ChartDataOption.intervalUnit) +
+          date.diff(start).as("milliseconds") /
+            end.diff(start).as("milliseconds")
+        );
       else
-        return start.get('weekNumber') + date.diff(start).as('milliseconds') / (end.diff(start).as('milliseconds'))
+        return (
+          start.get("weekNumber") +
+          date.diff(start).as("milliseconds") /
+            end.diff(start).as("milliseconds")
+        );
     }
   },
 
   indexDate(ChartDataOption: ReturnWidget<ChartDataOptions>) {
-    return ChartDataOption.index as DateTime
+    return ChartDataOption.index as DateTime;
   },
 
-  indexDuration(ChartDataOption: ReturnWidget<ChartDataOptions>): number | undefined {
-    if (!(ChartDataOption.index as DateTime)?.isValid)
-      return undefined
+  indexDuration(
+    ChartDataOption: ReturnWidget<ChartDataOptions>,
+  ): number | undefined {
+    if (!(ChartDataOption.index as DateTime)?.isValid) return undefined;
     if (!ChartDataOption.intervalUnit)
-      throw new Error('Interval unit is not set')
-    return (ChartDataOption.index as DateTimeWithDuration).duration!.as(ChartDataOption.intervalUnit)
+      throw new Error("Interval unit is not set");
+    return (ChartDataOption.index as DateTimeWithDuration).duration!.as(
+      ChartDataOption.intervalUnit,
+    );
   },
 
   isIndexDate(ChartDataOption: ReturnWidget<ChartDataOptions>) {
-    return (ChartDataOption.index as DateTime)?.isValid
+    return (ChartDataOption.index as DateTime)?.isValid;
   },
-}
+};

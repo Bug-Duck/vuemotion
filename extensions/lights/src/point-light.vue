@@ -1,32 +1,29 @@
 <script setup lang="ts">
-import { defineWidget } from '@vue-motion/core'
-import type { WidgetOptions } from '@vue-motion/lib'
+import { defineWidget } from "@vue-motion/core";
+import type { WidgetOptions } from "@vue-motion/lib";
 
 export interface PointLightOptions extends WidgetOptions {
-  constant?: number
-  exponent?: number
-  surfaceScale?: number
-  color: string
-  sourceX: number
-  sourceY: number
-  sourceZ: number
-  type?: 'diffuse' | 'specular'
+  constant?: number;
+  exponent?: number;
+  surfaceScale?: number;
+  color: string;
+  sourceX: number;
+  sourceY: number;
+  sourceZ: number;
+  type?: "diffuse" | "specular";
 }
 
-const props = defineProps<PointLightOptions>()
-const options = defineWidget<PointLightOptions>(props)
+const props = defineProps<PointLightOptions>();
+const options = defineWidget<PointLightOptions>(props);
 
-const id = Math.random().toString(36).substring(2, 9)
-const diffuseId = options.wid || `diffuse-${id}`
-const specularId = options.wid || `specular-${id}`
+const id = Math.random().toString(36).substring(2, 9);
+const diffuseId = options.wid || `diffuse-${id}`;
+const specularId = options.wid || `specular-${id}`;
 </script>
 
 <template>
   <filter :id="diffuseId">
-    <feDiffuseLighting
-      :result="diffuseId"
-      :lighting-color="options.color"
-    >
+    <feDiffuseLighting :result="diffuseId" :lighting-color="options.color">
       <fePointLight
         :x="options.sourceX"
         :y="options.sourceY"
@@ -38,10 +35,7 @@ const specularId = options.wid || `specular-${id}`
     </feDiffuseLighting>
   </filter>
   <filter :id="specularId">
-    <feSpecularLighting
-      :result="specularId"
-      :lighting-color="options.color"
-    >
+    <feSpecularLighting :result="specularId" :lighting-color="options.color">
       <fePointLight
         :x="options.sourceX"
         :y="options.sourceY"

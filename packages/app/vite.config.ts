@@ -1,12 +1,10 @@
-import process from 'node:process'
-import { defineConfig } from 'vite'
-import vue from '@vitejs/plugin-vue'
+import process from "node:process";
+import { defineConfig } from "vite";
+import vue from "@vitejs/plugin-vue";
 
 export default defineConfig({
-  plugins: [
-    vue(),
-  ],
+  plugins: [vue()],
   define: {
-    __D__: process.env.NODE_ENV === 'development',
+    __D__: process.env.NODE_ENV === "development",
   },
-})
+});

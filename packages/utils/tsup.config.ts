@@ -1,1 +1,1 @@
-export default (await import('../../tsup.config')).default
+export default (await import("../../tsup.config")).default;

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Preview from './components/Preview.vue'
-import Timeline from './components/Timeline.vue'
-import Tools from './components/Tools.vue'
-import TopMenubar from './components/TopMenubar.vue'
-import Widgets from './components/Widgets.vue'
+import Preview from "./components/Preview.vue";
+import Timeline from "./components/Timeline.vue";
+import Tools from "./components/Tools.vue";
+import TopMenubar from "./components/TopMenubar.vue";
+import Widgets from "./components/Widgets.vue";
 </script>
 
 <template>
@@ -15,11 +15,7 @@ import Widgets from './components/Widgets.vue'
       <div class="flex-grow flex flex-row overflow-hidden">
         <div class="w-1/4 overflow-y-auto">
           <Widgets
-            :widgets="[
-              { type: 'Arc' },
-              { type: 'Arc' },
-              { type: 'Arc' },
-            ]"
+            :widgets="[{ type: 'Arc' }, { type: 'Arc' }, { type: 'Arc' }]"
           />
         </div>
         <div class="w-3/4 overflow-auto">

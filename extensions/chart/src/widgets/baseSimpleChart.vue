@@ -1,11 +1,11 @@
 <script setup lang="ts">
-import type { Growable } from '@vue-motion/lib'
-import { widget } from '@vue-motion/lib'
-import type { DateTime } from 'luxon'
-import { withDefaults } from 'vue'
-import { useSimpleChart } from '../utils/useSimpleChart.ts'
-import type { BaseChartDataSet, BaseChartOptions, ChartStyle } from '..'
-import ChartLayout from './chartLayout.vue'
+import type { Growable } from "@vue-motion/lib";
+import { widget } from "@vue-motion/lib";
+import type { DateTime } from "luxon";
+import { withDefaults } from "vue";
+import { useSimpleChart } from "../utils/useSimpleChart.ts";
+import type { BaseChartDataSet, BaseChartOptions, ChartStyle } from "..";
+import ChartLayout from "./chartLayout.vue";
 
 /**
  * BaseSimpleChartOptions
@@ -13,8 +13,8 @@ import ChartLayout from './chartLayout.vue'
  * @extends BaseChartOptions
  */
 export interface BaseSimpleChartOptions extends BaseChartOptions, Growable {
-  labels?: string[] | DateTime[]
-  style?: ChartStyle
+  labels?: string[] | DateTime[];
+  style?: ChartStyle;
 }
 
 export interface BaseSimpleChartData {
@@ -25,27 +25,25 @@ export interface BaseSimpleChartData {
    * It is optional.
    * If not provided, the labels will be generated automatically.
    */
-  labels?: string[] | DateTime[]
+  labels?: string[] | DateTime[];
   /**
    * @property BaseChartDataSet[] datasets
    * @description
    * datasets is an array of datasets that represent the data of the chart.
    */
-  datasets: BaseChartDataSet<ChartStyle>[]
+  datasets: BaseChartDataSet<ChartStyle>[];
   /**
    * @property ChartStyle style
    * @description
    * style is an object that defines the style of the chart.
    */
-  style?: ChartStyle
+  style?: ChartStyle;
 }
 
 const props = withDefaults(defineProps<BaseSimpleChartOptions>(), {
   gridAlign: true,
-})
-const {
-  options,
-} = useSimpleChart<BaseSimpleChartOptions>(props)
+});
+const { options } = useSimpleChart<BaseSimpleChartOptions>(props);
 </script>
 
 <template>
@@ -66,6 +64,4 @@ const {
   </g>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
