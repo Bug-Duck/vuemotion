@@ -131,7 +131,7 @@ export function widget(options: WidgetOptions) {
   registerAnimation<HasScale>('zoomIn', (params?: AnimationParams) => {
     return (manager) => manager.animate(zoomIn, {
       duration: params?.duration ?? defaultDuration,
-      by: params?.bWidgetMixiny ?? ((x) => x),
+      by: params?.by ?? ((x) => x),
     })
   })
   registerAnimation<HasScale>('zoomOut', (params?: AnimationParams) => {
