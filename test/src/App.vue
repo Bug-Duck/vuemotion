@@ -9,7 +9,6 @@ import {
   Line,
 } from "@vue-motion/lib";
 import { onMounted } from "vue";
-import "@vue-motion/extension-animations";
 
 const rect = useWidget<RectMixin>();
 const line = useWidget<LineMixin>();
@@ -22,9 +21,6 @@ onMounted(() => {
   // rect.rotateTo(200)
   // rect.zoomTo(3, 3)
 
-  rect.focusOn({
-    by: easeInOutCirc,
-  });
   rect.moveOnPath(
     "M 100 100 Q 100 200 200 200 Q 300 200 300 100 Q 300 0 200 0 Q 100 0 100 100 Z",
     {
@@ -42,7 +38,7 @@ onMounted(() => {
   );
   rect.parallel(
     (r) => r.discolorateFillTo("skyblue"),
-    (r) => r.discolorateBorderTo("yellow"),
+    (r) => r.discolorateBorderTo("blue"),
     (r) => r.move(-200, -200),
   );
 
@@ -53,7 +49,7 @@ onMounted(() => {
 
 <template>
   <Motion :width="1600" :height="900">
-    <Rect :widget="rect" :width="100" :height="100" fill-color="red" />
+    <Rect :widget="rect" :width="100" :height="100" />
     <Line :widget="line" :from="[0, 0]" :to="[200, 200]" />
   </Motion>
 </template>
