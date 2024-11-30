@@ -18,6 +18,7 @@ import {
   type RotatableMixin,
   type Scalable,
   type StrokableMixin,
+  destory,
   grow,
   moveOnFunction,
   moveOnPath,
@@ -335,6 +336,20 @@ export function widget(options: WidgetOptions) {
         });
     },
   );
+  registerAnimation<Growable>("grow", (params?: AnimationParams) => {
+    return (manager) =>
+      manager.animate(grow, {
+        duration: params?.duration ?? defaultDuration,
+        by: params?.by ?? ((x) => x),
+      });
+  });
+  registerAnimation<Growable>("destory", (params?: AnimationParams) => {
+    return (manager) =>
+      manager.animate(destory, {
+        duration: params?.duration ?? defaultDuration,
+        by: params?.by ?? ((x) => x),
+      });
+  });
   registerAnimation<Widget>(
     "animate",
     <A>(

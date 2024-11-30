@@ -1,10 +1,17 @@
 <script setup lang="ts">
 import { usePlayer, useWidget } from "@vue-motion/core";
-import { Motion, Rect, type RectMixin, easeInOutCirc } from "@vue-motion/lib";
+import {
+  LineMixin,
+  Motion,
+  Rect,
+  type RectMixin,
+  easeInOutCirc,
+} from "@vue-motion/lib";
 import { onMounted } from "vue";
 import "@vue-motion/extension-animations";
 
 const rect = useWidget<RectMixin>();
+const line = useWidget<LineMixin>();
 
 const { play } = usePlayer();
 
@@ -36,6 +43,8 @@ onMounted(() => {
     (r) => r.discolorateBorderTo("yellow"),
     (r) => r.move(-200, -200),
   );
+
+  line.grow();
   play();
 });
 </script>
@@ -43,5 +52,6 @@ onMounted(() => {
 <template>
   <Motion :width="1600" :height="900">
     <Rect :widget="rect" :width="100" :height="100" fill-color="red" />
+    <Line :widget="line" :from="[100, 100]" :to="[200, 200]" />
   </Motion>
 </template>
