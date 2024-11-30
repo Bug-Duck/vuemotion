@@ -7,9 +7,13 @@ export interface Colorable {
   color?: string;
 }
 
-export interface colorableMixin {
-  discolorate: (on: "fill" | "border" | "color", offset: string) => void;
-  discolorateTo: (on: "fill" | "border" | "color", to: string) => void;
+export interface ColorableMixin {
+  discolorate: (offset: string) => void;
+  discolorateTo: (to: string) => void;
+  discolorateBorder: (offset: string) => void;
+  discolorateBorderTo: (to: string) => void;
+  discolorateFill: (offset: string) => void;
+  discolorateFillTo: (to: string) => void;
 }
 
 interface RGB {
@@ -101,23 +105,16 @@ export const discolorate = defineAnimation<
   {
     from?: string;
     offset?: string;
-    on: "fill" | "border" | "color";
   }
 >((target, context) => {
-  const propertyMap = {
-    fill: "fillColor",
-    border: "borderColor",
-    color: "color",
-  };
-  const property = propertyMap[context.on] as keyof Colorable;
-
-  const fromColor = context.from || target[property] || "#000000";
+  const currentColor = target.color;
+  const fromColor = context.from || currentColor || "#000000";
   const toColor = context.offset
     ? shiftColor(fromColor, context.offset)
-    : target[property] || "#000000";
+    : currentColor || "#000000";
 
   return (progress) => {
-    target[property] = interpolateColor(fromColor, toColor, progress);
+    target.color = interpolateColor(fromColor, toColor, progress);
   };
 });
 
@@ -125,25 +122,88 @@ export const discolorateTo = defineAnimation<
   Colorable,
   {
     to: string;
-    on: "fill" | "border" | "color";
   }
 >((target, context) => {
-  const propertyMap = {
-    fill: "fillColor",
-    border: "borderColor",
-    color: "color",
-  };
-  const property = propertyMap[context.on] as keyof Colorable;
-
-  const currentColor = target[property];
+  const currentColor = target.color;
   const fromColor = currentColor
     ? findColor(currentColor as keyof typeof colorTable) || currentColor
     : "#000000";
-
   const toColor =
     findColor(context.to as keyof typeof colorTable) || context.to;
 
   return (progress) => {
-    target[property] = interpolateColor(fromColor, toColor, progress);
+    target.color = interpolateColor(fromColor, toColor, progress);
+  };
+});
+
+export const discolorateBorder = defineAnimation<
+  Colorable,
+  {
+    from?: string;
+    offset?: string;
+  }
+>((target, context) => {
+  const currentColor = target.borderColor;
+  const fromColor = context.from || currentColor || "#000000";
+  const toColor = context.offset
+    ? shiftColor(fromColor, context.offset)
+    : currentColor || "#000000";
+
+  return (progress) => {
+    target.borderColor = interpolateColor(fromColor, toColor, progress);
+  };
+});
+
+export const discolorateBorderTo = defineAnimation<
+  Colorable,
+  {
+    to: string;
+  }
+>((target, context) => {
+  const currentColor = target.borderColor;
+  const fromColor = currentColor
+    ? findColor(currentColor as keyof typeof colorTable) || currentColor
+    : "#000000";
+  const toColor =
+    findColor(context.to as keyof typeof colorTable) || context.to;
+
+  return (progress) => {
+    target.borderColor = interpolateColor(fromColor, toColor, progress);
+  };
+});
+
+export const discolorateFill = defineAnimation<
+  Colorable,
+  {
+    from?: string;
+    offset?: string;
+  }
+>((target, context) => {
+  const currentColor = target.fillColor;
+  const fromColor = context.from || currentColor || "#000000";
+  const toColor = context.offset
+    ? shiftColor(fromColor, context.offset)
+    : currentColor || "#000000";
+
+  return (progress) => {
+    target.fillColor = interpolateColor(fromColor, toColor, progress);
+  };
+});
+
+export const discolorateFillTo = defineAnimation<
+  Colorable,
+  {
+    to: string;
+  }
+>((target, context) => {
+  const currentColor = target.fillColor;
+  const fromColor = currentColor
+    ? findColor(currentColor as keyof typeof colorTable) || currentColor
+    : "#000000";
+  const toColor =
+    findColor(context.to as keyof typeof colorTable) || context.to;
+
+  return (progress) => {
+    target.fillColor = interpolateColor(fromColor, toColor, progress);
   };
 });

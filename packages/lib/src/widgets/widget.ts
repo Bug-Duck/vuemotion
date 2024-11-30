@@ -36,8 +36,15 @@ import {
   zoomOut,
   zoomTo,
 } from "../animations";
-import type { Colorable, colorableMixin } from "../animations/color";
-import { discolorate, discolorateTo } from "../animations/color";
+import type { Colorable, ColorableMixin } from "../animations/color";
+import {
+  discolorate,
+  discolorateBorder,
+  discolorateBorderTo,
+  discolorateFill,
+  discolorateFillTo,
+  discolorateTo,
+} from "../animations/color";
 import type {
   Animation,
   AnimationInstance,
@@ -59,7 +66,7 @@ export type WidgetMixin = WidgetOptions &
   HasScaleMixin &
   StrokableMixin &
   HasOpacityMixin &
-  colorableMixin &
+  ColorableMixin &
   GrowableMixin & {
     parallel: (
       ...animations: ((
@@ -237,40 +244,12 @@ export function widget(options: WidgetOptions) {
         by: params?.by ?? ((x) => x),
       });
   });
-  registerAnimation<Colorable>(
-    "discolorate",
-    (
-      on: "fill" | "border" | "color",
-      offset: string,
-      params?: AnimationParams,
-    ) => {
-      return (manager) =>
-        manager.animate(discolorate, {
-          offset,
-          on,
-          duration: params?.duration ?? defaultDuration,
-          by: params?.by ?? ((x) => x),
-        });
-    },
-  );
   registerAnimation<Positional>(
     "moveOnPath",
     (path: string, params?: AnimationParams) => {
       return (manager) =>
         manager.animate(moveOnPath, {
           path,
-          duration: params?.duration ?? defaultDuration,
-          by: params?.by ?? ((x) => x),
-        });
-    },
-  );
-  registerAnimation<Colorable>(
-    "discolorateTo",
-    (on: "fill" | "border" | "color", to: string, params?: AnimationParams) => {
-      return (manager) =>
-        manager.animate(discolorateTo, {
-          to,
-          on,
           duration: params?.duration ?? defaultDuration,
           by: params?.by ?? ((x) => x),
         });
@@ -285,6 +264,72 @@ export function widget(options: WidgetOptions) {
       return (manager) =>
         manager.animate(moveOnFunction, {
           path,
+          duration: params?.duration ?? defaultDuration,
+          by: params?.by ?? ((x) => x),
+        });
+    },
+  );
+  registerAnimation<Colorable>(
+    "discolorate",
+    (offset: string, params?: AnimationParams) => {
+      return (manager) =>
+        manager.animate(discolorate, {
+          offset,
+          duration: params?.duration ?? defaultDuration,
+          by: params?.by ?? ((x) => x),
+        });
+    },
+  );
+  registerAnimation<Colorable>(
+    "discolorateTo",
+    (to: string, params?: AnimationParams) => {
+      return (manager) =>
+        manager.animate(discolorateTo, {
+          to,
+          duration: params?.duration ?? defaultDuration,
+          by: params?.by ?? ((x) => x),
+        });
+    },
+  );
+  registerAnimation<Colorable>(
+    "discolorateBorder",
+    (offset: string, params?: AnimationParams) => {
+      return (manager) =>
+        manager.animate(discolorateBorder, {
+          offset,
+          duration: params?.duration ?? defaultDuration,
+          by: params?.by ?? ((x) => x),
+        });
+    },
+  );
+  registerAnimation<Colorable>(
+    "discolorateBorderTo",
+    (to: string, params?: AnimationParams) => {
+      return (manager) =>
+        manager.animate(discolorateBorderTo, {
+          to,
+          duration: params?.duration ?? defaultDuration,
+          by: params?.by ?? ((x) => x),
+        });
+    },
+  );
+  registerAnimation<Colorable>(
+    "discolorateFill",
+    (offset: string, params?: AnimationParams) => {
+      return (manager) =>
+        manager.animate(discolorateFill, {
+          offset,
+          duration: params?.duration ?? defaultDuration,
+          by: params?.by ?? ((x) => x),
+        });
+    },
+  );
+  registerAnimation<Colorable>(
+    "discolorateFillTo",
+    (to: string, params?: AnimationParams) => {
+      return (manager) =>
+        manager.animate(discolorateFillTo, {
+          to,
           duration: params?.duration ?? defaultDuration,
           by: params?.by ?? ((x) => x),
         });

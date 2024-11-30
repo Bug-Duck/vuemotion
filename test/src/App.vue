@@ -31,7 +31,11 @@ onMounted(() => {
       by: easeInOutCirc,
     },
   );
-  rect.discolorateTo("fill", "skyblue");
+  rect.parallel(
+    (r) => r.discolorateFillTo("skyblue"),
+    (r) => r.discolorateBorderTo("yellow"),
+    (r) => r.move(-200, -200),
+  );
   play();
 });
 </script>
