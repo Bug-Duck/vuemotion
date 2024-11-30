@@ -96,3 +96,6 @@ vue-motion is licensed under the Apache-2.0 License. See the [LICENSE](./LICENSE
 - [X(Twitter)](https://x.com/bugduckteam)
 - [Discord](https://discord.gg/PUVcpkv8)
 - [Bilibili (For 🇨🇳 Users)](https://space.bilibili.com/1959824394)
+
+✨ Star History
+[![Star History Chart](https://api.star-history.com/svg?repos=bug-duck/vuemotion&type=Date)](https://star-history.com/#bug-duck/vuemotion&Date)
