@@ -16,7 +16,7 @@ export interface ColorableMixin {
   discolorateFillTo: (to: string) => void;
 }
 
-interface RGB {
+export interface RGB {
   r: number;
   g: number;
   b: number;

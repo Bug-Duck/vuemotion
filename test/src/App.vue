@@ -6,6 +6,7 @@ import {
   Rect,
   type RectMixin,
   easeInOutCirc,
+  Line,
 } from "@vue-motion/lib";
 import { onMounted } from "vue";
 import "@vue-motion/extension-animations";
@@ -20,6 +21,7 @@ onMounted(() => {
   // rect.rotate(180)
   // rect.rotateTo(200)
   // rect.zoomTo(3, 3)
+
   rect.focusOn({
     by: easeInOutCirc,
   });
@@ -52,6 +54,6 @@ onMounted(() => {
 <template>
   <Motion :width="1600" :height="900">
     <Rect :widget="rect" :width="100" :height="100" fill-color="red" />
-    <Line :widget="line" :from="[100, 100]" :to="[200, 200]" />
+    <Line :widget="line" :from="[0, 0]" :to="[200, 200]" />
   </Motion>
 </template>

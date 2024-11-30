@@ -7,20 +7,27 @@ export default defineConfig({
   build: {
     lib: {
       entry: "src/index.ts",
-      name: "VueMotionLib",
+      name: "VueMotionCore",
       formats: ["es", "cjs", "iife"],
       fileName: "index",
     },
     rollupOptions: {
       external: ["vue"],
     },
+    commonjsOptions: {
+      transformMixedEsModules: true,
+    },
   },
   plugins: [
     vue(),
     dts({
-      include: ["./src/**/*.ts", "./src/**/*.vue"],
+      include: ["./src/**/*.ts"],
       rollupTypes: true,
       copyDtsFiles: true,
+      outDir: "./dist",
+      aliasesExclude: [/@vue-motion\/core/],
+      staticImport: true,
+      insertTypesEntry: true,
     }),
   ],
 });

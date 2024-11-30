@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps } from "vue";
+import { defineProps, computed } from "vue";
 import { defineWidget } from "@vue-motion/core";
 import type { Vector } from "../animations/typings";
 import type { Growable } from "../animations";
@@ -15,10 +15,14 @@ export type LineMixin = LineOptions & FigureMixin;
 const props = defineProps<LineOptions>();
 const options = defineWidget(props);
 
-const dx = options.to[0] - options.from[0];
-const dy = options.to[1] - options.from[1];
-const currentX = options.from[0] + dx * (options.progress ?? 1);
-const currentY = options.from[1] + dy * (options.progress ?? 1);
+const current = computed(() => {
+  const dx = options.to[0] - options.from[0];
+  const dy = options.to[1] - options.from[1];
+  return {
+    x: options.from[0] + dx * (options.progress ?? 1),
+    y: options.from[1] + dy * (options.progress ?? 1),
+  };
+});
 </script>
 
 <template>
@@ -26,7 +30,7 @@ const currentY = options.from[1] + dy * (options.progress ?? 1);
     v-bind="figure(options)"
     :x1="options.from[0]"
     :y1="options.from[1]"
-    :x2="currentX"
-    :y2="currentY"
+    :x2="current.x"
+    :y2="current.y"
   />
 </template>
