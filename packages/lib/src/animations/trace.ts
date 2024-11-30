@@ -11,7 +11,7 @@ export interface StrokableMixin extends Strokable {
   traceFill: (origin: number, options?: AnimationParams) => void;
 }
 
-export const stroke = defineAnimation<
+export const trace = defineAnimation<
   Strokable,
   {
     origin?: number;
@@ -23,7 +23,7 @@ export const stroke = defineAnimation<
   ] as number[];
 });
 
-export const strokeFill = defineAnimation<
+export const traceFill = defineAnimation<
   Strokable & HasOpacity,
   {
     origin?: number;

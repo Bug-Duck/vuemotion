@@ -698,6 +698,9 @@ importers:
       '@vue-motion/core':
         specifier: workspace:*
         version: link:../core
+      '@vue-motion/utils':
+        specifier: workspace:*
+        version: link:../utils
       vue:
         specifier: ^3.5.11
         version: 3.5.13(typescript@5.7.2)

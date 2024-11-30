@@ -37,7 +37,7 @@ import {
   zoomTo,
 } from "../animations";
 import type { Colorable, colorableMixin } from "../animations/color";
-import { discolorate } from "../animations/color";
+import { discolorate, discolorateTo } from "../animations/color";
 import type {
   Animation,
   AnimationInstance,
@@ -259,6 +259,18 @@ export function widget(options: WidgetOptions) {
       return (manager) =>
         manager.animate(moveOnPath, {
           path,
+          duration: params?.duration ?? defaultDuration,
+          by: params?.by ?? ((x) => x),
+        });
+    },
+  );
+  registerAnimation<Colorable>(
+    "discolorateTo",
+    (on: "fill" | "border" | "color", to: string, params?: AnimationParams) => {
+      return (manager) =>
+        manager.animate(discolorateTo, {
+          to,
+          on,
           duration: params?.duration ?? defaultDuration,
           by: params?.by ?? ((x) => x),
         });

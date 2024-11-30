@@ -31,10 +31,7 @@ onMounted(() => {
       by: easeInOutCirc,
     },
   );
-  rect.parallel(
-    (widget) => widget.move(200, 300),
-    (widget) => widget.rotate(180),
-  );
+  rect.discolorateTo("fill", "skyblue");
   play();
 });
 </script>
