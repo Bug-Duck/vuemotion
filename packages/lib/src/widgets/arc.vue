@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { computed, defineProps, withDefaults } from "vue";
 import { defineWidget } from "@vue-motion/core";
+import { computed, defineProps, withDefaults } from "vue";
 import type { Growable, GrowableMixin } from "../animations";
 import type { Vector } from "../animations/typings";
 import { type FigureOptions, figure } from "./figure";

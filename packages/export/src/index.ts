@@ -1,8 +1,8 @@
-import { resolve } from "node:path";
-import fs from "node:fs";
-import puppeteer from "puppeteer";
-import express from "express";
 import cors from "cors";
+import express from "express";
+import fs from "node:fs";
+import { resolve } from "node:path";
+import puppeteer from "puppeteer";
 import { transformToImage } from "./image-process";
 import { createVideoFromImages } from "./video-process";
 
