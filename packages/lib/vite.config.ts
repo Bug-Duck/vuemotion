@@ -24,10 +24,6 @@ export default defineConfig({
       include: ["./src/**/*.ts"],
       rollupTypes: true,
       copyDtsFiles: true,
-      outDir: "./dist",
-      aliasesExclude: [/@vue-motion\/core/],
-      staticImport: true,
-      insertTypesEntry: true,
     }),
   ],
 });

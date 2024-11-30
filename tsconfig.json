@@ -19,12 +19,7 @@
     "noUnusedParameters": false,
     "noEmit": true,
     "isolatedModules": true,
-    "skipLibCheck": true,
-    "paths": {
-      "@vue-motion/core": ["./packages/core/src"],
-      "@vue-motion/cliet": ["./packages/client/src"],
-      "@vue-motion/lib": ["./packages/lib/src"]
-    }
+    "skipLibCheck": true
   },
   "include": ["packages/*/src", "extensions/*/src"]
 }
