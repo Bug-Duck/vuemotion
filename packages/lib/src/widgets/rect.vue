@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
 import { defineWidget } from "@vue-motion/core";
-import type { FigureMixin, FigureOptions } from "./figure";
+import type { FigureIns, FigureOptions } from "./figure";
 import { figure } from "./figure";
 
 export interface RectOptions extends FigureOptions {
@@ -12,7 +12,7 @@ export interface RectOptions extends FigureOptions {
   // | [number, number, number, number]
   // | [number, number, number, number, number, number, number, number]
 }
-export type RectMixin = RectOptions & FigureMixin;
+export type RectIns = RectOptions & FigureIns;
 
 const props = defineProps<RectOptions>();
 const options = defineWidget(props);

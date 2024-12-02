@@ -7,7 +7,7 @@ export interface Positional {
   y?: number;
 }
 
-export interface PositionalMixin extends Positional {
+export interface PositionalIns extends Positional {
   move: (offsetX: number, offsetY: number, options?: AnimationParams) => void;
   moveTo: (toX: number, toY: number, options?: AnimationParams) => void;
   moveOnPath: (path: string, options?: AnimationParams) => void;

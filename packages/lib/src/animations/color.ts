@@ -7,7 +7,7 @@ export interface Colorable {
   color?: string;
 }
 
-export interface ColorableMixin {
+export interface ColorableIns {
   discolorate: (offset: string) => void;
   discolorateTo: (to: string) => void;
   discolorateBorder: (offset: string) => void;

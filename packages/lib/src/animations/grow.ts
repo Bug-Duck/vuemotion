@@ -4,7 +4,7 @@ export interface Growable {
   progress?: number;
 }
 
-export interface GrowableMixin extends Growable {
+export interface GrowableIns extends Growable {
   grow: () => void;
 }
 

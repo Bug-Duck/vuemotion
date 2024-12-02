@@ -2,7 +2,7 @@
 import { defineProps } from "vue";
 import { defineWidget } from "@vue-motion/core";
 
-import type { FigureMixin, FigureOptions } from "./figure";
+import type { FigureIns, FigureOptions } from "./figure";
 import { figure } from "./figure";
 
 export interface TextOptions extends FigureOptions {
@@ -28,7 +28,7 @@ export interface TextOptions extends FigureOptions {
   wordSpacing?: number;
   letterSpacing?: number;
 }
-export type TextMixin = TextOptions & FigureMixin;
+export type TextIns = TextOptions & FigureIns;
 
 const props = withDefaults(defineProps<TextOptions>(), {
   borderColor: "none",

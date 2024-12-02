@@ -5,7 +5,7 @@ import { interpolator } from "../interpolator";
 export interface HasOpacity {
   opacity?: number;
 }
-export interface HasOpacityMixin extends HasOpacity {
+export interface HasOpacityIns extends HasOpacity {
   fadeTo: (to: number, params?: AnimationParams) => void;
   fadeIn: (params?: AnimationParams) => void;
   fadeOut: (params?: AnimationParams) => void;

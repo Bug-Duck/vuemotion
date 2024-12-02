@@ -1,17 +1,21 @@
 <script setup lang="ts">
 import { usePlayer, useWidget } from "@vue-motion/core";
 import {
-  LineMixin,
+  LineIns,
   Motion,
   Rect,
-  type RectMixin,
+  type RectIns,
   easeInOutCirc,
   Line,
+  Arrow,
+  ArrowIns,
 } from "@vue-motion/lib";
 import { onMounted } from "vue";
+import { NumberPlane } from "@vue-motion/extension-math";
 
-const rect = useWidget<RectMixin>();
-const line = useWidget<LineMixin>();
+const rect = useWidget<RectIns>();
+const line = useWidget<LineIns>();
+const arrow = useWidget<ArrowIns>();
 
 const { play } = usePlayer();
 
@@ -43,6 +47,7 @@ onMounted(() => {
   );
 
   line.grow();
+  arrow.grow();
   play();
 });
 </script>
@@ -51,5 +56,7 @@ onMounted(() => {
   <Motion :width="1600" :height="900">
     <Rect :widget="rect" :width="100" :height="100" />
     <Line :widget="line" :from="[0, 0]" :to="[200, 200]" />
+    <Arrow :from="[0, 0]" :to="[-200, -200]" :widget="arrow" />
+    <NumberPlane :domain-x="[-5, 4]" :domain-y="[-3, 2]" :grid="true" />
   </Motion>
 </template>

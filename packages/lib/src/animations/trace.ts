@@ -6,7 +6,7 @@ import type { HasOpacity } from "./fade";
 export interface Strokable {
   borderInterval: number[];
 }
-export interface StrokableMixin extends Strokable {
+export interface StrokableIns extends Strokable {
   trace: (origin: number, options?: AnimationParams) => void;
   traceFill: (origin: number, options?: AnimationParams) => void;
 }

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
 import { defineWidget } from "@vue-motion/core";
-import type { FigureMixin, FigureOptions } from "./figure";
+import type { FigureIns, FigureOptions } from "./figure";
 import { figure } from "./figure";
 
 export interface EllipseOptions extends FigureOptions {
@@ -13,7 +13,7 @@ export interface EllipseOptions extends FigureOptions {
   height?: number;
   radius?: number;
 }
-export type EllipseMixin = EllipseOptions & FigureMixin;
+export type EllipseIns = EllipseOptions & FigureIns;
 
 const props = defineProps<EllipseOptions>();
 const options = defineWidget(props);

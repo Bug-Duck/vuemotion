@@ -7,7 +7,7 @@ export interface Scalable {
   scaleY?: number;
 }
 
-export interface ScalableMixin extends Scalable {
+export interface ScalableIns extends Scalable {
   scale: (offsetX: number, offsetY: number, options?: AnimationParams) => void;
   scaleTo: (toX: number, toY: number, options?: AnimationParams) => void;
 }

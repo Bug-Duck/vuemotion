@@ -71,35 +71,36 @@ const domain = [options.domainX.sort(), options.domainY.sort()];
     </Text>
     <g v-if="options.grid">
       <Line
-        v-for="i in domain[0][1] - domain[0][0]"
-        :key="i"
+        v-for="i in domain[0][1] - domain[0][0] + 1"
+        :key="`v-${i}`"
         :from="[
           i * (options.intervalX ?? 100),
-          options.domainY[0] * (options.intervalY ?? 100),
+          domain[1][0] * (options.intervalY ?? 100),
         ]"
         :to="[
           i * (options.intervalX ?? 100),
-          options.domainY[1] * (options.intervalY ?? 100),
+          domain[1][1] * (options.intervalY ?? 100),
         ]"
         :border-color="options.gridColor ?? 'white'"
         :border-width="options.gridWidth ?? 1"
         :x="(options.domainX[0] - 1) * (options.intervalX ?? 100)"
         :progress="options.progress ?? 1"
+        :scale-y="-1"
       />
       <Line
-        v-for="i in domain[1][1] - domain[1][0]"
-        :key="i"
+        v-for="i in domain[1][1] - domain[1][0] + 1"
+        :key="`h-${i}`"
         :from="[
-          options.domainX[0] * (options.intervalX ?? 100),
+          domain[0][0] * (options.intervalX ?? 100),
           i * (options.intervalY ?? 100),
         ]"
         :to="[
-          options.domainX[1] * (options.intervalX ?? 100),
+          domain[0][1] * (options.intervalX ?? 100),
           i * (options.intervalY ?? 100),
         ]"
         :border-color="options.gridColor ?? 'white'"
         :border-width="options.gridWidth ?? 1"
-        :y="(options.domainY[0] - 1) * (options.intervalY ?? 100)"
+        :y="(options.intervalY ?? 100) * options.domainY[0]"
         :progress="options.progress ?? 1"
       />
     </g>

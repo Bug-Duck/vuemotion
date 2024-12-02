@@ -24,11 +24,16 @@ export const moveOnFunction = defineAnimation<
       x: number;
       y: number;
     };
+    divisionX?: number;
+    divisionY?: number;
   }
 >((target, context) => {
+  const divisionX = context.divisionX ?? 1;
+  const divisionY = context.divisionY ?? 1;
+
   return (progress) => {
     const point = context.path(progress);
-    target.x = point.x;
-    target.y = point.y;
+    target.x = point.x * divisionX;
+    target.y = point.y * divisionY;
   };
 });

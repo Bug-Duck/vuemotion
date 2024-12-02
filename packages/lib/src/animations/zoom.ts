@@ -6,7 +6,7 @@ export interface HasScale {
   scaleX?: number;
   scaleY?: number;
 }
-export interface HasScaleMixin extends HasScale {
+export interface HasScaleIns extends HasScale {
   zoomTo: (toX: number, toY: number, options?: AnimationParams) => void;
   zoomIn: (options?: AnimationParams) => void;
   zoomOut: (options?: AnimationParams) => void;

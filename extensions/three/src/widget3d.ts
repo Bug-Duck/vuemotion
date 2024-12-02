@@ -4,11 +4,10 @@ export interface Widget3DOptions extends WidgetOptions {
   x?: number;
   y?: number;
   z?: number;
-  rx?: number;
-  ry?: number;
-  rz?: number;
+  rotationX?: number;
+  rotationY?: number;
+  rotationZ?: number;
   scaleX?: number;
   scaleY?: number;
   scaleZ?: number;
-  opacity?: number;
 }

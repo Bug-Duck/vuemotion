@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineWidget } from "@vue-motion/core";
 import { computed, defineProps, withDefaults } from "vue";
-import type { Growable, GrowableMixin } from "../animations";
+import type { Growable, GrowableIns } from "../animations";
 import type { Vector } from "../animations/typings";
 import { type FigureOptions, figure } from "./figure";
 
@@ -11,7 +11,7 @@ export interface ArcOptions extends FigureOptions, Growable {
   to?: number;
 }
 
-export type ArcMixin = ArcOptions & GrowableMixin;
+export type ArcIns = ArcOptions & GrowableIns;
 
 const props = withDefaults(defineProps<ArcOptions>(), {
   progress: 1,

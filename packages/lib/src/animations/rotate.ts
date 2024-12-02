@@ -6,7 +6,7 @@ export interface Rotatable {
   rotation?: number;
 }
 
-export interface RotatableMixin extends Rotatable {
+export interface RotatableIns extends Rotatable {
   rotate: (offset: number, options?: AnimationParams) => void;
   rotateTo: (to: number, options?: AnimationParams) => void;
 }

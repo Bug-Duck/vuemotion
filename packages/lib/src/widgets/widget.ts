@@ -7,17 +7,17 @@ import { registerAnimation } from "@vue-motion/core";
 import { inject } from "vue";
 import {
   Growable,
-  GrowableMixin,
+  GrowableIns,
   type HasOpacity,
-  type HasOpacityMixin,
+  type HasOpacityIns,
   type HasScale,
-  type HasScaleMixin,
+  type HasScaleIns,
   type Positional,
-  type PositionalMixin,
+  type PositionalIns,
   type Rotatable,
-  type RotatableMixin,
+  type RotatableIns,
   type Scalable,
-  type StrokableMixin,
+  type StrokableIns,
   destory,
   grow,
   moveOnFunction,
@@ -37,7 +37,7 @@ import {
   zoomOut,
   zoomTo,
 } from "../animations";
-import type { Colorable, ColorableMixin } from "../animations/color";
+import type { Colorable, ColorableIns } from "../animations/color";
 import {
   discolorate,
   discolorateBorder,
@@ -61,17 +61,17 @@ export type WidgetOptions = Widget &
   Growable & {
     manager?: AnimationManager<any>;
   };
-export type WidgetMixin = WidgetOptions &
-  PositionalMixin &
-  RotatableMixin &
-  HasScaleMixin &
-  StrokableMixin &
-  HasOpacityMixin &
-  ColorableMixin &
-  GrowableMixin & {
+export type WidgetIns = WidgetOptions &
+  PositionalIns &
+  RotatableIns &
+  HasScaleIns &
+  StrokableIns &
+  HasOpacityIns &
+  ColorableIns &
+  GrowableIns & {
     parallel: (
       ...animations: ((
-        widget: WidgetMixin & { manager?: AnimationManager<any> },
+        widget: WidgetIns & { manager?: AnimationManager<any> },
       ) => void)[]
     ) => void;
     animate: <A>(
@@ -94,16 +94,16 @@ export interface Animatable {
   ) => void;
   once: (animation: (target: Widget) => void) => void;
   delay: (duration: number) => void;
-  parallel: (...animations: ((widget: WidgetMixin) => void)[]) => void;
+  parallel: (...animations: ((widget: WidgetIns) => void)[]) => void;
 }
 
 export function widget(options: WidgetOptions) {
   const props = {} as {
     transform?: string;
     style?: string;
-  } & WidgetMixin;
+  } & WidgetIns;
 
-  const transform = [];
+  const transform: string[] = [];
   if (options.x || options.y)
     transform.push(`translate(${options.x ?? 0},${options.y ?? 0})`);
   if (options.scaleX || options.scaleY)
@@ -368,14 +368,14 @@ export function widget(options: WidgetOptions) {
   registerAnimation<Widget>("delay", (duration: number) => {
     return (manager) => manager.delay(duration);
   });
-  registerAnimation<WidgetMixin>(
+  registerAnimation<WidgetIns>(
     "parallel",
     (
       ...animations: ((
-        widget: WidgetMixin & { manager: AnimationManager<any> },
+        widget: WidgetIns & { manager: AnimationManager<any> },
       ) => void)[]
     ) => {
-      return (manager: AnimationManager<WidgetMixin>) => {
+      return (manager: AnimationManager<WidgetIns>) => {
         return manager.parallel(...animations);
       };
     },

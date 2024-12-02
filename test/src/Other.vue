@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { usePlayer, useWidget } from "@vue-motion/core";
-import { Motion, Rect, type RectMixin, easeInOutCirc } from "@vue-motion/lib";
+import { Motion, Rect, type RectIns, easeInOutCirc } from "@vue-motion/lib";
 import { onMounted } from "vue";
 
-const rect = useWidget<RectMixin>();
+const rect = useWidget<RectIns>();
 
 const { play } = usePlayer();
 

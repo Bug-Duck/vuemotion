@@ -1,14 +1,14 @@
 <script setup lang="ts">
 import { defineProps } from "vue";
 import { defineWidget } from "@vue-motion/core";
-import type { WidgetMixin, WidgetOptions } from "./widget";
+import type { WidgetIns, WidgetOptions } from "./widget";
 import { widget } from "./widget";
 
 export interface WebViewOptions extends WidgetOptions {
   width?: number;
   height?: number;
 }
-export type WebViewMixin = WebViewOptions & WidgetMixin;
+export type WebViewIns = WebViewOptions & WidgetIns;
 
 const props = defineProps<WebViewOptions>();
 const options = defineWidget<WebViewOptions>(props);
