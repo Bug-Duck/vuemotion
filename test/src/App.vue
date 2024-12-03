@@ -17,7 +17,7 @@ const rect = useWidget<RectIns>();
 const line = useWidget<LineIns>();
 const arrow = useWidget<ArrowIns>();
 
-const { play } = usePlayer();
+const { play, elapsed } = usePlayer();
 
 onMounted(() => {
   rect.move(100, 100);
@@ -49,6 +49,10 @@ onMounted(() => {
   line.grow();
   arrow.grow();
   play();
+
+  document.addEventListener("click", () => {
+    console.log(elapsed.value);
+  });
 });
 </script>
 

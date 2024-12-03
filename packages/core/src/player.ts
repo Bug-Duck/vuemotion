@@ -2,6 +2,8 @@ import type { App, Ref } from "vue";
 import { inject, ref } from "vue";
 import { AnimationManager } from "./animation";
 
+const studioListenerAdded = { value: false };
+
 export function createPlayer(options: {
   studio?: boolean;
   fps?: number;
@@ -24,8 +26,11 @@ export function usePlayer() {
   const fps = inject("fps") as number;
   const playing = ref(false);
 
-  if (studio) {
-    document.addEventListener("click", () => {
+  if (studio && !studioListenerAdded.value) {
+    studioListenerAdded.value = true;
+    document.addEventListener("click", (e) => {
+      console.log(elapsed.value);
+      e.stopImmediatePropagation();
       elapsed.value += 1 / fps;
     });
   }
