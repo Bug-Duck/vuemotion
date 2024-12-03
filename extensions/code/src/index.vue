@@ -24,13 +24,15 @@ const codes = slots.default
       .map((vnode) => vnode.children)
       .join("")
   : "";
-const content = ref(
-  await codeToHtml(codes, {
+const content = ref<string>("");
+
+(async () => {
+  content.value = await codeToHtml(codes, {
     ...options.shikiOptions,
     lang: options.lang,
     theme: options.theme,
-  }),
-);
+  });
+})();
 </script>
 
 <template>
