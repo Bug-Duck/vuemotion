@@ -17,11 +17,14 @@ import {
   type Rotatable,
   type RotatableIns,
   type Scalable,
+  Strokable,
   type StrokableIns,
   destory,
   grow,
   moveOnFunction,
   moveOnPath,
+  trace,
+  traceFill,
 } from "../animations";
 import {
   fadeIn,
@@ -346,6 +349,20 @@ export function widget(options: WidgetOptions) {
   registerAnimation<Growable>("destory", (params?: AnimationParams) => {
     return (manager) =>
       manager.animate(destory, {
+        duration: params?.duration ?? defaultDuration,
+        by: params?.by ?? ((x) => x),
+      });
+  });
+  registerAnimation<Strokable>("trace", (params?: AnimationParams) => {
+    return (manager) =>
+      manager.animate(trace, {
+        duration: params?.duration ?? defaultDuration,
+        by: params?.by ?? ((x) => x),
+      });
+  });
+  registerAnimation<Strokable>("traceFill", (params?: AnimationParams) => {
+    return (manager) =>
+      manager.animate(traceFill, {
         duration: params?.duration ?? defaultDuration,
         by: params?.by ?? ((x) => x),
       });
