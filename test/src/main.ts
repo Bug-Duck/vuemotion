@@ -6,7 +6,7 @@ import App from "./App.vue";
 createApp(App)
   .use(
     createPlayer({
-      studio: true,
+      studio: false,
     }),
   )
   .mount("#app");

@@ -133,6 +133,15 @@ export class AnimationManager<T> {
 
     return this;
   }
+
+  exec(fn: () => void) {
+    this.animate(
+      defineAnimation((_, __) => (progress) => {
+        if (progress === 0) fn();
+      }),
+      { duration: 0 },
+    );
+  }
 }
 
 export type AnimationSetup<T, A> = (

@@ -86,6 +86,7 @@ export type WidgetIns = WidgetOptions &
     ) => void;
     once: (animation: (target: Widget) => void) => void;
     delay: (duration: number) => void;
+    exec: (fn: () => void) => void;
   };
 export interface Animatable {
   animate: <A>(
@@ -397,6 +398,11 @@ export function widget(options: WidgetOptions) {
       };
     },
   );
+  registerAnimation<WidgetIns>("exec", (fn: () => void) => {
+    return (manager: AnimationManager<WidgetIns>) => {
+      return manager.exec(fn);
+    };
+  });
   const animations = inject<(() => Animation<Widget, any>)[]>(
     "ADDITION_ANIMATIONS",
   );

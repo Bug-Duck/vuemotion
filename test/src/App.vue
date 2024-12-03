@@ -45,6 +45,9 @@ onMounted(() => {
     (r) => r.discolorateBorderTo("blue"),
     (r) => r.move(-200, -200),
   );
+  rect.exec(() => {
+    console.log("Hello, world!");
+  });
 
   line.grow();
   arrow.grow();
