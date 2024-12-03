@@ -1,7 +1,7 @@
 {
   "name": "@vue-motion/extension-animations",
   "type": "module",
-  "version": "0.7.0-beta.3",
+  "version": "0.7.0-beta.4",
   "description": "The external animations of vue-motion",
   "author": "BugDuck Team",
   "license": "Apache-2.0",
