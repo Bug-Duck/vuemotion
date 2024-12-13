@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { usePlayer, useWidget } from "@vue-motion/core";
-import type { TextOptions } from "@vue-motion/lib";
+import type { TextIns } from "@vue-motion/lib";
 import { Group, Image, Text, fadeIn, stroke } from "@vue-motion/lib";
 import { onMounted } from "vue";
 
-const title = useWidget<TextOptions>("title");
-const text = useWidget<TextOptions>("text");
+const title = useWidget<TextIns>();
+const text = useWidget<TextIns>();
 
 onMounted(() => {
   const player = usePlayer();

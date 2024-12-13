@@ -33,7 +33,14 @@ export const moveOnFunction = defineAnimation<
 
   return (progress) => {
     const point = context.path(progress);
-    target.x = point.x * divisionX;
-    target.y = point.y * divisionY;
+    const newX = point.x * divisionX;
+    const newY = point.y * divisionY;
+
+    if (!Number.isNaN(newX)) {
+      target.x = newX;
+    }
+    if (!Number.isNaN(newY)) {
+      target.y = newY;
+    }
   };
 });

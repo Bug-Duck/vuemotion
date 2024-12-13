@@ -5,7 +5,7 @@ import type { FigureIns, FigureOptions } from "./figure";
 import { figure } from "./figure";
 
 export interface CircleOptions extends FigureOptions {
-  r: number;
+  radius: number;
   cx: number;
   cy: number;
 }
@@ -19,7 +19,7 @@ const options = defineWidget(props);
   <circle
     :cx="options.cx"
     :cy="options.cy"
-    :r="options.r"
+    :r="options.radius"
     v-bind="figure(options)"
   />
 </template>
