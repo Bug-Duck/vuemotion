@@ -1,7 +1,7 @@
 {
   "name": "@vue-motion/extension-typst",
   "type": "module",
-  "version": "0.7.0-beta.4",
+  "version": "0.7.0-beta.5",
   "description": "The components and hooks of vue-motion",
   "author": "BugDuck Team",
   "license": "Apache-2.0",
