@@ -161,6 +161,7 @@ export function defineAnimation<T, A = object>(setup: AnimationSetup<T, A>) {
 export function registerAnimation<T>(
   name: string,
   setup: (...args: any[]) => (animate: AnimationManager<T>) => void,
+  relativeElapsed?: WatchSource<number>,
 ): void {
   const current = getCurrentInstance();
   const { widget } = current?.props as {
@@ -168,8 +169,10 @@ export function registerAnimation<T>(
   };
   if (widget) {
     if (typeof widget.manager === "undefined") {
-      const { elapsed } = usePlayer();
-      widget.manager = new AnimationManager<T>(widget, elapsed);
+      widget.manager = new AnimationManager<T>(
+        widget,
+        relativeElapsed ?? usePlayer().elapsed,
+      );
     }
     (widget as Record<string, any>)[name] = (
       ...args: Parameters<typeof setup>

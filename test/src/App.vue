@@ -9,61 +9,37 @@ import {
   Line,
   Arrow,
   ArrowIns,
+  grow,
+  move,
+  rotate,
 } from "@vue-motion/lib";
-import { onMounted } from "vue";
-import { NumberPlane } from "@vue-motion/extension-math";
+import { onMounted, watch } from "vue";
 
 const rect = useWidget<RectIns>();
 const line = useWidget<LineIns>();
 const arrow = useWidget<ArrowIns>();
 
-const { play, elapsed } = usePlayer();
+const { play, elapsed, useAnimation, useTimeline } = usePlayer();
+const timeline = useTimeline(2);
 
 onMounted(() => {
-  rect.move(100, 100);
-  // rect.rotate(180)
-  // rect.rotateTo(200)
-  // rect.zoomTo(3, 3)
-
-  rect.moveOnPath(
-    "M 100 100 Q 100 200 200 200 Q 300 200 300 100 Q 300 0 200 0 Q 100 0 100 100 Z",
-    {
-      by: easeInOutCirc,
-    },
-  );
-  rect.moveOnFunction(
-    (progress) => ({
-      x: 100 + 200 * progress,
-      y: 100 + 200 * progress,
-    }),
-    {
-      by: easeInOutCirc,
-    },
-  );
-  rect.parallel(
-    (r) => r.discolorateFillTo("skyblue"),
-    (r) => r.discolorateBorderTo("blue"),
-    (r) => r.move(-200, -200),
-  );
-  rect.exec(() => {
-    console.log("Hello, world!");
+  watch(timeline.elapsed, () => {
+    console.log(timeline.elapsed.value);
   });
+  useAnimation(arrow).animate(rotate, { duration: 1, offset: 200 });
+  timeline
+    .useAnimation(rect)
+    .animate(move, { duration: 1, offsetX: 100, offsetY: 100 });
 
-  line.grow();
-  arrow.grow();
   play();
-
-  document.addEventListener("click", () => {
-    console.log(elapsed.value);
-  });
+  timeline.play();
 });
 </script>
 
 <template>
   <Motion :width="1600" :height="900">
     <Rect :widget="rect" :width="100" :height="100" />
-    <Line :widget="line" :from="[0, 0]" :to="[200, 200]" />
+    <!-- <Line :widget="line" :from="[0, 0]" :to="[200, 200]" /> -->
     <Arrow :from="[0, 0]" :to="[-200, -200]" :widget="arrow" />
-    <NumberPlane :domain-x="[-5, 4]" :domain-y="[-3, 2]" :grid="true" />
   </Motion>
 </template>

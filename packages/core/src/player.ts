@@ -1,5 +1,5 @@
 import type { App, Ref } from "vue";
-import { inject, ref } from "vue";
+import { inject, ref, watch } from "vue";
 import { AnimationManager } from "./animation";
 
 const studioListenerAdded = { value: false };
@@ -63,7 +63,63 @@ export function usePlayer() {
     }, 1000);
   }
 
-  return { play, elapsed, useAnimation, setElapsed, pause, renderOnce };
+  function useTimeline(start: number = 0) {
+    const relativeElapsed = ref<number>(0);
+    const isPlaying = ref(false);
+    const localStart = ref(start);
+
+    // 监听全局时间
+    watch(
+      elapsed,
+      () => {
+        if (isPlaying.value) {
+          relativeElapsed.value = Math.max(0, elapsed.value - localStart.value);
+        }
+      },
+      { immediate: true },
+    );
+
+    function play() {
+      isPlaying.value = true;
+    }
+
+    function pause() {
+      isPlaying.value = false;
+    }
+
+    function seek(time: number) {
+      relativeElapsed.value = time;
+      localStart.value = elapsed.value - time;
+    }
+
+    function reset() {
+      seek(0);
+    }
+
+    function useAnimation<T extends object>(widget: T) {
+      return new AnimationManager(widget, relativeElapsed);
+    }
+
+    return {
+      useAnimation,
+      elapsed: relativeElapsed,
+      isPlaying,
+      play,
+      pause,
+      seek,
+      reset,
+    };
+  }
+
+  return {
+    play,
+    elapsed,
+    useAnimation,
+    useTimeline,
+    setElapsed,
+    pause,
+    renderOnce,
+  };
 }
 
 export type Player = ReturnType<typeof usePlayer>;
