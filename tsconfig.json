@@ -20,6 +20,5 @@
     "noEmit": true,
     "isolatedModules": true,
     "skipLibCheck": true
-  },
-  "include": ["packages/*", "extensions/*"]
+  }
 }
