@@ -1,7 +1,7 @@
 {
   "name": "@vue-motion/extension-geometry",
   "type": "module",
-  "version": "0.7.0-beta.5",
+  "version": "0.7.0-beta.6",
   "description": "The components and hooks of vue-motion",
   "author": "BugDuck Team",
   "license": "Apache-2.0",
