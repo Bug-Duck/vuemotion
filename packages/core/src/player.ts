@@ -1,6 +1,7 @@
 import type { App, Ref } from "vue";
 import { inject, ref, watch } from "vue";
 import { AnimationManager } from "./animation";
+// import { GLOBAL_PLAYER } from "./symbols";
 
 const studioListenerAdded = { value: false };
 
@@ -20,11 +21,11 @@ export function createPlayer(options: {
 }
 
 export function usePlayer() {
-  const startAt = performance.now() / 1000;
   const elapsed = inject("elapsed") as Ref<number>;
   const studio = inject("studio") as boolean;
   const fps = inject("fps") as number;
   const playing = ref(false);
+  const renderEvents: ((elapsed: number) => void)[] = [];
 
   if (studio && !studioListenerAdded.value) {
     studioListenerAdded.value = true;
@@ -35,26 +36,31 @@ export function usePlayer() {
     });
   }
 
-  function play() {
+  function play(to?: number) {
+    if (to) elapsed.value = to;
     if (studio)
       return console.log(
         "You are in the studio mode, you are not supposed to call this function!",
       );
+    renderEvents.forEach((fn) => fn(elapsed.value));
     playing.value = true;
-    elapsed.value = performance.now() / 1000 - startAt;
-    if (playing.value) requestAnimationFrame(play);
+    // console.log(1 / fps)
+    elapsed.value += 1 / fps;
+    // console.log(elapsed.value)
+    if (playing.value) requestAnimationFrame(() => play());
   }
 
   function useAnimation<T extends object>(widget: T) {
     return new AnimationManager(widget, elapsed);
   }
 
-  function setElapsed(value: number) {
+  function seek(value: number) {
     elapsed.value = value;
   }
 
-  function pause() {
+  function pause(to?: number) {
     playing.value = false;
+    if (to) elapsed.value = to;
   }
 
   function renderOnce(ela: number) {
@@ -63,17 +69,21 @@ export function usePlayer() {
     }, 1000);
   }
 
+  function whenRender(fn: (elapsed: number) => void) {
+    renderEvents.push(fn);
+  }
+
   function useTimeline(start: number = 0) {
     const relativeElapsed = ref<number>(0);
     const isPlaying = ref(false);
     const localStart = ref(start);
 
-    // 监听全局时间
     watch(
       elapsed,
       () => {
         if (isPlaying.value) {
           relativeElapsed.value = Math.max(0, elapsed.value - localStart.value);
+          // console.log(relativeElapsed.value)
         }
       },
       { immediate: true },
@@ -116,10 +126,12 @@ export function usePlayer() {
     elapsed,
     useAnimation,
     useTimeline,
-    setElapsed,
+    seek,
     pause,
     renderOnce,
+    whenRender,
   };
 }
 
 export type Player = ReturnType<typeof usePlayer>;
+export type Timeline = ReturnType<Player["useTimeline"]>;

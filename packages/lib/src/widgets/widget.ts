@@ -127,6 +127,7 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
   registerAnimation<Positional>(
     "move",
@@ -139,6 +140,7 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
   registerAnimation<Positional>(
     "moveTo",
@@ -151,6 +153,7 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
   registerAnimation<Scalable>(
     "scale",
@@ -163,6 +166,7 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
   registerAnimation<Scalable>(
     "scaleTo",
@@ -175,6 +179,7 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
   registerAnimation<Rotatable>(
     "rotate",
@@ -186,6 +191,7 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
   registerAnimation<Rotatable>(
     "rotateTo",
@@ -197,6 +203,7 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
   registerAnimation<HasOpacity>(
     "fadeTo",
@@ -208,21 +215,30 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
-  registerAnimation<HasOpacity>("fadeIn", (params?: AnimationParams) => {
-    return (manager) =>
-      manager.animate(fadeIn, {
-        duration: params?.duration ?? defaultDuration,
-        by: params?.by ?? ((x) => x),
-      });
-  });
-  registerAnimation<HasOpacity>("fadeOut", (params?: AnimationParams) => {
-    return (manager) =>
-      manager.animate(fadeOut, {
-        duration: params?.duration ?? defaultDuration,
-        by: params?.by ?? ((x) => x),
-      });
-  });
+  registerAnimation<HasOpacity>(
+    "fadeIn",
+    (params?: AnimationParams) => {
+      return (manager) =>
+        manager.animate(fadeIn, {
+          duration: params?.duration ?? defaultDuration,
+          by: params?.by ?? ((x) => x),
+        });
+    },
+    options,
+  );
+  registerAnimation<HasOpacity>(
+    "fadeOut",
+    (params?: AnimationParams) => {
+      return (manager) =>
+        manager.animate(fadeOut, {
+          duration: params?.duration ?? defaultDuration,
+          by: params?.by ?? ((x) => x),
+        });
+    },
+    options,
+  );
   registerAnimation<HasScale>(
     "zoomTo",
     (toX: number, toY: number, params?: AnimationParams) => {
@@ -234,21 +250,30 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
-  registerAnimation<HasScale>("zoomIn", (params?: AnimationParams) => {
-    return (manager) =>
-      manager.animate(zoomIn, {
-        duration: params?.duration ?? defaultDuration,
-        by: params?.by ?? ((x) => x),
-      });
-  });
-  registerAnimation<HasScale>("zoomOut", (params?: AnimationParams) => {
-    return (manager) =>
-      manager.animate(zoomOut, {
-        duration: params?.duration ?? defaultDuration,
-        by: params?.by ?? ((x) => x),
-      });
-  });
+  registerAnimation<HasScale>(
+    "zoomIn",
+    (params?: AnimationParams) => {
+      return (manager) =>
+        manager.animate(zoomIn, {
+          duration: params?.duration ?? defaultDuration,
+          by: params?.by ?? ((x) => x),
+        });
+    },
+    options,
+  );
+  registerAnimation<HasScale>(
+    "zoomOut",
+    (params?: AnimationParams) => {
+      return (manager) =>
+        manager.animate(zoomOut, {
+          duration: params?.duration ?? defaultDuration,
+          by: params?.by ?? ((x) => x),
+        });
+    },
+    options,
+  );
   registerAnimation<Positional>(
     "moveOnPath",
     (path: string, params?: AnimationParams) => {
@@ -259,6 +284,7 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
   registerAnimation<Positional>(
     "moveOnFunction",
@@ -273,6 +299,7 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
   registerAnimation<Colorable>(
     "discolorate",
@@ -284,6 +311,7 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
   registerAnimation<Colorable>(
     "discolorateTo",
@@ -295,6 +323,7 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
   registerAnimation<Colorable>(
     "discolorateBorder",
@@ -306,6 +335,7 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
   registerAnimation<Colorable>(
     "discolorateBorderTo",
@@ -317,6 +347,7 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
   registerAnimation<Colorable>(
     "discolorateFill",
@@ -328,6 +359,7 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
   registerAnimation<Colorable>(
     "discolorateFillTo",
@@ -339,35 +371,52 @@ export function widget(options: WidgetOptions) {
           by: params?.by ?? ((x) => x),
         });
     },
+    options,
   );
-  registerAnimation<Growable>("grow", (params?: AnimationParams) => {
-    return (manager) =>
-      manager.animate(grow, {
-        duration: params?.duration ?? defaultDuration,
-        by: params?.by ?? ((x) => x),
-      });
-  });
-  registerAnimation<Growable>("destory", (params?: AnimationParams) => {
-    return (manager) =>
-      manager.animate(destory, {
-        duration: params?.duration ?? defaultDuration,
-        by: params?.by ?? ((x) => x),
-      });
-  });
-  registerAnimation<Strokable>("trace", (params?: AnimationParams) => {
-    return (manager) =>
-      manager.animate(trace, {
-        duration: params?.duration ?? defaultDuration,
-        by: params?.by ?? ((x) => x),
-      });
-  });
-  registerAnimation<Strokable>("traceFill", (params?: AnimationParams) => {
-    return (manager) =>
-      manager.animate(traceFill, {
-        duration: params?.duration ?? defaultDuration,
-        by: params?.by ?? ((x) => x),
-      });
-  });
+  registerAnimation<Growable>(
+    "grow",
+    (params?: AnimationParams) => {
+      return (manager) =>
+        manager.animate(grow, {
+          duration: params?.duration ?? defaultDuration,
+          by: params?.by ?? ((x) => x),
+        });
+    },
+    options,
+  );
+  registerAnimation<Growable>(
+    "destory",
+    (params?: AnimationParams) => {
+      return (manager) =>
+        manager.animate(destory, {
+          duration: params?.duration ?? defaultDuration,
+          by: params?.by ?? ((x) => x),
+        });
+    },
+    options,
+  );
+  registerAnimation<Strokable>(
+    "trace",
+    (params?: AnimationParams) => {
+      return (manager) =>
+        manager.animate(trace, {
+          duration: params?.duration ?? defaultDuration,
+          by: params?.by ?? ((x) => x),
+        });
+    },
+    options,
+  );
+  registerAnimation<Strokable>(
+    "traceFill",
+    (params?: AnimationParams) => {
+      return (manager) =>
+        manager.animate(traceFill, {
+          duration: params?.duration ?? defaultDuration,
+          by: params?.by ?? ((x) => x),
+        });
+    },
+    options,
+  );
   registerAnimation<Widget>(
     "animate",
     <A>(
@@ -379,13 +428,22 @@ export function widget(options: WidgetOptions) {
     ) => {
       return (manager) => manager.animate(animation, context);
     },
+    options,
   );
-  registerAnimation<Widget>("once", (animation: (target: Widget) => void) => {
-    return (manager) => manager.once(animation);
-  });
-  registerAnimation<Widget>("delay", (duration: number) => {
-    return (manager) => manager.delay(duration);
-  });
+  registerAnimation<Widget>(
+    "once",
+    (animation: (target: Widget) => void) => {
+      return (manager) => manager.once(animation);
+    },
+    options,
+  );
+  registerAnimation<Widget>(
+    "delay",
+    (duration: number) => {
+      return (manager) => manager.delay(duration);
+    },
+    options,
+  );
   registerAnimation<WidgetIns>(
     "parallel",
     (
@@ -397,12 +455,17 @@ export function widget(options: WidgetOptions) {
         return manager.parallel(...animations);
       };
     },
+    options,
   );
-  registerAnimation<WidgetIns>("exec", (fn: () => void) => {
-    return (manager: AnimationManager<WidgetIns>) => {
-      return manager.exec(fn);
-    };
-  });
+  registerAnimation<WidgetIns>(
+    "exec",
+    (fn: () => void) => {
+      return (manager: AnimationManager<WidgetIns>) => {
+        return manager.exec(fn);
+      };
+    },
+    options,
+  );
   const animations = inject<(() => Animation<Widget, any>)[]>(
     "ADDITION_ANIMATIONS",
   );

@@ -1,6 +1,7 @@
-import type { WatchSource } from "vue";
-import { getCurrentInstance, watch } from "vue";
+import type { Ref, WatchSource } from "vue";
+import { getCurrentInstance, ref, watch } from "vue";
 import { usePlayer } from "./player";
+import { Widget } from "./widget";
 
 export type TimingFunction = (x: number) => number;
 export const linear: TimingFunction = (x) => x;
@@ -136,7 +137,7 @@ export class AnimationManager<T> {
 
   exec(fn: () => void) {
     this.animate(
-      defineAnimation((_, __) => (progress) => {
+      defineAnimation(() => (progress) => {
         if (progress === 0) fn();
       }),
       { duration: 0 },
@@ -161,7 +162,7 @@ export function defineAnimation<T, A = object>(setup: AnimationSetup<T, A>) {
 export function registerAnimation<T>(
   name: string,
   setup: (...args: any[]) => (animate: AnimationManager<T>) => void,
-  relativeElapsed?: WatchSource<number>,
+  widgetInstance?: Widget,
 ): void {
   const current = getCurrentInstance();
   const { widget } = current?.props as {
@@ -169,10 +170,19 @@ export function registerAnimation<T>(
   };
   if (widget) {
     if (typeof widget.manager === "undefined") {
-      widget.manager = new AnimationManager<T>(
-        widget,
-        relativeElapsed ?? usePlayer().elapsed,
-      );
+      const elapsed: Ref<number> = ref(0);
+      if (widgetInstance && widgetInstance.elapsed) {
+        elapsed.value = widgetInstance.elapsed!;
+        watch(widgetInstance, (v) => {
+          elapsed.value = v.elapsed!;
+        });
+      } else {
+        watch(usePlayer().elapsed, (v) => {
+          elapsed.value = v;
+          console.log(v);
+        });
+      }
+      widget.manager = new AnimationManager<T>(widget, elapsed);
     }
     (widget as Record<string, any>)[name] = (
       ...args: Parameters<typeof setup>

@@ -1,45 +1,43 @@
 <script setup lang="ts">
 import { usePlayer, useWidget } from "@vue-motion/core";
-import {
-  LineIns,
-  Motion,
-  Rect,
-  type RectIns,
-  easeInOutCirc,
-  Line,
-  Arrow,
-  ArrowIns,
-  grow,
-  move,
-  rotate,
-} from "@vue-motion/lib";
-import { onMounted, watch } from "vue";
+import { Motion, Rect, RectIns } from "@vue-motion/lib";
+import { onMounted } from "vue";
+
+const { play, useTimeline } = usePlayer();
+
+const timeline1 = useTimeline(2);
 
 const rect = useWidget<RectIns>();
-const line = useWidget<LineIns>();
-const arrow = useWidget<ArrowIns>();
 
-const { play, elapsed, useAnimation, useTimeline } = usePlayer();
-const timeline = useTimeline(2);
+// whenRender((elapsed) => {
+//   console.log(elapsed)
+// })
 
 onMounted(() => {
-  watch(timeline.elapsed, () => {
-    console.log(timeline.elapsed.value);
+  // timeline1.useAnimation(rect)
+  //   .animate(move, {
+  //     offsetX: 200,
+  //     offsetY: 300,
+  //     duration: 1,
+  //   })
+  rect.move(200, 300);
+  rect.delay(1);
+  rect.exec(() => {
+    rect.borderColor = "yellow";
+    console.log(rect.elapsed);
   });
-  useAnimation(arrow).animate(rotate, { duration: 1, offset: 200 });
-  timeline
-    .useAnimation(rect)
-    .animate(move, { duration: 1, offsetX: 100, offsetY: 100 });
-
+  rect.delay(1);
+  rect.exec(() => {
+    rect.borderColor = "blue";
+    console.log(rect.elapsed);
+  });
+  timeline1.play();
   play();
-  timeline.play();
 });
 </script>
 
 <template>
-  <Motion :width="1600" :height="900">
+  <Motion :width="1600" :height="1000">
     <Rect :widget="rect" :width="100" :height="100" />
-    <!-- <Line :widget="line" :from="[0, 0]" :to="[200, 200]" /> -->
-    <Arrow :from="[0, 0]" :to="[-200, -200]" :widget="arrow" />
   </Motion>
 </template>

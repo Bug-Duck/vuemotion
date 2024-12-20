@@ -6,8 +6,10 @@ import {
   reactive,
   ref,
   useSlots,
+  watch,
 } from "vue";
 import type { AnimationManager } from "./animation";
+import { Timeline } from "./player";
 
 const childWidgets: InjectionKey<Ref<Widget[]>> = Symbol("child-widgets");
 
@@ -18,11 +20,16 @@ export interface Widget<T = any> {
   slots?: Slots;
   children?: Widget<T>[];
   manager?: AnimationManager<T>;
-  wid?: string;
+  elapsed?: number;
 }
 
-export function useWidget<T extends Widget>(): Reactive<T> {
+export function useWidget<T extends Widget>(timeline?: Timeline): Reactive<T> {
   const widget = reactive({});
+  if (timeline) {
+    watch(timeline.elapsed, (v) => {
+      (widget as T).elapsed = v;
+    });
+  }
   return widget as Reactive<T>;
 }
 
