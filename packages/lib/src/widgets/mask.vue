@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 import { defineProps } from "vue";
 import { defineWidget } from "@vue-motion/core";
 import { type WidgetOptions, widget } from "./widget";
@@ -27,4 +27,4 @@ const id = props.wid || `mask-${Math.random().toString(36).substring(2, 9)}`;
   <g v-bind="widget(options)" :mask="`url(#${id})`">
     <slot name="target" />
   </g>
-</template>
+</template> -->
