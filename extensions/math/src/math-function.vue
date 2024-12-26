@@ -39,7 +39,7 @@ function generateSvgPath(
     const y = mathFunc(x);
 
     // Convert the values of a mathematical function to SVG coordinates
-    const svgX = (x - xMin) * scaleX;
+    const svgX = x * scaleX;
     const svgY = (yMax - y) * scaleY; // Invert the y-axis to conform to the SVG coordinate system
     path.push(
       `${x === xMin || svgY > 1500 || svgY < -1500 ? "M" : "L"} ${svgX} ${svgY}`,
