@@ -26,5 +26,6 @@
     "extensions/**/*.*",
     "**/shims.d.ts",
     "**/*.vue"
-  ]
+  ],
+  "exclude": []
 }
