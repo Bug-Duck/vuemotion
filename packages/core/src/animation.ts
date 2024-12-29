@@ -1,7 +1,6 @@
 import type { Ref, WatchSource } from "vue";
 import { getCurrentInstance, ref, watch } from "vue";
 import { usePlayer } from "./player";
-import { Widget } from "./widget";
 
 export type TimingFunction = (x: number) => number;
 export const linear: TimingFunction = (x) => x;
@@ -162,7 +161,7 @@ export function defineAnimation<T, A = object>(setup: AnimationSetup<T, A>) {
 export function registerAnimation<T>(
   name: string,
   setup: (...args: any[]) => (animate: AnimationManager<T>) => void,
-  widgetInstance?: Widget,
+  widgetInstance?: any,
 ): void {
   const current = getCurrentInstance();
   const { widget } = current?.props as {
