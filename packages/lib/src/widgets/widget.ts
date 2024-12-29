@@ -1,41 +1,42 @@
 import type {
+  Animation,
+  AnimationInstance,
   AnimationManager,
   AnimationParams,
+  TimingFunction,
   Widget,
 } from "@vue-motion/core";
 import { registerAnimation } from "@vue-motion/core";
 import { inject } from "vue";
 import {
+  destory,
+  fadeIn,
+  fadeOut,
+  fadeTo,
+  grow,
   Growable,
   GrowableIns,
   type HasOpacity,
   type HasOpacityIns,
   type HasScale,
   type HasScaleIns,
+  move,
+  moveOnFunction,
+  moveOnPath,
+  moveTo,
   type Positional,
   type PositionalIns,
   type Rotatable,
   type RotatableIns,
-  type Scalable,
-  Strokable,
-  type StrokableIns,
-  destory,
-  grow,
-  moveOnFunction,
-  moveOnPath,
-  trace,
-  traceFill,
-} from "../animations";
-import {
-  fadeIn,
-  fadeOut,
-  fadeTo,
-  move,
-  moveTo,
   rotate,
   rotateTo,
+  type Scalable,
   scale,
   scaleTo,
+  Strokable,
+  type StrokableIns,
+  trace,
+  traceFill,
   zoomIn,
   zoomOut,
   zoomTo,
@@ -49,11 +50,6 @@ import {
   discolorateFillTo,
   discolorateTo,
 } from "../animations/color";
-import type {
-  Animation,
-  AnimationInstance,
-  TimingFunction,
-} from "@vue-motion/core";
 
 export type WidgetOptions = Widget &
   Positional &
