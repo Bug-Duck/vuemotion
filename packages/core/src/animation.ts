@@ -21,6 +21,12 @@ export interface AnimationInstance<T, A> {
 
 export class AnimationManager<T> {
   animations: AnimationInstance<T, any>[] = [];
+  repeatStatus: [
+    boolean,
+    number | "loop",
+    number,
+    AnimationInstance<T, any>[],
+  ] = [false, 0, 0, []];
   private target: T;
 
   constructor(target: T, elapsed: WatchSource<number>) {
@@ -62,8 +68,12 @@ export class AnimationManager<T> {
     context ??= {} as any;
     const duration = context.duration ?? 1;
     const by = context.by ?? linear;
-    this.animations.push({ context, animation, duration, by });
 
+    if (this.repeatStatus[0]) {
+      // 在重复模式中，将动画保存到重复区间
+      this.repeatStatus[3].push({ context, animation, duration, by });
+    }
+    this.animations.push({ context, animation, duration, by });
     return this;
   }
 
@@ -74,14 +84,12 @@ export class AnimationManager<T> {
   }
 
   delay(duration: number) {
-    this.animate(
+    return this.animate(
       () => {
         /* empty animation */
       },
       { duration },
     );
-
-    return this;
   }
 
   parallel<A>(
@@ -135,12 +143,41 @@ export class AnimationManager<T> {
   }
 
   exec(fn: () => void) {
-    this.animate(
+    return this.animate(
       defineAnimation(() => (progress) => {
         if (progress === 0) fn();
       }),
       { duration: 0 },
     );
+  }
+
+  repeat(times?: number) {
+    this.repeatStatus = [true, times ?? "loop", 0, []];
+    return this;
+  }
+
+  repeatEnd(fn?: () => void) {
+    // 当前重复次数加1
+    this.repeatStatus[2] += 1;
+
+    if (
+      this.repeatStatus[1] === "loop" ||
+      this.repeatStatus[2] < this.repeatStatus[1]
+    ) {
+      // 如果是无限循环或者还没达到总重复次数，将重复区间的动画再次添加到队列
+      this.animations.push(...this.repeatStatus[3]);
+
+      if (this.repeatStatus[1] === "loop") {
+        // 如果是无限循环，重置当前重复次数
+        this.repeatStatus[2] = 0;
+      }
+    } else {
+      // 重复完成
+      this.repeatStatus[0] = false;
+      this.repeatStatus[3] = [];
+      fn?.();
+    }
+    return this;
   }
 }
 

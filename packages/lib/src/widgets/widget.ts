@@ -83,6 +83,8 @@ export type WidgetIns = WidgetOptions &
     once: (animation: (target: Widget) => void) => void;
     delay: (duration: number) => void;
     exec: (fn: () => void) => void;
+    repeat: (times?: number) => void;
+    repeatEnd: (fn?: () => void) => void;
   };
 export interface Animatable {
   animate: <A>(
@@ -458,6 +460,24 @@ export function widget(options: WidgetOptions) {
     (fn: () => void) => {
       return (manager: AnimationManager<WidgetIns>) => {
         return manager.exec(fn);
+      };
+    },
+    options,
+  );
+  registerAnimation<WidgetIns>(
+    "repeat",
+    (times: number) => {
+      return (manager: AnimationManager<WidgetIns>) => {
+        return manager.repeat(times);
+      };
+    },
+    options,
+  );
+  registerAnimation<WidgetIns>(
+    "repeatEnd",
+    (fn: () => void) => {
+      return (manager: AnimationManager<WidgetIns>) => {
+        return manager.repeatEnd(fn);
       };
     },
     options,

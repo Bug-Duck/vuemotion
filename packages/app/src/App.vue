@@ -11,9 +11,9 @@ import Widgets from "./components/Widgets.vue";
     <TopMenubar />
     <div class="flex-grow flex flex-col overflow-hidden">
       <Preview :width="1600" :height="900" />
-      <Tools class="flex-shrink-0" />
-      <div class="flex-grow flex flex-row overflow-hidden">
-        <div class="w-1/4 overflow-y-auto">
+      <Tools class="flex-shrink-0 border-t" />
+      <div class="h-[300px] flex flex-row overflow-hidden border-t">
+        <div class="w-1/4 border-r overflow-y-auto">
           <Widgets
             :widgets="[{ type: 'Arc' }, { type: 'Arc' }, { type: 'Arc' }]"
           />
