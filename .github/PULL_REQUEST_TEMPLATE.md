@@ -7,11 +7,6 @@ about: Have a contribution to VueMotion! Thank you!
 
 **Related Issues:** [List the issue numbers related to this PR]
 
-**TODO**
-
-- [ ] task1
-- [ ] ...
-
 **Checklist:**
 
 - [ ] Code has been reviewed
